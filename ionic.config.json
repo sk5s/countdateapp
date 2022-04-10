@@ -1,0 +1,7 @@
+{
+  "name": "countdateapp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
