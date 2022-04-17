@@ -31,8 +31,8 @@ export default function CountdownCard(props: {
     <div>
       <IonCard>
         <IonCardHeader>
-          <IonCardSubtitle>離 {props.event} 剩下</IonCardSubtitle>
-          <IonCardTitle>
+          <IonCardSubtitle>離{props.event}剩下</IonCardSubtitle>
+          <IonCardTitle color="primary">
             <Countdown date={props.date} renderer={renderer} />天
           </IonCardTitle>
         </IonCardHeader>
