@@ -2,11 +2,12 @@ import { useState, useEffect } from "react";
 import CountdownCard from "./CountdownCard";
 import TitleCard from "./TitleCard";
 import { Storage } from "@capacitor/storage";
-import { IonButton, IonPopover, IonContent, useIonLoading, IonGrid, IonRow, IonCol } from "@ionic/react";
+import { useIonAlert, IonButton, IonModal, IonContent, useIonLoading, IonGrid, IonRow, IonCol } from "@ionic/react";
 import { useHistory } from "react-router";
 
 export default function CountdownCards(): JSX.Element {
   const history = useHistory()
+  const [presentAlert] = useIonAlert();
   let countdate_events_data: {
     id: string;
     event_name: string;
@@ -16,8 +17,9 @@ export default function CountdownCards(): JSX.Element {
     // {id: "2", event_name: "112學測", date: "2023-01-13"}
   ];
   const check_countdate_events_storage_data = async () => {
-    present({
+    presentLoading({
       duration: 100,
+      showBackdrop: false
     });
     const { value } = await Storage.get({ key: "countdate_events_data" });
     if (value) {
@@ -41,7 +43,7 @@ export default function CountdownCards(): JSX.Element {
   );
   const [popover_oepn, set_popover_oepn] = useState(false);
   const [popover_content, set_popover_content] = useState("");
-  const [present, dismiss] = useIonLoading();
+  const [presentLoading, dismissLoading] = useIonLoading();
   return (
     <div>
       {(() => {
@@ -89,9 +91,6 @@ export default function CountdownCards(): JSX.Element {
               expand="full"
               onClick={() => {
                 check_countdate_events_storage_data();
-                present({
-                  duration: 100,
-                });
                 set_popover_oepn(true);
               }}
               color="primary"
@@ -102,28 +101,50 @@ export default function CountdownCards(): JSX.Element {
         </IonRow>
       </IonGrid>
 
-      <IonPopover
+      <IonModal
         isOpen={popover_oepn}
         onDidDismiss={() => set_popover_oepn(false)}
       >
+        <IonButton onClick={() => set_popover_oepn(false)}>
+          關閉
+        </IonButton>
+        <IonButton
+          onClick={() => {
+            presentAlert({
+              header: '刪除？',
+              message: '確認刪除所有資料？',
+              buttons: [
+                '取消',
+                { text: '確認', handler: (d) => {
+                  delete_countdate_events_storage_data();
+                  presentLoading({
+                    duration: 100,
+                    showBackdrop: false
+                  });
+                  check_countdate_events_storage_data()
+                }},
+              ]
+            })
+          }}
+          color="danger"
+        >
+          刪除所有資料
+        </IonButton>
+        <IonButton onClick={() => {
+          presentAlert({
+            header: '編輯',
+            message: '功能尚未完善',
+            buttons: [
+              '取消'
+            ]
+          })
+        }}>
+          編輯
+        </IonButton>
         <IonContent>
           Raw Data: {popover_content}
-          <IonButton
-            onClick={() => {
-              delete_countdate_events_storage_data();
-              present({
-                duration: 100,
-              });
-              history.push('/')
-              check_countdate_events_storage_data()
-            }}
-            color="danger"
-            expand="full"
-          >
-            刪除所有資料
-          </IonButton>
         </IonContent>
-      </IonPopover>
+      </IonModal>
     </div>
   );
 }
