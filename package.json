@@ -1,13 +1,15 @@
 {
   "name": "countdateapp",
-  "version": "0.0.1",
+  "version": "1.1.0",
   "private": true,
   "dependencies": {
+    "@capacitor/android": "3.4.3",
     "@capacitor/app": "1.1.1",
     "@capacitor/core": "3.4.3",
     "@capacitor/haptics": "1.1.4",
     "@capacitor/keyboard": "1.2.2",
     "@capacitor/status-bar": "1.0.8",
+    "@capacitor/storage": "^1.2.5",
     "@ionic/react": "^6.0.0",
     "@ionic/react-router": "^6.0.0",
     "@testing-library/jest-dom": "^5.11.9",
@@ -21,11 +23,13 @@
     "@types/react-router-dom": "^5.1.7",
     "ionicons": "^5.4.0",
     "react": "^17.0.1",
+    "react-countdown": "^2.3.2",
     "react-dom": "^17.0.1",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^5.0.0",
     "typescript": "^4.1.3",
+    "uuidv4": "^6.2.13",
     "web-vitals": "^0.2.4",
     "workbox-background-sync": "^5.1.4",
     "workbox-broadcast-update": "^5.1.4",
@@ -44,7 +48,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --transformIgnorePatterns 'node_modules/(?!(@ionic/react|@ionic/react-router|@ionic/core|@stencil/core|ionicons)/)'",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "surge": "surge build --domain countdate.surge.sh"
   },
   "eslintConfig": {
     "extends": [
@@ -65,7 +70,8 @@
     ]
   },
   "devDependencies": {
-    "@capacitor/cli": "3.4.3"
+    "@capacitor/cli": "3.4.3",
+    "@ionic/cli": "6.19.0"
   },
   "description": "An Ionic project"
 }
