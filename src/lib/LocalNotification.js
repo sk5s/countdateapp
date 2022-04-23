@@ -19,9 +19,9 @@ export async function Schedule(props){
     notifications: [{
       title: props.title,
       body: props.body,
-      id: uuid(),
+      id: props.id,
       schedule: {
-        at: new Date(Date.now() + min(1))
+        at: new Date(Date.now() + sec(1))
       }
     }]
   })

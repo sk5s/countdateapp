@@ -13,11 +13,12 @@ import LanguageSelectAction from "../components/LanguageSelectAction";
 import { Schedule } from "../lib/LocalNotification";
 
 const Settings: React.FC = () => {
-  const testLocalNotification = () => {
-    Schedule({
+  const testLocalNotification = async () => {
+    console.log("clicked")
+    await Schedule({
       title: "Countdate",
       body: "Local Notification Test",
-      at: "1"
+      id: 1
     })
   }
   return (
