@@ -10,6 +10,7 @@ import Countdown from "react-countdown";
 export default function CountdownCard(props: {
   date: string;
   event: string;
+  editable: boolean;
 }): JSX.Element {
   const Completionist = () => <span>0</span>;
   const renderer = ({
@@ -28,15 +29,13 @@ export default function CountdownCard(props: {
     }
   };
   return (
-    <div>
-      <IonCard>
-        <IonCardHeader>
-          <IonCardSubtitle>離{props.event}剩下</IonCardSubtitle>
-          <IonCardTitle color="primary">
-            <Countdown date={props.date} renderer={renderer} />天
-          </IonCardTitle>
-        </IonCardHeader>
-      </IonCard>
-    </div>
+    <IonCard>
+      <IonCardHeader>
+        <IonCardSubtitle>離{props.event}剩下</IonCardSubtitle>
+        <IonCardTitle color="primary">
+          <Countdown date={props.date} renderer={renderer} />天
+        </IonCardTitle>
+      </IonCardHeader>
+    </IonCard>
   );
 }

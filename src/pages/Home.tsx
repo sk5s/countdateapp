@@ -4,8 +4,13 @@ import {
   IonPage,
   IonTitle,
   IonToolbar,
+  IonFab,
+  IonFabButton,
+  IonIcon
 } from "@ionic/react";
 import "./Home.css";
+
+import { add } from 'ionicons/icons'
 
 import CountdownCards from "../components/CountdownCards";
 
@@ -24,6 +29,12 @@ const Home: React.FC = () => {
           </IonToolbar>
         </IonHeader>
         <CountdownCards />
+
+        <IonFab vertical="bottom" horizontal="end" slot="fixed">
+          <IonFabButton routerLink="/add">
+            <IonIcon icon={add} />
+          </IonFabButton>
+        </IonFab>
       </IonContent>
     </IonPage>
   );
