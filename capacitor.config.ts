@@ -10,6 +10,9 @@ const config: CapacitorConfig = {
       iconColor: "#488AFF",
       allowWhileIdle: true
     },
+    PrivacyScreen: {
+      "enable": true
+    }
   },
 };
 
