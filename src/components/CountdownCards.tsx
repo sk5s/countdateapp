@@ -2,11 +2,18 @@ import { useState, useEffect } from "react";
 import CountdownCard from "./CountdownCard";
 import TitleCard from "./TitleCard";
 import { Storage } from "@capacitor/storage";
-import { useIonAlert, IonButton, IonModal, IonContent, useIonLoading, IonGrid, IonRow, IonCol } from "@ionic/react";
+import { isPlatform, useIonAlert, IonButton, IonModal, IonContent, useIonLoading, IonGrid, IonRow, IonCol, IonTextarea, IonLabel } from "@ionic/react";
 import { useHistory } from "react-router";
+import { on } from '../lib/Events'
+import { useTranslation } from "react-i18next";
+import { Device } from '@capacitor/device';
+import { copy } from '../lib/Clipboard'
+import Toast from "../lib/Toast";
 
 export default function CountdownCards(): JSX.Element {
   const history = useHistory()
+  const { t, i18n } = useTranslation()
+  const [languageCode, setLanguageCode] = useState("")
   const [presentAlert] = useIonAlert();
   let countdate_events_data: {
     id: string;
@@ -24,7 +31,7 @@ export default function CountdownCards(): JSX.Element {
     const { value } = await Storage.get({ key: "countdate_events_data" });
     if (value) {
       countdate_events_data = JSON.parse(value);
-      console.log(countdate_events_data);
+      // console.log(countdate_events_data);
     } else {
       countdate_events_data = [];
     }
@@ -36,14 +43,21 @@ export default function CountdownCards(): JSX.Element {
   }
   useEffect(() => {
     check_countdate_events_storage_data();
-    console.log(countdate_events_data);
+    // console.log(countdate_events_data);
+    on("countdate_data:change", () => {
+      check_countdate_events_storage_data()
+    })
+    const getLanguage = async () => {
+      const data =  await Device.getLanguageCode()
+      setLanguageCode(data.value)
+    }
+    getLanguage()
   }, []);
-  const [countdate_events_data_list, set_countdate_events_data_list] = useState(
-    countdate_events_data
-  );
-  const [popover_oepn, set_popover_oepn] = useState(false);
-  const [popover_content, set_popover_content] = useState("");
+  const [countdate_events_data_list, set_countdate_events_data_list] = useState(countdate_events_data);
+  const [popover_oepn, set_popover_oepn] = useState<boolean>(false);
+  const [popover_content, set_popover_content] = useState<string>();
   const [presentLoading, dismissLoading] = useIonLoading();
+  const [editable, setEditable] = useState<boolean>(false)
   return (
     <div>
       {(() => {
@@ -55,6 +69,7 @@ export default function CountdownCards(): JSX.Element {
                 key={event.id}
                 event={event.event_name}
                 date={event.date}
+                editable={editable}
               />
             );
           });
@@ -63,9 +78,12 @@ export default function CountdownCards(): JSX.Element {
             <div key="div">
               <TitleCard
                 key="title"
-                title="新增 Countdate 吧！"
-                subtitle="沒有資料"
+                title={t("add") + "Countdate" +t("exclamation_mark")}
+                subtitle={t("no_data")}
               />
+              <IonButton key="add" routerLink="/add" color="primary" shape="round">
+                {t("add")} Countdate
+              </IonButton>
             </div>
           );
         }
@@ -75,13 +93,13 @@ export default function CountdownCards(): JSX.Element {
       <IonGrid>
         <IonRow>
           <IonCol>
-            <IonButton expand="full" shape="round" routerLink="/add" color="primary">
-              新增 Countdate
+            <IonButton expand="full" shape="round" onClick={check_countdate_events_storage_data} color="primary">
+              {t("refresh")}
             </IonButton>
           </IonCol>
           <IonCol>
-            <IonButton expand="full" shape="round" onClick={check_countdate_events_storage_data} color="primary">
-              重新整理
+            <IonButton expand="full" shape="round" routerLink="/settings" color="primary">
+              {t("settings")}
             </IonButton>
           </IonCol>
           <IonCol>
@@ -95,7 +113,7 @@ export default function CountdownCards(): JSX.Element {
               }}
               color="primary"
             >
-              檢查資料
+              {`${t("check")}${t("between_words")}${t("data")}`}
             </IonButton>
           </IonCol>
         </IonRow>
@@ -105,13 +123,14 @@ export default function CountdownCards(): JSX.Element {
         isOpen={popover_oepn}
         onDidDismiss={() => set_popover_oepn(false)}
       >
-        <IonButton onClick={() => set_popover_oepn(false)}>
-          關閉
+        <IonButton shape="round" onClick={() => set_popover_oepn(false)}>
+          {t("close")}
         </IonButton>
         <IonButton
+          shape="round"
           onClick={() => {
             presentAlert({
-              header: '刪除？',
+              header: t("delete")+t("question_mark"),
               message: '確認刪除所有資料？',
               buttons: [
                 '取消',
@@ -130,7 +149,7 @@ export default function CountdownCards(): JSX.Element {
         >
           刪除所有資料
         </IonButton>
-        <IonButton onClick={() => {
+        <IonButton shape="round" onClick={() => {
           presentAlert({
             header: '編輯',
             message: '功能尚未完善',
@@ -138,11 +157,21 @@ export default function CountdownCards(): JSX.Element {
               '取消'
             ]
           })
-        }}>
+          }}>
           編輯
         </IonButton>
+        {isPlatform("android") || isPlatform("ios") ? 
+        <IonButton shape="round" onClick={() => {
+          copy(popover_content)
+            Toast(t("copied")+t("exclamation_mark"))
+          }}
+        >
+          複製原始資料
+        </IonButton> : ''
+        }
         <IonContent>
-          Raw Data: {popover_content}
+          <IonTextarea autoGrow={true} value={popover_content} readonly={true}></IonTextarea>
+          <IonLabel>{languageCode}</IonLabel>
         </IonContent>
       </IonModal>
     </div>

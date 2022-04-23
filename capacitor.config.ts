@@ -1,10 +1,17 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'countdateapp',
+  appId: 'cyou.sk5s.app.countdate',
+  appName: 'Countdate',
   webDir: 'build',
-  bundledWebRuntime: false
+  bundledWebRuntime: false,
+  plugins: {
+    LocalNotifications: {
+      smallIcon: "ic_stat_icon_config_sample",
+      iconColor: "#488AFF",
+      allowWhileIdle: true
+    },
+  },
 };
 
 export default config;

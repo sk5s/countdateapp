@@ -20,10 +20,13 @@ import { useHistory } from "react-router";
 import "./Home.css";
 import { v4 as uuid } from 'uuid'
 
+import { trigger } from "../lib/Events";
 
 const Add: React.FC = () => {
-  const [selectedDate, setSelectedDate] = useState('2022-07-08T13:47:00+08:00');
-  const [titleText, setTitleText] = useState<string>();
+  const [advanceSettingsEnable,setAdvanceSettingsEnable] = useState(false)
+  const [UTC,setUTC] = useState('+08:00')
+  const [selectedDate, setSelectedDate] = useState('2022-05-01T23:59:00'+UTC);
+  const [titleText, setTitleText] = useState<string>("");
   const history = useHistory()
   let countdate_events_data = []
   const add_new_countdate_item = async (newItem:{event_name:any,date:string}) => {
@@ -35,14 +38,21 @@ const Add: React.FC = () => {
       countdate_events_data = [];
     }
     countdate_events_data.push({id:uuid(),event_name:newItem.event_name,date:newItem.date})
-    console.log(countdate_events_data)
+    // console.log(countdate_events_data)
     history.push("/home")
     let content = JSON.stringify(countdate_events_data)
     await Storage.set({
       key: "countdate_events_data",
       value: content
     });
+    trigger("countdate_data:change")
   };
+  const SearchF= (value:any) =>{
+    value = value.toLowerCase()
+    if(value === "enter"){
+      add_new_countdate_item({event_name: titleText,date:selectedDate})
+    }
+  }
   return (
     <IonPage>
       <IonHeader>
@@ -62,19 +72,25 @@ const Add: React.FC = () => {
         <IonGrid>
           <IonRow>
             <IonCol>
-              <IonLabel position="stacked">事件日期</IonLabel>
-              <IonDatetime size="cover" value={selectedDate} onIonChange={e => setSelectedDate(e.detail.value!)}></IonDatetime>
-            </IonCol>
-          </IonRow>
-          <IonRow>
-            <IonCol>
               <IonLabel position="stacked">事件名稱</IonLabel>
-              <IonInput clearInput={true} value={titleText} placeholder="輸入事件名稱" onIonChange={e => setTitleText(e.detail.value!)}></IonInput>
+              <IonInput onKeyDown={e=> SearchF(e.key)} clearInput={true} value={titleText} placeholder="輸入事件名稱" onIonChange={e => setTitleText(e.detail.value!)}></IonInput>
             </IonCol>
           </IonRow>
           <IonRow>
             <IonCol>
-              <IonButton onClick={() => add_new_countdate_item({event_name: titleText,date:selectedDate})}>新增</IonButton>
+              <IonLabel position="stacked">事件日期</IonLabel>
+              <IonDatetime size="cover" presentation="date" value={selectedDate} onIonChange={e => setSelectedDate(e.detail.value!)}></IonDatetime>
+            </IonCol>
+          </IonRow>
+          <IonRow>
+            <IonCol>
+              <IonLabel position="stacked">UTC offset</IonLabel>
+              <IonInput clearInput={true} value={UTC} disabled={!advanceSettingsEnable} onIonChange={e => setUTC(e.detail.value!)}></IonInput>
+            </IonCol>
+          </IonRow>
+          <IonRow>
+            <IonCol>
+              <IonButton disabled={titleText === ""} expand="full" onClick={() => {add_new_countdate_item({event_name: titleText,date:selectedDate});}}>新增</IonButton>
             </IonCol>
           </IonRow>
         </IonGrid>
