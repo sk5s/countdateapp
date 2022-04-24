@@ -5,6 +5,8 @@ import Home from './pages/Home';
 import Add from './pages/Add';
 import Settings from './pages/Settings';
 
+import './lib/Darkmode'
+
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
 

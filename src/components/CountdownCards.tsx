@@ -9,6 +9,7 @@ import { useTranslation } from "react-i18next";
 import { Device } from '@capacitor/device';
 import { copy } from '../lib/Clipboard'
 import Toast from "../lib/Toast";
+import key from '../lib/storageKey.json'
 
 export default function CountdownCards(): JSX.Element {
   const history = useHistory()
@@ -28,7 +29,7 @@ export default function CountdownCards(): JSX.Element {
       duration: 100,
       showBackdrop: false
     });
-    const { value } = await Storage.get({ key: "countdate_events_data" });
+    const { value } = await Storage.get({ key: key.data });
     if (value) {
       countdate_events_data = JSON.parse(value);
       // console.log(countdate_events_data);
@@ -82,7 +83,7 @@ export default function CountdownCards(): JSX.Element {
                 subtitle={t("no_data")}
               />
               <IonButton key="add" routerLink="/add" color="primary" shape="round">
-                {t("add")} Countdate
+                {t("add")}{t("between_words")}Countdate
               </IonButton>
             </div>
           );
