@@ -9,7 +9,7 @@ export default function LanguageSelectAction(){
 
   return (
     <div>
-      <IonButton shape='round' onClick={() => setShowActionSheet(true)} expand="block">
+      <IonButton onClick={() => setShowActionSheet(true)} expand="block">
         Change Language
       </IonButton>
       <IonActionSheet

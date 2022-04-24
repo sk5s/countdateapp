@@ -11,6 +11,9 @@ import {
 } from "@ionic/react";
 import LanguageSelectAction from "../components/LanguageSelectAction";
 import { Schedule } from "../lib/LocalNotification";
+import { set_dark_mode_toggle_to } from '../lib/Darkmode'
+import { Storage } from "@capacitor/storage";
+import key from '../lib/storageKey.json'
 
 const Settings: React.FC = () => {
   const testLocalNotification = async () => {
@@ -20,6 +23,22 @@ const Settings: React.FC = () => {
       body: "Local Notification Test",
       id: 1
     })
+  }
+  const toggleDarkModeHandler = async () => {
+    document.body.classList.toggle('dark')
+    console.log(set_dark_mode_toggle_to())
+    if (set_dark_mode_toggle_to()){
+      await Storage.set({
+        key: key.theme,
+        value: ""
+      })
+    } else {
+      await Storage.set({
+        key: key.theme,
+        value: "dark"
+      })
+    }
+    
   }
   return (
     <IonPage>
@@ -39,10 +58,11 @@ const Settings: React.FC = () => {
         </IonHeader>
         <LanguageSelectAction />
         {isPlatform("android") || isPlatform("ios") ? 
-        <IonButton shape='round' onClick={testLocalNotification} expand="block">
+        <IonButton onClick={testLocalNotification} expand="block">
           Test Local Notification
         </IonButton> : ''
         }
+        <IonButton onClick={toggleDarkModeHandler} expand="block">Toggle Dark Mode</IonButton>
       </IonContent>
     </IonPage>
   );
