@@ -68,6 +68,7 @@ export default function CountdownCards(): JSX.Element {
             row.push(
               <CountdownCard
                 key={event.id}
+                id={event.id}
                 event={event.event_name}
                 date={event.date}
                 editable={editable}
@@ -94,8 +95,11 @@ export default function CountdownCards(): JSX.Element {
       <IonGrid>
         <IonRow>
           <IonCol>
-            <IonButton expand="full" shape="round" onClick={check_countdate_events_storage_data} color="primary">
+            {/* <IonButton expand="full" shape="round" onClick={check_countdate_events_storage_data} color="primary">
               {t("refresh")}
+            </IonButton> */}
+            <IonButton expand="full" shape="round" onClick={(e) => setEditable(!editable)}>
+              {t("edit")}
             </IonButton>
           </IonCol>
           <IonCol>
@@ -149,17 +153,6 @@ export default function CountdownCards(): JSX.Element {
           color="danger"
         >
           刪除所有資料
-        </IonButton>
-        <IonButton shape="round" onClick={() => {
-          presentAlert({
-            header: '編輯',
-            message: '功能尚未完善',
-            buttons: [
-              '取消'
-            ]
-          })
-          }}>
-          編輯
         </IonButton>
         {isPlatform("android") || isPlatform("ios") ? 
         <IonButton shape="round" onClick={() => {

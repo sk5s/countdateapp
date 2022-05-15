@@ -3,16 +3,26 @@ import {
   IonCardHeader,
   IonCardSubtitle,
   IonCardTitle,
+  IonCardContent,
+  IonItem,
+  IonButton,
+  IonIcon,
 } from "@ionic/react";
+import { Storage } from "@capacitor/storage";
 
+import { removeCircleOutline } from "ionicons/icons";
 import Countdown from "react-countdown";
+import { trigger } from "../lib/Events";
+import { useTranslation } from "react-i18next";
 
 export default function CountdownCard(props: {
   date: string;
   event: string;
   editable: boolean;
+  id: string;
 }): JSX.Element {
-  const Completionist = () => <span>0</span>;
+  const [t] = useTranslation()
+  const Completionist = () => <span>時辰已到</span>;
   const renderer = ({
     days,
     completed,
@@ -25,17 +35,55 @@ export default function CountdownCard(props: {
       return <Completionist />;
     } else {
       // Render a countdown
-      return <span>{days}</span>;
+      return <span>{days}天</span>;
+    }
+  };
+  let countdate_events_data = [];
+  const remove_this_countdate_item = async () => {
+    const { value } = await Storage.get({ key: "countdate_events_data" });
+    if (value) {
+      countdate_events_data = JSON.parse(value);
+      countdate_events_data = countdate_events_data.filter((item: any) => {
+        console.log(item.id);
+        console.log(String(item.id) != String(props.id));
+        return String(item.id) != String(props.id);
+      });
+      let content = JSON.stringify(countdate_events_data);
+      await Storage.set({
+        key: "countdate_events_data",
+        value: content,
+      });
+      trigger("countdate_data:change");
     }
   };
   return (
     <IonCard>
       <IonCardHeader>
-        <IonCardSubtitle>離{props.event}剩下</IonCardSubtitle>
-        <IonCardTitle color="primary">
-          <Countdown date={props.date} renderer={renderer} />天
-        </IonCardTitle>
+        <IonCardSubtitle>
+          離{t("between_words") + props.event + t("between_words")}剩下
+        </IonCardSubtitle>
       </IonCardHeader>
+      <IonCardContent>
+        <IonCardTitle color="primary">
+          <Countdown date={props.date} renderer={renderer} />
+        </IonCardTitle>
+        {props.editable && (
+          <IonItem>
+            <IonButton
+              color="transparent"
+              shape="round"
+              onClick={remove_this_countdate_item}
+              slot="end"
+            >
+              <IonIcon
+                size="large"
+                slot="icon-only"
+                icon={removeCircleOutline}
+              />
+            </IonButton>
+          </IonItem>
+        )}
+      </IonCardContent>
     </IonCard>
   );
 }

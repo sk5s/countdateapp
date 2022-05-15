@@ -1,11 +1,12 @@
 {
-  "add": "add",
+  "add": "Add",
   "between_words": " ",
   "check": "Check",
   "close": "Close",
   "copied": "Copied",
   "data": "Data",
   "delete": "Delete",
+  "edit": "Edit",
   "exclamation_mark": "!",
   "no_data": "No Data",
   "question_mark": "?",

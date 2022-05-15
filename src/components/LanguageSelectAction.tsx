@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { IonActionSheet, IonContent, IonButton } from '@ionic/react';
+import { IonActionSheet, IonContent, IonButton, IonLabel } from '@ionic/react';
 import { close } from 'ionicons/icons';
 import { useTranslation } from 'react-i18next';
 
@@ -9,9 +9,9 @@ export default function LanguageSelectAction(){
 
   return (
     <div>
-      <IonButton onClick={() => setShowActionSheet(true)} expand="block">
+      <IonLabel onClick={() => setShowActionSheet(true)}>
         Change Language
-      </IonButton>
+      </IonLabel>
       <IonActionSheet
         isOpen={showActionSheet}
         onDidDismiss={() => setShowActionSheet(false)}
