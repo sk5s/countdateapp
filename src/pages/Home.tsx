@@ -8,7 +8,6 @@ import {
   IonFabButton,
   IonIcon
 } from "@ionic/react";
-import "./Home.css";
 
 import { add } from 'ionicons/icons'
 

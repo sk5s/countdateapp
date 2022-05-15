@@ -12,17 +12,20 @@ import {
   IonCol,
   IonInput,
   IonLabel,
-  IonButton
+  IonButton,
+  IonToggle,
+  IonItem
 } from "@ionic/react";
 import { Storage } from "@capacitor/storage";
 import { useState } from "react";
 import { useHistory } from "react-router";
-import "./Home.css";
 import { v4 as uuid } from 'uuid'
 
 import { trigger } from "../lib/Events";
+import { useTranslation } from "react-i18next";
 
 const Add: React.FC = () => {
+  const { t, i18n } = useTranslation()
   const [advanceSettingsEnable,setAdvanceSettingsEnable] = useState(false)
   const [UTC,setUTC] = useState('+08:00')
   const [selectedDate, setSelectedDate] = useState('2022-05-01T23:59:00'+UTC);
@@ -60,20 +63,22 @@ const Add: React.FC = () => {
           <IonButtons slot="start">
             <IonBackButton defaultHref="/" />
           </IonButtons>
-          <IonTitle>Add Countdate</IonTitle>
+          <IonTitle>{t("add")}{t("between_words")}Countdate</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">Add Countdate</IonTitle>
+            <IonTitle size="large">{t("add")}{t("between_words")}Countdate</IonTitle>
           </IonToolbar>
         </IonHeader>
         <IonGrid>
           <IonRow>
             <IonCol>
-              <IonLabel position="stacked">事件名稱</IonLabel>
-              <IonInput onKeyDown={e=> SearchF(e.key)} clearInput={true} value={titleText} placeholder="輸入事件名稱" onIonChange={e => setTitleText(e.detail.value!)}></IonInput>
+              <IonItem>
+                <IonLabel position="stacked">事件名稱</IonLabel>
+                <IonInput onKeyDown={e=> SearchF(e.key)} clearInput={true} value={titleText} placeholder="輸入事件名稱" onIonChange={e => setTitleText(e.detail.value!)}></IonInput>
+              </IonItem>
             </IonCol>
           </IonRow>
           <IonRow>
@@ -84,8 +89,16 @@ const Add: React.FC = () => {
           </IonRow>
           <IonRow>
             <IonCol>
-              <IonLabel position="stacked">UTC offset</IonLabel>
-              <IonInput clearInput={true} value={UTC} disabled={!advanceSettingsEnable} onIonChange={e => setUTC(e.detail.value!)}></IonInput>
+              <IonItem>
+                <IonLabel>UTC offset</IonLabel>
+                <IonInput clearInput={true} value={UTC} disabled={!advanceSettingsEnable} onIonChange={e => setUTC(e.detail.value!)}></IonInput>
+              </IonItem>
+            </IonCol>
+            <IonCol>
+              <IonItem>
+                <IonLabel>Advance Setting</IonLabel>
+                <IonToggle checked={advanceSettingsEnable} onIonChange={e => setAdvanceSettingsEnable(e.detail.checked)} />
+              </IonItem>
             </IonCol>
           </IonRow>
           <IonRow>
