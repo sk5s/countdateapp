@@ -16,7 +16,7 @@ import {
 } from "@ionic/react";
 import LanguageSelectAction from "../components/LanguageSelectAction";
 import { Schedule } from "../lib/LocalNotification";
-import { set_dark_mode_toggle_to } from '../lib/Darkmode'
+import { set_dark_mode_toggle_to, prefersDark } from '../lib/Darkmode'
 import { Storage } from "@capacitor/storage";
 import key from '../lib/storageKey.json'
 import { useEffect, useState } from "react";
@@ -38,7 +38,7 @@ const Settings: React.FC = () => {
     if (darkChecked){
       await Storage.set({
         key: key.theme,
-        value: ""
+        value: "light"
       })
     } else {
       await Storage.set({
@@ -48,6 +48,19 @@ const Settings: React.FC = () => {
     }
     
   }
+  const darkmodeToSystem = async () => {
+    setDarkChecked(prefersDark)
+    if (prefersDark) {
+      document.body.classList.add("dark")
+    } else {
+      document.body.classList.remove("dark")
+    }
+    await Storage.set({
+      key: key.theme,
+      value: ""
+    })
+  }
+  
   const [darkChecked, setDarkChecked] = useState<boolean>()
   on("countdate_darkmode:toggle", () => {
     setDarkChecked(set_dark_mode_toggle_to())
@@ -71,10 +84,10 @@ const Settings: React.FC = () => {
             <IonTitle size="large">Settings</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <IonListHeader>
-          <IonLabel>General</IonLabel>
-        </IonListHeader>
         <IonList>
+          <IonListHeader lines="none" color="primary">
+            <IonLabel>General</IonLabel>
+          </IonListHeader>
           <IonItem>
             <LanguageSelectAction />
           </IonItem>
@@ -86,9 +99,15 @@ const Settings: React.FC = () => {
           </IonItem>
            : ''
           }
+          <IonListHeader lines="none" color="primary">
+            <IonLabel>Dark Mode</IonLabel>
+          </IonListHeader>
           <IonItem>
             <IonLabel onClick={toggleDarkModeHandler}>Toggle Dark Mode</IonLabel>
             <IonToggle checked={darkChecked} onClick={toggleDarkModeHandler} />
+          </IonItem>
+          <IonItem>
+            <IonLabel onClick={darkmodeToSystem}>Follow System Dark Mode</IonLabel>
           </IonItem>
         </IonList>
       </IonContent>
