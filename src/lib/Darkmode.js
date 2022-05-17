@@ -2,17 +2,22 @@ import { Storage } from "@capacitor/storage";
 import key from './storageKey.json'
 import { trigger } from "./Events";
 
-const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+export const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 console.log(prefersDark)
 
 get_user_theme_preference()
 let darkmodeEnable
 function dark_enable(value){
-  if (value == "dark" || prefersDark){
+  if (value == "dark"){
     darkmodeEnable = true
     document.body.classList.add('dark')
-  } else {
+  } else if (value == "light") {
     darkmodeEnable = false
+  } else if (prefersDark) {
+    darkmodeEnable = prefersDark
+    document.body.classList.add('dark')
+  } else {
+    darkmodeEnable = prefersDark
   }
   trigger("countdate_darkmode:toggle")
 }
