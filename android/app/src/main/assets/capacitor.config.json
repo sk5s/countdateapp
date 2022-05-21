@@ -9,7 +9,7 @@
 			"allowWhileIdle": true
 		},
 		"PrivacyScreen": {
-			"enable": true
+			"enable": false
 		}
 	}
 }
