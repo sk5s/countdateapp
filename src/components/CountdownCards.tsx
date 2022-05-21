@@ -98,7 +98,7 @@ export default function CountdownCards(): JSX.Element {
             {/* <IonButton expand="full" shape="round" onClick={check_countdate_events_storage_data} color="primary">
               {t("refresh")}
             </IonButton> */}
-            <IonButton expand="full" shape="round" onClick={(e) => setEditable(!editable)}>
+            <IonButton expand="full" shape="round" onClick={(e) => setEditable(!editable)} disabled={countdate_events_data_list.length === 0}>
               {t("edit")}
             </IonButton>
           </IonCol>
@@ -154,7 +154,7 @@ export default function CountdownCards(): JSX.Element {
         >
           刪除所有資料
         </IonButton>
-        {isPlatform("android") || isPlatform("ios") ? 
+        {(isPlatform("android") && isPlatform("hybrid")) || (isPlatform("ios") && isPlatform("hybrid")) ? 
         <IonButton shape="round" onClick={() => {
           copy(popover_content)
             Toast(t("copied")+t("exclamation_mark"))

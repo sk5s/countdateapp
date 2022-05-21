@@ -81,7 +81,8 @@
   },
   "devDependencies": {
     "@capacitor/cli": "3.4.3",
-    "@ionic/cli": "6.19.0"
+    "@ionic/cli": "6.19.0",
+    "cordova-res": "0.15.4"
   },
   "description": "An Ionic project"
 }

@@ -58,31 +58,27 @@ export default function CountdownCard(props: {
   };
   return (
     <IonCard>
-      <IonCardHeader>
-        <IonCardSubtitle>
+      <IonItem>
+        <IonCardSubtitle style={{fontSize: "1.5rem"}}>
           離{t("between_words") + props.event + t("between_words")}剩下
         </IonCardSubtitle>
-      </IonCardHeader>
+        {props.editable && (
+          <IonButton
+            color="primary"
+            onClick={remove_this_countdate_item}
+            slot="end"
+          >
+            <IonIcon
+              slot="icon-only"
+              icon={removeCircleOutline}
+            />
+          </IonButton>
+        )}
+      </IonItem>
       <IonCardContent>
-        <IonCardTitle color="primary">
+        <IonCardTitle style={{fontSize: "3rem"}} color="primary">
           <Countdown date={props.date} renderer={renderer} />
         </IonCardTitle>
-        {props.editable && (
-          <IonItem>
-            <IonButton
-              color="transparent"
-              shape="round"
-              onClick={remove_this_countdate_item}
-              slot="end"
-            >
-              <IonIcon
-                size="large"
-                slot="icon-only"
-                icon={removeCircleOutline}
-              />
-            </IonButton>
-          </IonItem>
-        )}
       </IonCardContent>
     </IonCard>
   );
