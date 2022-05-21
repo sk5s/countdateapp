@@ -91,7 +91,7 @@ const Settings: React.FC = () => {
           <IonItem>
             <LanguageSelectAction />
           </IonItem>
-          {isPlatform("android") || isPlatform("ios") ? 
+          {(isPlatform("android") && isPlatform("hybrid")) || (isPlatform("ios") && isPlatform("hybrid")) ? 
           <IonItem>
             <IonLabel onClick={testLocalNotification}>
               Test Local Notification
