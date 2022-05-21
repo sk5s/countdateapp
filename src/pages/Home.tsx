@@ -12,7 +12,7 @@ import {
 import { add } from 'ionicons/icons'
 import ApkUpdater from 'cordova-plugin-apkupdater';
 import { useEffect, useState } from "react";
-import { isPlatform, useIonAlert } from "@ionic/react";
+import { isPlatform, useIonAlert, useIonViewDidEnter } from "@ionic/react";
 
 import CountdownCards from "../components/CountdownCards";
 
@@ -27,6 +27,7 @@ const Home: React.FC = () => {
     .then(
       (result) => {
         setIsLoaded(true)
+        console.log(result)
         return result.newest
       },
       // Note: it's important to handle errors here
@@ -39,16 +40,20 @@ const Home: React.FC = () => {
     ).then(async (newest) => {
       let installedVersion = await ApkUpdater.getInstalledVersion()
       let device = installedVersion.version.name.split(".")
+      console.log(device)
       let internet = newest.split(".")
-      if (parseInt(device[0]) >= parseInt(internet[0]) && parseInt(device[1]) >= parseInt(internet[1]) && parseInt(device[2]) > parseInt(internet[2])){
+      console.log(parseInt(device[1]),parseInt(internet[1]))
+      if (parseInt(device[0]) <= parseInt(internet[0]) && parseInt(device[1]) <= parseInt(internet[1]) && parseInt(device[2]) < parseInt(internet[2])){
+        console.log("Is Newer")
         present({
           header: 'New Version!',
           message: `Version ${newest} from github available.`,
           buttons: [
             'Cancel',
             { text: 'Download & Install', handler: async () => {
+              console.log(`Downloading from: ${remote_apk_root}v${newest}/Countdate_v${newest}.apk`)
               await ApkUpdater.download(
-                remote_apk_root + `v${newest}/Countdate_v${newest}.apk`,
+                `${remote_apk_root}v${newest}/Countdate_v${newest}.apk`,
                 {
                   onDownloadProgress: console.log
                 }
@@ -61,8 +66,10 @@ const Home: React.FC = () => {
     })
   }
   useEffect(() => {
+    console.log("Matching Platform")
     if (isPlatform("android") && isPlatform("hybrid")) {
       checkUpdate()
+      console.log("Check updates begain")
     }
   }, [])
   return (

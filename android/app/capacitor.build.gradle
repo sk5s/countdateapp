@@ -23,7 +23,7 @@ dependencies {
     implementation "androidx.core:core:1.6.0"
     implementation "com.scottyab:rootbeer-lib:0.1.0"
 }
-
+apply from: "../../node_modules/cordova-androidx-build/src/android/cordova-androidx-build.gradle"
 
 if (hasProperty('postBuildExtras')) {
   postBuildExtras()

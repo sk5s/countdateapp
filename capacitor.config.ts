@@ -11,7 +11,7 @@ const config: CapacitorConfig = {
       allowWhileIdle: true
     },
     PrivacyScreen: {
-      "enable": true
+      "enable": false
     }
   },
 };
