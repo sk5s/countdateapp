@@ -19,7 +19,9 @@ dependencies {
     implementation project(':capacitor-status-bar')
     implementation project(':capacitor-storage')
     implementation project(':capacitor-toast')
-
+    implementation "net.lingala.zip4j:zip4j:2.9.1"
+    implementation "androidx.core:core:1.6.0"
+    implementation "com.scottyab:rootbeer-lib:0.1.0"
 }
 
 
