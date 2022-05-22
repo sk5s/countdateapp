@@ -9,9 +9,6 @@ const config: CapacitorConfig = {
     LocalNotifications: {
       iconColor: "#488AFF",
       allowWhileIdle: true
-    },
-    PrivacyScreen: {
-      "enable": false
     }
   },
 };

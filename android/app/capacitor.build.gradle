@@ -9,21 +9,15 @@ android {
 
 apply from: "../capacitor-cordova-android-plugins/cordova.variables.gradle"
 dependencies {
-    implementation project(':capacitor-community-privacy-screen')
-    implementation project(':capacitor-app')
     implementation project(':capacitor-clipboard')
     implementation project(':capacitor-device')
-    implementation project(':capacitor-haptics')
     implementation project(':capacitor-keyboard')
     implementation project(':capacitor-local-notifications')
-    implementation project(':capacitor-status-bar')
     implementation project(':capacitor-storage')
     implementation project(':capacitor-toast')
-    implementation "net.lingala.zip4j:zip4j:2.9.1"
-    implementation "androidx.core:core:1.6.0"
-    implementation "com.scottyab:rootbeer-lib:0.1.0"
+
 }
-apply from: "../../node_modules/cordova-androidx-build/src/android/cordova-androidx-build.gradle"
+
 
 if (hasProperty('postBuildExtras')) {
   postBuildExtras()
