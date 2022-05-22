@@ -7,9 +7,6 @@
 		"LocalNotifications": {
 			"iconColor": "#488AFF",
 			"allowWhileIdle": true
-		},
-		"PrivacyScreen": {
-			"enable": false
 		}
 	}
 }

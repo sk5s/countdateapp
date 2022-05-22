@@ -10,9 +10,9 @@ import {
 } from "@ionic/react";
 
 import { add } from 'ionicons/icons'
-import ApkUpdater from 'cordova-plugin-apkupdater';
 import { useEffect, useState } from "react";
 import { isPlatform, useIonAlert, useIonViewDidEnter } from "@ionic/react";
+import { AppVersion } from '@awesome-cordova-plugins/app-version';
 
 import CountdownCards from "../components/CountdownCards";
 
@@ -38,8 +38,8 @@ const Home: React.FC = () => {
         setError(error)
       }
     ).then(async (newest) => {
-      let installedVersion = await ApkUpdater.getInstalledVersion()
-      let device = installedVersion.version.name.split(".")
+      let installedVersion = await AppVersion.getVersionNumber()
+      let device = installedVersion.split(".")
       console.log(device)
       let internet = newest.split(".")
       console.log(parseInt(device[1]),parseInt(internet[1]))
@@ -50,15 +50,9 @@ const Home: React.FC = () => {
           message: `Version ${newest} from github available.`,
           buttons: [
             'Cancel',
-            { text: 'Download & Install', handler: async () => {
-              console.log(`Downloading from: ${remote_apk_root}v${newest}/Countdate_v${newest}.apk`)
-              await ApkUpdater.download(
-                `${remote_apk_root}v${newest}/Countdate_v${newest}.apk`,
-                {
-                  onDownloadProgress: console.log
-                }
-              )
-              await ApkUpdater.install()
+            { text: 'View Download Page', handler: async () => {
+              console.log(`Open: ${remote_apk_root}v${newest}/Countdate_v${newest}.apk`)
+              window.open(`${remote_apk_root}v${newest}`, '_system')
             }},
           ]
         })
