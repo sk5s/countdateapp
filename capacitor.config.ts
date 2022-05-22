@@ -7,6 +7,7 @@ const config: CapacitorConfig = {
   bundledWebRuntime: false,
   plugins: {
     LocalNotifications: {
+      smallIcon: "src/assets/countdateapp-logo.png",
       iconColor: "#488AFF",
       allowWhileIdle: true
     }
