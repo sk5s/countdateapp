@@ -16,7 +16,7 @@ import {
   IonToggle,
   IonItem
 } from "@ionic/react";
-import { Storage } from "@capacitor/storage";
+import { Preferences as Storage } from "@capacitor/preferences";
 import { useState } from "react";
 import { useHistory } from "react-router";
 import { v4 as uuid } from 'uuid'

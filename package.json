@@ -4,14 +4,15 @@
   "private": true,
   "dependencies": {
     "@awesome-cordova-plugins/app-version": "^5.42.0",
-    "@capacitor/android": "3.4.3",
-    "@capacitor/clipboard": "^1.0.8",
-    "@capacitor/core": "3.4.3",
-    "@capacitor/device": "^1.1.2",
-    "@capacitor/keyboard": "1.2.2",
-    "@capacitor/local-notifications": "^1.1.0",
-    "@capacitor/storage": "^1.2.5",
-    "@capacitor/toast": "^1.0.8",
+    "@awesome-cordova-plugins/core": "5.46.0",
+    "@capacitor/android": "4.0.1",
+    "@capacitor/clipboard": "4.0.1",
+    "@capacitor/core": "4.0.1",
+    "@capacitor/device": "4.0.1",
+    "@capacitor/keyboard": "4.0.1",
+    "@capacitor/local-notifications": "4.0.1",
+    "@capacitor/preferences": "4.0.1",
+    "@capacitor/toast": "4.0.1",
     "@ionic/react": "^6.0.0",
     "@ionic/react-router": "^6.0.0",
     "@testing-library/jest-dom": "^5.11.9",
@@ -79,7 +80,7 @@
     ]
   },
   "devDependencies": {
-    "@capacitor/cli": "3.4.3",
+    "@capacitor/cli": "4.0.1",
     "@ionic/cli": "6.19.0",
     "cordova-res": "0.15.4"
   },

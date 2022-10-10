@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import CountdownCard from "./CountdownCard";
 import TitleCard from "./TitleCard";
-import { Storage } from "@capacitor/storage";
+import { Preferences as Storage } from "@capacitor/preferences";
 import { isPlatform, useIonAlert, IonButton, IonModal, IonContent, useIonLoading, IonGrid, IonRow, IonCol, IonTextarea, IonLabel } from "@ionic/react";
 import { useHistory } from "react-router";
 import { on } from '../lib/Events'

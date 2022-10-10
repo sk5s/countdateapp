@@ -8,7 +8,7 @@ import {
   IonButton,
   IonIcon,
 } from "@ionic/react";
-import { Storage } from "@capacitor/storage";
+import { Preferences as Storage } from "@capacitor/preferences";
 
 import { removeCircleOutline } from "ionicons/icons";
 import Countdown from "react-countdown";

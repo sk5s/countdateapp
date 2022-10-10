@@ -1,4 +1,4 @@
-import { Storage } from "@capacitor/storage";
+import { Preferences as Storage } from '@capacitor/preferences';
 import key from './storageKey.json'
 import { trigger } from "./Events";
 

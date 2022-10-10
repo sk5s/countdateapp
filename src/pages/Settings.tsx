@@ -17,7 +17,7 @@ import {
 import LanguageSelectAction from "../components/LanguageSelectAction";
 import { Schedule } from "../lib/LocalNotification";
 import { set_dark_mode_toggle_to, prefersDark } from '../lib/Darkmode'
-import { Storage } from "@capacitor/storage";
+import { Preferences as Storage } from "@capacitor/preferences";
 import key from '../lib/storageKey.json'
 import { useEffect, useState } from "react";
 import { on } from "../lib/Events";
