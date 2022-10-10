@@ -76,6 +76,9 @@ export default function CountdownCards(): JSX.Element {
             );
           });
         } else {
+          if (editable){
+            setEditable(false)
+          }
           row.push(
             <div key="div">
               <TitleCard
@@ -99,7 +102,7 @@ export default function CountdownCards(): JSX.Element {
               {t("refresh")}
             </IonButton> */}
             <IonButton expand="full" shape="round" onClick={(e) => setEditable(!editable)} disabled={countdate_events_data_list.length === 0}>
-              {t("edit")}
+              {!editable ? t("edit") : t("complete")+t("between_words")+t("edit")}
             </IonButton>
           </IonCol>
           <IonCol>
@@ -128,11 +131,10 @@ export default function CountdownCards(): JSX.Element {
         isOpen={popover_oepn}
         onDidDismiss={() => set_popover_oepn(false)}
       >
-        <IonButton shape="round" onClick={() => set_popover_oepn(false)}>
+        <IonButton onClick={() => set_popover_oepn(false)}>
           {t("close")}
         </IonButton>
         <IonButton
-          shape="round"
           onClick={() => {
             presentAlert({
               header: t("delete")+t("question_mark"),
@@ -155,7 +157,7 @@ export default function CountdownCards(): JSX.Element {
           刪除所有資料
         </IonButton>
         {(isPlatform("android") && isPlatform("hybrid")) || (isPlatform("ios") && isPlatform("hybrid")) ? 
-        <IonButton shape="round" onClick={() => {
+        <IonButton onClick={() => {
           copy(popover_content)
             Toast(t("copied")+t("exclamation_mark"))
           }}
