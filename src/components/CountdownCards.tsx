@@ -83,7 +83,7 @@ export default function CountdownCards(): JSX.Element {
             <div key="div">
               <TitleCard
                 key="title"
-                title={t("add") + "Countdate" +t("exclamation_mark")}
+                title={t("add") + t("between_words") + "Countdate" +t("exclamation_mark")}
                 subtitle={t("no_data")}
               />
               <IonButton key="add" routerLink="/add" color="primary" shape="round">
@@ -141,7 +141,7 @@ export default function CountdownCards(): JSX.Element {
               message: '確認刪除所有資料？',
               buttons: [
                 '取消',
-                { text: '確認', handler: (d) => {
+                { text: t("confirm"), handler: (d) => {
                   delete_countdate_events_storage_data();
                   presentLoading({
                     duration: 100,
@@ -154,7 +154,7 @@ export default function CountdownCards(): JSX.Element {
           }}
           color="danger"
         >
-          刪除所有資料
+          {t("delete")+t("between_words")+t("all")+t("between_words")+t("data")}
         </IonButton>
         {(isPlatform("android") && isPlatform("hybrid")) || (isPlatform("ios") && isPlatform("hybrid")) ? 
         <IonButton onClick={() => {
@@ -166,8 +166,8 @@ export default function CountdownCards(): JSX.Element {
         </IonButton> : ''
         }
         <IonContent>
-          <IonTextarea autoGrow={true} value={popover_content} readonly={true}></IonTextarea>
-          <IonLabel>{languageCode}</IonLabel>
+          RawData: <IonTextarea autoGrow={true} value={popover_content} readonly={true}></IonTextarea>
+          <IonLabel>LanguageCode: {languageCode}</IonLabel>
         </IonContent>
       </IonModal>
     </div>
