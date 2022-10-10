@@ -27,6 +27,7 @@
     "@types/react-transition-group": "^4.4.4",
     "cordova-plugin-app-version": "^0.1.14",
     "cordova-plugin-bb-app": "1.0.1",
+    "date-fns": "^2.29.3",
     "i18next": "^21.6.16",
     "i18next-browser-languagedetector": "^6.1.4",
     "ionicons": "^5.4.0",

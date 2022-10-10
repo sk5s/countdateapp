@@ -20,6 +20,7 @@ import { Preferences as Storage } from "@capacitor/preferences";
 import { useState } from "react";
 import { useHistory } from "react-router";
 import { v4 as uuid } from 'uuid'
+import { format } from 'date-fns'
 
 import { trigger } from "../lib/Events";
 import { useTranslation } from "react-i18next";
@@ -28,7 +29,7 @@ const Add: React.FC = () => {
   const { t, i18n } = useTranslation()
   const [advanceSettingsEnable,setAdvanceSettingsEnable] = useState(false)
   const [UTC,setUTC] = useState('+08:00')
-  const [selectedDate, setSelectedDate] = useState('2022-05-01T23:59:00'+UTC);
+  const [selectedDate, setSelectedDate] = useState(format(new Date(), 'yyyy-MM-dd')+'T23:59:00'+UTC);
   const [titleText, setTitleText] = useState<string>("");
   const history = useHistory()
   let countdate_events_data = []
