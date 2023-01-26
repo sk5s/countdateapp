@@ -181,9 +181,7 @@ Project Link: [https://github.com/sk5s/countdateapp](https://github.com/sk5s/cou
 
 ## Acknowledgments
 
-- []()
-- []()
-- []()
+- [ionic](https://ionicframework.com)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -201,7 +199,7 @@ Project Link: [https://github.com/sk5s/countdateapp](https://github.com/sk5s/cou
                      |_|           |__/
 ```
 
-🔗 [Git Repo][git-repo-short-url]
+🔗 [https://bit.ly/countdateapp][git-repo-short-url]
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -217,7 +215,7 @@ Project Link: [https://github.com/sk5s/countdateapp](https://github.com/sk5s/cou
 [license-shield]: https://img.shields.io/github/license/sk5s/countdateapp.svg?style=for-the-badge
 [license-url]: https://github.com/sk5s/countdateapp/blob/main/LICENSE
 [product-screenshot]: fastlane/metadata/android/en-US/images/phoneScreenshots/4.png
-[git-repo-short-url]: https://github.com/sk5s/countdateapp
+[git-repo-short-url]: https://bit.ly/countdateapp
 
 <!--
 1. My repo: countdateapp
