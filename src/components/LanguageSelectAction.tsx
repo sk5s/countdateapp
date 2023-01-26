@@ -10,7 +10,7 @@ export default function LanguageSelectAction(){
   return (
     <div>
       <IonLabel onClick={() => setShowActionSheet(true)}>
-        Change Language
+        {t("change_language")}
       </IonLabel>
       <IonActionSheet
         isOpen={showActionSheet}

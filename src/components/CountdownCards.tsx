@@ -11,6 +11,8 @@ import { copy } from '../lib/Clipboard'
 import Toast from "../lib/Toast";
 import key from '../lib/storageKey.json'
 
+import { capitalize } from "../lib/Capitalize";
+
 export default function CountdownCards(): JSX.Element {
   const history = useHistory()
   const { t, i18n } = useTranslation()
@@ -83,11 +85,11 @@ export default function CountdownCards(): JSX.Element {
             <div key="div">
               <TitleCard
                 key="title"
-                title={t("add") + t("between_words") + "Countdate" +t("exclamation_mark")}
+                title={capitalize(t("add")) + t("between_words") + "Countdate" +t("exclamation_mark")}
                 subtitle={t("no_data")}
               />
               <IonButton key="add" routerLink="/add" color="primary" shape="round">
-                {t("add")}{t("between_words")}Countdate
+                {capitalize(t("add"))}{t("between_words")}Countdate
               </IonButton>
             </div>
           );
@@ -95,19 +97,19 @@ export default function CountdownCards(): JSX.Element {
         return row;
       })()}
 
-      <IonGrid>
+      <IonGrid style={{marginTop: "56px"}}>
         <IonRow>
           <IonCol>
             {/* <IonButton expand="full" shape="round" onClick={check_countdate_events_storage_data} color="primary">
               {t("refresh")}
             </IonButton> */}
             <IonButton expand="full" shape="round" onClick={(e) => setEditable(!editable)} disabled={countdate_events_data_list.length === 0}>
-              {!editable ? t("edit") : t("complete")+t("between_words")+t("edit")}
+              {!editable ? capitalize(t("edit")) : capitalize(t("complete"))+t("between_words")+t("edit")}
             </IonButton>
           </IonCol>
           <IonCol>
             <IonButton expand="full" shape="round" routerLink="/settings" color="primary">
-              {t("settings")}
+              {capitalize(t("settings"))}
             </IonButton>
           </IonCol>
           <IonCol>
@@ -121,7 +123,7 @@ export default function CountdownCards(): JSX.Element {
               }}
               color="primary"
             >
-              {`${t("check")}${t("between_words")}${t("data")}`}
+              {capitalize(t("check"))+t("between_words")+t("data")}
             </IonButton>
           </IonCol>
         </IonRow>
@@ -132,16 +134,16 @@ export default function CountdownCards(): JSX.Element {
         onDidDismiss={() => set_popover_oepn(false)}
       >
         <IonButton onClick={() => set_popover_oepn(false)}>
-          {t("close")}
+          {capitalize(t("close"))}
         </IonButton>
         <IonButton
           onClick={() => {
             presentAlert({
-              header: t("delete")+t("question_mark"),
+              header: capitalize(t("delete"))+t("question_mark"),
               message: '確認刪除所有資料？',
               buttons: [
-                '取消',
-                { text: t("confirm"), handler: (d) => {
+                capitalize(t("cancel")),
+                { text: capitalize(t("confirm")), handler: (d) => {
                   delete_countdate_events_storage_data();
                   presentLoading({
                     duration: 100,
@@ -154,20 +156,22 @@ export default function CountdownCards(): JSX.Element {
           }}
           color="danger"
         >
-          {t("delete")+t("between_words")+t("all")+t("between_words")+t("data")}
+          {capitalize(t("delete"))+t("between_words")+t("all")+t("between_words")+t("data")}
         </IonButton>
         {(isPlatform("android") && isPlatform("hybrid")) || (isPlatform("ios") && isPlatform("hybrid")) ? 
         <IonButton onClick={() => {
           copy(popover_content)
-            Toast(t("copied")+t("exclamation_mark"))
+            Toast(capitalize(t("copied"))+t("exclamation_mark"))
           }}
         >
           複製原始資料
         </IonButton> : ''
         }
         <IonContent>
-          RawData: <IonTextarea autoGrow={true} value={popover_content} readonly={true}></IonTextarea>
-          <IonLabel>LanguageCode: {languageCode}</IonLabel>
+          <div style={{padding: "20px"}}>
+            LanguageCode: <IonLabel>{languageCode}</IonLabel><br/>
+            RawData: <IonTextarea autoGrow={true} value={popover_content} readonly={true}></IonTextarea>
+          </div>
         </IonContent>
       </IonModal>
     </div>

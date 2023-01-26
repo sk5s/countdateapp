@@ -25,6 +25,8 @@ import { format } from 'date-fns'
 import { trigger } from "../lib/Events";
 import { useTranslation } from "react-i18next";
 
+import { capitalize } from "../lib/Capitalize";
+
 const Add: React.FC = () => {
   const { t, i18n } = useTranslation()
   const [advanceSettingsEnable,setAdvanceSettingsEnable] = useState(false)
@@ -64,47 +66,49 @@ const Add: React.FC = () => {
           <IonButtons slot="start">
             <IonBackButton defaultHref="/" />
           </IonButtons>
-          <IonTitle>{t("add")}{t("between_words")}Countdate</IonTitle>
+          <IonTitle>{capitalize(t("add"))}{t("between_words")}Countdate</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">{t("add")}{t("between_words")}Countdate</IonTitle>
+            <IonTitle size="large">{capitalize(t("add"))}{t("between_words")}Countdate</IonTitle>
           </IonToolbar>
         </IonHeader>
         <IonGrid>
           <IonRow>
             <IonCol>
               <IonItem>
-                <IonLabel position="stacked">事件名稱</IonLabel>
-                <IonInput onKeyDown={e=> SearchF(e.key)} clearInput={true} value={titleText} placeholder="輸入事件名稱" onIonChange={e => setTitleText(e.detail.value!)}></IonInput>
+                <IonLabel position="stacked">{capitalize(t("event"))}{t("between_words")}{t("name")}</IonLabel>
+                <IonInput onKeyDown={e=> SearchF(e.key)} clearInput={true} value={titleText} placeholder={capitalize(t("input"))+t("between_words")+t("event")+t("between_words")+t("name")} onIonChange={e => setTitleText(e.detail.value!)}></IonInput>
               </IonItem>
             </IonCol>
           </IonRow>
           <IonRow>
             <IonCol>
-              <IonLabel position="stacked">事件日期</IonLabel>
-              <IonDatetime size="cover" presentation="date" value={selectedDate} onIonChange={e => setSelectedDate(e.detail.value!)}></IonDatetime>
+              {/* <IonLabel position="stacked"></IonLabel> */}
+              <IonDatetime size="cover" presentation="date" value={selectedDate} min={format(new Date(), 'yyyy-MM-dd')+'T00:00:00'+UTC} onIonChange={e => setSelectedDate(e.detail.value!)} showDefaultTitle={false}>
+                <span slot="title">{t("select")+t("between_words")+t("event")+t("between_words")+t("date")}</span>
+              </IonDatetime>
             </IonCol>
           </IonRow>
           <IonRow>
+            <IonCol>
+              <IonItem>
+                <IonLabel>Advance setting</IonLabel>
+                <IonToggle checked={advanceSettingsEnable} onIonChange={e => setAdvanceSettingsEnable(e.detail.checked)} />
+              </IonItem>
+            </IonCol>
             <IonCol>
               <IonItem>
                 <IonLabel>UTC offset</IonLabel>
                 <IonInput clearInput={true} value={UTC} disabled={!advanceSettingsEnable} onIonChange={e => setUTC(e.detail.value!)}></IonInput>
               </IonItem>
             </IonCol>
-            <IonCol>
-              <IonItem>
-                <IonLabel>Advance Setting</IonLabel>
-                <IonToggle checked={advanceSettingsEnable} onIonChange={e => setAdvanceSettingsEnable(e.detail.checked)} />
-              </IonItem>
-            </IonCol>
           </IonRow>
           <IonRow>
             <IonCol>
-              <IonButton disabled={titleText === ""} expand="full" onClick={() => {add_new_countdate_item({event_name: titleText,date:selectedDate});}}>新增</IonButton>
+              <IonButton disabled={titleText === ""} expand="full" onClick={() => {add_new_countdate_item({event_name: titleText,date:selectedDate});}}>{capitalize(t("add"))}</IonButton>
             </IonCol>
           </IonRow>
         </IonGrid>

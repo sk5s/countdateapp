@@ -1,18 +1,10 @@
 {
-  "add": "Add",
-  "all": "all",
   "between_words": " ",
-  "check": "Check",
-  "close": "Close",
-  "confirm": "Confirm",
-  "complete": "Complete",
+  "change_language": "Change Language",
   "copied": "Copied",
-  "data": "Data",
-  "delete": "Delete",
-  "edit": "Edit",
+  "dark_mode": "dark mode",
   "exclamation_mark": "!",
-  "no_data": "No Data",
-  "question_mark": "?",
-  "refresh": "Refresh",
-  "settings": "Settings"
+  "local_notification": "local notification",
+  "no_data": "No data",
+  "question_mark": "?"
 }
