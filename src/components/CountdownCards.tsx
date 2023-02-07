@@ -139,8 +139,8 @@ export default function CountdownCards(): JSX.Element {
         <IonButton
           onClick={() => {
             presentAlert({
-              header: capitalize(t("delete"))+t("question_mark"),
-              message: '確認刪除所有資料？',
+              header: capitalize(t("delete")) + t("question_mark"),
+              message: t("delete_data_message"),
               buttons: [
                 capitalize(t("cancel")),
                 { text: capitalize(t("confirm")), handler: (d) => {
@@ -164,7 +164,7 @@ export default function CountdownCards(): JSX.Element {
             Toast(capitalize(t("copied"))+t("exclamation_mark"))
           }}
         >
-          複製原始資料
+          {t("copy_data_label")}
         </IonButton> : ''
         }
         <IonContent>
