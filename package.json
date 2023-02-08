@@ -60,7 +60,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test --transformIgnorePatterns 'node_modules/(?!(@ionic/react|@ionic/react-router|@ionic/core|@stencil/core|ionicons)/)'",
     "eject": "react-scripts eject",
-    "surge": "surge build --domain https://countdate.surge.sh"
+    "surge": "surge build --domain https://countdate.surge.sh",
+    "depcheck": "npx depcheck"
   },
   "eslintConfig": {
     "extends": [
