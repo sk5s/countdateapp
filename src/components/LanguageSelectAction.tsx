@@ -26,6 +26,11 @@ export default function LanguageSelectAction(){
             i18n.changeLanguage('en-US')
           }
         }, {
+          text: 'zh-CN',
+          handler: () => {
+            i18n.changeLanguage('zh-CN')
+          }
+        }, {
           text: 'Cancel',
           icon: close,
           role: 'cancel'
