@@ -22,7 +22,7 @@ export default function CountdownCard(props: {
   id: string;
 }): JSX.Element {
   const [t] = useTranslation()
-  const Completionist = () => <span>時辰已到</span>;
+  const Completionist = () => <span>{t("between_words") + t("day_has_come")}</span>;
   const renderer = ({
     days,
     completed,
@@ -35,7 +35,7 @@ export default function CountdownCard(props: {
       return <Completionist />;
     } else {
       // Render a countdown
-      return <span>{days}天</span>;
+      return <span>{days + t("days")}</span>;
     }
   };
   let countdate_events_data = [];
@@ -60,7 +60,7 @@ export default function CountdownCard(props: {
     <IonCard>
       <IonItem>
         <IonCardSubtitle style={{fontSize: "1.5rem"}}>
-          離{t("between_words") + props.event + t("between_words")}剩下
+          {t("event_prefix") + t("between_words") + props.event + t("event_suffix")}
         </IonCardSubtitle>
         {props.editable && (
           <IonButton
