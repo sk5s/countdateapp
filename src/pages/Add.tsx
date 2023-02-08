@@ -87,7 +87,7 @@ const Add: React.FC = () => {
           <IonRow>
             <IonCol>
               {/* <IonLabel position="stacked"></IonLabel> */}
-              <IonDatetime size="cover" presentation="date" value={selectedDate} min={format(new Date(), 'yyyy-MM-dd')+'T00:00:00'+UTC} onIonChange={e => setSelectedDate(e.detail.value!)} showDefaultTitle={false}>
+              <IonDatetime size="cover" presentation="date" value={selectedDate} min={`${format(new Date(), 'yyyy-MM-dd')}T23:59:00+08:00`} onIonChange={e => setSelectedDate(`${e.detail.value}`)} showDefaultTitle={false}>
                 <span slot="title">{t("select")+t("between_words")+t("event")+t("between_words")+t("date")}</span>
               </IonDatetime>
             </IonCol>
