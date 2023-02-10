@@ -73,7 +73,6 @@
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
-    <li><a href="#contributors">Contributors</a></li>
   </ol>
 </details>
 
@@ -185,21 +184,6 @@ Project Link: [https://github.com/sk5s/countdateapp](https://github.com/sk5s/cou
 - [ionic](https://ionicframework.com)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
-
-## Contributors
-
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore-start -->
-<!-- markdownlint-disable -->
-
-<!-- markdownlint-restore -->
-<!-- prettier-ignore-end -->
-
-<!-- ALL-CONTRIBUTORS-LIST:END -->
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
