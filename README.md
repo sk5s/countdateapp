@@ -198,6 +198,8 @@ Project Link: [https://github.com/sk5s/countdateapp](https://github.com/sk5s/cou
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
+<p align="right">(<a href="#top">back to top</a>)</p>
+
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
