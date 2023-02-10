@@ -14,6 +14,7 @@ import { removeCircleOutline } from "ionicons/icons";
 import Countdown from "react-countdown";
 import { trigger } from "../lib/Events";
 import { useTranslation } from "react-i18next";
+import { capitalize } from "../lib/Capitalize";
 
 export default function CountdownCard(props: {
   date: string;
@@ -35,7 +36,7 @@ export default function CountdownCard(props: {
       return <Completionist />;
     } else {
       // Render a countdown
-      return <span>{days + t("days")}</span>;
+      return <span>{days +" "+ capitalize(t("days"))}</span>;
     }
   };
   let countdate_events_data = [];

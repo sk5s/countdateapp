@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { IonActionSheet, IonContent, IonButton, IonLabel } from '@ionic/react';
+import { IonIcon, IonActionSheet, IonContent, IonButton, IonLabel } from '@ionic/react';
 import { close } from 'ionicons/icons';
 import { useTranslation } from 'react-i18next';
+import { language } from 'ionicons/icons'
 
 export default function LanguageSelectAction(){
   const [showActionSheet, setShowActionSheet] = useState(false);
@@ -10,7 +11,7 @@ export default function LanguageSelectAction(){
   return (
     <div>
       <IonLabel onClick={() => setShowActionSheet(true)}>
-        {t("change_language")}
+        <IonIcon icon={language} /> {t("change_language")}
       </IonLabel>
       <IonActionSheet
         isOpen={showActionSheet}

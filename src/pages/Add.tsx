@@ -26,6 +26,7 @@ import { trigger } from "../lib/Events";
 import { useTranslation } from "react-i18next";
 
 import { capitalize } from "../lib/Capitalize";
+import key from '../lib/storageKey.json'
 
 const Add: React.FC = () => {
   const { t, i18n } = useTranslation()
@@ -37,7 +38,7 @@ const Add: React.FC = () => {
   let countdate_events_data = []
   const add_new_countdate_item = async (newItem:{event_name:any,date:string}) => {
     if (!newItem.event_name) return
-    const { value } = await Storage.get({ key: "countdate_events_data" });
+    const { value } = await Storage.get({ key: key.data });
     if (value) {
       countdate_events_data = JSON.parse(value);
     } else {
@@ -48,7 +49,7 @@ const Add: React.FC = () => {
     history.push("/home")
     let content = JSON.stringify(countdate_events_data)
     await Storage.set({
-      key: "countdate_events_data",
+      key: key.data,
       value: content
     });
     trigger("countdate_data:change")

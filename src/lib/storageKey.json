@@ -1,4 +1,5 @@
 {
   "data":"countdate_events_data",
-  "theme": "countdate_prefer_theme"
+  "theme": "countdate_prefer_theme",
+  "dev": "countdate_dev_mode"
 }

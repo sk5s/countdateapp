@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import CountdownCard from "./CountdownCard";
 import TitleCard from "./TitleCard";
 import { Preferences as Storage } from "@capacitor/preferences";
-import { isPlatform, useIonAlert, IonButton, IonModal, IonContent, useIonLoading, IonGrid, IonRow, IonCol, IonTextarea, IonLabel } from "@ionic/react";
+import { IonIcon, isPlatform, useIonAlert, IonButton, IonModal, IonContent, useIonLoading, IonGrid, IonRow, IonCol, IonTextarea, IonLabel } from "@ionic/react";
+import { settings, create, information, add } from 'ionicons/icons'
 import { useHistory } from "react-router";
 import { on } from '../lib/Events'
 import { useTranslation } from "react-i18next";
@@ -32,6 +33,7 @@ export default function CountdownCards(): JSX.Element {
       showBackdrop: false
     });
     const { value } = await Storage.get({ key: key.data });
+    if (value?.includes("null")) return
     if (value) {
       countdate_events_data = JSON.parse(value);
       // console.log(countdate_events_data);
@@ -42,8 +44,20 @@ export default function CountdownCards(): JSX.Element {
     set_countdate_events_data_list(countdate_events_data);
   };
   const delete_countdate_events_storage_data = async () => {
-    await Storage.remove({ key: 'countdate_events_data' });
+    await Storage.remove({ key: key.data });
   }
+  const getDevMode = async () => {
+    const { value } = await Storage.get({ key: key.dev });
+    if (value == "true") {
+      setDevChecked(true)
+    } else {
+      setDevChecked(false)
+    }
+  }
+  on("countdate_dev:change", () => {
+    getDevMode()
+  })
+  getDevMode()
   useEffect(() => {
     check_countdate_events_storage_data();
     // console.log(countdate_events_data);
@@ -61,6 +75,8 @@ export default function CountdownCards(): JSX.Element {
   const [popover_content, set_popover_content] = useState<string>();
   const [presentLoading, dismissLoading] = useIonLoading();
   const [editable, setEditable] = useState<boolean>(false)
+  const [devChecked, setDevChecked] = useState<boolean>(false)
+
   return (
     <div>
       {(() => {
@@ -88,8 +104,8 @@ export default function CountdownCards(): JSX.Element {
                 title={capitalize(t("add")) + t("between_words") + "Countdate" +t("exclamation_mark")}
                 subtitle={t("no_data")}
               />
-              <IonButton key="add" routerLink="/add" color="primary" shape="round">
-                {capitalize(t("add"))}{t("between_words")}Countdate
+              <IonButton key="add" routerLink="/add" color="primary" shape="round" style={{marginLeft: 16}}>
+                <IonIcon icon={add} /> {capitalize(t("add"))}{t("between_words")}Countdate
               </IonButton>
             </div>
           );
@@ -103,15 +119,19 @@ export default function CountdownCards(): JSX.Element {
             {/* <IonButton expand="full" shape="round" onClick={check_countdate_events_storage_data} color="primary">
               {t("refresh")}
             </IonButton> */}
-            <IonButton expand="full" shape="round" onClick={(e) => setEditable(!editable)} disabled={countdate_events_data_list.length === 0}>
-              {!editable ? capitalize(t("edit")) : capitalize(t("complete"))+t("between_words")+t("edit")}
+            {/* <IonButton expand="full" shape="round" onClick={(e) => setEditable(!editable)} disabled={countdate_events_data_list.length === 0}>
+              <IonIcon icon={create} /> {!editable ? capitalize(t("edit")) : capitalize(t("complete"))+t("between_words")+t("edit")}
+            </IonButton> */}
+            <IonButton expand="full" shape="round" routerLink="/edit" color="primary" disabled={countdate_events_data_list.length === 0}>
+              <IonIcon icon={create} /> {capitalize(t("edit"))}
             </IonButton>
           </IonCol>
           <IonCol>
             <IonButton expand="full" shape="round" routerLink="/settings" color="primary">
-              {capitalize(t("settings"))}
+              <IonIcon icon={settings} /> {capitalize(t("settings"))}
             </IonButton>
           </IonCol>
+          {devChecked ? 
           <IonCol>
             <IonButton
               fill="outline"
@@ -123,9 +143,10 @@ export default function CountdownCards(): JSX.Element {
               }}
               color="primary"
             >
-              {capitalize(t("check"))+t("between_words")+t("data")}
+              <IonIcon icon={information} /> {capitalize(t("check"))+t("between_words")+t("data")}
             </IonButton>
           </IonCol>
+          : <></>}
         </IonRow>
       </IonGrid>
 

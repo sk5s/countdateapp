@@ -7,6 +7,7 @@
   "days": "days",
   "day_has_come": "The day has come!",
   "delete_data_message": "This action cannot be undone",
+  "dev_mode": "dev mode",
   "event_prefix": "Days until",
   "event_suffix": ":",
   "exclamation_mark": "!",

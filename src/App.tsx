@@ -4,6 +4,7 @@ import { IonReactRouter } from '@ionic/react-router';
 import Home from './pages/Home';
 import Add from './pages/Add';
 import Settings from './pages/Settings';
+import Edit from './pages/Edit';
 
 import './lib/Darkmode'
 
@@ -42,6 +43,9 @@ const App: React.FC = () => (
         </Route>
         <Route exact path="/settings">
           <Settings />
+        </Route>
+        <Route exact path="/edit">
+          <Edit />
         </Route>
         <Route exact path="/">
           <Redirect to="/home" />
