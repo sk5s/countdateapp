@@ -35,7 +35,7 @@
   <p align="center">
     Date Countdown: Know How Many Days Left To a Specific Date.
     <br />
-    <a href="https://github.com/sk5s/countdateapp"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/sk5s/countdateapp#readme"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="https://sk5s.cyou/countdate-landing/">Download</a>
