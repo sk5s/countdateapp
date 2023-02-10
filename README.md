@@ -35,10 +35,10 @@
   <p align="center">
     Date Countdown: Know How Many Days Left To a Specific Date.
     <br />
-    <a href="https://github.com/sk5s/countdateapp"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/sk5s/countdateapp#readme"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/sk5s/countdateapp">View Demo</a>
+    <a href="https://sk5s.cyou/countdate-landing/">Download</a>
     ·
     <a href="https://github.com/sk5s/countdateapp/issues">Report Bug</a>
     ·
@@ -100,7 +100,7 @@ Since this app is MIT licensed, you can modified it!
 
 ### Built With
 
-- [ionic](https://ionicframework.com/)
+- [ionic (ionic react)](https://ionicframework.com/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -108,11 +108,11 @@ Since this app is MIT licensed, you can modified it!
 
 ## Getting Started
 
-Download apk file on releases page and install to use the app.
+Download apk file on releases page and install to use the app. [https://sk5s.cyou/countdate-landing/](https://sk5s.cyou/countdate-landing/)
 
 ### Prerequisites
 
-Have an android phone.
+Have an android phone or web browser.
 
 ### Installation
 
