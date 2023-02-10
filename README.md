@@ -100,7 +100,7 @@ Since this app is MIT licensed, you can modified it!
 
 ### Built With
 
-- [ionic](https://ionicframework.com/)
+- [ionic (ionic react)](https://ionicframework.com/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
