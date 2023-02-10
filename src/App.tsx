@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import Add from './pages/Add';
 import Settings from './pages/Settings';
 import Edit from './pages/Edit';
+import About from './pages/About';
 
 import './lib/Darkmode'
 
@@ -46,6 +47,9 @@ const App: React.FC = () => (
         </Route>
         <Route exact path="/edit">
           <Edit />
+        </Route>
+        <Route exact path="/about">
+          <About />
         </Route>
         <Route exact path="/">
           <Redirect to="/home" />

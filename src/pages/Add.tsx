@@ -67,13 +67,13 @@ const Add: React.FC = () => {
           <IonButtons slot="start">
             <IonBackButton defaultHref="/" />
           </IonButtons>
-          <IonTitle>{capitalize(t("add"))}{t("between_words")}Countdate</IonTitle>
+          <IonTitle>{capitalize(t("add"))} Countdate</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">{capitalize(t("add"))}{t("between_words")}Countdate</IonTitle>
+            <IonTitle size="large">{capitalize(t("add"))} Countdate</IonTitle>
           </IonToolbar>
         </IonHeader>
         <IonGrid>

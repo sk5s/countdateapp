@@ -13,10 +13,11 @@ import {
   IonLabel,
   IonListHeader,
   IonToggle,
-  IonIcon
+  IonIcon,
+  IonRouterLink
 } from "@ionic/react";
 import LanguageSelectAction from "../components/LanguageSelectAction";
-import { code, contrast, logoAndroid } from 'ionicons/icons'
+import { code, contrast, information, logoAndroid } from 'ionicons/icons'
 import { useTranslation } from "react-i18next";
 import { Schedule } from "../lib/LocalNotification";
 import { set_dark_mode_toggle_to, prefersDark } from '../lib/Darkmode'
@@ -126,6 +127,11 @@ const Settings: React.FC = () => {
           </IonItem>
            : ''
           }
+          <IonItem>
+            <IonRouterLink routerLink="/about">
+              <IonLabel color="dark"><IonIcon icon={information} /> {capitalize(t("about"))} Countdate</IonLabel>
+            </IonRouterLink>
+          </IonItem>
           <IonListHeader lines="none" color="primary">
             <IonLabel>{capitalize(t("dark_mode"))}</IonLabel>
           </IonListHeader>
