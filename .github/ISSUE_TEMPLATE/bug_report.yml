@@ -14,13 +14,12 @@ body:
           required: true
         - label: I have searched for [existing issues](https://github.com/sk5s/countdateapp/issues) that already include this feature request, without success.
           required: true
-  - type: checkboxes
+  - type: textarea
     attributes:
-      label: Countdate main version
-      description: Please select which versions of Countdate this issue impacts.
-      options:
-        - label: v0.x.x
-        - label: v1.x.x
+      label: Countdate version
+      description: Please enter which versions of Countdate this issue impacts.
+    validations:
+      required: true
   - type: textarea
     attributes:
       label: Current Behavior
@@ -38,7 +37,7 @@ body:
       label: Steps to Reproduce
       description: Please explain the steps required to duplicate this issue.
     validations:
-      required: true
+      required: false
   - type: textarea
     attributes:
       label: Additional Information
