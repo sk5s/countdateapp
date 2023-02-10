@@ -80,7 +80,7 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://sk5s.cyou/)
+<!--[![Product Name Screen Shot]](https://sk5s.cyou/)-->
 
 Date Countdown: Know How Many Days Left To a Specific Date.
 
@@ -215,7 +215,7 @@ Project Link: [https://github.com/sk5s/countdateapp](https://github.com/sk5s/cou
 [response-time-url]: https://uptime.sk5s.cyou/history/countdate-website
 [license-shield]: https://img.shields.io/github/license/sk5s/countdateapp.svg?style=for-the-badge
 [license-url]: https://github.com/sk5s/countdateapp/blob/main/LICENSE
-[product-screenshot]: fastlane/metadata/android/en-US/images/phoneScreenshots/4.png
+[product-screenshot]: fastlane/metadata/android/en-US/images/phoneScreenshots/1.jpg
 [git-repo-short-url]: https://bit.ly/countdateapp
 
 <!--
