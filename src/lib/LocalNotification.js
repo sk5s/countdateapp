@@ -1,5 +1,8 @@
 import { LocalNotifications } from '@capacitor/local-notifications'
+import { useTranslation } from 'react-i18next'
 import { v4 as uuid } from 'uuid'
+
+const [t,i18n] = useTranslation()
 
 const day = (day) => {
   return day * 86400 * 1000
@@ -20,8 +23,10 @@ export async function Schedule(props){
       title: props.title,
       body: props.body,
       id: props.id,
+      silent: true,
       schedule: {
-        at: new Date(Date.now() + sec(1))
+        at: new Date(Date.now() + sec(1)),
+        allowWhileIdle:true
       }
     }]
   })
