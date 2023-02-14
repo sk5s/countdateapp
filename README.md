@@ -132,8 +132,9 @@ click add button to add a countdate
 
 ## Roadmap
 
+- [ ] Instruction
 - [ ] Sync
-- [ ] local notification
+- [ ] Local notification
 - [ ] Count week
 - [ ] Minus weekend
 
