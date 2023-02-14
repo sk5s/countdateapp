@@ -133,6 +133,7 @@ click add button to add a countdate
 ## Roadmap
 
 - [ ] Instruction
+- [ ] New splash screen api
 - [ ] Sync
 - [ ] Local notification
 - [ ] Count week
