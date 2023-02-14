@@ -9,6 +9,9 @@ const config: CapacitorConfig = {
     LocalNotifications: {
       smallIcon: "countdateapp-logo",
       iconColor: "#488AFF"
+    },
+    SplashScreen: {
+      backgroundColor: "#03989e",
     }
   },
 };
