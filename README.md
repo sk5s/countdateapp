@@ -132,8 +132,12 @@ click add button to add a countdate
 
 ## Roadmap
 
+- [ ] Instruction
+- [ ] New splash screen api
 - [ ] Sync
-- [ ] local notification
+- [ ] Local notification
+- [ ] Count week
+- [ ] Minus weekend
 
 See the [open issues](https://github.com/sk5s/countdateapp/issues) for a full list of proposed features (and known issues).
 
