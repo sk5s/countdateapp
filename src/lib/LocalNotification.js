@@ -1,8 +1,5 @@
 import { LocalNotifications } from '@capacitor/local-notifications'
-import { useTranslation } from 'react-i18next'
 import { v4 as uuid } from 'uuid'
-
-const [t,i18n] = useTranslation()
 
 const day = (day) => {
   return day * 86400 * 1000

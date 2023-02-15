@@ -11,8 +11,8 @@
     "@capacitor/local-notifications": "4.1.5",
     "@capacitor/preferences": "4.0.2",
     "@capacitor/toast": "^4.1.0",
-    "@ionic/react": "^6.5.3",
-    "@ionic/react-router": "^6.5.3",
+    "@ionic/react": "^6.5.4",
+    "@ionic/react-router": "^6.5.4",
     "@testing-library/jest-dom": "5.16.5",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.6.3",
@@ -57,7 +57,8 @@
     "test": "react-scripts test --transformIgnorePatterns 'node_modules/(?!(@ionic/react|@ionic/react-router|@ionic/core|@stencil/core|ionicons)/)'",
     "eject": "react-scripts eject",
     "surge": "surge build --domain https://countdate.surge.sh",
-    "depcheck": "npx depcheck"
+    "depcheck": "npx depcheck",
+    "update": "npm install @ionic/react@6 @ionic/react-router@6"
   },
   "eslintConfig": {
     "extends": [
