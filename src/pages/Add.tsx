@@ -13,8 +13,9 @@ import {
   IonInput,
   IonLabel,
   IonButton,
-  IonToggle,
-  IonItem
+  IonItem,
+  IonAccordionGroup,
+  IonAccordion,
 } from "@ionic/react";
 import { Preferences as Storage } from "@capacitor/preferences";
 import { useState } from "react";
@@ -30,7 +31,6 @@ import key from '../lib/storageKey.json'
 
 const Add: React.FC = () => {
   const { t, i18n } = useTranslation()
-  const [advanceSettingsEnable,setAdvanceSettingsEnable] = useState(false)
   const [UTC,setUTC] = useState('+08:00')
   const [selectedDate, setSelectedDate] = useState(format(new Date(), 'yyyy-MM-dd')+'T23:59:00'+UTC);
   const [titleText, setTitleText] = useState<string>("");
@@ -71,7 +71,7 @@ const Add: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <IonHeader collapse="condense">
+        <IonHeader collapse="condense" style={{marginTop:"10px"}}>
           <IonToolbar>
             <IonTitle size="large">{capitalize(t("add"))} Countdate</IonTitle>
           </IonToolbar>
@@ -79,7 +79,7 @@ const Add: React.FC = () => {
         <IonGrid>
           <IonRow>
             <IonCol>
-              <IonItem>
+              <IonItem className="ion-no-padding">
                 <IonLabel position="stacked">{capitalize(t("event"))}{t("between_words")}{t("name")}</IonLabel>
                 <IonInput onKeyDown={e=> SearchF(e.key)} clearInput={true} value={titleText} placeholder={capitalize(t("input"))+t("between_words")+t("event")+t("between_words")+t("name")} onIonChange={e => setTitleText(e.detail.value!)}></IonInput>
               </IonItem>
@@ -88,23 +88,26 @@ const Add: React.FC = () => {
           <IonRow>
             <IonCol>
               {/* <IonLabel position="stacked"></IonLabel> */}
-              <IonDatetime size="cover" presentation="date" value={selectedDate} min={`${format(new Date(), 'yyyy-MM-dd')}T23:59:00+08:00`} max={(parseInt(format(new Date(), 'yyyy'))+2).toString()} onIonChange={e => setSelectedDate(`${e.detail.value}`)} showDefaultTitle={false}>
-                {/* <span slot="title">{t("select")+t("between_words")+t("event")+t("between_words")+t("date")}</span> */}
+              <IonDatetime size="cover" presentation="date" value={selectedDate} min={`${format(new Date(), 'yyyy-MM-dd')}T23:59:00+08:00`} max={(parseInt(format(new Date(), 'yyyy'))+2).toString()} onIonChange={e => setSelectedDate(format(new Date(`${e.detail.value}`),'yyyy-MM-dd')+"T23:59:00"+UTC)} showDefaultTitle={false}>
+                <span slot="title">{t("select")+t("between_words")+t("event")+t("between_words")+t("date")}</span>
               </IonDatetime>
             </IonCol>
           </IonRow>
           <IonRow>
             <IonCol>
-              <IonItem>
-                <IonLabel>Advance setting</IonLabel>
-                <IonToggle checked={advanceSettingsEnable} onIonChange={e => setAdvanceSettingsEnable(e.detail.checked)} />
-              </IonItem>
-            </IonCol>
-            <IonCol>
-              <IonItem>
-                <IonLabel>UTC offset</IonLabel>
-                <IonInput clearInput={true} value={UTC} disabled={!advanceSettingsEnable} onIonChange={e => setUTC(e.detail.value!)}></IonInput>
-              </IonItem>
+              <IonAccordionGroup>
+                <IonAccordion value="first">
+                  <IonItem slot="header" color="light">
+                    <IonLabel>Advance settings</IonLabel>
+                  </IonItem>
+                  <div slot="content">
+                    <IonItem className="ion-no-padding">
+                      <IonLabel>UTC offset</IonLabel>
+                      <IonInput clearInput={true} value={UTC} onIonChange={e => setUTC(e.detail.value!)}></IonInput>
+                    </IonItem>
+                  </div>
+                </IonAccordion>
+              </IonAccordionGroup>
             </IonCol>
           </IonRow>
           <IonRow>

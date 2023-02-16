@@ -6,6 +6,7 @@
   "dark_mode": "dark mode",
   "days": "days",
   "day_has_come": "The day has come!",
+  "days_view": "Days",
   "delete_data_message": "This action cannot be undone",
   "dev_mode": "dev mode",
   "event_prefix": "Days until",
@@ -13,5 +14,6 @@
   "exclamation_mark": "!",
   "local_notification": "local notification",
   "no_data": "No data",
-  "question_mark": "?"
+  "question_mark": "?",
+  "weeks_view": "Weeks"
 }

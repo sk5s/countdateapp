@@ -16,6 +16,7 @@
   "date": "日期",
   "days": "天",
   "day_has_come": "時辰已到",
+  "days_view": "剩幾天",
   "delete": "刪除",
   "delete_data_message": "此操作無法撤銷",
   "dev_mode": "開發模式",
@@ -37,5 +38,7 @@
   "settings": "設定",
   "system": "系統",
   "test": "測試",
-  "toggle": "切換"
+  "toggle": "切換",
+  "weeks": "周",
+  "weeks_view": "剩幾周"
 }

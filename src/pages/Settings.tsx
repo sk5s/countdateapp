@@ -17,15 +17,16 @@ import {
   IonRouterLink
 } from "@ionic/react";
 import LanguageSelectAction from "../components/LanguageSelectAction";
-import { code, contrast, information, logoAndroid } from 'ionicons/icons'
+import { code, contrast, information, logoAndroid, notifications } from 'ionicons/icons'
 import { useTranslation } from "react-i18next";
 import { Schedule } from "../lib/LocalNotification";
-import { set_dark_mode_toggle_to, prefersDark } from '../lib/Darkmode'
+import { set_dark_mode_toggle_to } from '../lib/Darkmode'
 import { Preferences as Storage } from "@capacitor/preferences";
 import key from '../lib/storageKey.json'
 import { useEffect, useState } from "react";
 import { on, trigger } from "../lib/Events";
 import { capitalize } from "../lib/Capitalize";
+import show from "../lib/Toast";
 
 const Settings: React.FC = () => {
   const { t, i18n } = useTranslation()
@@ -74,8 +75,8 @@ const Settings: React.FC = () => {
     
   }
   const darkmodeToSystem = async () => {
-    setDarkChecked(prefersDark)
-    if (prefersDark) {
+    setDarkChecked(window.matchMedia('(prefers-color-scheme: dark)').matches)
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
       document.body.classList.add("dark")
     } else {
       document.body.classList.remove("dark")
@@ -86,7 +87,7 @@ const Settings: React.FC = () => {
     })
   }
   
-  on("countdate_darkmode:toggle", () => {
+  on("countdate_darkmode:toggle", async () => {
     setDarkChecked(set_dark_mode_toggle_to())
   })
   useEffect(() => {
@@ -103,7 +104,7 @@ const Settings: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <IonHeader collapse="condense">
+        <IonHeader collapse="condense" style={{marginTop:"10px"}}>
           <IonToolbar>
             <IonTitle size="large">{capitalize(t("settings"))}</IonTitle>
           </IonToolbar>
@@ -119,10 +120,10 @@ const Settings: React.FC = () => {
             <IonLabel onClick={toggleDevModeHandler}><IonIcon icon={code} /> {capitalize(t("toggle"))+t("between_words")+t("dev_mode")}</IonLabel>
             <IonToggle checked={devChecked} onClick={toggleDevModeHandler} />
           </IonItem>
-          {(isPlatform("android") && isPlatform("hybrid")) || (isPlatform("ios") && isPlatform("hybrid")) ? 
+          {(isPlatform("android") && isPlatform("hybrid")) && devChecked || (isPlatform("ios") && isPlatform("hybrid")) && devChecked ? 
           <IonItem>
             <IonLabel onClick={testLocalNotification}>
-              {capitalize(t("test"))+t("between_words")+t("local_notification")}
+              <IonIcon icon={notifications} /> {capitalize(t("test"))+t("between_words")+t("local_notification")}
             </IonLabel>
           </IonItem>
            : ''

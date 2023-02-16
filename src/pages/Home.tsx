@@ -6,7 +6,10 @@ import {
   IonToolbar,
   IonFab,
   IonFabButton,
-  IonIcon
+  IonIcon,
+  IonSegment,
+  IonSegmentButton,
+  IonLabel
 } from "@ionic/react";
 
 import { add } from 'ionicons/icons'
@@ -15,6 +18,8 @@ import { add } from 'ionicons/icons'
 // import { AppVersion } from '@awesome-cordova-plugins/app-version';
 
 import CountdownCards from "../components/CountdownCards";
+import { useTranslation } from "react-i18next";
+import { useState } from "react";
 
 const Home: React.FC = () => {
   // const [error, setError] = useState(null)
@@ -66,20 +71,31 @@ const Home: React.FC = () => {
   //     console.log("Check updates begain")
   //   }
   // }, [])
+  const {t} = useTranslation()
+  const [view,setView] = useState("days")
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Countdate</IonTitle>
+          {/* <IonTitle>Countdate</IonTitle> */}
+          <IonSegment value={view} onIonChange={(e) => setView(`${e.detail.value}`)}>
+            <IonSegmentButton value="days">
+              <IonLabel>{t("days_view")}</IonLabel>
+            </IonSegmentButton>
+            <IonSegmentButton value="weeks">
+              <IonLabel>{t("weeks_view")}</IonLabel>
+            </IonSegmentButton>
+          </IonSegment>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <IonHeader collapse="condense">
+        <IonHeader collapse="condense" style={{marginTop:"10px"}}>
           <IonToolbar>
             <IonTitle size="large">Countdate</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <CountdownCards />
+
+        <CountdownCards view={view} />
 
         <IonFab vertical="bottom" horizontal="end" slot="fixed">
           <IonFabButton routerLink="/add">

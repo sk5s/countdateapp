@@ -26,16 +26,16 @@ const About: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <IonHeader collapse="condense">
+        <IonHeader collapse="condense" style={{marginTop:"10px"}}>
           <IonToolbar>
             <IonTitle size="large">{capitalize(t("about"))} Countdate</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <a href="https://github.com/sk5s/countdateapp">
+        <a href="https://github.com/sk5s/countdateapp" target="_blank">
           <img src="https://sk5s.cyou/countdate-landing/assets/img/icon-foreground.png" alt="Logo" width="80" height="80"/>
-        </a><span>Version: {packageJson.version}</span><br/>
+        </a> <span>Version: {packageJson.version}</span><br/>
         <span>Date Countdown: Know How Many Days Left To a Specific Date.</span>
-        <ul>
+        <ul style={{fontSize:"20px"}}>
           <li><a href="https://sk5s.cyou/countdate-landing/" target="_blank" rel="noopener noreferrer">Landing page</a></li>
           <li><a href="https://bit.ly/countdateapp" target="_blank" rel="noopener noreferrer">Project Github</a></li>
           <li><a href="https://github.com/sk5s/countdateapp/issues" target="_blank" rel="noopener noreferrer">Report Bug</a></li>

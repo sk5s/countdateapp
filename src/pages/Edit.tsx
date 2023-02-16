@@ -90,7 +90,7 @@ const Edit: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <IonHeader collapse="condense">
+        <IonHeader collapse="condense" style={{marginTop:"10px"}}>
           <IonToolbar>
             <IonTitle size="large">{capitalize(t("edit"))}</IonTitle>
           </IonToolbar>

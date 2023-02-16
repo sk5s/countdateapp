@@ -14,7 +14,7 @@ import key from '../lib/storageKey.json'
 
 import { capitalize } from "../lib/Capitalize";
 
-export default function CountdownCards(): JSX.Element {
+export default function CountdownCards({view}:{view:string}): JSX.Element {
   const history = useHistory()
   const { t, i18n } = useTranslation()
   const [languageCode, setLanguageCode] = useState("")
@@ -90,6 +90,7 @@ export default function CountdownCards(): JSX.Element {
                 event={event.event_name}
                 date={event.date}
                 editable={editable}
+                view={view}
               />
             );
           });

@@ -1,6 +1,8 @@
 import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
+import { App as NativeApp } from '@capacitor/app';
+import { useHistory } from "react-router";
 import Home from './pages/Home';
 import Add from './pages/Add';
 import Settings from './pages/Settings';
@@ -32,7 +34,16 @@ setupIonicReact({
   mode: 'ios',
 });
 
-const App: React.FC = () => (
+const App: React.FC = () => {
+  const history = useHistory()
+  NativeApp.addListener("backButton", ({canGoBack}) => {
+    if (canGoBack){
+      history.goBack()
+    }else{
+      NativeApp.exitApp()
+    }
+  })
+  return (
   <IonApp>
     <IonReactRouter>
       <IonRouterOutlet>
@@ -57,6 +68,6 @@ const App: React.FC = () => (
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>
-);
+)};
 
 export default App;

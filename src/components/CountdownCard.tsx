@@ -21,6 +21,7 @@ export default function CountdownCard(props: {
   event: string;
   editable: boolean;
   id: string;
+  view: string;
 }): JSX.Element {
   const [t] = useTranslation()
   const Completionist = () => <span>{t("between_words") + t("day_has_come")}</span>;
@@ -36,7 +37,11 @@ export default function CountdownCard(props: {
       return <Completionist />;
     } else {
       // Render a countdown
-      return <span>{days +" "+ capitalize(t("days"))}</span>;
+      if (props.view == "days"){
+        return <span>{days +" "+ capitalize(t("days"))}</span>;
+      } else if (props.view == "weeks") {
+        return <span>{(Math.round((days/7 + Number.EPSILON) * 10) / 10).toString() +" "+ capitalize(t("weeks"))}</span>
+      }
     }
   };
   let countdate_events_data = [];

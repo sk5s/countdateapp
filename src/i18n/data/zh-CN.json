@@ -16,6 +16,7 @@
   "date": "日期",
   "days": "天",
   "day_has_come": "时辰已到",
+  "days_view": "剩几天",
   "delete": "删除",
   "delete_data_message": "此操作无法撤消",
   "dev_mode": "开发模式",
@@ -37,5 +38,7 @@
   "settings": "设定",
   "system": "系统",
   "test": "测试",
-  "toggle": "切换"
+  "toggle": "切换",
+  "weeks": "周",
+  "weeks_view": "剩几周"
 }
