@@ -195,6 +195,8 @@ Project Link: [https://github.com/sk5s/countdateapp](https://github.com/sk5s/cou
 
 [![opensource](https://forthebadge.com/images/badges/open-source.svg)](https://sk5s.cyou/)
 
+<a href="https://www.producthunt.com/posts/countdate?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-countdate" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=379865&theme=light" alt="Countdate - Date&#0032;Countdown&#0032;with&#0032;simple&#0032;ui&#0046; | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
+
 ```
      _    ____                        _           _
  ___| | __ ___| ___   _ __  _ __ ___ (_) ___  ___| |_
