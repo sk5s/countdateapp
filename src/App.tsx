@@ -47,7 +47,7 @@ const App: React.FC = () => {
       NativeApp.exitApp()
     }
   })
-  const [accentColor, setAccentColor] = useState<string>("")
+  const [accentColor, setAccentColor] = useState<string>("primary")
   const getAccentColor = async () => {
     const { value } = await Preferences.get({ key: key.accent });
     if (value != null) {
