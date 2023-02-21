@@ -122,7 +122,7 @@ const Settings: React.FC<{accent:string}> = ({accent}) => {
           </IonItem>
           <IonItem>
             <IonLabel onClick={toggleDevModeHandler}><IonIcon icon={code} /> {capitalize(t("toggle"))+t("between_words")+t("dev_mode")}</IonLabel>
-            <IonToggle checked={devChecked} onClick={toggleDevModeHandler} />
+            <IonToggle checked={devChecked} onClick={toggleDevModeHandler} color={accent} />
           </IonItem>
           {(isPlatform("android") && isPlatform("hybrid")) && devChecked || (isPlatform("ios") && isPlatform("hybrid")) && devChecked ? 
           <IonItem>
@@ -142,7 +142,7 @@ const Settings: React.FC<{accent:string}> = ({accent}) => {
           </IonListHeader>
           <IonItem>
             <IonLabel onClick={toggleDarkModeHandler}><IonIcon icon={contrast} /> {capitalize(t("toggle"))+t("between_words")+t("dark_mode")}</IonLabel>
-            <IonToggle checked={darkChecked} onClick={toggleDarkModeHandler} />
+            <IonToggle checked={darkChecked} onClick={toggleDarkModeHandler} color={accent} />
           </IonItem>
           <IonItem>
             <IonLabel onClick={darkmodeToSystem}><IonIcon icon={logoAndroid} /> {capitalize(t("follow"))+t("between_words")+t("system")+t("between_words")+t("dark_mode")}</IonLabel>

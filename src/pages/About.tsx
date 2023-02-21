@@ -20,7 +20,7 @@ const About: React.FC<{accent:string}> = ({accent}) => {
       <IonHeader>
         <IonToolbar>
           <IonButtons slot="start">
-            <IonBackButton defaultHref="/" />
+            <IonBackButton defaultHref="/" color={accent} />
           </IonButtons>
           <IonTitle>{capitalize(t("about"))} Countdate</IonTitle>
         </IonToolbar>
