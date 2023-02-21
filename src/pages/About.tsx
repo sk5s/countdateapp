@@ -13,7 +13,7 @@ import packageJson from '../../package.json'
 import { capitalize } from "../lib/Capitalize";
 import { useTranslation } from "react-i18next";
 
-const About: React.FC = () => {
+const About: React.FC<{accent:string}> = ({accent}) => {
   const { t, i18n } = useTranslation()
   return (
     <IonPage>

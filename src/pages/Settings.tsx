@@ -27,8 +27,9 @@ import { useEffect, useState } from "react";
 import { on, trigger } from "../lib/Events";
 import { capitalize } from "../lib/Capitalize";
 import show from "../lib/Toast";
+import AccentColorSelectAction from "../components/AccentColorSelectAction";
 
-const Settings: React.FC = () => {
+const Settings: React.FC<{accent:string}> = ({accent}) => {
   const { t, i18n } = useTranslation()
   const [darkChecked, setDarkChecked] = useState<boolean>()
   const [devChecked, setDevChecked] = useState<boolean>(false)
@@ -98,7 +99,7 @@ const Settings: React.FC = () => {
       <IonHeader>
         <IonToolbar>
           <IonButtons slot="start">
-            <IonBackButton defaultHref="/" />
+            <IonBackButton defaultHref="/" color={accent} />
           </IonButtons>
           <IonTitle>{capitalize(t("settings"))}</IonTitle>
         </IonToolbar>
@@ -110,11 +111,14 @@ const Settings: React.FC = () => {
           </IonToolbar>
         </IonHeader>
         <IonList>
-          <IonListHeader lines="none" color="primary">
+          <IonListHeader lines="none" color={accent}>
             <IonLabel>{capitalize(t("general"))}</IonLabel>
           </IonListHeader>
           <IonItem>
             <LanguageSelectAction />
+          </IonItem>
+          <IonItem>
+            <AccentColorSelectAction />
           </IonItem>
           <IonItem>
             <IonLabel onClick={toggleDevModeHandler}><IonIcon icon={code} /> {capitalize(t("toggle"))+t("between_words")+t("dev_mode")}</IonLabel>
@@ -133,7 +137,7 @@ const Settings: React.FC = () => {
               <IonLabel color="dark"><IonIcon icon={information} /> {capitalize(t("about"))} Countdate</IonLabel>
             </IonRouterLink>
           </IonItem>
-          <IonListHeader lines="none" color="primary">
+          <IonListHeader lines="none" color={accent}>
             <IonLabel>{capitalize(t("dark_mode"))}</IonLabel>
           </IonListHeader>
           <IonItem>

@@ -14,7 +14,7 @@ import key from '../lib/storageKey.json'
 
 import { capitalize } from "../lib/Capitalize";
 
-export default function CountdownCards({view}:{view:string}): JSX.Element {
+export default function CountdownCards({view,accent}:{view:string;accent:string;}): JSX.Element {
   const history = useHistory()
   const { t, i18n } = useTranslation()
   const [languageCode, setLanguageCode] = useState("")
@@ -91,6 +91,7 @@ export default function CountdownCards({view}:{view:string}): JSX.Element {
                 date={event.date}
                 editable={editable}
                 view={view}
+                accent={accent}
               />
             );
           });
@@ -105,7 +106,7 @@ export default function CountdownCards({view}:{view:string}): JSX.Element {
                 title={capitalize(t("add")) + t("between_words") + "Countdate" +t("exclamation_mark")}
                 subtitle={t("no_data")}
               />
-              <IonButton key="add" routerLink="/add" color="primary" shape="round" style={{marginLeft: 16}}>
+              <IonButton key="add" routerLink="/add" color={accent} shape="round" style={{marginLeft: 16}}>
                 <IonIcon icon={add} /> {capitalize(t("add"))}{t("between_words")}Countdate
               </IonButton>
             </div>
@@ -123,12 +124,12 @@ export default function CountdownCards({view}:{view:string}): JSX.Element {
             {/* <IonButton expand="full" shape="round" onClick={(e) => setEditable(!editable)} disabled={countdate_events_data_list.length === 0}>
               <IonIcon icon={create} /> {!editable ? capitalize(t("edit")) : capitalize(t("complete"))+t("between_words")+t("edit")}
             </IonButton> */}
-            <IonButton expand="full" shape="round" routerLink="/edit" color="primary" disabled={countdate_events_data_list.length === 0}>
+            <IonButton expand="full" shape="round" routerLink="/edit" color={accent} disabled={countdate_events_data_list.length === 0}>
               <IonIcon icon={create} /> {capitalize(t("edit"))}
             </IonButton>
           </IonCol>
           <IonCol>
-            <IonButton expand="full" shape="round" routerLink="/settings" color="primary">
+            <IonButton expand="full" shape="round" routerLink="/settings" color={accent}>
               <IonIcon icon={settings} /> {capitalize(t("settings"))}
             </IonButton>
           </IonCol>
@@ -142,7 +143,7 @@ export default function CountdownCards({view}:{view:string}): JSX.Element {
                 check_countdate_events_storage_data();
                 set_popover_oepn(true);
               }}
-              color="primary"
+              color={accent}
             >
               <IonIcon icon={information} /> {capitalize(t("check"))+t("between_words")+t("data")}
             </IonButton>

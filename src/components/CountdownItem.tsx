@@ -9,7 +9,9 @@ import {
   IonModal,
   IonDatetime,
   IonPopover,
-  IonContent
+  IonContent,
+  IonChip,
+  IonText
 } from "@ionic/react";
 import { Preferences } from "@capacitor/preferences";
 
@@ -20,12 +22,14 @@ import { capitalize } from "../lib/Capitalize";
 import key from "../lib/storageKey.json"
 import format from "date-fns/format";
 import { useState } from "react";
+import "./CountdownItem.css"
 
 export default function CountdateItem(props: {
   date: string;
   event: string;
   editable: boolean;
   id: string;
+  accent: string;
 }): JSX.Element {
   const [t] = useTranslation()
   const [presentAlert] = useIonAlert();
@@ -70,6 +74,7 @@ export default function CountdateItem(props: {
       inputs: [
         {
           name: 'name',
+          value: props.event,
           placeholder: capitalize(t("input"))+t("between_words")+t("event")+t("between_words")+t("name")
         }
       ],
@@ -98,10 +103,10 @@ export default function CountdateItem(props: {
       countdate_events_data = JSON.parse(value);
       for (const i of countdate_events_data) {
         if (String(i.id) == String(props.id)) {
-          let olddate = i.date
-          i.date = newDate+"T"+olddate.split("T")[1];
+          let olddate = i.date;
+          i.date = newDate + "T" + olddate.split("T")[1];
         }
-       }
+      }
       let content = JSON.stringify(countdate_events_data);
       await Preferences.set({
         key: key.data,
@@ -113,9 +118,10 @@ export default function CountdateItem(props: {
   return (
     <IonItem>
       <IonLabel>
-        <h1 onClick={edit_this_countdate_item_name_handler}>{props.event}</h1>
-        <p onClick={() => setModalIsOpen(!modalIsOpen)}>{format(new Date(props.date), 'yyyy / MM / dd')}
-        </p>
+        <IonText color={props.accent}>
+          <h1 onClick={edit_this_countdate_item_name_handler}>{props.event}</h1>
+        </IonText>
+        <IonChip color={props.accent} onClick={() => setModalIsOpen(!modalIsOpen)}>{format(new Date(props.date), 'yyyy / MM / dd')}</IonChip>
       </IonLabel>
       {props.editable && (
         <IonIcon
@@ -127,8 +133,8 @@ export default function CountdateItem(props: {
       <IonReorder slot="end">
         <IonIcon icon={reorderThree}></IonIcon>
       </IonReorder>
-      <IonPopover isOpen={modalIsOpen} size="cover" keepContentsMounted={true}>
-        <IonDatetime presentation="date" showDefaultButtons={true} min={`${format(new Date(), 'yyyy-MM-dd')}T23:59:00+08:00`} max={(parseInt(format(new Date(), 'yyyy'))+2).toString()} onIonChange={e => edit_this_countdate_item_date(format(new Date(`${e.detail.value}`),'yyyy-MM-dd'))} id="datetime"></IonDatetime>
+      <IonPopover isOpen={modalIsOpen} size="cover" keepContentsMounted={false}>
+        <IonDatetime color={props.accent} presentation="date" showDefaultButtons={true} min={`${format(new Date(), 'yyyy-MM-dd')}T23:59:00+08:00`} max={(parseInt(format(new Date(), 'yyyy'))+2).toString()} onIonChange={e => edit_this_countdate_item_date(format(new Date(`${e.detail.value}`),'yyyy-MM-dd'))} value={props.date} id="datetime"></IonDatetime>
       </IonPopover>
     </IonItem>
   );

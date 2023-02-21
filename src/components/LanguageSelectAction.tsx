@@ -1,43 +1,54 @@
 import { useState } from 'react';
-import { IonIcon, IonActionSheet, IonContent, IonButton, IonLabel } from '@ionic/react';
+import { IonIcon, IonActionSheet, IonContent, IonButton, IonLabel, useIonPicker } from '@ionic/react';
 import { close } from 'ionicons/icons';
 import { useTranslation } from 'react-i18next';
 import { language } from 'ionicons/icons'
+import { capitalize } from '../lib/Capitalize';
 
 export default function LanguageSelectAction(){
   const [showActionSheet, setShowActionSheet] = useState(false);
   const [t,i18n] = useTranslation()
+  const [present] = useIonPicker()
+  const allLangName = ["zh-TW","en-US","zh-CN"]
+  const openPicker = async () => {
+    present({
+      columns: [
+        {
+          name: 'lang',
+          options: createOptions()
+        },
+      ],
+      buttons: [
+        {
+          text: capitalize(t("cancel")),
+          role: 'cancel',
+        },
+        {
+          text: capitalize(t("confirm")),
+          handler: (value) => {
+            console.log(`You selected: ${value.lang.value}`)
+            i18n.changeLanguage(value.lang.value)
+          },
+        },
+      ],
+    });
+  };
+  const createOptions = () => {
+    let opt:any = []
+    allLangName.forEach((name) => {
+      opt.push({
+        text: name,
+        value: name
+      });
+    });
+    return opt
+  }
 
   return (
     <div>
-      <IonLabel onClick={() => setShowActionSheet(true)}>
+      <IonLabel onClick={openPicker}>
         <IonIcon icon={language} /> {t("change_language")}
       </IonLabel>
-      <IonActionSheet
-        isOpen={showActionSheet}
-        onDidDismiss={() => setShowActionSheet(false)}
-        buttons={[{
-          text: 'zh-TW',
-          handler: () => {
-            i18n.changeLanguage('zh-TW')
-          }
-        }, {
-          text: 'en-US',
-          handler: () => {
-            i18n.changeLanguage('en-US')
-          }
-        }, {
-          text: 'zh-CN',
-          handler: () => {
-            i18n.changeLanguage('zh-CN')
-          }
-        }, {
-          text: 'Cancel',
-          icon: close,
-          role: 'cancel'
-        }]}
-      >
-      </IonActionSheet>
     </div>
   );
 }

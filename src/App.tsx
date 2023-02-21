@@ -29,6 +29,10 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import { Preferences } from '@capacitor/preferences';
+import key from "./lib/storageKey.json"
+import { useState } from 'react';
+import { on } from './lib/Events';
 
 setupIonicReact({
   mode: 'ios',
@@ -43,24 +47,35 @@ const App: React.FC = () => {
       NativeApp.exitApp()
     }
   })
+  const [accentColor, setAccentColor] = useState<string>("")
+  const getAccentColor = async () => {
+    const { value } = await Preferences.get({ key: key.accent });
+    if (value != null) {
+      setAccentColor(value)
+    }
+  }
+  getAccentColor()
+  on("countdate_accent:change", () => {
+    getAccentColor()
+  })
   return (
   <IonApp>
     <IonReactRouter>
       <IonRouterOutlet>
         <Route exact path="/home">
-          <Home />
+          <Home accent={accentColor} />
         </Route>
         <Route exact path="/add">
-          <Add />
+          <Add accent={accentColor} />
         </Route>
         <Route exact path="/settings">
-          <Settings />
+          <Settings accent={accentColor} />
         </Route>
         <Route exact path="/edit">
-          <Edit />
+          <Edit accent={accentColor} />
         </Route>
         <Route exact path="/about">
-          <About />
+          <About accent={accentColor} />
         </Route>
         <Route exact path="/">
           <Redirect to="/home" />

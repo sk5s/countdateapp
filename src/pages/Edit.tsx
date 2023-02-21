@@ -27,7 +27,7 @@ import key from '../lib/storageKey.json'
 import CountdateItem from "../components/CountdownItem";
 import { on, trigger } from "../lib/Events";
 
-const Edit: React.FC = () => {
+const Edit: React.FC<{accent:string}> = ({accent}) => {
   let countdate_events_data: {
     id: string;
     event_name: string;
@@ -84,7 +84,7 @@ const Edit: React.FC = () => {
       <IonHeader>
         <IonToolbar>
           <IonButtons slot="start">
-            <IonBackButton defaultHref="/" />
+            <IonBackButton defaultHref="/" color={accent} />
           </IonButtons>
           <IonTitle>{capitalize(t("edit"))}</IonTitle>
         </IonToolbar>
@@ -95,6 +95,8 @@ const Edit: React.FC = () => {
             <IonTitle size="large">{capitalize(t("edit"))}</IonTitle>
           </IonToolbar>
         </IonHeader>
+
+        <span style={{marginLeft:36,marginTop:10}}>{t("click_on_title_or_date_to_edit")}</span>
       
         <IonList inset={true}>
           {/* The reorder gesture is disabled by default, enable it to drag and drop items */}
@@ -110,6 +112,7 @@ const Edit: React.FC = () => {
                     event={event.event_name}
                     date={event.date}
                     editable={editable}
+                    accent={accent}
                   />
                 );
               });
@@ -140,7 +143,7 @@ const Edit: React.FC = () => {
         </IonGrid> */}
 
         <IonFab vertical="bottom" horizontal="end" slot="fixed">
-          <IonFabButton routerLink="/add">
+          <IonFabButton routerLink="/add" color={accent}>
             <IonIcon icon={add} />
           </IonFabButton>
         </IonFab>

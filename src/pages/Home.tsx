@@ -21,7 +21,7 @@ import CountdownCards from "../components/CountdownCards";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
 
-const Home: React.FC = () => {
+const Home: React.FC<{accent:string}> = ({accent}) => {
   // const [error, setError] = useState(null)
   // const [isLoaded, setIsLoaded] = useState(false)
   // const [present] = useIonAlert()
@@ -78,7 +78,7 @@ const Home: React.FC = () => {
       <IonHeader>
         <IonToolbar>
           {/* <IonTitle>Countdate</IonTitle> */}
-          <IonSegment value={view} onIonChange={(e) => setView(`${e.detail.value}`)}>
+          <IonSegment color={accent} value={view} onIonChange={(e) => setView(`${e.detail.value}`)}>
             <IonSegmentButton value="days">
               <IonLabel>{t("days_view")}</IonLabel>
             </IonSegmentButton>
@@ -95,10 +95,10 @@ const Home: React.FC = () => {
           </IonToolbar>
         </IonHeader>
 
-        <CountdownCards view={view} />
+        <CountdownCards view={view} accent={accent} />
 
         <IonFab vertical="bottom" horizontal="end" slot="fixed">
-          <IonFabButton routerLink="/add">
+          <IonFabButton routerLink="/add" color={accent}>
             <IonIcon icon={add} />
           </IonFabButton>
         </IonFab>

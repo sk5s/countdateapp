@@ -29,7 +29,7 @@ import { useTranslation } from "react-i18next";
 import { capitalize } from "../lib/Capitalize";
 import key from '../lib/storageKey.json'
 
-const Add: React.FC = () => {
+const Add: React.FC<{accent:string}> = ({accent}) => {
   const { t, i18n } = useTranslation()
   const [UTC,setUTC] = useState('+08:00')
   const [selectedDate, setSelectedDate] = useState(format(new Date(), 'yyyy-MM-dd')+'T23:59:00'+UTC);
@@ -65,7 +65,7 @@ const Add: React.FC = () => {
       <IonHeader>
         <IonToolbar>
           <IonButtons slot="start">
-            <IonBackButton defaultHref="/" />
+            <IonBackButton defaultHref="/" color={accent} />
           </IonButtons>
           <IonTitle>{capitalize(t("add"))} Countdate</IonTitle>
         </IonToolbar>
@@ -88,7 +88,7 @@ const Add: React.FC = () => {
           <IonRow>
             <IonCol>
               {/* <IonLabel position="stacked"></IonLabel> */}
-              <IonDatetime size="cover" presentation="date" value={selectedDate} min={`${format(new Date(), 'yyyy-MM-dd')}T23:59:00+08:00`} max={(parseInt(format(new Date(), 'yyyy'))+2).toString()} onIonChange={e => setSelectedDate(format(new Date(`${e.detail.value}`),'yyyy-MM-dd')+"T23:59:00"+UTC)} showDefaultTitle={false}>
+              <IonDatetime color={accent} size="cover" presentation="date" value={selectedDate} min={`${format(new Date(), 'yyyy-MM-dd')}T23:59:00+08:00`} max={(parseInt(format(new Date(), 'yyyy'))+2).toString()} onIonChange={e => setSelectedDate(format(new Date(`${e.detail.value}`),'yyyy-MM-dd')+"T23:59:00"+UTC)} showDefaultTitle={false}>
                 <span slot="title">{t("select")+t("between_words")+t("event")+t("between_words")+t("date")}</span>
               </IonDatetime>
             </IonCol>
@@ -112,7 +112,7 @@ const Add: React.FC = () => {
           </IonRow>
           <IonRow>
             <IonCol>
-              <IonButton disabled={titleText === ""} expand="full" onClick={() => {add_new_countdate_item({event_name: titleText,date:selectedDate});}}>{capitalize(t("add"))}</IonButton>
+              <IonButton color={accent} disabled={titleText === ""} expand="full" onClick={() => {add_new_countdate_item({event_name: titleText,date:selectedDate});}}>{capitalize(t("add"))}</IonButton>
             </IonCol>
           </IonRow>
         </IonGrid>
