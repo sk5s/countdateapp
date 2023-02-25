@@ -82,8 +82,8 @@
 
 <!--[![Product Name Screen Shot]](https://sk5s.cyou/)-->
 
-<a href='https://play.google.com/store/apps/details?id=cyou.sk5s.app.countdate&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png' width="150px"/></a>
-<a href='https://apt.izzysoft.de/fdroid/index/apk/cyou.sk5s.app.countdate'><img alt='Get it on Google Play' src='https://sk5s.cyou/countdate-landing/assets/img/IzzyOnDroid.png' width="150px"/></a>
+<a target="_blank" href='https://play.google.com/store/apps/details?id=cyou.sk5s.app.countdate&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png' width="150px"/></a>
+<a target="_blank" href='https://apt.izzysoft.de/fdroid/index/apk/cyou.sk5s.app.countdate'><img alt='Get it on Google Play' src='https://sk5s.cyou/countdate-landing/assets/img/IzzyOnDroid.png' width="150px"/></a>
 
 Date Countdown: Know How Many Days Left To a Specific Date.
 
