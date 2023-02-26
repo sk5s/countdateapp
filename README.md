@@ -82,8 +82,8 @@
 
 <!--[![Product Name Screen Shot]](https://sk5s.cyou/)-->
 
-<a href='https://play.google.com/store/apps/details?id=cyou.sk5s.app.countdate&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png' width="150px"/></a>
-<a href='https://apt.izzysoft.de/fdroid/index/apk/cyou.sk5s.app.countdate'><img alt='Get it on Google Play' src='https://sk5s.cyou/countdate-landing/assets/img/IzzyOnDroid.png' width="150px"/></a>
+<a target="_blank" href='https://play.google.com/store/apps/details?id=cyou.sk5s.app.countdate&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png' width="150px"/></a>
+<a target="_blank" href='https://apt.izzysoft.de/fdroid/index/apk/cyou.sk5s.app.countdate'><img alt='Get it on Google Play' src='https://sk5s.cyou/countdate-landing/assets/img/IzzyOnDroid.png' width="150px"/></a>
 
 Date Countdown: Know How Many Days Left To a Specific Date.
 
@@ -100,9 +100,10 @@ As always, this app is free to download and use!
 Since this app is MIT licensed, you can modified it!
 
 
-|![](https://raw.githubusercontent.com/sk5s/countdateapp/main/fastlane/metadata/android/en-US/images/phoneScreenshots/1.jpg)|![](https://raw.githubusercontent.com/sk5s/countdateapp/main/fastlane/metadata/android/en-US/images/phoneScreenshots/2.jpg)|![](https://raw.githubusercontent.com/sk5s/countdateapp/main/fastlane/metadata/android/en-US/images/phoneScreenshots/3.jpg)|
-| ----------- | ----------- | ----------- |
-|![](https://raw.githubusercontent.com/sk5s/countdateapp/main/fastlane/metadata/android/en-US/images/phoneScreenshots/4.jpg)|![](https://raw.githubusercontent.com/sk5s/countdateapp/main/fastlane/metadata/android/en-US/images/phoneScreenshots/5.jpg)|![](https://raw.githubusercontent.com/sk5s/countdateapp/main/fastlane/metadata/android/en-US/images/phoneScreenshots/6.jpg)|
+|![](https://raw.githubusercontent.com/sk5s/countdateapp/main/fastlane/metadata/android/en-US/images/phoneScreenshots/1.jpg)|![](https://raw.githubusercontent.com/sk5s/countdateapp/main/fastlane/metadata/android/en-US/images/phoneScreenshots/2.jpg)|
+| ----------- | ----------- |
+|![](https://raw.githubusercontent.com/sk5s/countdateapp/main/fastlane/metadata/android/en-US/images/phoneScreenshots/3.jpg)|![](https://raw.githubusercontent.com/sk5s/countdateapp/main/fastlane/metadata/android/en-US/images/phoneScreenshots/4.jpg)|
+|![](https://raw.githubusercontent.com/sk5s/countdateapp/main/fastlane/metadata/android/en-US/images/phoneScreenshots/5.jpg)|![](https://raw.githubusercontent.com/sk5s/countdateapp/main/fastlane/metadata/android/en-US/images/phoneScreenshots/6.jpg)|
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -141,11 +142,12 @@ click add button to add a countdate
 ## Roadmap
 
 - [ ] Instruction
-- [ ] New splash screen api
+- [x] New splash screen api
 - [ ] Sync
 - [ ] Local notification
-- [ ] Count week
-- [ ] Minus weekend
+- [x] Count week
+- [ ] Count weekday
+- [ ] Custom accent color (color picker)
 
 See the [open issues](https://github.com/sk5s/countdateapp/issues) for a full list of proposed features (and known issues).
 
