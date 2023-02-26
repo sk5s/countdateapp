@@ -16,6 +16,7 @@ import {
   IonItem,
   IonAccordionGroup,
   IonAccordion,
+  useIonToast,
 } from "@ionic/react";
 import { Preferences as Storage } from "@capacitor/preferences";
 import { useState } from "react";
@@ -28,12 +29,14 @@ import { useTranslation } from "react-i18next";
 
 import { capitalize } from "../lib/Capitalize";
 import key from '../lib/storageKey.json'
+import { add } from "ionicons/icons";
 
 const Add: React.FC<{accent:string}> = ({accent}) => {
   const { t, i18n } = useTranslation()
   const [UTC,setUTC] = useState('+08:00')
   const [selectedDate, setSelectedDate] = useState(format(new Date(), 'yyyy-MM-dd')+'T23:59:00'+UTC);
   const [titleText, setTitleText] = useState<string>("");
+  const [presentToast] = useIonToast();
   const history = useHistory()
   let countdate_events_data = []
   const add_new_countdate_item = async (newItem:{event_name:any,date:string}) => {
@@ -51,6 +54,13 @@ const Add: React.FC<{accent:string}> = ({accent}) => {
     await Storage.set({
       key: key.data,
       value: content
+    });
+    presentToast({
+      message: capitalize(t("added"))+t("exclamation_mark"),
+      duration: 1500,
+      position: "bottom",
+      icon: add,
+      color: accent
     });
     trigger("countdate_data:change")
   };
@@ -71,9 +81,9 @@ const Add: React.FC<{accent:string}> = ({accent}) => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <IonHeader collapse="condense" style={{marginTop:"10px"}}>
+        <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">{capitalize(t("add"))} Countdate</IonTitle>
+            <IonTitle>{capitalize(t("add"))} Countdate</IonTitle>
           </IonToolbar>
         </IonHeader>
         <IonGrid>
@@ -81,19 +91,19 @@ const Add: React.FC<{accent:string}> = ({accent}) => {
             <IonCol>
               <IonItem className="ion-no-padding">
                 <IonLabel position="stacked">{capitalize(t("event"))}{t("between_words")}{t("name")}</IonLabel>
-                <IonInput onKeyDown={e=> SearchF(e.key)} clearInput={true} value={titleText} placeholder={capitalize(t("input"))+t("between_words")+t("event")+t("between_words")+t("name")} onIonChange={e => setTitleText(e.detail.value!)}></IonInput>
+                <IonInput id="event-title" onKeyDown={e=> SearchF(e.key)} clearInput={true} value={titleText} placeholder={capitalize(t("input"))+t("between_words")+t("event")+t("between_words")+t("name")} onIonChange={e => setTitleText(e.detail.value!)}></IonInput>
               </IonItem>
             </IonCol>
           </IonRow>
           <IonRow>
             <IonCol>
               {/* <IonLabel position="stacked"></IonLabel> */}
-              <IonDatetime color={accent} size="cover" presentation="date" value={selectedDate} min={`${format(new Date(), 'yyyy-MM-dd')}T23:59:00+08:00`} max={(parseInt(format(new Date(), 'yyyy'))+2).toString()} onIonChange={e => setSelectedDate(format(new Date(`${e.detail.value}`),'yyyy-MM-dd')+"T23:59:00"+UTC)} showDefaultTitle={false}>
-                <span slot="title">{t("select")+t("between_words")+t("event")+t("between_words")+t("date")}</span>
+              <IonDatetime mode="md" color={accent} size="cover" presentation="date" value={selectedDate} min={`${format(new Date(), 'yyyy-MM-dd')}T23:59:00+08:00`} max={(parseInt(format(new Date(), 'yyyy'))+2).toString()} onIonChange={e => setSelectedDate(format(new Date(`${e.detail.value}`),'yyyy-MM-dd')+"T23:59:00"+UTC)} showDefaultTitle={false}>
+                {/* <span slot="title">{t("select")+t("between_words")+t("event")+t("between_words")+t("date")}</span> */}
               </IonDatetime>
             </IonCol>
           </IonRow>
-          <IonRow>
+          {/* <IonRow>
             <IonCol>
               <IonAccordionGroup>
                 <IonAccordion value="first">
@@ -109,10 +119,10 @@ const Add: React.FC<{accent:string}> = ({accent}) => {
                 </IonAccordion>
               </IonAccordionGroup>
             </IonCol>
-          </IonRow>
+          </IonRow> */}
           <IonRow>
             <IonCol>
-              <IonButton color={accent} disabled={titleText === ""} expand="full" onClick={() => {add_new_countdate_item({event_name: titleText,date:selectedDate});}}>{capitalize(t("add"))}</IonButton>
+              <IonButton shape="round" color={accent} disabled={titleText === ""} expand="full" onClick={() => {add_new_countdate_item({event_name: titleText,date:selectedDate});}}>{capitalize(t("add"))}</IonButton>
             </IonCol>
           </IonRow>
         </IonGrid>

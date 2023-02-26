@@ -17,7 +17,7 @@ import {
   IonRouterLink
 } from "@ionic/react";
 import LanguageSelectAction from "../components/LanguageSelectAction";
-import { code, contrast, information, logoAndroid, notifications } from 'ionicons/icons'
+import { code, contrast, help, information, logoAndroid, notifications } from 'ionicons/icons'
 import { useTranslation } from "react-i18next";
 import { Schedule } from "../lib/LocalNotification";
 import { set_dark_mode_toggle_to } from '../lib/Darkmode'
@@ -26,13 +26,16 @@ import key from '../lib/storageKey.json'
 import { useEffect, useState } from "react";
 import { on, trigger } from "../lib/Events";
 import { capitalize } from "../lib/Capitalize";
-import show from "../lib/Toast";
-import AccentColorSelectAction from "../components/AccentColorSelectAction";
+import AccentColorSelectModal from '../components/AccentColorSelectModal'
+import TextColorSelectModal from '../components/TextColorSelectModal'
+import './Settings.css'
+import { useHistory } from "react-router";
 
 const Settings: React.FC<{accent:string}> = ({accent}) => {
   const { t, i18n } = useTranslation()
   const [darkChecked, setDarkChecked] = useState<boolean>()
   const [devChecked, setDevChecked] = useState<boolean>(false)
+  const history = useHistory()
 
   const getDevMode = async () => {
     const { value } = await Storage.get({ key: key.dev });
@@ -87,6 +90,16 @@ const Settings: React.FC<{accent:string}> = ({accent}) => {
       value: ""
     })
   }
+
+  const handleReviewTour = async () => {
+    await Storage.remove({
+      key: key.firstTime
+    })
+    history.push("/home")
+    setTimeout(() => {
+      trigger("countdate_first:change")
+    }, 500);
+  }
   
   on("countdate_darkmode:toggle", async () => {
     setDarkChecked(set_dark_mode_toggle_to())
@@ -105,9 +118,9 @@ const Settings: React.FC<{accent:string}> = ({accent}) => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <IonHeader collapse="condense" style={{marginTop:"10px"}}>
+        <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">{capitalize(t("settings"))}</IonTitle>
+            <IonTitle>{capitalize(t("settings"))}</IonTitle>
           </IonToolbar>
         </IonHeader>
         <IonList>
@@ -116,9 +129,6 @@ const Settings: React.FC<{accent:string}> = ({accent}) => {
           </IonListHeader>
           <IonItem>
             <LanguageSelectAction />
-          </IonItem>
-          <IonItem>
-            <AccentColorSelectAction />
           </IonItem>
           <IonItem>
             <IonLabel onClick={toggleDevModeHandler}><IonIcon icon={code} /> {capitalize(t("toggle"))+t("between_words")+t("dev_mode")}</IonLabel>
@@ -133,12 +143,15 @@ const Settings: React.FC<{accent:string}> = ({accent}) => {
            : ''
           }
           <IonItem>
+            <IonLabel onClick={handleReviewTour}><IonIcon icon={help} /> {t("review_tour")}</IonLabel>
+          </IonItem>
+          <IonItem>
             <IonRouterLink routerLink="/about">
               <IonLabel color="dark"><IonIcon icon={information} /> {capitalize(t("about"))} Countdate</IonLabel>
             </IonRouterLink>
           </IonItem>
           <IonListHeader lines="none" color={accent}>
-            <IonLabel>{capitalize(t("dark_mode"))}</IonLabel>
+            <IonLabel>{capitalize(t("theme"))}</IonLabel>
           </IonListHeader>
           <IonItem>
             <IonLabel onClick={toggleDarkModeHandler}><IonIcon icon={contrast} /> {capitalize(t("toggle"))+t("between_words")+t("dark_mode")}</IonLabel>
@@ -146,6 +159,12 @@ const Settings: React.FC<{accent:string}> = ({accent}) => {
           </IonItem>
           <IonItem>
             <IonLabel onClick={darkmodeToSystem}><IonIcon icon={logoAndroid} /> {capitalize(t("follow"))+t("between_words")+t("system")+t("between_words")+t("dark_mode")}</IonLabel>
+          </IonItem>
+          <IonItem>
+            <AccentColorSelectModal />
+          </IonItem>
+          <IonItem>
+            <TextColorSelectModal accent={accent} />
           </IonItem>
         </IonList>
       </IonContent>

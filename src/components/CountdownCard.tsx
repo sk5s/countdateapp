@@ -23,6 +23,7 @@ export default function CountdownCard(props: {
   id: string;
   view: string;
   accent: string;
+  textColor: string;
 }): JSX.Element {
   const [t] = useTranslation()
   const Completionist = () => <span>{t("between_words") + t("day_has_come")}</span>;
@@ -83,7 +84,7 @@ export default function CountdownCard(props: {
         )}
       </IonItem>
       <IonCardContent>
-        <IonCardTitle style={{fontSize: "3rem"}} color={props.accent}>
+        <IonCardTitle style={{fontSize: "3rem", color: props.textColor}} color={props.accent}>
           <Countdown date={props.date} renderer={renderer} />
         </IonCardTitle>
       </IonCardContent>

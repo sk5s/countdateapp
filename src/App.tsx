@@ -10,6 +10,7 @@ import Edit from './pages/Edit';
 import About from './pages/About';
 
 import './lib/Darkmode'
+import AppTour from './components/AppTour';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -33,6 +34,7 @@ import { Preferences } from '@capacitor/preferences';
 import key from "./lib/storageKey.json"
 import { useState } from 'react';
 import { on } from './lib/Events';
+import { useTranslation } from 'react-i18next';
 
 setupIonicReact({
   mode: 'ios',
@@ -47,23 +49,67 @@ const App: React.FC = () => {
       NativeApp.exitApp()
     }
   })
+  const {t,i18n} = useTranslation()
   const [accentColor, setAccentColor] = useState<string>("primary")
+  const [textColor, setTextColor] = useState<string>("")
+  const [firstTime, setFirstTime] = useState<boolean>(false)
   const getAccentColor = async () => {
     const { value } = await Preferences.get({ key: key.accent });
     if (value != null) {
       setAccentColor(value)
     }
   }
+  const getTextColor = async () => {
+    const { value } = await Preferences.get({ key: key.textColor });
+    if (value != null) {
+      setTextColor(value)
+    } else {
+      setTextColor("")
+    }
+  }
+  let count = 0
+  const getFirstTime = async () => {
+    if (count < 1) {
+      const { value } = await Preferences.get({ key: key.firstTime });
+      if (value == null) {
+        console.log("start first time tour");
+        setFirstTime(true)
+        await Preferences.set({
+          key: key.firstTime,
+          value: "false",
+        });
+        count += 1
+      }
+    }
+  }
   getAccentColor()
+  getTextColor()
+  getFirstTime()
   on("countdate_accent:change", () => {
     getAccentColor()
   })
+  on("countdate_text:change", () => {
+    getTextColor()
+  })
+  on("countdate_first:change", () => {
+    getFirstTime()
+  })
+
+  const tourOptions = {
+    defaultStepOptions: {
+      cancelIcon: {
+        enabled: true
+      }
+    },
+    useModalOverlay: true
+  };
   return (
   <IonApp>
     <IonReactRouter>
       <IonRouterOutlet>
         <Route exact path="/home">
-          <Home accent={accentColor} />
+          <Home accent={accentColor} textColor={textColor} />
+          {firstTime ? <AppTour /> : <></>}
         </Route>
         <Route exact path="/add">
           <Add accent={accentColor} />
@@ -72,7 +118,7 @@ const App: React.FC = () => {
           <Settings accent={accentColor} />
         </Route>
         <Route exact path="/edit">
-          <Edit accent={accentColor} />
+          <Edit accent={accentColor} textColor={textColor} />
         </Route>
         <Route exact path="/about">
           <About accent={accentColor} />

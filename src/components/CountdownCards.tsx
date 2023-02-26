@@ -2,23 +2,23 @@ import { useState, useEffect } from "react";
 import CountdownCard from "./CountdownCard";
 import TitleCard from "./TitleCard";
 import { Preferences as Storage } from "@capacitor/preferences";
-import { IonIcon, isPlatform, useIonAlert, IonButton, IonModal, IonContent, useIonLoading, IonGrid, IonRow, IonCol, IonTextarea, IonLabel } from "@ionic/react";
+import { IonIcon, isPlatform, useIonAlert, IonButton, IonModal, IonContent, useIonLoading, IonGrid, IonRow, IonCol, IonTextarea, IonLabel, useIonToast } from "@ionic/react";
 import { settings, create, information, add } from 'ionicons/icons'
 import { useHistory } from "react-router";
 import { on } from '../lib/Events'
 import { useTranslation } from "react-i18next";
 import { Device } from '@capacitor/device';
 import { copy } from '../lib/Clipboard'
-import Toast from "../lib/Toast";
 import key from '../lib/storageKey.json'
 
 import { capitalize } from "../lib/Capitalize";
 
-export default function CountdownCards({view,accent}:{view:string;accent:string;}): JSX.Element {
+export default function CountdownCards({view,accent,textColor}:{view:string;accent:string;textColor:string;}): JSX.Element {
   const history = useHistory()
   const { t, i18n } = useTranslation()
   const [languageCode, setLanguageCode] = useState("")
   const [presentAlert] = useIonAlert();
+  const [presentToast] = useIonToast();
   let countdate_events_data: {
     id: string;
     event_name: string;
@@ -92,6 +92,7 @@ export default function CountdownCards({view,accent}:{view:string;accent:string;
                 editable={editable}
                 view={view}
                 accent={accent}
+                textColor={textColor}
               />
             );
           });
@@ -183,8 +184,12 @@ export default function CountdownCards({view,accent}:{view:string;accent:string;
         </IonButton>
         {(isPlatform("android") && isPlatform("hybrid")) || (isPlatform("ios") && isPlatform("hybrid")) ? 
         <IonButton onClick={() => {
-          copy(popover_content)
-            Toast(capitalize(t("copied"))+t("exclamation_mark"))
+            copy(popover_content)
+            presentToast({
+              message: capitalize(t("copied"))+t("exclamation_mark"),
+              duration: 1500,
+              position: "bottom"
+            });
           }}
         >
           {t("copy_data_label")}

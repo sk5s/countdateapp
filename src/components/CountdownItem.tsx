@@ -11,7 +11,8 @@ import {
   IonPopover,
   IonContent,
   IonChip,
-  IonText
+  IonText,
+  useIonToast
 } from "@ionic/react";
 import { Preferences } from "@capacitor/preferences";
 
@@ -30,9 +31,11 @@ export default function CountdateItem(props: {
   editable: boolean;
   id: string;
   accent: string;
+  textColor: string;
 }): JSX.Element {
   const [t] = useTranslation()
   const [presentAlert] = useIonAlert();
+  const [presentToast] = useIonToast();
   const [modalIsOpen,setModalIsOpen] = useState(false)
   let countdate_events_data = [];
   const handleDelete = () => {
@@ -66,6 +69,12 @@ export default function CountdateItem(props: {
         value: content,
       });
       trigger("countdate_data:change");
+      presentToast({
+        message: capitalize(t("deleted"))+t("exclamation_mark"),
+        duration: 1500,
+        position: "bottom",
+        color: props.accent
+      });
     }
   };
   const edit_this_countdate_item_name_handler = () => {
@@ -118,23 +127,22 @@ export default function CountdateItem(props: {
   return (
     <IonItem>
       <IonLabel>
-        <IonText color={props.accent}>
-          <h1 onClick={edit_this_countdate_item_name_handler}>{props.event}</h1>
+        <IonText color={props.accent} style={{color:props.textColor}}>
+          <h1 style={{cursor: "pointer"}} onClick={edit_this_countdate_item_name_handler}>{props.event}</h1>
         </IonText>
         <IonChip color={props.accent} onClick={() => setModalIsOpen(!modalIsOpen)}>{format(new Date(props.date), 'yyyy / MM / dd')}</IonChip>
       </IonLabel>
-      {props.editable && (
-        <IonIcon
-          slot="end"
-          icon={trash}
-          onClick={handleDelete}
-        />
-      )}
+      <IonIcon
+        slot="end"
+        icon={trash}
+        onClick={handleDelete}
+        style={{cursor: "pointer"}}
+      />
       <IonReorder slot="end">
         <IonIcon icon={reorderThree}></IonIcon>
       </IonReorder>
       <IonPopover isOpen={modalIsOpen} size="cover" keepContentsMounted={false}>
-        <IonDatetime color={props.accent} presentation="date" showDefaultButtons={true} min={`${format(new Date(), 'yyyy-MM-dd')}T23:59:00+08:00`} max={(parseInt(format(new Date(), 'yyyy'))+2).toString()} onIonChange={e => edit_this_countdate_item_date(format(new Date(`${e.detail.value}`),'yyyy-MM-dd'))} value={props.date} id="datetime"></IonDatetime>
+        <IonDatetime mode="md" color={props.accent} presentation="date" showDefaultButtons={true} min={`${format(new Date(), 'yyyy-MM-dd')}T23:59:00+08:00`} max={(parseInt(format(new Date(), 'yyyy'))+2).toString()} onIonChange={e => edit_this_countdate_item_date(format(new Date(`${e.detail.value}`),'yyyy-MM-dd'))} value={props.date} id="datetime"></IonDatetime>
       </IonPopover>
     </IonItem>
   );

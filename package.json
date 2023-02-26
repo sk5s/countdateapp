@@ -1,6 +1,6 @@
 {
   "name": "countdateapp",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "private": true,
   "dependencies": {
     "@capacitor/android": "4.6.3",
@@ -28,6 +28,7 @@
     "i18next-browser-languagedetector": "6.1.8",
     "ionicons": "^5.4.0",
     "react": "^18.2.0",
+    "react-color": "^2.19.3",
     "react-countdown": "2.3.5",
     "react-dom": "^18.2.0",
     "react-i18next": "11.18.6",
@@ -35,6 +36,7 @@
     "react-router-dom": "5.3.4",
     "react-scripts": "5.0.1",
     "react-transition-group": "4.4.5",
+    "swiper": "^9.0.5",
     "typescript": "4.9.5",
     "uuidv4": "^6.2.13",
     "web-vitals": "^0.2.4",
@@ -56,6 +58,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --transformIgnorePatterns 'node_modules/(?!(@ionic/react|@ionic/react-router|@ionic/core|@stencil/core|ionicons)/)'",
     "eject": "react-scripts eject",
+    "build and surge": "react-scripts build && surge build --domain https://countdate.surge.sh",
     "surge": "surge build --domain https://countdate.surge.sh",
     "depcheck": "npx depcheck",
     "update": "npm install @ionic/react@6 @ionic/react-router@6"
@@ -81,6 +84,7 @@
   "devDependencies": {
     "@capacitor/cli": "4.6.3",
     "@ionic/cli": "6.20.8",
+    "@types/react-color": "^3.0.6",
     "@types/react-dom": "^18.0.11",
     "cordova-res": "0.15.4"
   },

@@ -27,19 +27,14 @@ import key from '../lib/storageKey.json'
 import CountdateItem from "../components/CountdownItem";
 import { on, trigger } from "../lib/Events";
 
-const Edit: React.FC<{accent:string}> = ({accent}) => {
+const Edit: React.FC<{accent:string,textColor:string}> = ({accent,textColor}) => {
   let countdate_events_data: {
     id: string;
     event_name: string;
     date: string;
   }[] = [];
   const { t, i18n } = useTranslation()
-  const [editable, setEditable] = useState<boolean>(true)
-  const [reorderIsDisabled, setReorderIsDisabled] = useState(false)
 
-  function toggleReorder() {
-    setReorderIsDisabled(current => !current);
-  }
   function swapElement(from:any, to:any) {
     let copyarr = [...countdate_events_data_list]
     copyarr.splice(to, 0, copyarr.splice(from, 1)[0])
@@ -90,9 +85,9 @@ const Edit: React.FC<{accent:string}> = ({accent}) => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <IonHeader collapse="condense" style={{marginTop:"10px"}}>
+        <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">{capitalize(t("edit"))}</IonTitle>
+            <IonTitle>{capitalize(t("edit"))}</IonTitle>
           </IonToolbar>
         </IonHeader>
 
@@ -100,7 +95,7 @@ const Edit: React.FC<{accent:string}> = ({accent}) => {
       
         <IonList inset={true}>
           {/* The reorder gesture is disabled by default, enable it to drag and drop items */}
-          <IonReorderGroup disabled={reorderIsDisabled} onIonItemReorder={handleReorder}>
+          <IonReorderGroup disabled={false} onIonItemReorder={handleReorder}>
           {(() => {
             let row = [];
             if (countdate_events_data_list.length) {
@@ -111,14 +106,15 @@ const Edit: React.FC<{accent:string}> = ({accent}) => {
                     id={event.id}
                     event={event.event_name}
                     date={event.date}
-                    editable={editable}
+                    editable={true}
                     accent={accent}
+                    textColor={textColor}
                   />
                 );
               });
             } else {
               row.push(
-                <IonItem>
+                <IonItem key="nodata">
                   {t("no_data")}
                 </IonItem>
               );
