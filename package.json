@@ -58,7 +58,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test --transformIgnorePatterns 'node_modules/(?!(@ionic/react|@ionic/react-router|@ionic/core|@stencil/core|ionicons)/)'",
     "eject": "react-scripts eject",
-    "build and surge": "react-scripts build && surge build --domain https://countdate.surge.sh",
     "surge": "surge build --domain https://countdate.surge.sh",
     "depcheck": "npx depcheck",
     "update": "npm install @ionic/react@6 @ionic/react-router@6"
