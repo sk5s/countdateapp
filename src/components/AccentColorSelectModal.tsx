@@ -59,7 +59,7 @@ export default function AccentColorSelectModal() {
   };
 
   return (
-    <div>
+    <>
       <IonLabel onClick={openPicker}>
         <IonIcon icon={colorPalette} /> {t("change_accent_color")}
       </IonLabel>
@@ -107,6 +107,6 @@ export default function AccentColorSelectModal() {
           </IonList>
         </IonContent>
       </IonModal>
-    </div>
+    </>
   );
 }

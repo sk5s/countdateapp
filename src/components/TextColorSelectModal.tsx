@@ -51,7 +51,7 @@ export default function TextColorSelectModal({accent}:{accent:string}){
   }
 
   return (
-    <div>
+    <>
       <IonLabel onClick={openPicker}>
         <IonIcon icon={text} /> {t("change_text_color")}
       </IonLabel>
@@ -80,6 +80,6 @@ export default function TextColorSelectModal({accent}:{accent:string}){
           </div>
         </IonContent>
       </IonModal>
-    </div>
+    </>
   );
 }
