@@ -89,7 +89,7 @@ const Home: React.FC<{accent:string,textColor:string}> = ({accent,textColor}) =>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <IonHeader collapse="condense">
+        <IonHeader>
           <IonToolbar>
             <IonTitle>Countdate</IonTitle>
           </IonToolbar>

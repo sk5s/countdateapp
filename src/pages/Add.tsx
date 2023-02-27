@@ -55,13 +55,13 @@ const Add: React.FC<{accent:string}> = ({accent}) => {
       key: key.data,
       value: content
     });
-    // presentToast({
-    //   message: capitalize(t("added"))+t("exclamation_mark"),
-    //   duration: 1500,
-    //   position: "bottom",
-    //   icon: add,
-    //   color: accent
-    // });
+    presentToast({
+      message: capitalize(t("added"))+t("exclamation_mark"),
+      duration: 1500,
+      position: "bottom",
+      icon: add,
+      color: accent
+    });
     trigger("countdate_data:change")
   };
   const SearchF= (value:any) =>{
