@@ -148,7 +148,7 @@ click add button to add a countdate
 - [ ] Local notification
 - [x] Count week
 - [ ] Count weekday
-- [ ] Custom accent color (color picker)
+- [x] Custom accent color (color picker)
 
 See the [open issues](https://github.com/sk5s/countdateapp/issues) for a full list of proposed features (and known issues).
 
