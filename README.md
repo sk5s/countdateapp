@@ -99,6 +99,7 @@ As always, this app is free to download and use!
 **Open Source**
 Since this app is MIT licensed, you can modified it!
 
+> Countdate is an open source Android app that helps you keep track of important dates. With Countdate, you can enter a date and the app will tell you exactly how many days are left until that date. It's a great tool for counting down to special occasions, deadlines, or anything else you need to remember. Countdate is easy to use and can be customized to meet your needs, making it a great choice for anyone who wants to keep track of upcoming events.
 
 |![](https://raw.githubusercontent.com/sk5s/countdateapp/main/fastlane/metadata/android/en-US/images/phoneScreenshots/1.jpg)|![](https://raw.githubusercontent.com/sk5s/countdateapp/main/fastlane/metadata/android/en-US/images/phoneScreenshots/2.jpg)|
 | ----------- | ----------- |
@@ -147,7 +148,8 @@ click add button to add a countdate
 - [ ] Local notification
 - [x] Count week
 - [ ] Count weekday
-- [ ] Custom accent color (color picker)
+- [x] Custom accent color (color picker)
+- [ ] Qrcode share event
 
 See the [open issues](https://github.com/sk5s/countdateapp/issues) for a full list of proposed features (and known issues).
 
