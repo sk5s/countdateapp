@@ -6,6 +6,7 @@ export const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').mat
 console.log(prefersDark)
 
 get_user_theme_preference()
+trigger("countdate_darkmode:toggle")
 let darkmodeEnable
 function dark_enable(value){
   if (value == "dark"){
@@ -19,9 +20,9 @@ function dark_enable(value){
   } else {
     darkmodeEnable = prefersDark
   }
-  trigger("countdate_darkmode:toggle")
 }
 export function set_dark_mode_toggle_to(){
+  get_user_theme_preference()
   return darkmodeEnable
 }
 

@@ -109,7 +109,7 @@ const App: React.FC = () => {
       <IonRouterOutlet>
         <Route exact path="/home">
           <Home accent={accentColor} textColor={textColor} />
-          {firstTime ? <AppTour /> : <></>}
+          <AppTour modal={firstTime} setModal={setFirstTime} />
         </Route>
         <Route exact path="/add">
           <Add accent={accentColor} />

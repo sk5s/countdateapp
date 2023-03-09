@@ -5,16 +5,20 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
-import { IonButton, IonButtons, IonContent, IonHeader, IonModal, IonTitle, IonToolbar } from '@ionic/react';
-import { useState } from 'react';
+import { IonButton, IonButtons, IonChip, IonContent, IonHeader, IonIcon, IonImg, IonLabel, IonModal, IonText, IonTitle, IonToolbar } from '@ionic/react';
+import { useTranslation } from 'react-i18next';
+import { informationCircle } from 'ionicons/icons';
 
-export default function AppTour() {
-  const [modal,setModal] = useState(true)
+export default function AppTour({modal, setModal}:{modal:boolean;setModal: any}) {
+  const {t} = useTranslation()
+  const imgPath = (num:number) => {
+    return "assets/tour/"+(num+1).toString()+".jpg"
+  }
   return (
     <IonModal isOpen={modal}>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Countdate</IonTitle>
+          <IonTitle>Countdate tour</IonTitle>
           <IonButtons slot="end">
             <IonButton onClick={() => setModal(false)}>Close</IonButton>
           </IonButtons>
@@ -29,28 +33,30 @@ export default function AppTour() {
           navigation
           pagination={{ clickable: true }}
           // scrollbar={{ draggable: false }}
-          onSwiper={(swiper) => console.log(swiper)}
-          style={{maxWidth: "400px"}}
+          // onSwiper={(swiper) => console.log(swiper)}
+          // style={{maxWidth: "400px"}}
         >
-          <SwiperSlide>
-            <img src="https://raw.githubusercontent.com/sk5s/countdateapp/main/fastlane/metadata/android/en-US/images/phoneScreenshots/1.jpg" alt=""/>
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="https://raw.githubusercontent.com/sk5s/countdateapp/main/fastlane/metadata/android/en-US/images/phoneScreenshots/2.jpg" alt=""/>
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="https://raw.githubusercontent.com/sk5s/countdateapp/main/fastlane/metadata/android/en-US/images/phoneScreenshots/3.jpg" alt=""/>
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="https://raw.githubusercontent.com/sk5s/countdateapp/main/fastlane/metadata/android/en-US/images/phoneScreenshots/4.jpg" alt=""/>
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="https://raw.githubusercontent.com/sk5s/countdateapp/main/fastlane/metadata/android/en-US/images/phoneScreenshots/5.jpg" alt=""/>
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="https://raw.githubusercontent.com/sk5s/countdateapp/main/fastlane/metadata/android/en-US/images/phoneScreenshots/6.jpg" alt=""/>
-          </SwiperSlide>
+          {
+            (() => {
+              let rows = []
+              for (let i = 0; i < 8; i++) {
+                rows.push(
+                  <SwiperSlide key={i}>
+                    <IonText color="dark">
+                      <h1 style={{marginLeft: "10px"}}>{t("tour_step_"+(i+1).toString())}</h1>
+                    </IonText>
+                    <IonImg src={imgPath(i)}></IonImg>
+                  </SwiperSlide>
+                )
+              }
+              return rows
+            })()
+          }
         </Swiper>
+        <IonChip style={{marginLeft: "10px"}}>
+          <IonIcon icon={informationCircle} color="dark"></IonIcon>
+          <IonLabel>{t("tour_can_review")}</IonLabel>
+        </IonChip>
       </IonContent>
     </IonModal>
   );

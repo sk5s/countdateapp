@@ -20,7 +20,7 @@ import LanguageSelectAction from "../components/LanguageSelectAction";
 import { code, contrast, help, information, logoAndroid, notifications } from 'ionicons/icons'
 import { useTranslation } from "react-i18next";
 import { Schedule } from "../lib/LocalNotification";
-import { set_dark_mode_toggle_to } from '../lib/Darkmode'
+// import { set_dark_mode_toggle_to } from '../lib/Darkmode'
 import { Preferences as Storage } from "@capacitor/preferences";
 import key from '../lib/storageKey.json'
 import { useEffect, useState } from "react";
@@ -61,22 +61,44 @@ const Settings: React.FC<{accent:string}> = ({accent}) => {
       id: 1
     })
   }
+  const darkEnable = (value:any) => {
+    let darkmodeEnable
+    let prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (value == "dark"){
+      darkmodeEnable = true
+      document.body.classList.add('dark')
+    } else if (value == "light") {
+      darkmodeEnable = false
+    } else if (prefersDark) {
+      darkmodeEnable = prefersDark
+      document.body.classList.add('dark')
+    } else {
+      darkmodeEnable = prefersDark
+    }
+    return darkmodeEnable
+  }
+  const getDarkMode = async () => {
+    const { value } = await Storage.get({ key: key.theme });
+    console.log(darkEnable(value))
+    setDarkChecked(darkEnable(value))
+  }
+  getDarkMode()
   const toggleDarkModeHandler = async () => {
-    document.body.classList.toggle('dark')
-    setDarkChecked(!darkChecked)
-    console.log(set_dark_mode_toggle_to())
+    console.log(!darkChecked)
     if (darkChecked){
       await Storage.set({
         key: key.theme,
         value: "light"
       })
+      document.body.classList.remove('dark')
     } else {
       await Storage.set({
         key: key.theme,
         value: "dark"
       })
+      document.body.classList.add('dark')
     }
-    
+    setDarkChecked(!darkChecked)
   }
   const darkmodeToSystem = async () => {
     setDarkChecked(window.matchMedia('(prefers-color-scheme: dark)').matches)
@@ -101,12 +123,12 @@ const Settings: React.FC<{accent:string}> = ({accent}) => {
     }, 500);
   }
   
-  on("countdate_darkmode:toggle", async () => {
-    setDarkChecked(set_dark_mode_toggle_to())
-  })
-  useEffect(() => {
-    setDarkChecked(set_dark_mode_toggle_to())
-  }, [])
+  // on("countdate_darkmode:toggle", async () => {
+  //   setDarkChecked(set_dark_mode_toggle_to())
+  // })
+  // useEffect(() => {
+  //   setDarkChecked(set_dark_mode_toggle_to())
+  // }, [])
   return (
     <IonPage>
       <IonHeader>

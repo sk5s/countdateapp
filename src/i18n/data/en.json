@@ -21,6 +21,13 @@
   "question_mark": "?",
   "review_tour": "Review tour",
   "weeks_view": "Weeks",
-  "tour_step_1": "Add a new Countdate",
-  "tour_step_2": "Input event number"
+  "tour_step_1": "How to add new event: Add a new Countdate",
+  "tour_step_2": "Input event name",
+  "tour_step_3": "Choose event date",
+  "tour_step_4": "Click Add",
+  "tour_step_5": "How to edit events: Click on edit button",
+  "tour_step_6": "Click on title or date to edit",
+  "tour_step_7": "Click on this button to delete event",
+  "tour_step_8": "Press this button and drag the event to reorder",
+  "tour_can_review": "You can go to the settings page to review tour"
 }

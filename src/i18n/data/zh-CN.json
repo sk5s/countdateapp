@@ -49,6 +49,13 @@
   "toggle": "切换",
   "weeks": "周",
   "weeks_view": "剩几周",
-  "tour_step_1": "新增一个 Countdate",
-  "tour_step_2": "输入事件名称"
+  "tour_step_1": "如何新增一个事件：新增一个 Countdate",
+  "tour_step_2": "输入事件名称",
+  "tour_step_3": "点选事件日期",
+  "tour_step_4": "点击新增",
+  "tour_step_5": "如何编辑事件：点击编辑按钮",
+  "tour_step_6": "点击标题或日期来编辑事件",
+  "tour_step_7": "点击这个按钮来删除事件",
+  "tour_step_8": "按住按钮来重新排序事件",
+  "tour_can_review": "您可以进入设置页面重新查看游览"
 }
