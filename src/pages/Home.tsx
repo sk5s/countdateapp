@@ -9,17 +9,19 @@ import {
   IonIcon,
   IonSegment,
   IonSegmentButton,
-  IonLabel
+  IonLabel,
+  IonFooter,
 } from "@ionic/react";
 
-import { add } from 'ionicons/icons'
+import { add, calendarClearOutline } from 'ionicons/icons'
 // import { useEffect, useState } from "react";
 // import { isPlatform, useIonAlert, useIonViewDidEnter } from "@ionic/react";
 // import { AppVersion } from '@awesome-cordova-plugins/app-version';
 
-import CountdownCards from "../components/CountdownCards";
+import CountCards from "../components/CountCards";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
+import { capitalize } from "../lib/Capitalize";
 
 const Home: React.FC<{accent:string,textColor:string}> = ({accent,textColor}) => {
   // const [error, setError] = useState(null)
@@ -73,11 +75,40 @@ const Home: React.FC<{accent:string,textColor:string}> = ({accent,textColor}) =>
   // }, [])
   const {t} = useTranslation()
   const [view,setView] = useState("days")
+  const [count,setCount] = useState("countdown")
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          {/* <IonTitle>Countdate</IonTitle> */}
+          <IonTitle>Countdate</IonTitle>
+        </IonToolbar>
+      </IonHeader>
+      <IonContent fullscreen>
+        <IonHeader>
+          <IonToolbar>
+            {/* <IonTitle>Countdate</IonTitle> */}
+            <IonSegment color={accent} value={count} onIonChange={(e) => setCount(`${e.detail.value}`)}>
+              <IonSegmentButton value="countdown">
+                <IonLabel>{capitalize(t("countdown"))}</IonLabel>
+              </IonSegmentButton>
+              <IonSegmentButton value="countup">
+                <IonLabel>{capitalize(t("countup"))}</IonLabel>
+              </IonSegmentButton>
+            </IonSegment>
+          </IonToolbar>
+        </IonHeader>
+
+        <CountCards count={count} view={view} accent={accent} textColor={textColor} />
+
+        <IonFab vertical="bottom" horizontal="end" slot="fixed">
+          <IonFabButton routerLink="/add" color={accent} id="home-add-fab">
+            <IonIcon icon={add} />
+          </IonFabButton>
+        </IonFab>
+
+      </IonContent>
+      <IonFooter translucent={true}>
+        <IonToolbar>
           <IonSegment color={accent} value={view} onIonChange={(e) => setView(`${e.detail.value}`)}>
             <IonSegmentButton value="days">
               <IonLabel>{t("days_view")}</IonLabel>
@@ -87,22 +118,7 @@ const Home: React.FC<{accent:string,textColor:string}> = ({accent,textColor}) =>
             </IonSegmentButton>
           </IonSegment>
         </IonToolbar>
-      </IonHeader>
-      <IonContent fullscreen>
-        <IonHeader>
-          <IonToolbar>
-            <IonTitle>Countdate</IonTitle>
-          </IonToolbar>
-        </IonHeader>
-
-        <CountdownCards view={view} accent={accent} textColor={textColor} />
-
-        <IonFab vertical="bottom" horizontal="end" slot="fixed">
-          <IonFabButton routerLink="/add" color={accent} id="home-add-fab">
-            <IonIcon icon={add} />
-          </IonFabButton>
-        </IonFab>
-      </IonContent>
+      </IonFooter>
     </IonPage>
   );
 };

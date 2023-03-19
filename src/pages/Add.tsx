@@ -98,7 +98,7 @@ const Add: React.FC<{accent:string}> = ({accent}) => {
           <IonRow>
             <IonCol>
               {/* <IonLabel position="stacked"></IonLabel> */}
-              <IonDatetime mode="md" color={accent} size="cover" presentation="date" value={selectedDate} min={`${format(new Date(), 'yyyy-MM-dd')}T23:59:00+08:00`} max={(parseInt(format(new Date(), 'yyyy'))+2).toString()} onIonChange={e => setSelectedDate(format(new Date(`${e.detail.value}`),'yyyy-MM-dd')+"T23:59:00"+UTC)} showDefaultTitle={false}>
+              <IonDatetime mode="md" color={accent} size="cover" presentation="date" value={selectedDate} min={(parseInt(format(new Date(), 'yyyy'))-2).toString()} max={(parseInt(format(new Date(), 'yyyy'))+2).toString()} onIonChange={e => setSelectedDate(format(new Date(`${e.detail.value}`),'yyyy-MM-dd')+"T23:59:00"+UTC)} showDefaultTitle={false}>
                 {/* <span slot="title">{t("select")+t("between_words")+t("event")+t("between_words")+t("date")}</span> */}
               </IonDatetime>
             </IonCol>

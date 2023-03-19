@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import CountdownCard from "./CountdownCard";
+import CountupCard from "./CountupCard";
 import TitleCard from "./TitleCard";
 import { Preferences as Storage } from "@capacitor/preferences";
 import { IonIcon, isPlatform, useIonAlert, IonButton, IonModal, IonContent, useIonLoading, IonGrid, IonRow, IonCol, IonTextarea, IonLabel, useIonToast } from "@ionic/react";
@@ -13,7 +14,7 @@ import key from '../lib/storageKey.json'
 
 import { capitalize } from "../lib/Capitalize";
 
-export default function CountdownCards({view,accent,textColor}:{view:string;accent:string;textColor:string;}): JSX.Element {
+export default function CountCards({view,accent,textColor,count}:{view:string;accent:string;textColor:string;count:string;}): JSX.Element {
   const history = useHistory()
   const { t, i18n } = useTranslation()
   const [languageCode, setLanguageCode] = useState("")
@@ -81,10 +82,25 @@ export default function CountdownCards({view,accent,textColor}:{view:string;acce
     <div>
       {(() => {
         let row = [];
-        if (countdate_events_data_list.length) {
+        if (countdate_events_data_list.length && count == "countdown") {
           countdate_events_data_list.map((event) => {
             row.push(
               <CountdownCard
+                key={event.id}
+                id={event.id}
+                event={event.event_name}
+                date={event.date}
+                editable={editable}
+                view={view}
+                accent={accent}
+                textColor={textColor}
+              />
+            );
+          });
+        } else if (countdate_events_data_list.length && count == "countup") {
+          countdate_events_data_list.map((event) => {
+            row.push(
+              <CountupCard
                 key={event.id}
                 id={event.id}
                 event={event.event_name}

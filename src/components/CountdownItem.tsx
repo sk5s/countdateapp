@@ -142,7 +142,7 @@ export default function CountdateItem(props: {
         <IonIcon icon={reorderThree}></IonIcon>
       </IonReorder>
       <IonPopover isOpen={modalIsOpen} size="cover" keepContentsMounted={false}>
-        <IonDatetime mode="md" color={props.accent} presentation="date" showDefaultButtons={true} min={`${format(new Date(), 'yyyy-MM-dd')}T23:59:00+08:00`} max={(parseInt(format(new Date(), 'yyyy'))+2).toString()} onIonChange={e => edit_this_countdate_item_date(format(new Date(`${e.detail.value}`),'yyyy-MM-dd'))} value={props.date} id="datetime"></IonDatetime>
+        <IonDatetime mode="md" color={props.accent} presentation="date" showDefaultButtons={true} min={(parseInt(format(new Date(), 'yyyy'))-2).toString()} max={(parseInt(format(new Date(), 'yyyy'))+2).toString()} onIonChange={e => edit_this_countdate_item_date(format(new Date(`${e.detail.value}`),'yyyy-MM-dd'))} value={props.date} id="datetime"></IonDatetime>
       </IonPopover>
     </IonItem>
   );

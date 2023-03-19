@@ -11,11 +11,12 @@ import {
 import { Preferences as Storage } from "@capacitor/preferences";
 
 import { removeCircleOutline } from "ionicons/icons";
+import Countdown from "react-countdown";
 import { trigger } from "../lib/Events";
 import { useTranslation } from "react-i18next";
 import { capitalize } from "../lib/Capitalize";
 
-export default function CountdownCard(props: {
+export default function CountupCard(props: {
   date: string;
   event: string;
   editable: boolean;
@@ -43,13 +44,14 @@ export default function CountdownCard(props: {
       trigger("countdate_data:change");
     }
   };
-  const countDownFromTime = (date:any) => {
+  const countUpFromTime = (date:any) => {
     // countFrom = new Date(countFrom).getTime();
     let now = new Date()
     let countFrom = new Date(date)
-    let timeDifference = countFrom.getTime() - now.getTime()
+    let timeDifference = now.getTime() - countFrom.getTime()
       
     let secondsInADay = 60 * 60 * 1000 * 24
+    let secondsInAHour = 60 * 60 * 1000
     let days = Math.floor(timeDifference / (secondsInADay) * 1);
     // let years = Math.floor(days / 365);
     // if (years > 1){ days = days - (years * 365) }
@@ -58,14 +60,14 @@ export default function CountdownCard(props: {
     // let secs = Math.floor((((timeDifference % (secondsInADay)) % (secondsInAHour)) % (60 * 1000)) / 1000 * 1);
     return days
   }
-  if (countDownFromTime(props.date) < 0) return (
+  if (countUpFromTime(props.date) < 0) return (
     <></>
   )
   return (
     <IonCard>
       <IonItem>
         <IonCardSubtitle style={{fontSize: "1.5rem"}}>
-          {t("event_countdown_prefix") + t("between_words") + props.event + t("event_countdown_suffix")}
+          {props.event}
         </IonCardSubtitle>
         {props.editable && (
           <IonButton
@@ -83,8 +85,8 @@ export default function CountdownCard(props: {
       <IonCardContent>
         <IonCardTitle style={{fontSize: "3rem", color: props.textColor}} color={props.accent}>
           {props.view == "days"
-            ? <span>{countDownFromTime(props.date) + " " + capitalize(t("days"))}</span>
-            : <span>{(Math.round((countDownFromTime(props.date)/7 + Number.EPSILON) * 10) / 10).toString() + " " + capitalize(t("weeks"))}</span>
+            ? <span>{countUpFromTime(props.date) + " " + capitalize(t("days"))}</span>
+            : <span>{(Math.round((countUpFromTime(props.date)/7 + Number.EPSILON) * 10) / 10).toString() + " " + capitalize(t("weeks"))}</span>
           }
         </IonCardTitle>
       </IonCardContent>
