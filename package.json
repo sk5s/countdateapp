@@ -1,6 +1,6 @@
 {
   "name": "countdateapp",
-  "version": "1.4.5",
+  "version": "1.4.6",
   "private": true,
   "dependencies": {
     "@capacitor/android": "4.6.3",

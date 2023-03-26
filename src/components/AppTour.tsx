@@ -25,6 +25,10 @@ export default function AppTour({modal, setModal}:{modal:boolean;setModal: any})
         </IonToolbar>
       </IonHeader>
       <IonContent>
+        <IonChip style={{marginLeft: "10px"}}>
+          <IonIcon icon={informationCircle} color="dark"></IonIcon>
+          <IonLabel>{t("tour_can_review")}</IonLabel>
+        </IonChip>
         <Swiper
           // install Swiper modules
           modules={[Navigation, Pagination, Scrollbar, A11y, Mousewheel]}
@@ -53,10 +57,6 @@ export default function AppTour({modal, setModal}:{modal:boolean;setModal: any})
             })()
           }
         </Swiper>
-        <IonChip style={{marginLeft: "10px"}}>
-          <IonIcon icon={informationCircle} color="dark"></IonIcon>
-          <IonLabel>{t("tour_can_review")}</IonLabel>
-        </IonChip>
       </IonContent>
     </IonModal>
   );

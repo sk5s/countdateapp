@@ -98,7 +98,7 @@ const Home: React.FC<{accent:string,textColor:string}> = ({accent,textColor}) =>
           </IonToolbar>
         </IonHeader>
 
-        <CountCards count={count} view={view} accent={accent} textColor={textColor} />
+        <CountCards count={count} view={view} accent={accent} textColor={textColor} changeCount={setCount} />
 
         <IonFab vertical="bottom" horizontal="end" slot="fixed">
           <IonFabButton routerLink="/add" color={accent} id="home-add-fab">

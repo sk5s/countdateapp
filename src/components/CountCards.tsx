@@ -3,18 +3,19 @@ import CountdownCard from "./CountdownCard";
 import CountupCard from "./CountupCard";
 import TitleCard from "./TitleCard";
 import { Preferences as Storage } from "@capacitor/preferences";
-import { IonIcon, isPlatform, useIonAlert, IonButton, IonModal, IonContent, useIonLoading, IonGrid, IonRow, IonCol, IonTextarea, IonLabel, useIonToast } from "@ionic/react";
-import { settings, create, information, add } from 'ionicons/icons'
+import { IonIcon, isPlatform, useIonAlert, IonButton, IonModal, IonContent, useIonLoading, IonGrid, IonRow, IonCol, IonTextarea, IonLabel, useIonToast, IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonCardSubtitle } from "@ionic/react";
+import { settings, create, information, add, arrowBackCircle, arrowForwardCircle } from 'ionicons/icons'
 import { useHistory } from "react-router";
 import { on } from '../lib/Events'
 import { useTranslation } from "react-i18next";
 import { Device } from '@capacitor/device';
 import { copy } from '../lib/Clipboard'
 import key from '../lib/storageKey.json'
+import changeViewImg from '../assets/countdate-count-tour.jpg'
 
 import { capitalize } from "../lib/Capitalize";
 
-export default function CountCards({view,accent,textColor,count}:{view:string;accent:string;textColor:string;count:string;}): JSX.Element {
+export default function CountCards({view,accent,textColor,count,changeCount}:{view:string;accent:string;textColor:string;count:string;changeCount:any;}): JSX.Element {
   const history = useHistory()
   const { t, i18n } = useTranslation()
   const [languageCode, setLanguageCode] = useState("")
@@ -82,40 +83,74 @@ export default function CountCards({view,accent,textColor,count}:{view:string;ac
     <div>
       {(() => {
         let row = [];
-        if (countdate_events_data_list.length && count == "countdown") {
+        if (countdate_events_data_list.length) {
           countdate_events_data_list.map((event) => {
-            row.push(
-              <CountdownCard
-                key={event.id}
-                id={event.id}
-                event={event.event_name}
-                date={event.date}
-                editable={editable}
-                view={view}
-                accent={accent}
-                textColor={textColor}
-              />
-            );
+            let now = new Date()
+            let countFrom = new Date(event.date)
+            let timeDifference = now.getTime() - countFrom.getTime()
+            if (timeDifference < 0 && count == "countdown"){//countdown
+              row.push(
+                <CountdownCard
+                  key={event.id}
+                  id={event.id}
+                  event={event.event_name}
+                  date={event.date}
+                  editable={editable}
+                  view={view}
+                  accent={accent}
+                  textColor={textColor}
+                />
+              );
+            } else if (timeDifference >= 0 && count == "countup"){
+              row.push(
+                <CountupCard
+                  key={event.id}
+                  id={event.id}
+                  event={event.event_name}
+                  date={event.date}
+                  editable={editable}
+                  view={view}
+                  accent={accent}
+                  textColor={textColor}
+                />
+              );
+            }
           });
-        } else if (countdate_events_data_list.length && count == "countup") {
-          countdate_events_data_list.map((event) => {
-            row.push(
-              <CountupCard
-                key={event.id}
-                id={event.id}
-                event={event.event_name}
-                date={event.date}
-                editable={editable}
-                view={view}
-                accent={accent}
-                textColor={textColor}
-              />
-            );
-          });
-        } else {
-          if (editable){
-            setEditable(false)
-          }
+        }
+        console.log(row.length)
+        if (row.length == 0 && countdate_events_data_list.length && count=="countdown") {
+          row.push(
+            <div key="div">
+              <IonCard>
+                <img src={changeViewImg} alt="Change view to countup" />
+                <IonCardHeader>
+                  <IonCardSubtitle>{t("no_data")}</IonCardSubtitle>
+                  <IonCardTitle>
+                    <IonButton onClick={() => {changeCount("countup")}} color={accent} shape="round">
+                      <IonIcon icon={arrowForwardCircle} /> {capitalize(t("countup"))}
+                    </IonButton>
+                  </IonCardTitle>
+                </IonCardHeader>
+              </IonCard>
+            </div>
+          )
+        } else if (row.length == 0 && countdate_events_data_list.length && count=="countup") {
+          row.push(
+            <div key="div">
+              <IonCard>
+                <img src={changeViewImg} alt="Change view to countdown" />
+                <IonCardHeader>
+                  <IonCardSubtitle>{t("no_data")}</IonCardSubtitle>
+                  <IonCardTitle>
+                    <IonButton onClick={() => {changeCount("countdown")}} color={accent} shape="round">
+                      <IonIcon icon={arrowBackCircle} /> {capitalize(t("countdown"))}
+                    </IonButton>
+                  </IonCardTitle>
+                </IonCardHeader>
+              </IonCard>
+            </div>
+          )
+        } else if (row.length == 0) {
           row.push(
             <div key="div">
               <TitleCard
