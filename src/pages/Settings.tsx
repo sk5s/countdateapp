@@ -167,11 +167,11 @@ const Settings: React.FC<{accent:string}> = ({accent}) => {
           <IonItem>
             <IonLabel onClick={handleReviewTour}><IonIcon icon={help} /> {t("review_tour")}</IonLabel>
           </IonItem>
-          <IonItem>
-            <IonRouterLink routerLink="/about">
+          <IonRouterLink routerLink="/about">
+            <IonItem>
               <IonLabel color="dark"><IonIcon icon={information} /> {capitalize(t("about"))} Countdate</IonLabel>
-            </IonRouterLink>
-          </IonItem>
+            </IonItem>
+          </IonRouterLink>
           <IonListHeader lines="none" color={accent}>
             <IonLabel>{capitalize(t("theme"))}</IonLabel>
           </IonListHeader>
