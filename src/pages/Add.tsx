@@ -35,11 +35,11 @@ const Add: React.FC<{accent:string}> = ({accent}) => {
   const { t, i18n } = useTranslation()
   const [UTC,setUTC] = useState('+08:00')
   const [selectedDate, setSelectedDate] = useState(format(new Date(), 'yyyy-MM-dd')+'T23:59:00'+UTC);
-  const [titleText, setTitleText] = useState<string>("");
+  const [titleText, setTitleText] = useState<string|number>("");
   const [presentToast] = useIonToast();
   const history = useHistory()
   let countdate_events_data = []
-  const add_new_countdate_item = async (newItem:{event_name:any,date:string}) => {
+  const add_new_countdate_item = async (newItem:{event_name:any,date:string,description?: string;}) => {
     if (!newItem.event_name) return
     const { value } = await Storage.get({ key: key.data });
     if (value) {

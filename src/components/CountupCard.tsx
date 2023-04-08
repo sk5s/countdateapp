@@ -24,6 +24,7 @@ export default function CountupCard(props: {
   view: string;
   accent: string;
   textColor: string;
+  description?: string;
 }): JSX.Element {
   const [t] = useTranslation()
   let countdate_events_data = [];

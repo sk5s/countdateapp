@@ -7,13 +7,22 @@ import {
   IonItem,
   IonButton,
   IonIcon,
+  IonModal,
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonButtons,
+  IonContent,
+  IonTextarea,
 } from "@ionic/react";
-import { Preferences as Storage } from "@capacitor/preferences";
+import {Preferences as Storage } from "@capacitor/preferences";
 
 import { removeCircleOutline } from "ionicons/icons";
-import { trigger } from "../lib/Events";
+import { on, trigger } from "../lib/Events";
 import { useTranslation } from "react-i18next";
 import { capitalize } from "../lib/Capitalize";
+import { useEffect, useState } from "react";
+import CountdateItem from "./CountdownItem";
 
 export default function CountdownCard(props: {
   date: string;
@@ -23,8 +32,11 @@ export default function CountdownCard(props: {
   view: string;
   accent: string;
   textColor: string;
+  description?: string;
 }): JSX.Element {
   const [t] = useTranslation()
+  const [isOpen, setIsOpen] = useState(false);
+  const [description,setDescription] = useState(props.description);
   let countdate_events_data = [];
   const remove_this_countdate_item = async () => {
     const { value } = await Storage.get({ key: "countdate_events_data" });
@@ -58,36 +70,80 @@ export default function CountdownCard(props: {
     // let secs = Math.floor((((timeDifference % (secondsInADay)) % (secondsInAHour)) % (60 * 1000)) / 1000 * 1);
     return days
   }
+  useEffect(() => {
+    on("countdate_data:change", (data:any) => {
+      if (data.detail == "delete") setIsOpen(false)
+    })
+  }, []);
   if (countDownFromTime(props.date) < 0) return (
     <></>
   )
   return (
-    <IonCard>
-      <IonItem>
-        <IonCardSubtitle style={{fontSize: "1.5rem"}}>
+    <>
+      <IonCard onClick={() => setIsOpen(true)}>
+        <IonItem>
+          <IonCardSubtitle style={{fontSize: "1.5rem"}}>
+            {t("event_countdown_prefix") + t("between_words") + props.event + t("event_countdown_suffix")}
+          </IonCardSubtitle>
+          {props.editable && (
+            <IonButton
+              color={props.accent}
+              onClick={remove_this_countdate_item}
+              slot="end"
+            >
+              <IonIcon
+                slot="icon-only"
+                icon={removeCircleOutline}
+              />
+            </IonButton>
+          )}
+        </IonItem>
+        <IonCardContent>
+          <IonCardTitle style={{fontSize: "3rem", color: props.textColor}} color={props.accent}>
+            {props.view == "days"
+              ? <span>{countDownFromTime(props.date) + " " + capitalize(t("days"))}</span>
+              : <span>{(Math.round((countDownFromTime(props.date)/7 + Number.EPSILON) * 10) / 10).toString() + " " + capitalize(t("weeks"))}</span>
+            }
+          </IonCardTitle>
+        </IonCardContent>
+      </IonCard>
+      <IonModal isOpen={isOpen} onDidDismiss={() => setIsOpen(false)}>
+        <IonHeader>
+          <IonToolbar>
+            <IonTitle>{props.event}</IonTitle>
+            <IonButtons slot="end">
+              <IonButton onClick={() => setIsOpen(false)}>Close</IonButton>
+            </IonButtons>
+          </IonToolbar>
+        </IonHeader>
+        <IonContent className="ion-padding">
           {t("event_countdown_prefix") + t("between_words") + props.event + t("event_countdown_suffix")}
-        </IonCardSubtitle>
-        {props.editable && (
-          <IonButton
-            color={props.accent}
-            onClick={remove_this_countdate_item}
-            slot="end"
-          >
-            <IonIcon
-              slot="icon-only"
-              icon={removeCircleOutline}
-            />
-          </IonButton>
-        )}
-      </IonItem>
-      <IonCardContent>
-        <IonCardTitle style={{fontSize: "3rem", color: props.textColor}} color={props.accent}>
           {props.view == "days"
-            ? <span>{countDownFromTime(props.date) + " " + capitalize(t("days"))}</span>
-            : <span>{(Math.round((countDownFromTime(props.date)/7 + Number.EPSILON) * 10) / 10).toString() + " " + capitalize(t("weeks"))}</span>
+            ? <h1>{countDownFromTime(props.date) + " " + capitalize(t("days"))}</h1>
+            : <h1>{(Math.round((countDownFromTime(props.date)/7 + Number.EPSILON) * 10) / 10).toString() + " " + capitalize(t("weeks"))}</h1>
           }
-        </IonCardTitle>
-      </IonCardContent>
-    </IonCard>
+          <hr/>
+          <span>{t("click_on_title_or_date_to_edit")}</span>
+          <CountdateItem
+            key={props.id}
+            id={props.id}
+            event={props.event}
+            date={props.date}
+            editable={true}
+            accent={props.accent}
+            textColor={props.textColor}
+          />
+          {description ? 
+          <IonItem>
+            <IonTextarea
+              placeholder="Description"
+              autoGrow={true}
+              value={description}
+            ></IonTextarea>
+          </IonItem>
+          : <></>}
+        </IonContent>
+      </IonModal>
+    </>
   );
 }
