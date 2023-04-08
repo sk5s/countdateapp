@@ -17,6 +17,9 @@ import {
   IonAccordionGroup,
   IonAccordion,
   useIonToast,
+  IonChip,
+  IonIcon,
+  IonPopover,
 } from "@ionic/react";
 import { Preferences as Storage } from "@capacitor/preferences";
 import { useState } from "react";
@@ -29,7 +32,7 @@ import { useTranslation } from "react-i18next";
 
 import { capitalize } from "../lib/Capitalize";
 import key from '../lib/storageKey.json'
-import { add } from "ionicons/icons";
+import { add, informationCircle } from "ionicons/icons";
 
 const Add: React.FC<{accent:string}> = ({accent}) => {
   const { t, i18n } = useTranslation()
@@ -91,8 +94,16 @@ const Add: React.FC<{accent:string}> = ({accent}) => {
             <IonCol>
               <IonItem className="ion-no-padding">
                 <IonLabel position="stacked">{capitalize(t("event"))}{t("between_words")}{t("name")}</IonLabel>
-                <IonInput id="event-title" onKeyDown={e=> SearchF(e.key)} clearInput={true} value={titleText} placeholder={capitalize(t("input"))+t("between_words")+t("event")+t("between_words")+t("name")} onIonChange={e => setTitleText(e.detail.value!)}></IonInput>
+                <IonInput aria-label="name" id="event-title" onKeyDown={e=> SearchF(e.key)} clearInput={true} value={titleText} placeholder={capitalize(t("input"))+t("between_words")+t("event")+t("between_words")+t("name")} onIonChange={e => setTitleText(e.detail.value!)}></IonInput>
               </IonItem>
+            </IonCol>
+          </IonRow>
+          <IonRow>
+            <IonCol>
+              <IonButton size="small" id="click-trigger" color={accent} shape="round"> <IonIcon icon={informationCircle}></IonIcon> </IonButton>
+              <IonPopover trigger="click-trigger" triggerAction="click">
+                <IonContent class="ion-padding">{t("add_tips")}</IonContent>
+              </IonPopover>
             </IonCol>
           </IonRow>
           <IonRow>

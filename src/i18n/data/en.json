@@ -1,5 +1,6 @@
 {
   "accent_color": "accent color",
+  "add_tips": "Select date before today add a countup counter, select date after today add a countdown counter. Description can be added after added the countdate.",
   "between_words": " ",
   "change_accent_color": "Change accent color",
   "change_language": "Change Language",
@@ -17,6 +18,7 @@
   "event_countdown_suffix": ":",
   "exclamation_mark": "!",
   "local_notification": "local notification",
+  "need_to_save": "Need to save",
   "no_data": "No data",
   "question_mark": "?",
   "review_tour": "Review tour",
@@ -29,5 +31,6 @@
   "tour_step_6": "Click on title or date to edit",
   "tour_step_7": "Click on this button to delete event",
   "tour_step_8": "Press this button and drag the event to reorder",
-  "tour_can_review": "You can go to the settings page to review tour"
+  "tour_can_review": "You can go to the settings page to review tour",
+  "tour_learn_more": "Learn more about how to use"
 }

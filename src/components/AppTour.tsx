@@ -7,7 +7,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import { IonButton, IonButtons, IonChip, IonContent, IonHeader, IonIcon, IonImg, IonLabel, IonModal, IonText, IonTitle, IonToolbar } from '@ionic/react';
 import { useTranslation } from 'react-i18next';
-import { informationCircle } from 'ionicons/icons';
+import { informationCircle, link } from 'ionicons/icons';
 
 export default function AppTour({modal, setModal}:{modal:boolean;setModal: any}) {
   const {t} = useTranslation()
@@ -57,6 +57,7 @@ export default function AppTour({modal, setModal}:{modal:boolean;setModal: any})
             })()
           }
         </Swiper>
+        <IonButton shape="round" href='https://github.com/sk5s/countdateapp/wiki' target='_blank'><IonIcon icon={link} /> {t("tour_learn_more")}</IonButton>
       </IonContent>
     </IonModal>
   );

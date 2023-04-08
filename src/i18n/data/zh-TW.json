@@ -3,6 +3,7 @@
   "accent_color": "主題顏色",
   "add": "新增",
   "added": "已新增",
+  "add_tips": "選擇今天之前的日期可以添加一個正數計數器，選擇今天之後的日期可以添加一個倒計時計數器。 添加 Countdate 後可以再添加說明。",
   "all": "所有",
   "between_words": "",
   "cancel": "取消",
@@ -27,6 +28,7 @@
   "delete": "刪除",
   "deleted": "已刪除",
   "delete_data_message": "此操作無法撤銷",
+  "description": "說明",
   "dev_mode": "開發模式",
   "edit": "編輯",
   "event": "事件",
@@ -38,6 +40,7 @@
   "input": "輸入",
   "local_notification":"本地通知",
   "name": "名稱",
+  "need_to_save": "尚未儲存變更",
   "no_data": "沒有資料",
   "question_mark": "？",
   "refresh": "重新整理",
@@ -59,5 +62,6 @@
   "tour_step_6": "點擊標題或日期來編輯事件",
   "tour_step_7": "點擊這個按鈕來刪除事件",
   "tour_step_8": "按住按鈕來重新排序事件",
-  "tour_can_review": "您可以進入設置頁面重新查看遊覽"
+  "tour_can_review": "您可以進入設置頁面重新查看遊覽",
+  "tour_learn_more": "了解更多使用方法"
 }
