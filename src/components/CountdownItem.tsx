@@ -68,7 +68,7 @@ export default function CountdateItem(props: {
         key: key.data,
         value: content,
       });
-      trigger("countdate_data:change");
+      trigger("countdate_data:change","delete");
       presentToast({
         message: capitalize(t("deleted"))+t("exclamation_mark"),
         duration: 1500,

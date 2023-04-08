@@ -25,6 +25,7 @@ export default function CountCards({view,accent,textColor,count,changeCount}:{vi
     id: string;
     event_name: string;
     date: string;
+    description?: string;
   }[] = [
     // {id: "1", event_name: "111會考", date: "2022-05-21"},
     // {id: "2", event_name: "112學測", date: "2023-01-13"}
@@ -99,6 +100,7 @@ export default function CountCards({view,accent,textColor,count,changeCount}:{vi
                   view={view}
                   accent={accent}
                   textColor={textColor}
+                  description={event.description}
                 />
               );
             } else if (timeDifference >= 0 && count == "countup"){
@@ -112,6 +114,7 @@ export default function CountCards({view,accent,textColor,count,changeCount}:{vi
                   view={view}
                   accent={accent}
                   textColor={textColor}
+                  description={event.description}
                 />
               );
             }
