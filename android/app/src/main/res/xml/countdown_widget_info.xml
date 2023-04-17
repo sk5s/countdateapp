@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<appwidget-provider
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:initialKeyguardLayout="@layout/countdown_widget"
+    android:initialLayout="@layout/countdown_widget"
+    android:minHeight="60dp"
+    android:minWidth="120dp"
+    android:previewImage="@drawable/icon"
+    android:resizeMode="horizontal|vertical"
+    android:updatePeriodMillis="0"
+    android:widgetCategory="home_screen">
+</appwidget-provider>
+<!-- https://medium.com/android-bits/android-widgets-ad3d166458d3 -->
