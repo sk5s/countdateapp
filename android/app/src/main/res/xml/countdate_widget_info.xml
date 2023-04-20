@@ -5,9 +5,9 @@
     android:minWidth="120dp"
     android:minResizeWidth="120dp"
     android:resizeMode="vertical|horizontal"
-    android:updatePeriodMillis="10000"
+    android:updatePeriodMillis="3600000"
     android:widgetCategory="home_screen"
     android:configure="cyou.sk5s.app.countdate.CountdateWidgetConfig"
-    android:previewImage="@drawable/icon">
+    android:previewImage="@drawable/widget_preview_1">
 
 </appwidget-provider>

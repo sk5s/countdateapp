@@ -33,9 +33,10 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:contentDescription="Widget name"
-        android:text="No Data"
+        android:text="Retry"
         android:textAlignment="center"
         android:textColor="#ffffff"
         android:textSize="34sp"
         android:textStyle="bold" />
+
 </LinearLayout>
