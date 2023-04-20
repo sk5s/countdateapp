@@ -142,7 +142,7 @@ click add button to add a countdate
 
 ## Roadmap
 
-- [ ] Instruction
+- [x] Instruction
 - [x] New splash screen api
 - [ ] Sync
 - [ ] Local notification
@@ -150,6 +150,7 @@ click add button to add a countdate
 - [ ] Count weekday
 - [x] Custom accent color (color picker)
 - [ ] Qrcode share event
+- [x] Native desktop widget
 
 See the [open issues](https://github.com/sk5s/countdateapp/issues) for a full list of proposed features (and known issues).
 
