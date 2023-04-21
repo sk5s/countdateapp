@@ -30,9 +30,9 @@ import java.util.Locale;
 
 public class CountdateWidgetConfig extends AppCompatActivity {
     public static final String SHARED_PREFS = "CapacitorStorage";
-    public static final String KEY_NAME_PREFIX = "countdateName";
-    public static final String KEY_DATE_PREFIX = "countdateDate";
-    public static final String KEY_ID_PREFIX = "widgetId";
+    public static final String KEY_NAME_PREFIX = "wn_";
+    public static final String KEY_DATE_PREFIX = "wd_";
+    public static final String KEY_ID_PREFIX = "wid_";
 
     private int appWidgetId = AppWidgetManager.INVALID_APPWIDGET_ID;
     private EditText editTextButton;
@@ -115,7 +115,7 @@ public class CountdateWidgetConfig extends AppCompatActivity {
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
 
         //String buttonText = editTextButton.getText().toString();
-        String eventId = eventsList.get(position).get("id");
+        //String eventId = eventsList.get(position).get("id");
         String eventName = eventsList.get(position).get("name");
         String eventDate = eventsList.get(position).get("date");
 
@@ -124,7 +124,7 @@ public class CountdateWidgetConfig extends AppCompatActivity {
         //views.setOnClickPendingIntent(R.id.countdate_widget_text2,pendingIntent);
 
         String numOfDays = "";
-        String countdownup = "Countdown";
+        String countdownup = "⬇️Countdown";
         String[] parts = eventDate.split("T");
         numOfDays = "";
         try {
@@ -137,14 +137,13 @@ public class CountdateWidgetConfig extends AppCompatActivity {
                     numOfDays = String.valueOf((int) (difference / (1000 * 60 * 60 * 24)) + 1);
                 } else {
                     numOfDays = String.valueOf((int) (-difference / (1000 * 60 * 60 * 24)) - 1);
-                    countdownup = "Countup";
+                    countdownup = "⬆️Countup";
                 }
             }
         } catch (ParseException e) {
             e.printStackTrace();
         }
 
-        eventName = eventId;
         views.setCharSequence(R.id.countdate_widget_text1, "setText", eventName+" "+countdownup);
         views.setCharSequence(R.id.countdate_widget_text2, "setText", numOfDays);
         //views.setInt(R.id.countdate_widget_text1,"setBackgroundColor", Color.RED);
@@ -153,9 +152,9 @@ public class CountdateWidgetConfig extends AppCompatActivity {
 
         SharedPreferences prefs = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
-        editor.putString(KEY_ID_PREFIX + appWidgetId, eventId);
-        //editor.putString(KEY_NAME_PREFIX + appWidgetId, eventName);
-        //editor.putString(KEY_DATE_PREFIX + appWidgetId, eventDate);
+        //editor.putString(KEY_ID_PREFIX + appWidgetId, eventId);
+        editor.putString(KEY_NAME_PREFIX + appWidgetId, eventName);
+        editor.putString(KEY_DATE_PREFIX + appWidgetId, eventDate);
         editor.apply();
         Intent resultValue = new Intent();
         resultValue.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);

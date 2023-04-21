@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">Countdate</string>
     <string name="title_activity_main">Countdate</string>
-    <string name="package_name">io.ionic.starter</string>
-    <string name="custom_url_scheme">io.ionic.starter</string>
+    <string name="package_name">cyou.sk5s.app.countdate</string>
+    <string name="custom_url_scheme">countdateapp</string>
     <string name="countdown_widget_text">0</string>
 </resources>

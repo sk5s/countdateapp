@@ -24,7 +24,14 @@
         android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Choose one event" />
+        android:text="Choose one event to add widget"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="(The widget won't update after editing the event. Try removing and add it again.)" />
 
     <ListView
         android:id="@+id/listview"
