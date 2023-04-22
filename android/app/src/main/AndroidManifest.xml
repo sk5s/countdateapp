@@ -42,19 +42,8 @@
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
-        </provider> <!-- apps widgets -->
-<!--        <receiver-->
-<!--            android:name=".CountdownWidget"-->
-<!--            android:exported="false"-->
-<!--            android:label="Countdown">-->
-<!--            <intent-filter>-->
-<!--                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />-->
-<!--            </intent-filter>-->
-
-<!--            <meta-data-->
-<!--                android:name="android.appwidget.provider"-->
-<!--                android:resource="@xml/countdown_widget_info" />-->
-<!--        </receiver>-->
+        </provider>
+        <!-- apps widgets -->
         <receiver
             android:name=".CountdateWidget"
             android:exported="false"
