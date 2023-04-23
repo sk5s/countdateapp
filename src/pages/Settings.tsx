@@ -6,7 +6,6 @@ import {
   IonToolbar,
   IonButtons,
   IonBackButton,
-  IonButton,
   isPlatform,
   IonList,
   IonItem,
@@ -20,11 +19,10 @@ import LanguageSelectAction from "../components/LanguageSelectAction";
 import { code, contrast, help, information, logoAndroid, notifications } from 'ionicons/icons'
 import { useTranslation } from "react-i18next";
 import { Schedule } from "../lib/LocalNotification";
-// import { set_dark_mode_toggle_to } from '../lib/Darkmode'
 import { Preferences as Storage } from "@capacitor/preferences";
 import key from '../lib/storageKey.json'
-import { useEffect, useState } from "react";
-import { on, trigger } from "../lib/Events";
+import { useState } from "react";
+import { trigger } from "../lib/Events";
 import { capitalize } from "../lib/Capitalize";
 import AccentColorSelectModal from '../components/AccentColorSelectModal'
 import TextColorSelectModal from '../components/TextColorSelectModal'
@@ -123,12 +121,6 @@ const Settings: React.FC<{accent:string}> = ({accent}) => {
     }, 500);
   }
   
-  // on("countdate_darkmode:toggle", async () => {
-  //   setDarkChecked(set_dark_mode_toggle_to())
-  // })
-  // useEffect(() => {
-  //   setDarkChecked(set_dark_mode_toggle_to())
-  // }, [])
   return (
     <IonPage>
       <IonHeader>

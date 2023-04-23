@@ -14,10 +14,7 @@ import {
   IonLabel,
   IonButton,
   IonItem,
-  IonAccordionGroup,
-  IonAccordion,
   useIonToast,
-  IonChip,
   IonIcon,
   IonPopover,
 } from "@ionic/react";
@@ -51,7 +48,6 @@ const Add: React.FC<{accent:string}> = ({accent}) => {
       countdate_events_data = [];
     }
     countdate_events_data.push({id:uuid(),event_name:newItem.event_name,date:newItem.date})
-    // console.log(countdate_events_data)
     history.push("/home")
     let content = JSON.stringify(countdate_events_data)
     await Storage.set({
@@ -67,6 +63,7 @@ const Add: React.FC<{accent:string}> = ({accent}) => {
     });
     trigger("countdate_data:change")
   };
+  // Listen the enter key
   const SearchF= (value:any) =>{
     value = value.toLowerCase()
     if(value === "enter"){
@@ -108,29 +105,10 @@ const Add: React.FC<{accent:string}> = ({accent}) => {
           </IonRow>
           <IonRow>
             <IonCol>
-              {/* <IonLabel position="stacked"></IonLabel> */}
               <IonDatetime mode="md" color={accent} size="cover" presentation="date" value={selectedDate} min={(parseInt(format(new Date(), 'yyyy'))-2).toString()} max={(parseInt(format(new Date(), 'yyyy'))+2).toString()} onIonChange={e => setSelectedDate(format(new Date(`${e.detail.value}`),'yyyy-MM-dd')+"T23:59:00"+UTC)} showDefaultTitle={false}>
-                {/* <span slot="title">{t("select")+t("between_words")+t("event")+t("between_words")+t("date")}</span> */}
               </IonDatetime>
             </IonCol>
           </IonRow>
-          {/* <IonRow>
-            <IonCol>
-              <IonAccordionGroup>
-                <IonAccordion value="first">
-                  <IonItem slot="header" color="light">
-                    <IonLabel>Advance settings</IonLabel>
-                  </IonItem>
-                  <div slot="content">
-                    <IonItem className="ion-no-padding">
-                      <IonLabel>UTC offset</IonLabel>
-                      <IonInput clearInput={true} value={UTC} onIonChange={e => setUTC(e.detail.value!)}></IonInput>
-                    </IonItem>
-                  </div>
-                </IonAccordion>
-              </IonAccordionGroup>
-            </IonCol>
-          </IonRow> */}
           <IonRow>
             <IonCol>
               <IonButton shape="round" color={accent} disabled={titleText === ""} expand="full" onClick={() => {add_new_countdate_item({event_name: titleText,date:selectedDate});}}>{capitalize(t("add"))}</IonButton>

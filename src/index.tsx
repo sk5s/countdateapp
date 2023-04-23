@@ -1,15 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import { createRoot } from 'react-dom/client';
 import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 import './i18n/i18n'
 
-// const container = document.getElementById('app')
-// const root = createRoot(container)
-// root.render(<App />)
-
+// TODO: Update react syntax
 ReactDOM.render(
   <React.StrictMode>
     <App />

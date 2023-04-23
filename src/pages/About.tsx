@@ -10,7 +10,6 @@ import {
   IonChip
 } from "@ionic/react";
 
-import { add } from 'ionicons/icons'
 import packageJson from '../../package.json'
 import { capitalize } from "../lib/Capitalize";
 import { useTranslation } from "react-i18next";

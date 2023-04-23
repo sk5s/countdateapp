@@ -27,7 +27,7 @@ export default function AppTour({modal, setModal}:{modal:boolean;setModal: any})
       <IonContent>
         <IonChip style={{marginLeft: "10px"}}>
           <IonIcon icon={informationCircle} color="dark"></IonIcon>
-          <IonLabel>{t("tour_can_review")}</IonLabel>
+          <IonLabel>{t("tour.can_review")}</IonLabel>
         </IonChip>
         <Swiper
           // install Swiper modules
@@ -36,9 +36,6 @@ export default function AppTour({modal, setModal}:{modal:boolean;setModal: any})
           slidesPerView={1}
           navigation
           pagination={{ clickable: true }}
-          // scrollbar={{ draggable: false }}
-          // onSwiper={(swiper) => console.log(swiper)}
-          // style={{maxWidth: "400px"}}
         >
           {
             (() => {
@@ -47,7 +44,7 @@ export default function AppTour({modal, setModal}:{modal:boolean;setModal: any})
                 rows.push(
                   <SwiperSlide key={i}>
                     <IonText color="dark">
-                      <h1 style={{marginLeft: "10px"}}>{t("tour_step_"+(i+1).toString())}</h1>
+                      <h1 style={{marginLeft: "10px"}}>{t("tour.step_"+(i+1).toString())}</h1>
                     </IonText>
                     <IonImg src={imgPath(i)}></IonImg>
                   </SwiperSlide>
@@ -57,7 +54,7 @@ export default function AppTour({modal, setModal}:{modal:boolean;setModal: any})
             })()
           }
         </Swiper>
-        <IonButton shape="round" href='https://github.com/sk5s/countdateapp/wiki' target='_blank'><IonIcon icon={link} /> {t("tour_learn_more")}</IonButton>
+        <IonButton shape="round" href='https://github.com/sk5s/countdateapp/wiki' target='_blank'><IonIcon icon={link} /> {t("tour.learn_more")}</IonButton>
       </IonContent>
     </IonModal>
   );

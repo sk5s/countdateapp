@@ -3,6 +3,8 @@ import { initReactI18next } from 'react-i18next'
 import LanguageDetector from 'i18next-browser-languagedetector';
 import { Device } from '@capacitor/device';
 
+// Languages codes: https://developers.google.com/admin-sdk/directory/v1/languages
+
 import en from './data/en.json'
 import tw from './data/zh-TW.json'
 import cn from './data/zh-CN.json'
@@ -28,8 +30,8 @@ const resources = {
 
 i18n.use(LanguageDetector).use(initReactI18next).init({
   resources,
-  lng: device_language_code,             //預設語言
-  fallbackLng: 'en-US',     //如果當前切換的語言沒有對應的翻譯則使用這個語言，
+  lng: device_language_code, // Default lan
+  fallbackLng: 'en-US', // Fall back
   interpolation: {
     escapeValue: false,
   },

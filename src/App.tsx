@@ -36,12 +36,18 @@ import { useState } from 'react';
 import { on } from './lib/Events';
 import { useTranslation } from 'react-i18next';
 
+// Ionic setup
 setupIonicReact({
   mode: 'ios',
 });
 
 const App: React.FC = () => {
   const history = useHistory()
+  const {t,i18n} = useTranslation()
+  const [accentColor, setAccentColor] = useState<string>("primary")
+  const [textColor, setTextColor] = useState<string>("")
+  const [firstTime, setFirstTime] = useState<boolean>(false)
+  // Hardware back button function
   NativeApp.addListener("backButton", ({canGoBack}) => {
     if (canGoBack){
       history.goBack()
@@ -49,16 +55,14 @@ const App: React.FC = () => {
       NativeApp.exitApp()
     }
   })
-  const {t,i18n} = useTranslation()
-  const [accentColor, setAccentColor] = useState<string>("primary")
-  const [textColor, setTextColor] = useState<string>("")
-  const [firstTime, setFirstTime] = useState<boolean>(false)
+  // Restore accent color
   const getAccentColor = async () => {
     const { value } = await Preferences.get({ key: key.accent });
     if (value != null) {
       setAccentColor(value)
     }
   }
+  // Restore text color
   const getTextColor = async () => {
     const { value } = await Preferences.get({ key: key.textColor });
     if (value != null) {
@@ -82,6 +86,7 @@ const App: React.FC = () => {
       }
     }
   }
+  // Restore settings
   getAccentColor()
   getTextColor()
   getFirstTime()
@@ -95,6 +100,7 @@ const App: React.FC = () => {
     getFirstTime()
   })
 
+  // Tour options
   const tourOptions = {
     defaultStepOptions: {
       cancelIcon: {

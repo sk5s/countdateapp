@@ -9,11 +9,7 @@ import {
   IonList,
   IonReorderGroup,
   ItemReorderEventDetail,
-  IonButton,
   IonIcon,
-  IonGrid,
-  IonRow,
-  IonCol,
   IonItem,
   IonFab,
   IonFabButton
@@ -93,6 +89,7 @@ const Edit: React.FC<{accent:string,textColor:string}> = ({accent,textColor}) =>
 
         <span style={{marginLeft:36,marginTop:10}}>{t("click_on_title_or_date_to_edit")}</span>
       
+        {/* Countdate lists */}
         <IonList inset={true}>
           {/* The reorder gesture is disabled by default, enable it to drag and drop items */}
           <IonReorderGroup disabled={false} onIonItemReorder={handleReorder}>
@@ -123,21 +120,8 @@ const Edit: React.FC<{accent:string,textColor:string}> = ({accent,textColor}) =>
           })()}
           </IonReorderGroup>
         </IonList>
-        {/* <IonGrid style={{marginTop: "56px"}}>
-          <IonRow>
-            <IonCol>
-              <IonButton expand="full" shape="round" onClick={(e) => setEditable(!editable)} disabled={countdate_events_data_list.length === 0}>
-                <IonIcon icon={create} /> {!editable ? capitalize(t("edit")) : capitalize(t("complete"))+t("between_words")+t("edit")}
-              </IonButton>
-            </IonCol>
-            <IonCol>
-              <IonButton expand="full" shape="round" onClick={toggleReorder}>
-                {capitalize(t("toggle"))+t("between_words")+t("reorder")}
-              </IonButton>
-            </IonCol>
-          </IonRow>
-        </IonGrid> */}
 
+        {/* New countdate action button */}
         <IonFab vertical="bottom" horizontal="end" slot="fixed">
           <IonFabButton routerLink="/add" color={accent}>
             <IonIcon icon={add} />
