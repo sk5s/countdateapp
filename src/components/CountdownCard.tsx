@@ -14,6 +14,7 @@ import {
   IonButtons,
   IonContent,
   IonTextarea,
+  IonFooter,
 } from "@ionic/react";
 import {Preferences as Storage } from "@capacitor/preferences";
 
@@ -24,6 +25,7 @@ import { capitalize } from "../lib/Capitalize";
 import { useEffect, useState } from "react";
 import CountdateItem from "./CountdownItem";
 import DescriptionEditor from "./DescriptionEditor";
+import EventDetailModal from "./EventDetailModal";
 
 export default function CountdownCard(props: {
   date: string;
@@ -108,40 +110,17 @@ export default function CountdownCard(props: {
           </IonCardTitle>
         </IonCardContent>
       </IonCard>
-      <IonModal isOpen={isOpen} onDidDismiss={() => setIsOpen(false)}>
-        <IonHeader>
-          <IonToolbar>
-            <IonTitle>{props.event}</IonTitle>
-            <IonButtons slot="end">
-              <IonButton onClick={() => setIsOpen(false)}>Close</IonButton>
-            </IonButtons>
-          </IonToolbar>
-        </IonHeader>
-        <IonContent className="ion-padding">
-          {t("event_countdown_prefix") + t("between_words") + props.event + t("event_countdown_suffix")}
-          {props.view == "days"
-            ? <h1>{countDownFromTime(props.date) + " " + capitalize(t("days"))}</h1>
-            : <h1>{(Math.round((countDownFromTime(props.date)/7 + Number.EPSILON) * 10) / 10).toString() + " " + capitalize(t("weeks"))}</h1>
-          }
-          {contentEditable ? 
-          <>
-            <span>{t("click_on_title_or_date_to_edit")}</span>
-            <CountdateItem
-              key={props.id}
-              id={props.id}
-              event={props.event}
-              date={props.date}
-              editable={true}
-              accent={props.accent}
-              textColor={props.textColor}
-            />
-          </> : <></>}
-          <DescriptionEditor id={props.id} description={props.description ? props.description : ""} editable={contentEditable} />
-          <IonButton shape="round" onClick={(e) => setContentEditable(!contentEditable)}>
-            <IonIcon icon={create} /> {!contentEditable ? capitalize(t("edit")) : capitalize(t("complete"))+t("between_words")+t("edit")}
-          </IonButton>
-        </IonContent>
-      </IonModal>
+      <EventDetailModal
+        detailStr={props.view == "days"
+        ? countDownFromTime(props.date) + " " + capitalize(t("days"))
+        : (Math.round((countDownFromTime(props.date)/7 + Number.EPSILON) * 10) / 10).toString() + " " + capitalize(t("weeks"))
+      }
+        contentEditable={contentEditable}
+        setContentEditable={setContentEditable}
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        myprops={props}
+      />
     </>
   );
 }

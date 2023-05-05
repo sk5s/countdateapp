@@ -28,6 +28,7 @@ import AccentColorSelectModal from '../components/AccentColorSelectModal'
 import TextColorSelectModal from '../components/TextColorSelectModal'
 import './Settings.css'
 import { useHistory } from "react-router";
+import LocalizeBackButton from "../components/LocalizeBackButton";
 
 const Settings: React.FC<{accent:string}> = ({accent}) => {
   const { t, i18n } = useTranslation()
@@ -125,9 +126,7 @@ const Settings: React.FC<{accent:string}> = ({accent}) => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonButtons slot="start">
-            <IonBackButton defaultHref="/" color={accent} />
-          </IonButtons>
+          <LocalizeBackButton color={accent} />
           <IonTitle>{capitalize(t("settings"))}</IonTitle>
         </IonToolbar>
       </IonHeader>

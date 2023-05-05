@@ -30,6 +30,7 @@ import { useTranslation } from "react-i18next";
 import { capitalize } from "../lib/Capitalize";
 import key from '../lib/storageKey.json'
 import { add, informationCircle } from "ionicons/icons";
+import LocalizeBackButton from "../components/LocalizeBackButton";
 
 const Add: React.FC<{accent:string}> = ({accent}) => {
   const { t, i18n } = useTranslation()
@@ -74,9 +75,10 @@ const Add: React.FC<{accent:string}> = ({accent}) => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonButtons slot="start">
+          {/* <IonButtons slot="start">
             <IonBackButton defaultHref="/" color={accent} />
-          </IonButtons>
+          </IonButtons> */}
+          <LocalizeBackButton color={accent} />
           <IonTitle>{capitalize(t("add"))} Countdate</IonTitle>
         </IonToolbar>
       </IonHeader>

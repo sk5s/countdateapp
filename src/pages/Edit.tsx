@@ -22,6 +22,7 @@ import { Preferences } from "@capacitor/preferences";
 import key from '../lib/storageKey.json'
 import CountdateItem from "../components/CountdownItem";
 import { on, trigger } from "../lib/Events";
+import LocalizeBackButton from "../components/LocalizeBackButton";
 
 const Edit: React.FC<{accent:string,textColor:string}> = ({accent,textColor}) => {
   let countdate_events_data: {
@@ -74,9 +75,7 @@ const Edit: React.FC<{accent:string,textColor:string}> = ({accent,textColor}) =>
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonButtons slot="start">
-            <IonBackButton defaultHref="/" color={accent} />
-          </IonButtons>
+          <LocalizeBackButton color={accent} />
           <IonTitle>{capitalize(t("edit"))}</IonTitle>
         </IonToolbar>
       </IonHeader>

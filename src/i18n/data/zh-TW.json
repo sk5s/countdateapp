@@ -5,6 +5,7 @@
   "added": "已新增",
   "add_tips": "選擇今天之前的日期可以添加一個正數計數器，選擇今天之後的日期可以添加一個倒計時計數器。 添加 Countdate 後可以再添加說明。",
   "all": "所有",
+  "back": "返回",
   "between_words": "",
   "cancel": "取消",
   "change_accent_color": "選擇主題顏色",
@@ -29,6 +30,7 @@
   "deleted": "已刪除",
   "delete_data_message": "此操作無法撤銷",
   "description": "說明",
+  "description_tips": "說明欄文字支援一些簡易的 Markdown 語法",
   "dev_mode": "開發模式",
   "edit": "編輯",
   "event": "事件",
@@ -55,6 +57,7 @@
   "weeks": "周",
   "weeks_view": "剩幾周",
   "tour": {
+    "title": "Countdate 應用導覽",
     "step_1": "如何新增一個事件：新增一個 Countdate",
     "step_2": "輸入事件名稱",
     "step_3": "點選事件日期（在今天之前或之後皆可）",
@@ -65,5 +68,12 @@
     "step_8": "按住按鈕來重新排序事件",
     "can_review": "您可以進入設置頁面重新查看遊覽",
     "learn_more": "了解更多使用方法"
+  },
+  "quickEdit": {
+    "title": "快速編輯",
+    "confirm": "確定更改？",
+    "addOneMonth": "+1 個月",
+    "minusOneDay": "-1 天",
+    "addOneDay": "+1 天"
   }
 }

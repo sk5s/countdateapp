@@ -15,6 +15,7 @@ import { capitalize } from "../lib/Capitalize";
 import { useTranslation } from "react-i18next";
 import logo from '../assets/countdateapp-logo-foreground.png'
 import banner from '../assets/sk5s-project-bar.png'
+import LocalizeBackButton from "../components/LocalizeBackButton";
 
 const About: React.FC<{accent:string}> = ({accent}) => {
   const { t, i18n } = useTranslation()
@@ -22,9 +23,7 @@ const About: React.FC<{accent:string}> = ({accent}) => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonButtons slot="start">
-            <IonBackButton defaultHref="/" color={accent} />
-          </IonButtons>
+          <LocalizeBackButton color={accent} />
           <IonTitle>{capitalize(t("about"))} Countdate</IonTitle>
         </IonToolbar>
       </IonHeader>

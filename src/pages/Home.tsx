@@ -57,7 +57,7 @@ const Home: React.FC<{accent:string,textColor:string}> = ({accent,textColor}) =>
         </IonFab>
 
       </IonContent>
-      <IonFooter translucent={true}>
+      <IonFooter translucent={false}>
         {/* Days and weeks switcher */}
         <IonToolbar>
           <IonSegment color={accent} value={view} onIonChange={(e) => setView(`${e.detail.value}`)}>

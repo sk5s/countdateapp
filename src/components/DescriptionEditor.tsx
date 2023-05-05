@@ -1,4 +1,4 @@
-import { IonButton, IonChip, IonIcon, IonItem, IonLabel, IonTextarea } from "@ionic/react";
+import { IonButton, IonChip, IonContent, IonIcon, IonItem, IonLabel, IonPopover, IonTextarea } from "@ionic/react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Preferences } from "@capacitor/preferences";
@@ -11,11 +11,13 @@ import { informationCircle, save } from "ionicons/icons";
 export default function DescriptionEditor({
   id,
   description,
-  editable
+  editable,
+  accent
 }:{
   id:string;
   description: string;
   editable: boolean;
+  accent: string;
 }){
   const [editDescription, setEditDescription] = useState<string>(description)
   const [needToSave, setNeedToSave] = useState(false)
@@ -46,20 +48,25 @@ export default function DescriptionEditor({
       <IonItem>
         <IonTextarea
           aria-label="Description editor"
-          placeholder="Description"
+          placeholder={capitalize(t("description"))}
           autoGrow={true}
+          fill="solid"
           value={editDescription}
           onIonChange={e => {setEditDescription(e.detail.value!);setNeedToSave(true)}}
         ></IonTextarea>
-        <IonButton onClick={() => {edit_this_countdate_item_description(editDescription);setNeedToSave(false)}} shape="round"><IonIcon icon={save} /></IonButton>
+        <IonButton color={accent} onClick={() => {edit_this_countdate_item_description(editDescription);setNeedToSave(false)}} size="default" shape="round"><IonIcon icon={save} /></IonButton>
       </IonItem>
-      </>
+      <IonButton size="small" id="click-trigger" color={accent} shape="round"> <IonIcon icon={informationCircle}></IonIcon> </IonButton>
+      <IonPopover trigger="click-trigger" triggerAction="click">
+        <IonContent class="ion-padding">{t("description_tips")}</IonContent>
+      </IonPopover>
+    </>
      : <>
      {editDescription ?
      <>
       {needToSave ?
-      <IonChip style={{marginLeft: "10px"}}>
-        <IonIcon icon={informationCircle} color="dark"></IonIcon>
+      <IonChip style={{marginLeft: "10px"}} color={accent}>
+        <IonIcon icon={informationCircle}></IonIcon>
         <IonLabel>{t("need_to_save")}</IonLabel>
       </IonChip>
       : <></>}

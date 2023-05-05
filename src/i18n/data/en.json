@@ -13,6 +13,7 @@
   "day_has_come": "The day has come!",
   "days_view": "Days",
   "delete_data_message": "This action cannot be undone",
+  "description_tips": "The description text supports some simple Markdown syntax",
   "dev_mode": "dev mode",
   "event_countdown_prefix": "Days until",
   "event_countdown_suffix": ":",
@@ -24,6 +25,7 @@
   "review_tour": "Review tour",
   "weeks_view": "Weeks",
   "tour": {
+    "title": "Countdate app tour",
     "step_1": "How to add new event: Add a new Countdate",
     "step_2": "Input event name",
     "step_3": "Choose event date (either before or after today)",
@@ -34,5 +36,12 @@
     "step_8": "Press this button and drag the event to reorder",
     "can_review": "You can go to the settings page to review tour",
     "learn_more": "Learn more about how to use"
+  },
+  "quickEdit": {
+    "title": "Quick edit",
+    "confirm": "Confirm change?",
+    "addOneMonth": "+1 month",
+    "minusOneDay": "-1 day",
+    "addOneDay": "+1 day"
   }
 }

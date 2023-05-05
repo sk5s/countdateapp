@@ -8,8 +8,9 @@ import 'swiper/css/scrollbar';
 import { IonButton, IonButtons, IonChip, IonContent, IonHeader, IonIcon, IonImg, IonLabel, IonModal, IonText, IonTitle, IonToolbar } from '@ionic/react';
 import { useTranslation } from 'react-i18next';
 import { informationCircle, link } from 'ionicons/icons';
+import { capitalize } from '../lib/Capitalize';
 
-export default function AppTour({modal, setModal}:{modal:boolean;setModal: any}) {
+export default function AppTour({modal, setModal, color}:{modal:boolean;setModal: any; color: string;}) {
   const {t} = useTranslation()
   const imgPath = (num:number) => {
     return "assets/tour/"+(num+1).toString()+".jpg"
@@ -18,9 +19,9 @@ export default function AppTour({modal, setModal}:{modal:boolean;setModal: any})
     <IonModal isOpen={modal}>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Countdate tour</IonTitle>
+          <IonTitle>{t("tour.title")}</IonTitle>
           <IonButtons slot="end">
-            <IonButton onClick={() => setModal(false)}>Close</IonButton>
+            <IonButton color={color} onClick={() => setModal(false)}>{capitalize(t("close"))}</IonButton>
           </IonButtons>
         </IonToolbar>
       </IonHeader>
@@ -54,7 +55,7 @@ export default function AppTour({modal, setModal}:{modal:boolean;setModal: any})
             })()
           }
         </Swiper>
-        <IonButton shape="round" href='https://github.com/sk5s/countdateapp/wiki' target='_blank'><IonIcon icon={link} /> {t("tour.learn_more")}</IonButton>
+        <IonButton color={color} shape="round" href='https://github.com/sk5s/countdateapp/wiki' target='_blank'><IonIcon icon={link} /> {t("tour.learn_more")}</IonButton>
       </IonContent>
     </IonModal>
   );
