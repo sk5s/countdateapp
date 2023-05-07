@@ -120,11 +120,11 @@ public class CountdateWidgetConfig extends AppCompatActivity {
         String eventDate = eventsList.get(position).get("date");
 
         RemoteViews views = new RemoteViews(this.getPackageName(), R.layout.countdate_widget);
-        views.setOnClickPendingIntent(R.id.countdate_widget_text1,pendingIntent);
-        //views.setOnClickPendingIntent(R.id.countdate_widget_text2,pendingIntent);
+//        views.setOnClickPendingIntent(R.id.countdate_widget_text1,pendingIntent);
+        views.setOnClickPendingIntent(R.id.countdate_widget_text2,pendingIntent);
 
         String numOfDays = "";
-        String countdownup = "⬇️Countdown";
+        String countdownup = "⬇️ Countdown";
         String[] parts = eventDate.split("T");
         numOfDays = "";
         try {
@@ -134,10 +134,12 @@ public class CountdateWidgetConfig extends AppCompatActivity {
             if (anotherDate.getTime() > 0){
                 long difference = anotherDate.getTime() - today.getTime();
                 if (difference > 0){
-                    numOfDays = String.valueOf((int) (difference / (1000 * 60 * 60 * 24)) + 1);
+                    numOfDays = String.valueOf(Math.abs((int) (difference / (1000 * 60 * 60 * 24))+1));
+                } else if (difference < 0 && difference > -86400000) {
+                    numOfDays = "0";
                 } else {
-                    numOfDays = String.valueOf((int) (-difference / (1000 * 60 * 60 * 24)) - 1);
-                    countdownup = "⬆️Countup";
+                    numOfDays = String.valueOf(Math.abs((int) (difference / (1000 * 60 * 60 * 24))+1));
+                    countdownup = "⬆️ Countup";
                 }
             }
         } catch (ParseException e) {

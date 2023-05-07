@@ -52,7 +52,7 @@ const App: React.FC = () => {
     if (canGoBack){
       history.goBack()
     }else{
-      NativeApp.exitApp()
+      // NativeApp.exitApp()
     }
   })
   // Restore accent color

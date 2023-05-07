@@ -6,7 +6,6 @@ import static cyou.sk5s.app.countdate.CountdateWidgetConfig.KEY_ID_PREFIX;
 import static cyou.sk5s.app.countdate.CountdateWidgetConfig.KEY_NAME_PREFIX;
 import static cyou.sk5s.app.countdate.CountdateWidgetConfig.SHARED_PREFS;
 
-import android.annotation.SuppressLint;
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
@@ -14,10 +13,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.widget.RemoteViews;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -40,7 +35,7 @@ public class CountdateWidget extends AppWidgetProvider {
             String eventDate = prefs.getString(KEY_DATE_PREFIX + appWidgetId,"No Data");
 
             String numOfDays = "Retry";
-            String countdownup = "⬇️Countdown";
+            String countdownup = "⬇️ Countdown";
             String[] parts = eventDate.split("T");
             try {
                 Date today = new Date();
@@ -49,10 +44,12 @@ public class CountdateWidget extends AppWidgetProvider {
                 if (anotherDate.getTime() > 0){
                     long difference = anotherDate.getTime() - today.getTime();
                     if (difference > 0){
-                        numOfDays = String.valueOf((int) (difference / (1000 * 60 * 60 * 24)) + 1);
+                        numOfDays = String.valueOf(Math.abs((int) (difference / (1000 * 60 * 60 * 24))+1));
+                    } else if (difference < 0 && difference > -86400000) {
+                        numOfDays = "0";
                     } else {
-                        numOfDays = String.valueOf((int) (-difference / (1000 * 60 * 60 * 24)) - 1);
-                        countdownup = "⬆️Countup";
+                        numOfDays = String.valueOf(Math.abs((int) (difference / (1000 * 60 * 60 * 24))+1));
+                        countdownup = "⬆️ Countup";
                     }
                 }
             } catch (ParseException e) {

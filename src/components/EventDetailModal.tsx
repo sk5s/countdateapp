@@ -1,4 +1,5 @@
 import { IonButton, IonButtons, IonContent, IonFooter, IonHeader, IonIcon, IonItem, IonModal, IonTitle, IonToolbar, useIonAlert } from "@ionic/react";
+import { App as NativeApp } from '@capacitor/app';
 import { useTranslation } from "react-i18next";
 import DescriptionEditor from "./DescriptionEditor";
 import { create } from "ionicons/icons";
@@ -28,6 +29,9 @@ export default function EventDetailModal(
   const {t} = useTranslation()
   let countdate_events_data = [];
   const [presentAlert] = useIonAlert();
+  NativeApp.addListener("backButton", () => {
+    setIsOpen(false);
+  })
   const addOneMonthHandler = () => {
     presentAlert({
       header: t("quickEdit.confirm"),

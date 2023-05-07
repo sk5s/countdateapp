@@ -20,7 +20,7 @@
         android:id="@+id/textView4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="(The widget won't update after editing the event. Try removing and add it again.)" />
+        android:text="1. The widget won't update after editing the event. Try removing and add it again.\n2. This widget feature is still in beta." />
 
     <ListView
         android:id="@+id/listview"
