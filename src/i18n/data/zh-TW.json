@@ -32,6 +32,7 @@
   "description": "說明",
   "description_tips": "說明欄文字支援一些簡易的 Markdown 語法",
   "dev_mode": "開發模式",
+  "discard": "捨棄",
   "edit": "編輯",
   "event": "事件",
   "event_countdown_prefix": "離",

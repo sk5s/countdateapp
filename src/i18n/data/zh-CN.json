@@ -32,6 +32,7 @@
   "description": "说明",
   "description_tips": "说明栏文字支援一些简易的 Markdown 语法",
   "dev_mode": "开发模式",
+  "discard": "捨棄",
   "edit": "编辑",
   "event": "事件",
   "event_countdown_prefix": "离",

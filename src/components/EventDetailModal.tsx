@@ -8,6 +8,7 @@ import CountdateItem from "./CountdownItem";
 import { Preferences } from "@capacitor/preferences";
 import key from '../lib/storageKey.json';
 import { trigger } from "../lib/Events";
+import { useState } from "react";
 
 export default function EventDetailModal(
   {
@@ -26,11 +27,31 @@ export default function EventDetailModal(
     myprops: any;
   }
 ){
+  const [needToSave, setNeedToSave] = useState(false)
   const {t} = useTranslation()
-  let countdate_events_data = [];
   const [presentAlert] = useIonAlert();
+  let countdate_events_data = [];
+  const closeModal = () => {
+    if (needToSave) {
+      presentAlert({
+        header: t("need_to_save"),
+        buttons: [
+          {
+            text: capitalize(t("discard")),
+            handler: () => {
+              setIsOpen(false)
+              setNeedToSave(false)
+            },
+          },
+          capitalize(t("confirm")),
+        ],
+      })
+    } else {
+      setIsOpen(false);
+    }
+  }
   NativeApp.addListener("backButton", () => {
-    setIsOpen(false);
+    closeModal()
   })
   const addOneMonthHandler = () => {
     presentAlert({
@@ -122,43 +143,43 @@ export default function EventDetailModal(
   };
   return (
     <IonModal isOpen={isOpen} onDidDismiss={() => setIsOpen(false)}>
-        <IonHeader>
-          <IonToolbar>
-            <IonTitle>{myprops.event}</IonTitle>
-            <IonButtons slot="end">
-              <IonButton color={myprops.accent} onClick={() => setIsOpen(false)}>{t("close")}</IonButton>
-            </IonButtons>
-          </IonToolbar>
-        </IonHeader>
-        <IonContent className="ion-padding">
-          <h1>{detailStr}</h1>
-          {contentEditable ? 
-          <>
-            <span>{t("click_on_title_or_date_to_edit")}</span>
-            <CountdateItem
-              key={myprops.id}
-              id={myprops.id}
-              event={myprops.event}
-              date={myprops.date}
-              editable={true}
-              accent={myprops.accent}
-              textColor={myprops.textColor}
-            />
-            <IonItem>
-              {t("quickEdit.title")}
-              <IonButton onClick={() => addOneMonthHandler()} size="small" color={myprops.accent} shape="round">{t("quickEdit.addOneMonth")}</IonButton>
-              <IonButton onClick={() => minusOneDayHandler()} size="small" color={myprops.accent} shape="round">{t("quickEdit.minusOneDay")}</IonButton>
-              <IonButton onClick={() => addOneDayHandler()} size="small" color={myprops.accent} shape="round">{t("quickEdit.addOneDay")}</IonButton>
-            </IonItem>
-          </> : <></>}
-          <DescriptionEditor id={myprops.id} description={myprops.description ? myprops.description : ""} editable={contentEditable}  accent={myprops.accent} />
-          
-        </IonContent>
-        <IonFooter>
-          <IonButton color={myprops.accent} shape="round" onClick={(e) => setContentEditable(!contentEditable)}>
-            <IonIcon icon={create} /> {!contentEditable ? capitalize(t("edit")) : capitalize(t("complete"))+t("between_words")+t("edit")}
-          </IonButton>
-        </IonFooter>
-      </IonModal>
+      <IonHeader>
+        <IonToolbar>
+          <IonTitle>{myprops.event}</IonTitle>
+          <IonButtons slot="end">
+            <IonButton color={myprops.accent} onClick={() => closeModal()}>{t("close")}</IonButton>
+          </IonButtons>
+        </IonToolbar>
+      </IonHeader>
+      <IonContent className="ion-padding">
+        <h1>{detailStr}</h1>
+        {contentEditable ? 
+        <>
+          <span>{t("click_on_title_or_date_to_edit")}</span>
+          <CountdateItem
+            key={myprops.id}
+            id={myprops.id}
+            event={myprops.event}
+            date={myprops.date}
+            editable={true}
+            accent={myprops.accent}
+            textColor={myprops.textColor}
+          />
+          <IonItem>
+            {t("quickEdit.title")}
+            <IonButton onClick={() => addOneMonthHandler()} size="small" color={myprops.accent} shape="round">{t("quickEdit.addOneMonth")}</IonButton>
+            <IonButton onClick={() => minusOneDayHandler()} size="small" color={myprops.accent} shape="round">{t("quickEdit.minusOneDay")}</IonButton>
+            <IonButton onClick={() => addOneDayHandler()} size="small" color={myprops.accent} shape="round">{t("quickEdit.addOneDay")}</IonButton>
+          </IonItem>
+        </> : <></>}
+        <DescriptionEditor needToSave={needToSave} setNeedToSave={setNeedToSave} id={myprops.id} description={myprops.description ? myprops.description : ""} editable={contentEditable}  accent={myprops.accent} />
+        
+      </IonContent>
+      <IonFooter>
+        <IonButton color={myprops.accent} shape="round" onClick={(e) => setContentEditable(!contentEditable)}>
+          <IonIcon icon={create} /> {!contentEditable ? capitalize(t("edit")) : capitalize(t("complete"))+t("between_words")+t("edit")}
+        </IonButton>
+      </IonFooter>
+    </IonModal>
   )
 }

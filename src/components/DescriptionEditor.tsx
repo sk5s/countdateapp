@@ -5,22 +5,29 @@ import { Preferences } from "@capacitor/preferences";
 import key from '../lib/storageKey.json'
 import { trigger } from "../lib/Events";
 import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 import { capitalize } from "../lib/Capitalize";
 import { informationCircle, save } from "ionicons/icons";
+
+import "./DescriptionEditor.css"
 
 export default function DescriptionEditor({
   id,
   description,
   editable,
-  accent
+  accent,
+  needToSave,
+  setNeedToSave
 }:{
   id:string;
   description: string;
   editable: boolean;
   accent: string;
+  needToSave: boolean;
+  setNeedToSave: any;
 }){
   const [editDescription, setEditDescription] = useState<string>(description)
-  const [needToSave, setNeedToSave] = useState(false)
+  
   const [t] = useTranslation()
   let countdate_events_data = [];
   const edit_this_countdate_item_description = async (newDescription:string|undefined|null) => {
@@ -62,16 +69,19 @@ export default function DescriptionEditor({
       </IonPopover>
     </>
      : <>
+
+    {needToSave ?
+    <IonChip style={{marginLeft: "10px"}} color={accent}>
+      <IonIcon icon={informationCircle}></IonIcon>
+      <IonLabel>{t("need_to_save")}</IonLabel>
+    </IonChip>
+    : <></>}
+
      {editDescription ?
      <>
-      {needToSave ?
-      <IonChip style={{marginLeft: "10px"}} color={accent}>
-        <IonIcon icon={informationCircle}></IonIcon>
-        <IonLabel>{t("need_to_save")}</IonLabel>
-      </IonChip>
-      : <></>}
       <ReactMarkdown
         children={editDescription}
+        remarkPlugins={[remarkGfm]}
         linkTarget="_blank"
       />
       </>: <h5>{capitalize(t("description"))} {t("no_data")}</h5>}

@@ -1,0 +1,10 @@
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+table {
+  width: 100%;
+  display: block;
+  overflow-x: scroll !important;
+  white-space: nowrap;
+}
