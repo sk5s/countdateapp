@@ -19,11 +19,24 @@ import CountCards from "../components/CountCards";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import { capitalize } from "../lib/Capitalize";
-
+import { useSwipeable } from 'react-swipeable';
 const Home: React.FC<{accent:string,textColor:string}> = ({accent,textColor}) => {
   const {t} = useTranslation()
   const [view,setView] = useState("days")
   const [count,setCount] = useState("countdown")
+
+  const handlers = useSwipeable({
+    onSwipedLeft: () => left(),
+    onSwipedRight: () => left()
+  });
+  const left = () => {
+    if (count == "countdown") {
+      setCount("countup")
+    } else {
+      setCount("countdown")
+    }
+  }
+
   return (
     <IonPage>
       <IonHeader>
@@ -46,8 +59,10 @@ const Home: React.FC<{accent:string,textColor:string}> = ({accent,textColor}) =>
           </IonToolbar>
         </IonHeader>
 
+        <div {...handlers}>
         {/* Countcards */}
         <CountCards count={count} view={view} accent={accent} textColor={textColor} changeCount={setCount} />
+        </div>
 
         {/* New countdate action button */}
         <IonFab vertical="bottom" horizontal="end" slot="fixed">
