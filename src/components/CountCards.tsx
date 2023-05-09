@@ -3,10 +3,10 @@ import CountdownCard from "./CountdownCard";
 import CountupCard from "./CountupCard";
 import TitleCard from "./TitleCard";
 import { Preferences as Storage } from "@capacitor/preferences";
-import { IonIcon, isPlatform, useIonAlert, IonButton, IonModal, IonContent, useIonLoading, IonGrid, IonRow, IonCol, IonTextarea, IonLabel, useIonToast, IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonCardSubtitle } from "@ionic/react";
+import { IonIcon, isPlatform, useIonAlert, IonButton, IonModal, IonContent, useIonLoading, IonGrid, IonRow, IonCol, IonTextarea, IonLabel, useIonToast, IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonCardSubtitle, IonRefresher, IonRefresherContent } from "@ionic/react";
 import { settings, create, information, add, arrowBackCircle, arrowForwardCircle } from 'ionicons/icons'
 import { useHistory } from "react-router";
-import { on } from '../lib/Events'
+import { on, trigger } from '../lib/Events'
 import { useTranslation } from "react-i18next";
 import { Device } from '@capacitor/device';
 import { copy } from '../lib/Clipboard'
@@ -80,8 +80,19 @@ export default function CountCards({view,accent,textColor,count,changeCount}:{vi
   const [editable, setEditable] = useState<boolean>(false)
   const [devChecked, setDevChecked] = useState<boolean>(false)
 
+  const handleRefresh = (event: any) => {
+    trigger("countdate_data:change")
+    setTimeout(() => {
+      event.detail.complete();
+    }, 500);
+  }
+
   return (
     <div>
+      {/* Refresher */}
+      <IonRefresher slot="fixed" onIonRefresh={handleRefresh}>
+        <IonRefresherContent></IonRefresherContent>
+      </IonRefresher>
       {(() => {
         let row = [];
         if (countdate_events_data_list.length) {

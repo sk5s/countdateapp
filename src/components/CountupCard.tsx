@@ -1,31 +1,21 @@
 import {
   IonCard,
-  IonCardHeader,
   IonCardSubtitle,
   IonCardTitle,
   IonCardContent,
   IonItem,
   IonButton,
   IonIcon,
-  IonModal,
-  IonHeader,
-  IonToolbar,
-  IonTitle,
-  IonButtons,
-  IonContent,
-  IonFooter,
 } from "@ionic/react";
 import { Preferences as Storage } from "@capacitor/preferences";
 
-import { create, removeCircleOutline } from "ionicons/icons";
-import Countdown from "react-countdown";
+import { removeCircleOutline } from "ionicons/icons";
 import { on, trigger } from "../lib/Events";
 import { useTranslation } from "react-i18next";
 import { capitalize } from "../lib/Capitalize";
-import CountdateItem from "./CountdownItem";
-import DescriptionEditor from "./DescriptionEditor";
 import { useEffect, useState } from "react";
 import EventDetailModal from "./EventDetailModal";
+import { countUpFromTime } from "../lib/Countdate";
 
 export default function CountupCard(props: {
   date: string;
@@ -58,22 +48,6 @@ export default function CountupCard(props: {
       trigger("countdate_data:change");
     }
   };
-  const countUpFromTime = (date:any) => {
-    // countFrom = new Date(countFrom).getTime();
-    let now = new Date()
-    let countFrom = new Date(date)
-    let timeDifference = now.getTime() - countFrom.getTime()
-      
-    let secondsInADay = 60 * 60 * 1000 * 24
-    let secondsInAHour = 60 * 60 * 1000
-    let days = Math.floor(timeDifference / (secondsInADay) * 1);
-    // let years = Math.floor(days / 365);
-    // if (years > 1){ days = days - (years * 365) }
-    // let hours = Math.floor((timeDifference % (secondsInADay)) / (secondsInAHour) * 1);
-    // let mins = Math.floor(((timeDifference % (secondsInADay)) % (secondsInAHour)) / (60 * 1000) * 1);
-    // let secs = Math.floor((((timeDifference % (secondsInADay)) % (secondsInAHour)) % (60 * 1000)) / 1000 * 1);
-    return days
-  }
   useEffect(() => {
     on("countdate_data:change", (data:any) => {
       if (data.detail == "delete") setIsOpen(false)
