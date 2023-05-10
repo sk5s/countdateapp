@@ -112,12 +112,13 @@ public class CountdateWidgetConfig extends AppCompatActivity {
     public void confirmConfig(int position){
         AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(this);
         Intent intent = new Intent(this, MainActivity.class);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
 
         //String buttonText = editTextButton.getText().toString();
         //String eventId = eventsList.get(position).get("id");
         String eventName = eventsList.get(position).get("name");
         String eventDate = eventsList.get(position).get("date");
+        //System.out.println(eventDate);
 
         RemoteViews views = new RemoteViews(this.getPackageName(), R.layout.countdate_widget);
 //        views.setOnClickPendingIntent(R.id.countdate_widget_text1,pendingIntent);

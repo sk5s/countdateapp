@@ -64,7 +64,8 @@
     "eject": "react-scripts eject",
     "surge": "surge build --domain https://countdate.surge.sh",
     "depcheck": "npx depcheck",
-    "update": "npm install @ionic/react@6 @ionic/react-router@6"
+    "update": "npm install @ionic/react@6 @ionic/react-router@6",
+    "android": "ionic cap run android -l --external"
   },
   "eslintConfig": {
     "extends": [
@@ -86,7 +87,7 @@
   },
   "devDependencies": {
     "@capacitor/cli": "4.6.3",
-    "@ionic/cli": "6.20.8",
+    "@ionic/cli": "^7.1.1",
     "@types/react-color": "^3.0.6",
     "@types/react-dom": "^18.0.11",
     "cordova-res": "0.15.4"
