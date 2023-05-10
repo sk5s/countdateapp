@@ -54,12 +54,12 @@ const About: React.FC<{accent:string}> = ({accent}) => {
           Date Countdown: Know How Many Days Left To a Specific Date.
         </p>
         <div>
-          <a target="_blank" href='https://play.google.com/store/apps/details?id=cyou.sk5s.app.countdate&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png' width="150px"/></a>
-          <a target="_blank" href='https://apt.izzysoft.de/fdroid/index/apk/cyou.sk5s.app.countdate'><img alt='Get it on Google Play' src='https://sk5s.cyou/countdate-landing/assets/img/IzzyOnDroid.png' width="150px"/></a>
+          <a rel="noreferrer" target="_blank" href='https://play.google.com/store/apps/details?id=cyou.sk5s.app.countdate&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png' width="150px"/></a>
+          <a rel="noreferrer" target="_blank" href='https://apt.izzysoft.de/fdroid/index/apk/cyou.sk5s.app.countdate'><img alt='Get it on Google Play' src='https://sk5s.cyou/countdate-landing/assets/img/IzzyOnDroid.png' width="150px"/></a>
         </div>
         <ul style={{fontSize:"25px"}}>
           <li><a href="https://sk5s.cyou/countdate-landing/" target="_blank" rel="noopener noreferrer">Landing page</a></li>
-          <li><a href="https://bit.ly/countdateapp" target="_blank" rel="noopener noreferrer">Project Github</a></li>
+          <li><a href="https://github.com/sk5s/countdateapp" target="_blank" rel="noopener noreferrer">Project Github</a></li>
           <li><a href="https://github.com/sk5s/countdateapp/issues" target="_blank" rel="noopener noreferrer">Report Bug</a></li>
           <li><a href="https://github.com/sk5s/countdateapp/issues" target="_blank" rel="noopener noreferrer">Request feature</a></li>
         </ul>

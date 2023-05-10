@@ -55,7 +55,7 @@ export default function AppTour({modal, setModal, color}:{modal:boolean;setModal
             })()
           }
         </Swiper>
-        <IonButton color={color} shape="round" href='https://github.com/sk5s/countdateapp/wiki' target='_blank'><IonIcon icon={link} /> {t("tour.learn_more")}</IonButton>
+        <IonButton color={color} shape="round" href='https://github.com/sk5s/countdateapp/wiki' target='_blank' rel="noreferrer"><IonIcon icon={link} /> {t("tour.learn_more")}</IonButton>
       </IonContent>
     </IonModal>
   );
