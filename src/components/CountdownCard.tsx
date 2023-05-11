@@ -7,7 +7,7 @@ import {
   IonButton,
   IonIcon,
 } from "@ionic/react";
-import {Preferences as Storage } from "@capacitor/preferences";
+import { Preferences as Storage } from "@capacitor/preferences";
 
 import { removeCircleOutline } from "ionicons/icons";
 import { on, trigger } from "../lib/Events";
@@ -27,9 +27,9 @@ export default function CountdownCard(props: {
   textColor: string;
   description?: string;
 }): JSX.Element {
-  const [t] = useTranslation()
+  const [t] = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
-  const [contentEditable,setContentEditable] = useState(false);
+  const [contentEditable, setContentEditable] = useState(false);
   let countdate_events_data = [];
   const remove_this_countdate_item = async () => {
     const { value } = await Storage.get({ key: "countdate_events_data" });
@@ -49,19 +49,20 @@ export default function CountdownCard(props: {
     }
   };
   useEffect(() => {
-    on("countdate_data:change", (data:any) => {
-      if (data.detail == "delete") setIsOpen(false)
-    })
+    on("countdate_data:change", (data: any) => {
+      if (data.detail == "delete") setIsOpen(false);
+    });
   }, []);
-  if (countDownFromTime(props.date) < 0) return (
-    <></>
-  )
+  if (countDownFromTime(props.date) < 0) return <></>;
   return (
     <>
-      <IonCard onClick={() => setIsOpen(true)} style={{cursor: "pointer"}}>
+      <IonCard onClick={() => setIsOpen(true)} style={{ cursor: "pointer" }}>
         <IonItem>
-          <IonCardSubtitle style={{fontSize: "1.5rem"}}>
-            {t("event_countdown_prefix") + t("between_words") + props.event + t("event_countdown_suffix")}
+          <IonCardSubtitle style={{ fontSize: "1.5rem" }}>
+            {t("event_countdown_prefix") +
+              t("between_words") +
+              props.event +
+              t("event_countdown_suffix")}
           </IonCardSubtitle>
           {props.editable && (
             <IonButton
@@ -69,27 +70,45 @@ export default function CountdownCard(props: {
               onClick={remove_this_countdate_item}
               slot="end"
             >
-              <IonIcon
-                slot="icon-only"
-                icon={removeCircleOutline}
-              />
+              <IonIcon slot="icon-only" icon={removeCircleOutline} />
             </IonButton>
           )}
         </IonItem>
         <IonCardContent>
-          <IonCardTitle style={{fontSize: "3rem", color: props.textColor}} color={props.accent}>
-            {props.view == "days"
-              ? <span>{countDownFromTime(props.date) + " " + capitalize(t("days"))}</span>
-              : <span>{(Math.round((countDownFromTime(props.date)/7 + Number.EPSILON) * 10) / 10).toString() + " " + capitalize(t("weeks"))}</span>
-            }
+          <IonCardTitle
+            style={{ fontSize: "3rem", color: props.textColor }}
+            color={props.accent}
+          >
+            {props.view == "days" ? (
+              <span>
+                {countDownFromTime(props.date) + " " + capitalize(t("days"))}
+              </span>
+            ) : (
+              <span>
+                {(
+                  Math.round(
+                    (countDownFromTime(props.date) / 7 + Number.EPSILON) * 10
+                  ) / 10
+                ).toString() +
+                  " " +
+                  capitalize(t("weeks"))}
+              </span>
+            )}
           </IonCardTitle>
         </IonCardContent>
       </IonCard>
       <EventDetailModal
-        detailStr={props.view == "days"
-        ? countDownFromTime(props.date) + " " + capitalize(t("days"))
-        : (Math.round((countDownFromTime(props.date)/7 + Number.EPSILON) * 10) / 10).toString() + " " + capitalize(t("weeks"))
-      }
+        detailStr={
+          props.view == "days"
+            ? countDownFromTime(props.date) + " " + capitalize(t("days"))
+            : (
+                Math.round(
+                  (countDownFromTime(props.date) / 7 + Number.EPSILON) * 10
+                ) / 10
+              ).toString() +
+              " " +
+              capitalize(t("weeks"))
+        }
         contentEditable={contentEditable}
         setContentEditable={setContentEditable}
         isOpen={isOpen}

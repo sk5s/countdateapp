@@ -1,7 +1,7 @@
 # https://raw.githubusercontent.com/ionic-team/ionic-framework/main/.github/ISSUE_TEMPLATE/feature_request.yml
 name: 💡 Feature Request
 description: Suggest an idea for the project
-title: 'feat: '
+title: "feat: "
 body:
   - type: checkboxes
     attributes:

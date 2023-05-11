@@ -1,15 +1,24 @@
-import { IonButton, IonChip, IonContent, IonIcon, IonItem, IonLabel, IonPopover, IonTextarea } from "@ionic/react";
+import {
+  IonButton,
+  IonChip,
+  IonContent,
+  IonIcon,
+  IonItem,
+  IonLabel,
+  IonPopover,
+  IonTextarea,
+} from "@ionic/react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Preferences } from "@capacitor/preferences";
-import key from '../lib/storageKey.json'
+import key from "../lib/storageKey.json";
 import { trigger } from "../lib/Events";
-import ReactMarkdown from 'react-markdown'
-import remarkGfm from 'remark-gfm'
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import { capitalize } from "../lib/Capitalize";
 import { informationCircle, save } from "ionicons/icons";
 
-import "./DescriptionEditor.css"
+import "./DescriptionEditor.css";
 
 export default function DescriptionEditor({
   id,
@@ -17,27 +26,29 @@ export default function DescriptionEditor({
   editable,
   accent,
   needToSave,
-  setNeedToSave
-}:{
-  id:string;
+  setNeedToSave,
+}: {
+  id: string;
   description: string;
   editable: boolean;
   accent: string;
   needToSave: boolean;
   setNeedToSave: any;
-}){
-  const [editDescription, setEditDescription] = useState<string>(description)
-  
-  const [t] = useTranslation()
+}) {
+  const [editDescription, setEditDescription] = useState<string>(description);
+
+  const [t] = useTranslation();
   let countdate_events_data = [];
-  const edit_this_countdate_item_description = async (newDescription:string|undefined|null) => {
-    if (newDescription == undefined || newDescription == null) return
+  const edit_this_countdate_item_description = async (
+    newDescription: string | undefined | null
+  ) => {
+    if (newDescription == undefined || newDescription == null) return;
     const { value } = await Preferences.get({ key: key.data });
     if (value) {
       countdate_events_data = JSON.parse(value);
       for (const i of countdate_events_data) {
         if (String(i.id) == String(id)) {
-          i.description = newDescription
+          i.description = newDescription;
         }
       }
       let content = JSON.stringify(countdate_events_data);
@@ -50,43 +61,71 @@ export default function DescriptionEditor({
   };
   return (
     <>
-    {editable ? 
-    <>
-      <IonItem>
-        <IonTextarea
-          aria-label="Description editor"
-          placeholder={capitalize(t("description"))}
-          autoGrow={true}
-          fill="solid"
-          value={editDescription}
-          onIonChange={e => {setEditDescription(e.detail.value!);setNeedToSave(true)}}
-        ></IonTextarea>
-        <IonButton color={accent} onClick={() => {edit_this_countdate_item_description(editDescription);setNeedToSave(false)}} size="default" shape="round"><IonIcon icon={save} /></IonButton>
-      </IonItem>
-      <IonButton size="small" id="click-trigger" color={accent} shape="round"> <IonIcon icon={informationCircle}></IonIcon> </IonButton>
-      <IonPopover trigger="click-trigger" triggerAction="click">
-        <IonContent class="ion-padding">{t("description_tips")}</IonContent>
-      </IonPopover>
-    </>
-     : <>
+      {editable ? (
+        <>
+          <IonItem>
+            <IonTextarea
+              aria-label="Description editor"
+              placeholder={capitalize(t("description"))}
+              autoGrow={true}
+              fill="solid"
+              value={editDescription}
+              onIonChange={(e) => {
+                setEditDescription(e.detail.value!);
+                setNeedToSave(true);
+              }}
+            ></IonTextarea>
+            <IonButton
+              color={accent}
+              onClick={() => {
+                edit_this_countdate_item_description(editDescription);
+                setNeedToSave(false);
+              }}
+              size="default"
+              shape="round"
+            >
+              <IonIcon icon={save} />
+            </IonButton>
+          </IonItem>
+          <IonButton
+            size="small"
+            id="click-trigger"
+            color={accent}
+            shape="round"
+          >
+            {" "}
+            <IonIcon icon={informationCircle}></IonIcon>{" "}
+          </IonButton>
+          <IonPopover trigger="click-trigger" triggerAction="click">
+            <IonContent class="ion-padding">{t("description_tips")}</IonContent>
+          </IonPopover>
+        </>
+      ) : (
+        <>
+          {needToSave ? (
+            <IonChip style={{ marginLeft: "10px" }} color={accent}>
+              <IonIcon icon={informationCircle}></IonIcon>
+              <IonLabel>{t("need_to_save")}</IonLabel>
+            </IonChip>
+          ) : (
+            <></>
+          )}
 
-    {needToSave ?
-    <IonChip style={{marginLeft: "10px"}} color={accent}>
-      <IonIcon icon={informationCircle}></IonIcon>
-      <IonLabel>{t("need_to_save")}</IonLabel>
-    </IonChip>
-    : <></>}
-
-     {editDescription ?
-     <>
-      <ReactMarkdown
-        children={editDescription}
-        remarkPlugins={[remarkGfm]}
-        linkTarget="_blank"
-      />
-      </>: <h5>{capitalize(t("description"))} {t("no_data")}</h5>}
+          {editDescription ? (
+            <>
+              <ReactMarkdown
+                children={editDescription}
+                remarkPlugins={[remarkGfm]}
+                linkTarget="_blank"
+              />
+            </>
+          ) : (
+            <h5>
+              {capitalize(t("description"))} {t("no_data")}
+            </h5>
+          )}
+        </>
+      )}
     </>
-    }
-    </>
-  )
+  );
 }

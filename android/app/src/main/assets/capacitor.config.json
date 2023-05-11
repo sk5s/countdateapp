@@ -1,15 +1,15 @@
 {
-	"appId": "cyou.sk5s.app.countdate",
-	"appName": "Countdate",
-	"webDir": "build",
-	"bundledWebRuntime": false,
-	"plugins": {
-		"LocalNotifications": {
-			"smallIcon": "countdateapp-logo",
-			"iconColor": "#488AFF"
-		},
-		"SplashScreen": {
-			"backgroundColor": "#03989e"
-		}
-	}
+  "appId": "cyou.sk5s.app.countdate",
+  "appName": "Countdate",
+  "webDir": "build",
+  "bundledWebRuntime": false,
+  "plugins": {
+    "LocalNotifications": {
+      "smallIcon": "countdateapp-logo",
+      "iconColor": "#488AFF"
+    },
+    "SplashScreen": {
+      "backgroundColor": "#03989e"
+    }
+  }
 }

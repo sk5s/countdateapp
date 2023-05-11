@@ -1,35 +1,37 @@
-import { Preferences as Storage } from '@capacitor/preferences';
-import key from './storageKey.json'
+import { Preferences as Storage } from "@capacitor/preferences";
+import key from "./storageKey.json";
 import { trigger } from "./Events";
 
-export const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-console.log(prefersDark)
+export const prefersDark = window.matchMedia(
+  "(prefers-color-scheme: dark)"
+).matches;
+console.log(prefersDark);
 
-get_user_theme_preference()
-trigger("countdate_darkmode:toggle")
-let darkmodeEnable
-function dark_enable(value){
-  if (value == "dark"){
-    darkmodeEnable = true
-    document.body.classList.add('dark')
+get_user_theme_preference();
+trigger("countdate_darkmode:toggle");
+let darkmodeEnable;
+function dark_enable(value) {
+  if (value == "dark") {
+    darkmodeEnable = true;
+    document.body.classList.add("dark");
   } else if (value == "light") {
-    darkmodeEnable = false
+    darkmodeEnable = false;
   } else if (prefersDark) {
-    darkmodeEnable = prefersDark
-    document.body.classList.add('dark')
+    darkmodeEnable = prefersDark;
+    document.body.classList.add("dark");
   } else {
-    darkmodeEnable = prefersDark
+    darkmodeEnable = prefersDark;
   }
 }
-export function set_dark_mode_toggle_to(){
-  get_user_theme_preference()
-  return darkmodeEnable
+export function set_dark_mode_toggle_to() {
+  get_user_theme_preference();
+  return darkmodeEnable;
 }
 
-async function get_user_theme_preference(){
+async function get_user_theme_preference() {
   const { value } = await Storage.get({
-    key: key.theme
-  })
-  console.log(value)
-  dark_enable(value)
+    key: key.theme,
+  });
+  console.log(value);
+  dark_enable(value);
 }

@@ -13,29 +13,32 @@ import {
   IonFooter,
 } from "@ionic/react";
 
-import { add } from 'ionicons/icons'
+import { add } from "ionicons/icons";
 
 import CountCards from "../components/CountCards";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import { capitalize } from "../lib/Capitalize";
-import { useSwipeable } from 'react-swipeable';
-const Home: React.FC<{accent:string,textColor:string}> = ({accent,textColor}) => {
-  const {t} = useTranslation()
-  const [view,setView] = useState("days")
-  const [count,setCount] = useState("countdown")
+import { useSwipeable } from "react-swipeable";
+const Home: React.FC<{ accent: string; textColor: string }> = ({
+  accent,
+  textColor,
+}) => {
+  const { t } = useTranslation();
+  const [view, setView] = useState("days");
+  const [count, setCount] = useState("countdown");
 
   const handlers = useSwipeable({
     onSwipedLeft: () => left(),
-    onSwipedRight: () => left()
+    onSwipedRight: () => left(),
   });
   const left = () => {
     if (count == "countdown") {
-      setCount("countup")
+      setCount("countup");
     } else {
-      setCount("countdown")
+      setCount("countdown");
     }
-  }
+  };
 
   return (
     <IonPage>
@@ -48,7 +51,11 @@ const Home: React.FC<{accent:string,textColor:string}> = ({accent,textColor}) =>
         <IonHeader>
           {/* Countdown countup switcher */}
           <IonToolbar>
-            <IonSegment color={accent} value={count} onIonChange={(e) => setCount(`${e.detail.value}`)}>
+            <IonSegment
+              color={accent}
+              value={count}
+              onIonChange={(e) => setCount(`${e.detail.value}`)}
+            >
               <IonSegmentButton value="countdown">
                 <IonLabel>{capitalize(t("countdown"))}</IonLabel>
               </IonSegmentButton>
@@ -60,8 +67,14 @@ const Home: React.FC<{accent:string,textColor:string}> = ({accent,textColor}) =>
         </IonHeader>
 
         <div {...handlers}>
-        {/* Countcards */}
-        <CountCards count={count} view={view} accent={accent} textColor={textColor} changeCount={setCount} />
+          {/* Countcards */}
+          <CountCards
+            count={count}
+            view={view}
+            accent={accent}
+            textColor={textColor}
+            changeCount={setCount}
+          />
         </div>
 
         {/* New countdate action button */}
@@ -70,12 +83,15 @@ const Home: React.FC<{accent:string,textColor:string}> = ({accent,textColor}) =>
             <IonIcon icon={add} />
           </IonFabButton>
         </IonFab>
-
       </IonContent>
       <IonFooter translucent={false}>
         {/* Days and weeks switcher */}
         <IonToolbar>
-          <IonSegment color={accent} value={view} onIonChange={(e) => setView(`${e.detail.value}`)}>
+          <IonSegment
+            color={accent}
+            value={view}
+            onIonChange={(e) => setView(`${e.detail.value}`)}
+          >
             <IonSegmentButton value="days">
               <IonLabel>{t("days_view")}</IonLabel>
             </IonSegmentButton>

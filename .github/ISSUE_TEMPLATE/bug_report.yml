@@ -1,7 +1,7 @@
 # https://raw.githubusercontent.com/ionic-team/ionic-framework/main/.github/ISSUE_TEMPLATE/bug_report.yml
 name: 🐛 Bug Report
 description: Create a report to help us improve the app
-title: 'bug: '
+title: "bug: "
 body:
   - type: checkboxes
     attributes:

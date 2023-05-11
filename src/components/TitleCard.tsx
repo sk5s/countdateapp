@@ -5,15 +5,16 @@ import {
   IonCardTitle,
 } from "@ionic/react";
 
-export default function TitleCard(props:{title:string,subtitle:string}): JSX.Element {
+export default function TitleCard(props: {
+  title: string;
+  subtitle: string;
+}): JSX.Element {
   return (
     <div>
       <IonCard>
         <IonCardHeader>
           <IonCardSubtitle>{props.subtitle}</IonCardSubtitle>
-          <IonCardTitle>
-            {props.title}
-          </IonCardTitle>
+          <IonCardTitle>{props.title}</IonCardTitle>
         </IonCardHeader>
       </IonCard>
     </div>
