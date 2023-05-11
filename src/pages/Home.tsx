@@ -33,7 +33,7 @@ const Home: React.FC<{ accent: string; textColor: string }> = ({
     onSwipedRight: () => left(),
   });
   const left = () => {
-    if (count == "countdown") {
+    if (count === "countdown") {
       setCount("countup");
     } else {
       setCount("countdown");
@@ -66,7 +66,7 @@ const Home: React.FC<{ accent: string; textColor: string }> = ({
           </IonToolbar>
         </IonHeader>
 
-        <div {...handlers}>
+        <div {...handlers} style={{minHeight: "80%"}}>
           {/* Countcards */}
           <CountCards
             count={count}

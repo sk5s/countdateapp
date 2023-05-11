@@ -4,8 +4,6 @@ import {
   IonPage,
   IonTitle,
   IonToolbar,
-  IonButtons,
-  IonBackButton,
   IonDatetime,
   IonGrid,
   IonRow,
@@ -18,7 +16,7 @@ import {
   IonIcon,
   IonPopover,
 } from "@ionic/react";
-import { Preferences as Storage } from "@capacitor/preferences";
+import { Preferences } from "@capacitor/preferences";
 import { useState } from "react";
 import { useHistory } from "react-router";
 import { v4 as uuid } from "uuid";
@@ -33,10 +31,9 @@ import { add, informationCircle } from "ionicons/icons";
 import LocalizeBackButton from "../components/LocalizeBackButton";
 
 const Add: React.FC<{ accent: string }> = ({ accent }) => {
-  const { t, i18n } = useTranslation();
-  const [UTC, setUTC] = useState("+08:00");
+  const { t } = useTranslation();
   const [selectedDate, setSelectedDate] = useState(
-    format(new Date(), "yyyy-MM-dd") + "T23:59:00" + UTC
+    format(new Date(), "yyyy-MM-dd") + "T23:59:00+08:00"
   );
   const [titleText, setTitleText] = useState<string | number>("");
   const [presentToast] = useIonToast();
@@ -48,7 +45,7 @@ const Add: React.FC<{ accent: string }> = ({ accent }) => {
     description?: string;
   }) => {
     if (!newItem.event_name) return;
-    const { value } = await Storage.get({ key: key.data });
+    const { value } = await Preferences.get({ key: key.data });
     if (value) {
       countdate_events_data = JSON.parse(value);
     } else {
@@ -61,7 +58,7 @@ const Add: React.FC<{ accent: string }> = ({ accent }) => {
     });
     history.push("/home");
     let content = JSON.stringify(countdate_events_data);
-    await Storage.set({
+    await Preferences.set({
       key: key.data,
       value: content,
     });
@@ -85,9 +82,6 @@ const Add: React.FC<{ accent: string }> = ({ accent }) => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          {/* <IonButtons slot="start">
-            <IonBackButton defaultHref="/" color={accent} />
-          </IonButtons> */}
           <LocalizeBackButton color={accent} />
           <IonTitle>{capitalize(t("add"))} Countdate</IonTitle>
         </IonToolbar>
@@ -154,8 +148,7 @@ const Add: React.FC<{ accent: string }> = ({ accent }) => {
                 onIonChange={(e) =>
                   setSelectedDate(
                     format(new Date(`${e.detail.value}`), "yyyy-MM-dd") +
-                      "T23:59:00" +
-                      UTC
+                      "T23:59:00+08:00"
                   )
                 }
                 showDefaultTitle={false}

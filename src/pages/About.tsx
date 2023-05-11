@@ -4,8 +4,6 @@ import {
   IonPage,
   IonTitle,
   IonToolbar,
-  IonButtons,
-  IonBackButton,
   getPlatforms,
   IonChip,
 } from "@ionic/react";
@@ -18,7 +16,7 @@ import banner from "../assets/sk5s-project-bar.png";
 import LocalizeBackButton from "../components/LocalizeBackButton";
 
 const About: React.FC<{ accent: string }> = ({ accent }) => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   return (
     <IonPage>
       <IonHeader>
@@ -34,7 +32,7 @@ const About: React.FC<{ accent: string }> = ({ accent }) => {
           </IonToolbar>
         </IonHeader>
         <div style={{ width: "100%", textAlign: "center" }}>
-          <a href="https://github.com/sk5s/countdateapp" target="_blank">
+          <a href="https://github.com/sk5s/countdateapp" target="_blank" rel="noreferrer">
             <img src={logo} alt="Logo" width="80" height="80" />
           </a>
           <p>Version: {packageJson.version}</p>
@@ -42,7 +40,7 @@ const About: React.FC<{ accent: string }> = ({ accent }) => {
             Platform:{" "}
             {(() => {
               let platforms: any = [];
-              getPlatforms().map((p, i) => {
+              getPlatforms().forEach((p, i) => {
                 platforms.push(
                   <IonChip key={i} color={accent}>
                     {p}

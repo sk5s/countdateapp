@@ -4,8 +4,6 @@ import {
   IonPage,
   IonTitle,
   IonToolbar,
-  IonButtons,
-  IonBackButton,
   isPlatform,
   IonList,
   IonItem,
@@ -38,14 +36,14 @@ import { useHistory } from "react-router";
 import LocalizeBackButton from "../components/LocalizeBackButton";
 
 const Settings: React.FC<{ accent: string }> = ({ accent }) => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const [darkChecked, setDarkChecked] = useState<boolean>();
   const [devChecked, setDevChecked] = useState<boolean>(false);
   const history = useHistory();
 
   const getDevMode = async () => {
     const { value } = await Storage.get({ key: key.dev });
-    if (value == "true") setDevChecked(true);
+    if (value === "true") setDevChecked(true);
   };
   getDevMode();
   const toggleDevModeHandler = async () => {
@@ -70,10 +68,10 @@ const Settings: React.FC<{ accent: string }> = ({ accent }) => {
   const darkEnable = (value: any) => {
     let darkmodeEnable;
     let prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    if (value == "dark") {
+    if (value === "dark") {
       darkmodeEnable = true;
       document.body.classList.add("dark");
-    } else if (value == "light") {
+    } else if (value === "light") {
       darkmodeEnable = false;
     } else if (prefersDark) {
       darkmodeEnable = prefersDark;

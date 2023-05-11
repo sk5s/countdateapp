@@ -37,8 +37,8 @@ export default function CountupCard(props: {
       countdate_events_data = JSON.parse(value);
       countdate_events_data = countdate_events_data.filter((item: any) => {
         console.log(item.id);
-        console.log(String(item.id) != String(props.id));
-        return String(item.id) != String(props.id);
+        console.log(String(item.id) !== String(props.id));
+        return String(item.id) !== String(props.id);
       });
       let content = JSON.stringify(countdate_events_data);
       await Storage.set({
@@ -50,7 +50,7 @@ export default function CountupCard(props: {
   };
   useEffect(() => {
     on("countdate_data:change", (data: any) => {
-      if (data.detail == "delete") setIsOpen(false);
+      if (data.detail === "delete") setIsOpen(false);
     });
   }, []);
   if (countUpFromTime(props.date) < 0) return <></>;
@@ -76,7 +76,7 @@ export default function CountupCard(props: {
             style={{ fontSize: "3rem", color: props.textColor }}
             color={props.accent}
           >
-            {props.view == "days" ? (
+            {props.view === "days" ? (
               <span>
                 {countUpFromTime(props.date) + " " + capitalize(t("days"))}
               </span>
@@ -96,7 +96,7 @@ export default function CountupCard(props: {
       </IonCard>
       <EventDetailModal
         detailStr={
-          props.view == "days"
+          props.view === "days"
             ? countUpFromTime(props.date) + " " + capitalize(t("days"))
             : (
                 Math.round(

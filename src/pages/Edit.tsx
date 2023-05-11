@@ -4,8 +4,6 @@ import {
   IonPage,
   IonTitle,
   IonToolbar,
-  IonButtons,
-  IonBackButton,
   IonList,
   IonReorderGroup,
   ItemReorderEventDetail,
@@ -33,7 +31,7 @@ const Edit: React.FC<{ accent: string; textColor: string }> = ({
     event_name: string;
     date: string;
   }[] = [];
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   function swapElement(from: any, to: any) {
     let copyarr = [...countdate_events_data_list];

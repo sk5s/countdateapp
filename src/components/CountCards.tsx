@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import CountdownCard from "./CountdownCard";
 import CountupCard from "./CountupCard";
 import TitleCard from "./TitleCard";
-import { Preferences as Storage } from "@capacitor/preferences";
+import { Preferences } from "@capacitor/preferences";
 import {
   IonIcon,
   isPlatform,
@@ -18,7 +18,6 @@ import {
   IonLabel,
   useIonToast,
   IonCard,
-  IonCardContent,
   IonCardHeader,
   IonCardTitle,
   IonCardSubtitle,
@@ -33,7 +32,6 @@ import {
   arrowBackCircle,
   arrowForwardCircle,
 } from "ionicons/icons";
-import { useHistory } from "react-router";
 import { on, trigger } from "../lib/Events";
 import { useTranslation } from "react-i18next";
 import { Device } from "@capacitor/device";
@@ -56,8 +54,7 @@ export default function CountCards({
   count: string;
   changeCount: any;
 }): JSX.Element {
-  const history = useHistory();
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const [languageCode, setLanguageCode] = useState("");
   const [presentAlert] = useIonAlert();
   const [presentToast] = useIonToast();
@@ -71,15 +68,22 @@ export default function CountCards({
     // {id: "2", event_name: "112學測", date: "2023-01-13"}
   ];
   const check_countdate_events_storage_data = async () => {
-    presentLoading({
-      duration: 100,
-      showBackdrop: false,
-    });
-    const { value } = await Storage.get({ key: key.data });
+    if (sessionStorage.getItem("firstOpen") === null) {
+      presentLoading({
+        duration: 200,
+        showBackdrop: true,
+      });
+      sessionStorage.setItem("firstOpen","false")
+    } else {
+      presentLoading({
+        duration: 100,
+        showBackdrop: false,
+      });
+    }
+    const { value } = await Preferences.get({ key: key.data });
     if (value?.includes("null")) return;
     if (value) {
       countdate_events_data = JSON.parse(value);
-      // console.log(countdate_events_data);
     } else {
       countdate_events_data = [];
     }
@@ -87,11 +91,11 @@ export default function CountCards({
     set_countdate_events_data_list(countdate_events_data);
   };
   const delete_countdate_events_storage_data = async () => {
-    await Storage.remove({ key: key.data });
+    await Preferences.remove({ key: key.data });
   };
   const getDevMode = async () => {
-    const { value } = await Storage.get({ key: key.dev });
-    if (value == "true") {
+    const { value } = await Preferences.get({ key: key.dev });
+    if (value === "true") {
       setDevChecked(true);
     } else {
       setDevChecked(false);
@@ -103,7 +107,6 @@ export default function CountCards({
   getDevMode();
   useEffect(() => {
     check_countdate_events_storage_data();
-    // console.log(countdate_events_data);
     on("countdate_data:change", () => {
       check_countdate_events_storage_data();
     });
@@ -118,8 +121,7 @@ export default function CountCards({
   );
   const [popover_oepn, set_popover_oepn] = useState<boolean>(false);
   const [popover_content, set_popover_content] = useState<string>();
-  const [presentLoading, dismissLoading] = useIonLoading();
-  const [editable, setEditable] = useState<boolean>(false);
+  const [presentLoading] = useIonLoading();
   const [devChecked, setDevChecked] = useState<boolean>(false);
 
   const handleRefresh = (event: any) => {
@@ -142,7 +144,7 @@ export default function CountCards({
             let now = new Date();
             let countFrom = new Date(event.date);
             let timeDifference = now.getTime() - countFrom.getTime();
-            if (timeDifference < 0 && count == "countdown") {
+            if (timeDifference < 0 && count === "countdown") {
               //countdown
               row.push(
                 <CountdownCard
@@ -150,21 +152,21 @@ export default function CountCards({
                   id={event.id}
                   event={event.event_name}
                   date={event.date}
-                  editable={editable}
+                  editable={false}
                   view={view}
                   accent={accent}
                   textColor={textColor}
                   description={event.description}
                 />
               );
-            } else if (timeDifference >= 0 && count == "countup") {
+            } else if (timeDifference >= 0 && count === "countup") {
               row.push(
                 <CountupCard
                   key={event.id}
                   id={event.id}
                   event={event.event_name}
                   date={event.date}
-                  editable={editable}
+                  editable={false}
                   view={view}
                   accent={accent}
                   textColor={textColor}
@@ -176,9 +178,9 @@ export default function CountCards({
         }
         console.log(row.length);
         if (
-          row.length == 0 &&
+          row.length === 0 &&
           countdate_events_data_list.length &&
-          count == "countdown"
+          count === "countdown"
         ) {
           row.push(
             <div key="div">
@@ -203,9 +205,9 @@ export default function CountCards({
             </div>
           );
         } else if (
-          row.length == 0 &&
+          row.length === 0 &&
           countdate_events_data_list.length &&
-          count == "countup"
+          count === "countup"
         ) {
           row.push(
             <div key="div">
@@ -229,7 +231,7 @@ export default function CountCards({
               </IonCard>
             </div>
           );
-        } else if (row.length == 0) {
+        } else if (row.length === 0) {
           row.push(
             <div key="div">
               <TitleCard
@@ -261,12 +263,6 @@ export default function CountCards({
       <IonGrid style={{ marginTop: "56px" }}>
         <IonRow>
           <IonCol>
-            {/* <IonButton expand="full" shape="round" onClick={check_countdate_events_storage_data} color="primary">
-              {t("refresh")}
-            </IonButton> */}
-            {/* <IonButton expand="full" shape="round" onClick={(e) => setEditable(!editable)} disabled={countdate_events_data_list.length === 0}>
-              <IonIcon icon={create} /> {!editable ? capitalize(t("edit")) : capitalize(t("complete"))+t("between_words")+t("edit")}
-            </IonButton> */}
             <IonButton
               expand="full"
               shape="round"
