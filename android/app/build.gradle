@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
+    namespace "cyou.sk5s.app.countdate"
     compileSdkVersion rootProject.ext.compileSdkVersion
     defaultConfig {
         applicationId "cyou.sk5s.app.countdate"
