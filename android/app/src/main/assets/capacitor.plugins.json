@@ -1,30 +1,30 @@
 [
-  {
-    "pkg": "@capacitor/app",
-    "classpath": "com.capacitorjs.plugins.app.AppPlugin"
-  },
-  {
-    "pkg": "@capacitor/clipboard",
-    "classpath": "com.capacitorjs.plugins.clipboard.ClipboardPlugin"
-  },
-  {
-    "pkg": "@capacitor/device",
-    "classpath": "com.capacitorjs.plugins.device.DevicePlugin"
-  },
-  {
-    "pkg": "@capacitor/keyboard",
-    "classpath": "com.capacitorjs.plugins.keyboard.KeyboardPlugin"
-  },
-  {
-    "pkg": "@capacitor/local-notifications",
-    "classpath": "com.capacitorjs.plugins.localnotifications.LocalNotificationsPlugin"
-  },
-  {
-    "pkg": "@capacitor/preferences",
-    "classpath": "com.capacitorjs.plugins.preferences.PreferencesPlugin"
-  },
-  {
-    "pkg": "@capacitor/toast",
-    "classpath": "com.capacitorjs.plugins.toast.ToastPlugin"
-  }
+	{
+		"pkg": "@capacitor/app",
+		"classpath": "com.capacitorjs.plugins.app.AppPlugin"
+	},
+	{
+		"pkg": "@capacitor/clipboard",
+		"classpath": "com.capacitorjs.plugins.clipboard.ClipboardPlugin"
+	},
+	{
+		"pkg": "@capacitor/device",
+		"classpath": "com.capacitorjs.plugins.device.DevicePlugin"
+	},
+	{
+		"pkg": "@capacitor/keyboard",
+		"classpath": "com.capacitorjs.plugins.keyboard.KeyboardPlugin"
+	},
+	{
+		"pkg": "@capacitor/local-notifications",
+		"classpath": "com.capacitorjs.plugins.localnotifications.LocalNotificationsPlugin"
+	},
+	{
+		"pkg": "@capacitor/preferences",
+		"classpath": "com.capacitorjs.plugins.preferences.PreferencesPlugin"
+	},
+	{
+		"pkg": "@capacitor/toast",
+		"classpath": "com.capacitorjs.plugins.toast.ToastPlugin"
+	}
 ]

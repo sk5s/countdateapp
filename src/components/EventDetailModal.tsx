@@ -162,7 +162,7 @@ export default function EventDetailModal({
           <IonTitle>{myprops.event}</IonTitle>
           <IonButtons slot="end">
             <IonButton color={myprops.accent} onClick={() => closeModal()}>
-              {t("close")}
+              {capitalize(t("close"))}
             </IonButton>
           </IonButtons>
         </IonToolbar>
