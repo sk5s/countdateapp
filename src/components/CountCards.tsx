@@ -142,7 +142,7 @@ export default function CountCards({
         if (countdate_events_data_list.length) {
           countdate_events_data_list.map((event) => {
             let now = new Date();
-            let countFrom = new Date(event.date);
+            let countFrom = new Date(event.date.split("+")[0]);
             let timeDifference = now.getTime() - countFrom.getTime();
             if (timeDifference < 0 && count === "countdown") {
               //countdown
