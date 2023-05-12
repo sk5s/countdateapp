@@ -52,10 +52,10 @@ export default function LanguageSelectAction() {
   };
 
   return (
-    <div>
+    <>
       <IonLabel onClick={openPicker}>
         <IonIcon icon={language} /> {t("change_language")}
       </IonLabel>
-    </div>
+    </>
   );
 }
