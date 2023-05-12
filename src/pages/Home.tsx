@@ -66,7 +66,7 @@ const Home: React.FC<{ accent: string; textColor: string }> = ({
           </IonToolbar>
         </IonHeader>
 
-        <div {...handlers} style={{minHeight: "80%"}}>
+        <div {...handlers} style={{minHeight: "90%"}}>
           {/* Countcards */}
           <CountCards
             count={count}
