@@ -124,19 +124,8 @@ export default function CountCards({
   const [presentLoading] = useIonLoading();
   const [devChecked, setDevChecked] = useState<boolean>(false);
 
-  const handleRefresh = (event: any) => {
-    trigger("countdate_data:change");
-    setTimeout(() => {
-      event.detail.complete();
-    }, 500);
-  };
-
   return (
     <div>
-      {/* Refresher */}
-      <IonRefresher slot="fixed" onIonRefresh={handleRefresh}>
-        <IonRefresherContent></IonRefresherContent>
-      </IonRefresher>
       {(() => {
         let row = [];
         if (countdate_events_data_list.length) {

@@ -11,6 +11,8 @@ import {
   IonSegmentButton,
   IonLabel,
   IonFooter,
+  IonRefresher,
+  IonRefresherContent,
 } from "@ionic/react";
 
 import { add } from "ionicons/icons";
@@ -20,6 +22,9 @@ import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import { capitalize } from "../lib/Capitalize";
 import { useSwipeable } from "react-swipeable";
+import { trigger } from "../lib/Events";
+import "./Home.css"
+
 const Home: React.FC<{ accent: string; textColor: string }> = ({
   accent,
   textColor,
@@ -39,6 +44,12 @@ const Home: React.FC<{ accent: string; textColor: string }> = ({
       setCount("countdown");
     }
   };
+  const handleRefresh = (event: any) => {
+    // trigger("countdate_data:change");
+    setTimeout(() => {
+      // event.detail.complete();
+    }, 500);
+  };
 
   return (
     <IonPage>
@@ -47,7 +58,12 @@ const Home: React.FC<{ accent: string; textColor: string }> = ({
           <IonTitle>Countdate</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen>
+      <IonContent>
+        {/* Refresher */}
+        <IonRefresher slot="fixed" onIonRefresh={handleRefresh}>
+          <IonRefresherContent></IonRefresherContent>
+        </IonRefresher>
+
         <IonHeader>
           {/* Countdown countup switcher */}
           <IonToolbar>
@@ -66,7 +82,7 @@ const Home: React.FC<{ accent: string; textColor: string }> = ({
           </IonToolbar>
         </IonHeader>
 
-        <div {...handlers} style={{minHeight: "90%"}}>
+        <div {...handlers} style={{minHeight: "80%"}}>
           {/* Countcards */}
           <CountCards
             count={count}
