@@ -45,9 +45,9 @@ const Home: React.FC<{ accent: string; textColor: string }> = ({
     }
   };
   const handleRefresh = (event: any) => {
-    // trigger("countdate_data:change");
+    trigger("countdate_data:change");
     setTimeout(() => {
-      // event.detail.complete();
+      event.detail.complete();
     }, 500);
   };
 
