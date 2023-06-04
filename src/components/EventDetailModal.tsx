@@ -38,6 +38,7 @@ export default function EventDetailModal({
   myprops: any;
 }) {
   const [needToSave, setNeedToSave] = useState(false);
+  const [description, setDescription] = useState(myprops.description ? myprops.description : "");
   const { t } = useTranslation();
   const [presentAlert] = useIonAlert();
   let countdate_events_data = [];
@@ -60,9 +61,9 @@ export default function EventDetailModal({
       setIsOpen(false);
     }
   };
-  NativeApp.addListener("backButton", () => {
-    closeModal();
-  });
+  // NativeApp.addListener("backButton", () => {
+  //   closeModal();
+  // });
   const addOneMonthHandler = () => {
     presentAlert({
       header: t("quickEdit.confirm"),
@@ -216,7 +217,8 @@ export default function EventDetailModal({
           needToSave={needToSave}
           setNeedToSave={setNeedToSave}
           id={myprops.id}
-          description={myprops.description ? myprops.description : ""}
+          setDescription={setDescription}
+          description={description}
           editable={contentEditable}
           accent={myprops.accent}
         />

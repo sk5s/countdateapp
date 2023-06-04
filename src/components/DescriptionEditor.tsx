@@ -23,6 +23,7 @@ import "./DescriptionEditor.css";
 export default function DescriptionEditor({
   id,
   description,
+  setDescription,
   editable,
   accent,
   needToSave,
@@ -30,13 +31,12 @@ export default function DescriptionEditor({
 }: {
   id: string;
   description: string;
+  setDescription: any;
   editable: boolean;
   accent: string;
   needToSave: boolean;
   setNeedToSave: any;
 }) {
-  const [editDescription, setEditDescription] = useState<string>(description);
-
   const [t] = useTranslation();
   let countdate_events_data = [];
   const edit_this_countdate_item_description = async (
@@ -69,16 +69,16 @@ export default function DescriptionEditor({
               placeholder={capitalize(t("description"))}
               autoGrow={true}
               fill="solid"
-              value={editDescription}
+              value={description}
               onIonChange={(e) => {
-                setEditDescription(e.detail.value!);
+                setDescription(e.detail.value!);
                 setNeedToSave(true);
               }}
             ></IonTextarea>
             <IonButton
               color={accent}
               onClick={() => {
-                edit_this_countdate_item_description(editDescription);
+                edit_this_countdate_item_description(description);
                 setNeedToSave(false);
               }}
               size="default"
@@ -111,10 +111,10 @@ export default function DescriptionEditor({
             <></>
           )}
 
-          {editDescription ? (
+          {description ? (
             <>
               <ReactMarkdown
-                children={editDescription}
+                children={description}
                 remarkPlugins={[remarkGfm]}
                 linkTarget="_blank"
               />
