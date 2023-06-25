@@ -52,6 +52,7 @@ export default function EventDetailModal({
             handler: () => {
               setIsOpen(false);
               setNeedToSave(false);
+              setDescription(myprops.description);
             },
           },
           capitalize(t("confirm")),
