@@ -6,6 +6,9 @@ import {
   IonToolbar,
   getPlatforms,
   IonChip,
+  IonItem,
+  IonThumbnail,
+  IonLabel,
 } from "@ionic/react";
 
 import packageJson from "../../package.json";
@@ -116,6 +119,32 @@ const About: React.FC<{ accent: string }> = ({ accent }) => {
             </a>
           </li>
         </ul>
+
+        <p style={{ fontSize: "25px", marginLeft: "20px" }}>
+          {t("aboutPage.more")}
+        </p>
+
+        <a href="https://play.google.com/store/apps/details?id=cyou.sk5s.app.weread" target="blank" rel="noopener noreferer">
+          <div style={{marginBottom:"10px"}}>
+            <IonItem>
+              <IonThumbnail slot="start">
+                <img alt="Silhouette of mountains" src="https://weread.sk5s.cyou/weread-logo.png" />
+              </IonThumbnail>
+              <IonLabel>{t("aboutPage.weread")}</IonLabel>
+            </IonItem>
+          </div>
+        </a>
+        <a href="https://play.google.com/store/apps/details?id=cyou.sk5s.app.onea4paperyourlife" target="blank" rel="noopener noreferer">
+          <div style={{marginBottom:"10px"}}>
+            <IonItem>
+              <IonThumbnail slot="start">
+                <img alt="Silhouette of mountains" src="https://play-lh.googleusercontent.com/ffMW4eI9K3Z5vT2tDYdat6N7nJ4TvN3k7B9SPRePKQ7G-I2RSI1slK_uPQZpSMISI4E=w480-h960-rw" />
+              </IonThumbnail>
+              <IonLabel>{t("aboutPage.onea4paperyourlife")}</IonLabel>
+            </IonItem>
+          </div>
+        </a>
+
         <a href="https://sk5s.cyou" target="_blank" rel="noopener noreferrer">
           <img src={banner} alt="" />
         </a>

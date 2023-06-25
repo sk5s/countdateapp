@@ -76,5 +76,10 @@
     "addOneMonth": "+1 個月",
     "minusOneDay": "-1 天",
     "addOneDay": "+1 天"
+  },
+  "aboutPage": {
+    "more": "更多 sk5s 應用程式：",
+    "weread": "Weread",
+    "onea4paperyourlife": "一張紙的人生 OneA4PaperYourLife"
   }
 }

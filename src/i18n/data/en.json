@@ -43,5 +43,10 @@
     "addOneMonth": "+1 month",
     "minusOneDay": "-1 day",
     "addOneDay": "+1 day"
+  },
+  "aboutPage": {
+    "more": "More sk5s apps: ",
+    "weread": "Weread",
+    "onea4paperyourlife": "OneA4PaperYourLife"
   }
 }
