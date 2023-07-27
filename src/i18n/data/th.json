@@ -1,0 +1,53 @@
+{
+  "accent_color": "ธีมสี",
+  "add_tips": "เลือกวันที่ก่อนวันนี้เพื่อนับวันไปข้างหน้า หรือ เลือกวันที่หลังวันนี้เพื่อนับวันถอยหลัง และสามารถเพิ่มคำอธิบายได้หลังจากเพิ่มกิจกรรมเรียบร้อยแล้ว",
+  "between_words": " ",
+  "change_accent_color": "เปลี่ยนธีมสี",
+  "change_language": "เปลี่ยนภาษา",
+  "change_text_color": "เปลี่ยนสีข้อความ",
+  "click_on_title_or_date_to_edit": "กดที่ชื่อกิจกรรมหรือวันที่เพื่อแก้ไข",
+  "copied": "คัดลอกแล้ว",
+  "copy_data_label": "คัดลอกข้อมูลกิจกรรม",
+  "dark_mode": "โหมดกลางคืน",
+  "days": "วัน",
+  "day_has_come": "วันนี้มาถึงแล้ว!",
+  "days_view": "วัน",
+  "delete_data_message": "การดำเนินการนี้ไม่สามารถยกเลิกได้",
+  "description_tips": "คำอธิบายกิจกรรมรองรับการใช้งาน Markdown",
+  "dev_mode": "โหมดนักพัฒนา",
+  "event_countdown_prefix": "",
+  "event_countdown_suffix": " เหลืออีก",
+  "exclamation_mark": "!",
+  "local_notification": "local notification",
+  "need_to_save": "จำเป็นต้องบันทึก",
+  "no_data": "ไม่พบข้อมูล",
+  "question_mark": "?",
+  "review_tour": "วิธีการใช้งาน",
+  "weeks_view": "สัปดาห์",
+  "months_view": "เดือน",
+  "tour": {
+    "title": "วิธีการใช้งาน Countdate",
+    "step_1": "เพิ่มกิจกรรมใหม่",
+    "step_2": "ใส่ชื่อกิจกรรม",
+    "step_3": "เลือกวันที่ของกิจกรรม",
+    "step_4": "กดปุ่มเพิ่มกิจกรรม",
+    "step_5": "แก้ไขกิจกรรมด้วยปุ่มแก้ไข",
+    "step_6": "กดที่ชื่อกิจกรรมหรือวันที่เพื่อแก้ไข",
+    "step_7": "กดปุ่มนี้เพื่อลบกิจกรรม",
+    "step_8": "กดปุ่มนี้เพื่อเรียงลำดับเหตุการณ์",
+    "can_review": "คุณสามารถไปที่การตั้งค่าเพื่อดูวิธีการใช้งานได้อีกครั้ง",
+    "learn_more": "เรียนรู้เพิ่มเติมเกี่ยววิธีการใช้งาน"
+  },
+  "quickEdit": {
+    "title": "แก้ไขด่วน",
+    "confirm": "คุณยืนยันที่จะเปลี่ยน?",
+    "addOneMonth": "+1 เดือน",
+    "minusOneDay": "-1 วัน",
+    "addOneDay": "+1 วัน"
+  },
+  "aboutPage": {
+    "more": "แอปอื่น ๆ จาก sk5s: ",
+    "weread": "Weread",
+    "onea4paperyourlife": "OneA4PaperYourLife"
+  }
+}
