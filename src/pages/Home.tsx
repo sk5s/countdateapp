@@ -114,6 +114,9 @@ const Home: React.FC<{ accent: string; textColor: string }> = ({
             <IonSegmentButton value="weeks">
               <IonLabel>{t("weeks_view")}</IonLabel>
             </IonSegmentButton>
+            <IonSegmentButton value="months">
+              <IonLabel>{t("months_view")}</IonLabel>
+            </IonSegmentButton>
           </IonSegment>
         </IonToolbar>
       </IonFooter>

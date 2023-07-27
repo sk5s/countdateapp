@@ -1,6 +1,4 @@
 import { useState, useEffect } from "react";
-import CountdownCard from "./CountdownCard";
-import CountupCard from "./CountupCard";
 import TitleCard from "./TitleCard";
 import { Preferences } from "@capacitor/preferences";
 import {
@@ -20,9 +18,7 @@ import {
   IonCard,
   IonCardHeader,
   IonCardTitle,
-  IonCardSubtitle,
-  IonRefresher,
-  IonRefresherContent,
+  IonCardSubtitle
 } from "@ionic/react";
 import {
   settings,
@@ -40,6 +36,7 @@ import key from "../lib/storageKey.json";
 import changeViewImg from "../assets/countdate-count-tour.jpg";
 
 import { capitalize } from "../lib/Capitalize";
+import CountCard from "./CountCard";
 
 export default function CountCards({
   view,
@@ -136,7 +133,8 @@ export default function CountCards({
             if (timeDifference < 0 && count === "countdown") {
               //countdown
               row.push(
-                <CountdownCard
+                <CountCard
+                  type="countdown"
                   key={event.id}
                   id={event.id}
                   event={event.event_name}
@@ -150,7 +148,8 @@ export default function CountCards({
               );
             } else if (timeDifference >= 0 && count === "countup") {
               row.push(
-                <CountupCard
+                <CountCard
+                  type="countup"
                   key={event.id}
                   id={event.id}
                   event={event.event_name}
@@ -165,7 +164,7 @@ export default function CountCards({
             }
           });
         }
-        console.log(row.length);
+        // console.log(row.length);
         if (
           row.length === 0 &&
           countdate_events_data_list.length &&

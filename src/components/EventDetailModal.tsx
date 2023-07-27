@@ -11,7 +11,7 @@ import {
   IonToolbar,
   useIonAlert,
 } from "@ionic/react";
-import { App as NativeApp } from "@capacitor/app";
+// import { App as NativeApp } from "@capacitor/app";
 import { useTranslation } from "react-i18next";
 import DescriptionEditor from "./DescriptionEditor";
 import { create } from "ionicons/icons";
@@ -140,12 +140,12 @@ export default function EventDetailModal({
     editDateData(newDate);
   };
   const editDateData = async (newDate: string | undefined | null) => {
-    if (newDate == undefined || newDate == null) return;
+    if (newDate === undefined || newDate === null) return;
     const { value } = await Preferences.get({ key: key.data });
     if (value) {
       countdate_events_data = JSON.parse(value);
       for (const i of countdate_events_data) {
-        if (String(i.id) == String(myprops.id)) {
+        if (String(i.id) === String(myprops.id)) {
           i.date = newDate;
         }
       }
