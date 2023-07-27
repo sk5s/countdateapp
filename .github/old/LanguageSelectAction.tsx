@@ -11,6 +11,7 @@ import { close } from "ionicons/icons";
 import { useTranslation } from "react-i18next";
 import { language } from "ionicons/icons";
 import { capitalize } from "../lib/Capitalize";
+import { trigger } from "../lib/Events";
 
 export default function LanguageSelectAction() {
   const [showActionSheet, setShowActionSheet] = useState(false);
@@ -35,6 +36,7 @@ export default function LanguageSelectAction() {
           handler: (value) => {
             console.log(`You selected: ${value.lang.value}`);
             i18n.changeLanguage(value.lang.value);
+            trigger("countdate_data:change")
           },
         },
       ],

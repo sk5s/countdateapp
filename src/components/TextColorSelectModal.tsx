@@ -41,16 +41,6 @@ export default function TextColorSelectModal({ accent }: { accent: string }) {
     setModalIsOpen(false);
     trigger("countdate_text:change");
   };
-  const allColorName = [
-    "primary",
-    "secondary",
-    "tertiary",
-    "success",
-    "warning",
-    "danger",
-    "medium",
-    "dark",
-  ];
   const openPicker = async () => {
     setModalIsOpen(true);
   };
@@ -71,7 +61,7 @@ export default function TextColorSelectModal({ accent }: { accent: string }) {
           <IonToolbar>
             <IonTitle>{t("change_text_color")}</IonTitle>
             <IonButtons slot="end">
-              <IonButton onClick={() => setModalIsOpen(false)}>
+              <IonButton onClick={() => setModalIsOpen(false)} color={accent}>
                 {capitalize(t("close"))}
               </IonButton>
             </IonButtons>

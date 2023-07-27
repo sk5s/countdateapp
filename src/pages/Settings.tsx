@@ -13,7 +13,7 @@ import {
   IonIcon,
   IonRouterLink,
 } from "@ionic/react";
-import LanguageSelectAction from "../components/LanguageSelectAction";
+// import LanguageSelectAction from "../components/LanguageSelectAction";
 import {
   code,
   contrast,
@@ -34,6 +34,7 @@ import TextColorSelectModal from "../components/TextColorSelectModal";
 import "./Settings.css";
 import { useHistory } from "react-router";
 import LocalizeBackButton from "../components/LocalizeBackButton";
+import LanguageSelectModal from "../components/LanguageSelectModal";
 
 const Settings: React.FC<{ accent: string }> = ({ accent }) => {
   const { t } = useTranslation();
@@ -54,11 +55,11 @@ const Settings: React.FC<{ accent: string }> = ({ accent }) => {
       value: tovalue.toString(),
     });
     setDevChecked(tovalue);
-    console.log(tovalue);
+    // console.log(tovalue);
     trigger("countdate_dev:change");
   };
   const testLocalNotification = async () => {
-    console.log("clicked");
+    // console.log("clicked");
     await Schedule({
       title: "Countdate",
       body: "Local Notification Test",
@@ -67,28 +68,31 @@ const Settings: React.FC<{ accent: string }> = ({ accent }) => {
   };
   const darkEnable = (value: any) => {
     let darkmodeEnable;
-    let prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    let matchMedia = window.matchMedia("(prefers-color-scheme: dark)");
+    matchMedia.addEventListener("change", () => getDarkMode());
     if (value === "dark") {
       darkmodeEnable = true;
       document.body.classList.add("dark");
     } else if (value === "light") {
       darkmodeEnable = false;
-    } else if (prefersDark) {
-      darkmodeEnable = prefersDark;
+      document.body.classList.remove("dark")
+    } else if (matchMedia.matches) {
+      darkmodeEnable = matchMedia.matches;
       document.body.classList.add("dark");
     } else {
-      darkmodeEnable = prefersDark;
+      darkmodeEnable = matchMedia.matches;
+      document.body.classList.remove("dark")
     }
     return darkmodeEnable;
   };
   const getDarkMode = async () => {
     const { value } = await Storage.get({ key: key.theme });
-    console.log(darkEnable(value));
+    // console.log(darkEnable(value));
     setDarkChecked(darkEnable(value));
   };
   getDarkMode();
   const toggleDarkModeHandler = async () => {
-    console.log(!darkChecked);
+    // console.log(!darkChecked);
     if (darkChecked) {
       await Storage.set({
         key: key.theme,
@@ -146,7 +150,8 @@ const Settings: React.FC<{ accent: string }> = ({ accent }) => {
             <IonLabel>{capitalize(t("general"))}</IonLabel>
           </IonListHeader>
           <IonItem>
-            <LanguageSelectAction />
+            {/* <LanguageSelectAction /> */}
+            <LanguageSelectModal accent={accent} />
           </IonItem>
           <IonItem>
             <IonLabel onClick={toggleDevModeHandler}>
