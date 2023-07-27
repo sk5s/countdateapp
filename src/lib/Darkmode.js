@@ -2,25 +2,33 @@ import { Preferences as Storage } from "@capacitor/preferences";
 import key from "./storageKey.json";
 import { trigger } from "./Events";
 
-export const prefersDark = window.matchMedia(
+const matchMedia = window.matchMedia(
   "(prefers-color-scheme: dark)"
-).matches;
-console.log(prefersDark);
+)
+export const prefersDark = matchMedia.matches;
+const preferDarkChange = () => {
+  console.log("Prefer dark change", matchMedia.matches)
+  get_user_theme_preference()
+}
+
+matchMedia.addEventListener("change", () => preferDarkChange());
 
 get_user_theme_preference();
-trigger("countdate_darkmode:toggle");
+// trigger("countdate_darkmode:toggle");
 let darkmodeEnable;
 function dark_enable(value) {
-  if (value == "dark") {
+  if (value === "dark") {
     darkmodeEnable = true;
     document.body.classList.add("dark");
-  } else if (value == "light") {
+  } else if (value === "light") {
     darkmodeEnable = false;
-  } else if (prefersDark) {
-    darkmodeEnable = prefersDark;
+    document.body.classList.remove("dark")
+  } else if (matchMedia.matches) {
+    darkmodeEnable = matchMedia.matches;
     document.body.classList.add("dark");
   } else {
-    darkmodeEnable = prefersDark;
+    darkmodeEnable = matchMedia.matches;
+    document.body.classList.remove("dark")
   }
 }
 export function set_dark_mode_toggle_to() {

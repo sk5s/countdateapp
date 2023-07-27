@@ -57,6 +57,8 @@
   "toggle": "切换",
   "weeks": "周",
   "weeks_view": "剩几周",
+  "months": "月",
+  "months_view": "剩几月",
   "tour": {
     "title": "Countdate 应用导览",
     "step_1": "如何新增一个事件：新增一个 Countdate",
