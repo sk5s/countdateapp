@@ -60,3 +60,16 @@ export function countDownFromTime(date) {
   let days = Math.floor((timeDifference / secondsInADay) * 1);
   return days;
 }
+
+export function countFromTime(date) {
+  let now = new Date();
+  let countFrom = new Date(appendCorrectTimezone(date));
+  let timeDifference = countFrom.getTime() - now.getTime();
+  if (timeDifference > 0) {
+    // countdown
+    return Math.floor((timeDifference / secondsInADay) * 1)
+  } else {
+    // countup
+    return Math.floor(((now.getTime() - countFrom.getTime()) / secondsInADay) * 1)
+  }
+}
