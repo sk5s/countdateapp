@@ -11,7 +11,7 @@ export default function LanguageSelectModal({accent}:{accent: string;}) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [radioSelected, setRadioSelected] = useState("zh-TW");
 
-  const allLangName = ["zh-TW", "en-US", "zh-CN"];
+  const allLangName = ["zh-TW", "en-US", "zh-CN", "th-TH"];
   const langAndDetail:any = {
     "zh-TW": {
       name: "繁體中文",
@@ -24,6 +24,10 @@ export default function LanguageSelectModal({accent}:{accent: string;}) {
     "en-US": {
       name: "English (US)",
       by: "sk5s, Nqtural"
+    },
+    "th-TH": {
+      name: "Thai ไทย",
+      by: "nutsupra"
     }
   }
   return (
@@ -62,7 +66,7 @@ export default function LanguageSelectModal({accent}:{accent: string;}) {
             >
               {(() => {
                 let rows: any = [];
-                allLangName.map((element,i) => {
+                allLangName.forEach((element,i) => {
                   rows.push(
                     <IonItem key={element}>
                       <IonRadio color={accent} labelPlacement="end" value={element} justify="space-between"></IonRadio>

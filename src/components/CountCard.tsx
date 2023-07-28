@@ -11,7 +11,7 @@ import { useTranslation } from "react-i18next";
 import { capitalize } from "../lib/Capitalize";
 import { useEffect, useState } from "react";
 import EventDetailModal from "./EventDetailModal";
-import { countDownFromTime, countUpFromTime } from "../lib/Countdate";
+import { countDownFromTime, countUpFromTime, countFromTime } from "../lib/Countdate";
 
 export default function CountCard(props: {
   type: string;
@@ -27,7 +27,7 @@ export default function CountCard(props: {
   const [t] = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [contentEditable, setContentEditable] = useState(false);
-  const [days, setDays] = useState(Math.abs(countUpFromTime(props.date)))
+  const [days, setDays] = useState(countFromTime(props.date))
   const getTimeStr = (ndays:number) => {
     if (props.view === "days"){
       return ndays.toString() + " " + capitalize(t("days"))
@@ -41,16 +41,14 @@ export default function CountCard(props: {
   useEffect(() => {
     on("countdate_data:change", (data: any) => {
       if (data.detail === "delete") setIsOpen(false);
-      setDays(Math.abs(countUpFromTime(props.date)))
-      // console.log(props.date, Math.abs(countUpFromTime(props.date)))
-      setTimeStr(() => getTimeStr(Math.abs(countUpFromTime(props.date))))
+      setDays(countFromTime(props.date))
+      setTimeStr(() => getTimeStr(countFromTime(props.date)))
     });
   }, []);
   useEffect(() => {
     setTimeStr(() => getTimeStr(days))
-    setDays(Math.abs(countUpFromTime(props.date)))
-    // console.log(props.date, Math.abs(countUpFromTime(props.date)))
-    setTimeStr(() => getTimeStr(Math.abs(countUpFromTime(props.date))))
+    setDays(countFromTime(props.date))
+    setTimeStr(() => getTimeStr(countFromTime(props.date)))
   }, [props.date])
   useEffect(() => {
     setTimeStr(() => getTimeStr(days))

@@ -13,7 +13,7 @@ import th from "./data/th.json";
 let device_language_code = "";
 const getDeviceLanguageCode = async () => {
   device_language_code = await Device.getLanguageCode();
-  if (device_language_code == "zh") device_language_code = "zh-TW";
+  if (device_language_code === "zh") device_language_code = "zh-TW";
 };
 getDeviceLanguageCode();
 
@@ -27,7 +27,7 @@ const resources = {
   "zh-CN": {
     translation: cn,
   },
-    "th-TH": {
+  "th-TH": {
     translation: th,
   },
 };
