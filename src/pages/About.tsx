@@ -12,7 +12,6 @@ import {
 } from "@ionic/react";
 
 import packageJson from "../../package.json";
-import { capitalize } from "../lib/Capitalize";
 import { useTranslation } from "react-i18next";
 import logo from "../assets/countdateapp-logo-foreground.png";
 import banner from "../assets/sk5s-project-bar.png";
@@ -25,22 +24,22 @@ const About: React.FC<{ accent: string }> = ({ accent }) => {
       <IonHeader>
         <IonToolbar>
           <LocalizeBackButton color={accent} />
-          <IonTitle>{capitalize(t("about"))} Countdate</IonTitle>
+          <IonTitle>{t("p.about.title")}</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle>{capitalize(t("about"))} Countdate</IonTitle>
+            <IonTitle>{t("p.about.title")}</IonTitle>
           </IonToolbar>
         </IonHeader>
         <div style={{ width: "100%", textAlign: "center" }}>
           <a href="https://github.com/sk5s/countdateapp" target="_blank" rel="noreferrer">
             <img src={logo} alt="Logo" width="80" height="80" />
           </a>
-          <p>Version: {packageJson.version}</p>
+          <p>{t("p.about.version",{versionName: packageJson.version})}</p>
           <p>
-            Platform:{" "}
+            {t("p.about.platform")}{" "}
             {(() => {
               let platforms: any = [];
               getPlatforms().forEach((p, i) => {
@@ -55,13 +54,13 @@ const About: React.FC<{ accent: string }> = ({ accent }) => {
           </p>
         </div>
         <p style={{ fontSize: "25px", marginLeft: "20px" }}>
-          Date Countdown: Know How Many Days Left To a Specific Date.
+          {t("p.about.slogan")}
         </p>
         <div>
           <a
             rel="noreferrer"
             target="_blank"
-            href="https://play.google.com/store/apps/details?id=cyou.sk5s.app.countdate&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1"
+            href="https://play.google.com/store/apps/details?id=cyou.sk5s.app.countdate"
           >
             <img
               alt="Get it on Google Play"
@@ -88,7 +87,7 @@ const About: React.FC<{ accent: string }> = ({ accent }) => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Landing page
+              {t("p.about.link.landing")}
             </a>
           </li>
           <li>
@@ -97,7 +96,7 @@ const About: React.FC<{ accent: string }> = ({ accent }) => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Project Github
+              {t("p.about.link.github")}
             </a>
           </li>
           <li>
@@ -106,7 +105,7 @@ const About: React.FC<{ accent: string }> = ({ accent }) => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Report Bug
+              {t("p.about.link.bug")}
             </a>
           </li>
           <li>
@@ -115,13 +114,13 @@ const About: React.FC<{ accent: string }> = ({ accent }) => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Request feature
+              {t("p.about.link.feature")}
             </a>
           </li>
         </ul>
 
         <p style={{ fontSize: "25px", marginLeft: "20px" }}>
-          {t("aboutPage.more")}
+          {t("p.about.more.title")}
         </p>
 
         <a href="https://play.google.com/store/apps/details?id=cyou.sk5s.app.weread" target="blank" rel="noopener noreferer">
@@ -130,7 +129,7 @@ const About: React.FC<{ accent: string }> = ({ accent }) => {
               <IonThumbnail slot="start">
                 <img alt="Silhouette of mountains" src="https://weread.sk5s.cyou/weread-logo.png" />
               </IonThumbnail>
-              <IonLabel>{t("aboutPage.weread")}</IonLabel>
+              <IonLabel>{t("p.about.more.weread")}</IonLabel>
             </IonItem>
           </div>
         </a>
@@ -140,7 +139,7 @@ const About: React.FC<{ accent: string }> = ({ accent }) => {
               <IonThumbnail slot="start">
                 <img alt="Silhouette of mountains" src="https://play-lh.googleusercontent.com/ffMW4eI9K3Z5vT2tDYdat6N7nJ4TvN3k7B9SPRePKQ7G-I2RSI1slK_uPQZpSMISI4E=w480-h960-rw" />
               </IonThumbnail>
-              <IonLabel>{t("aboutPage.onea4paperyourlife")}</IonLabel>
+              <IonLabel>{t("p.about.more.onea4paperyourlife")}</IonLabel>
             </IonItem>
           </div>
         </a>

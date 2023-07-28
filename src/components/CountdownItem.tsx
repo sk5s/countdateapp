@@ -3,13 +3,9 @@ import {
   IonItem,
   IonIcon,
   useIonAlert,
-  IonButton,
   IonLabel,
-  IonDatetimeButton,
-  IonModal,
   IonDatetime,
   IonPopover,
-  IonContent,
   IonChip,
   IonText,
   useIonToast,
@@ -19,7 +15,6 @@ import { Preferences } from "@capacitor/preferences";
 import { reorderThree, trash } from "ionicons/icons";
 import { trigger } from "../lib/Events";
 import { useTranslation } from "react-i18next";
-import { capitalize } from "../lib/Capitalize";
 import key from "../lib/storageKey.json";
 import format from "date-fns/format";
 import { useState } from "react";
@@ -40,11 +35,11 @@ export default function CountdateItem(props: {
   let countdate_events_data = [];
   const handleDelete = () => {
     presentAlert({
-      header: capitalize(t("delete")) + t("question_mark"),
+      header: t("c.cards.delete!"),
       buttons: [
-        capitalize(t("cancel")),
+        t("g.cancel"),
         {
-          text: capitalize(t("confirm")),
+          text: t("g.confirm"),
           role: "confirm",
           handler: () => {
             remove_this_countdate_item();
@@ -60,8 +55,8 @@ export default function CountdateItem(props: {
       countdate_events_data = JSON.parse(value);
       countdate_events_data = countdate_events_data.filter((item: any) => {
         console.log(item.id);
-        console.log(String(item.id) != String(props.id));
-        return String(item.id) != String(props.id);
+        console.log(String(item.id) !== String(props.id));
+        return String(item.id) !== String(props.id);
       });
       let content = JSON.stringify(countdate_events_data);
       await Preferences.set({
@@ -70,7 +65,7 @@ export default function CountdateItem(props: {
       });
       trigger("countdate_data:change", "delete");
       presentToast({
-        message: capitalize(t("deleted")) + t("exclamation_mark"),
+        message: t("c.cards.deleted"),
         duration: 1500,
         position: "bottom",
         color: props.accent,
@@ -80,11 +75,11 @@ export default function CountdateItem(props: {
   const edit_this_countdate_item_name_handler = () => {
     presentAlert({
       buttons: [
-        { text: capitalize(t("cancel")), role: "cancel" },
+        { text: t("g.cancel"), role: "cancel" },
         {
-          text: capitalize(t("confirm")),
+          text: t("g.confirm"),
           handler: (data) => {
-            if (data.name != "") edit_this_countdate_item_name(data.name);
+            if (data.name !== "") edit_this_countdate_item_name(data.name);
           },
         },
       ],
@@ -93,11 +88,7 @@ export default function CountdateItem(props: {
           name: "name",
           value: props.event,
           placeholder:
-            capitalize(t("input")) +
-            t("between_words") +
-            t("event") +
-            t("between_words") +
-            t("name"),
+            t("p.add.eventName.placeholder"),
         },
       ],
     });
@@ -107,7 +98,7 @@ export default function CountdateItem(props: {
     if (value) {
       countdate_events_data = JSON.parse(value);
       for (const i of countdate_events_data) {
-        if (String(i.id) == String(props.id)) {
+        if (String(i.id) === String(props.id)) {
           i.event_name = newName;
         }
       }
@@ -124,7 +115,7 @@ export default function CountdateItem(props: {
     if (value) {
       countdate_events_data = JSON.parse(value);
       for (const i of countdate_events_data) {
-        if (String(i.id) == String(props.id)) {
+        if (String(i.id) === String(props.id)) {
           let olddate = i.date;
           i.date = newDate + "T" + olddate.split("T")[1];
         }

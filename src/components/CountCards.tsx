@@ -28,14 +28,12 @@ import {
   arrowBackCircle,
   arrowForwardCircle,
 } from "ionicons/icons";
-import { on, trigger } from "../lib/Events";
+import { on } from "../lib/Events";
 import { useTranslation } from "react-i18next";
 import { Device } from "@capacitor/device";
 import { copy } from "../lib/Clipboard";
 import key from "../lib/storageKey.json";
 import changeViewImg from "../assets/countdate-count-tour.jpg";
-
-import { capitalize } from "../lib/Capitalize";
 import CountCard from "./CountCard";
 
 export default function CountCards({
@@ -126,7 +124,7 @@ export default function CountCards({
       {(() => {
         let row = [];
         if (countdate_events_data_list.length) {
-          countdate_events_data_list.map((event) => {
+          countdate_events_data_list.forEach((event) => {
             let now = new Date();
             let countFrom = new Date(event.date.split("+")[0]);
             let timeDifference = now.getTime() - countFrom.getTime();
@@ -175,7 +173,7 @@ export default function CountCards({
               <IonCard>
                 <img src={changeViewImg} alt="Change view to countup" />
                 <IonCardHeader>
-                  <IonCardSubtitle>{t("no_data")}</IonCardSubtitle>
+                  <IonCardSubtitle>{t("c.cards.noData")}</IonCardSubtitle>
                   <IonCardTitle>
                     <IonButton
                       onClick={() => {
@@ -185,7 +183,7 @@ export default function CountCards({
                       shape="round"
                     >
                       <IonIcon icon={arrowForwardCircle} />{" "}
-                      {capitalize(t("countup"))}
+                      {t("c.cards.toCountup")}
                     </IonButton>
                   </IonCardTitle>
                 </IonCardHeader>
@@ -202,7 +200,7 @@ export default function CountCards({
               <IonCard>
                 <img src={changeViewImg} alt="Change view to countdown" />
                 <IonCardHeader>
-                  <IonCardSubtitle>{t("no_data")}</IonCardSubtitle>
+                  <IonCardSubtitle>{t("c.cards.noData")}</IonCardSubtitle>
                   <IonCardTitle>
                     <IonButton
                       onClick={() => {
@@ -212,7 +210,7 @@ export default function CountCards({
                       shape="round"
                     >
                       <IonIcon icon={arrowBackCircle} />{" "}
-                      {capitalize(t("countdown"))}
+                      {t("c.cards.toCountdown")}
                     </IonButton>
                   </IonCardTitle>
                 </IonCardHeader>
@@ -225,12 +223,9 @@ export default function CountCards({
               <TitleCard
                 key="title"
                 title={
-                  capitalize(t("add")) +
-                  t("between_words") +
-                  "Countdate" +
-                  t("exclamation_mark")
+                  t("c.cards.addCountdate!")
                 }
-                subtitle={t("no_data")}
+                subtitle={t("c.cards.noData")}
               />
               <IonButton
                 key="add"
@@ -239,8 +234,7 @@ export default function CountCards({
                 shape="round"
                 style={{ marginLeft: 16 }}
               >
-                <IonIcon icon={add} /> {capitalize(t("add"))}
-                {t("between_words")}Countdate
+                <IonIcon icon={add} /> {t("c.cards.addCountdate")}
               </IonButton>
             </div>
           );
@@ -258,7 +252,7 @@ export default function CountCards({
               color={accent}
               disabled={countdate_events_data_list.length === 0}
             >
-              <IonIcon icon={create} /> {capitalize(t("edit"))}
+              <IonIcon icon={create} /> {t("c.cards.edit")}
             </IonButton>
           </IonCol>
           <IonCol>
@@ -268,7 +262,7 @@ export default function CountCards({
               routerLink="/settings"
               color={accent}
             >
-              <IonIcon icon={settings} /> {capitalize(t("settings"))}
+              <IonIcon icon={settings} /> {t("c.cards.settings")}
             </IonButton>
           </IonCol>
           {devChecked ? (
@@ -284,7 +278,7 @@ export default function CountCards({
                 color={accent}
               >
                 <IonIcon icon={information} />{" "}
-                {capitalize(t("check")) + t("between_words") + t("data")}
+                {t("c.cards.checkData")}
               </IonButton>
             </IonCol>
           ) : (
@@ -298,17 +292,17 @@ export default function CountCards({
         onDidDismiss={() => set_popover_oepn(false)}
       >
         <IonButton onClick={() => set_popover_oepn(false)}>
-          {capitalize(t("close"))}
+          {t("g.close")}
         </IonButton>
         <IonButton
           onClick={() => {
             presentAlert({
-              header: capitalize(t("delete")) + t("question_mark"),
-              message: t("delete_data_message"),
+              header: t("c.cards.delete!"),
+              message: t("c.cards.deleteMessage"),
               buttons: [
-                capitalize(t("cancel")),
+                t("g.cancel"),
                 {
-                  text: capitalize(t("confirm")),
+                  text: t("g.confirm"),
                   handler: (d) => {
                     delete_countdate_events_storage_data();
                     presentLoading({
@@ -323,11 +317,7 @@ export default function CountCards({
           }}
           color="danger"
         >
-          {capitalize(t("delete")) +
-            t("between_words") +
-            t("all") +
-            t("between_words") +
-            t("data")}
+          {t("c.cards.deleteAllData")}
         </IonButton>
         {(isPlatform("android") && isPlatform("hybrid")) ||
         (isPlatform("ios") && isPlatform("hybrid")) ? (
@@ -335,13 +325,13 @@ export default function CountCards({
             onClick={() => {
               copy(popover_content);
               presentToast({
-                message: capitalize(t("copied")) + t("exclamation_mark"),
+                message: t("c.cards.copied!"),
                 duration: 1500,
                 position: "bottom",
               });
             }}
           >
-            {t("copy_data_label")}
+            {t("c.cards.copyData")}
           </IonButton>
         ) : (
           ""

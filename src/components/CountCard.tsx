@@ -8,7 +8,6 @@ import {
 
 import { on } from "../lib/Events";
 import { useTranslation } from "react-i18next";
-import { capitalize } from "../lib/Capitalize";
 import { useEffect, useState } from "react";
 import EventDetailModal from "./EventDetailModal";
 import { countDownFromTime, countUpFromTime, countFromTime } from "../lib/Countdate";
@@ -30,11 +29,11 @@ export default function CountCard(props: {
   const [days, setDays] = useState(countFromTime(props.date))
   const getTimeStr = (ndays:number) => {
     if (props.view === "days"){
-      return ndays.toString() + " " + capitalize(t("days"))
+      return ndays.toString() + " " + t("c.card.days")
     } else if (props.view === "months") {
-      return (Math.round((ndays / 30 + Number.EPSILON) * 100 ) / 100).toString() + " " + capitalize(t("months"))
+      return (Math.round((ndays / 30 + Number.EPSILON) * 100 ) / 100).toString() + " " + t("c.card.months")
     } else {
-      return (Math.round((ndays / 7 + Number.EPSILON) * 10 ) / 10).toString() + " " + capitalize(t("weeks"))
+      return (Math.round((ndays / 7 + Number.EPSILON) * 10 ) / 10).toString() + " " + t("c.card.weeks")
     }
   }
   const [timeStr, setTimeStr] = useState(() => getTimeStr(days))
@@ -69,7 +68,7 @@ export default function CountCard(props: {
         <IonItem>
           <IonCardSubtitle style={{ fontSize: "1.5rem" }}>
             {props.type === "countdown" ? 
-            t("event_countdown_prefix") + t("between_words") +props.event +t("event_countdown_suffix"):
+            t("c.card.countdownEvent",{eventName: props.event}):
             props.event}
           </IonCardSubtitle>
         </IonItem>

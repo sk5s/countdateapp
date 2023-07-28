@@ -1,87 +1,125 @@
 {
-  "about": "เกี่ยวกับ",
-  "accent_color": "โทนสี",
-  "add": "เพิ่ม",
-  "added": "เพิ่มแล้ว",
-  "add_tips": "1. เลือกวันที่ในอดีตเพื่อนับไปข้างหน้า 2. เลือกวันที่ในอนาคตเพื่อนับถอยหลัง 3. สามารถเขียนคำอธิบายกิจกรรมได้หลังจากเพิ่มกิจกรรมเรียบร้อยแล้ว",
-  "all": "ทั้งหมด",
-  "back": "กลับ",
-  "between_words": "",
-  "cancel": "ยกเลิก",
-  "change_accent_color": "เปลี่ยนโทนสี",
-  "change_language": "เลือกภาษาที่ใช้",
-  "change_text_color": "เปลี่ยนสีตัวอักษร",
-  "check": "ตรวจสอบ",
-  "click_on_title_or_date_to_edit": "แตะที่ชื่อกิจกรรมหรือวันเดือนปีเพื่อแก้ไข",
-  "close": "ปิด",
-  "confirm": "ยืนยัน",
-  "complete": "เสร็จสมบูรณ์",
-  "copied": "คัดลอกแล้ว",
-  "copy_data_label": "คัดลอกข้อมูลทั้งหมด",
-  "countdown": "นับถอยหลัง",
-  "countup": "นับไปข้างหน้า",
-  "dark_mode": "เป็นโหมดมืด",
-  "data": "ข้อมูล",
-  "date": "วันที่",
-  "days": "วัน",
-  "day_has_come": "กิจกรรมของวันนี้มาถึงแล้ว!",
-  "days_view": "วัน",
-  "delete": "ลบ",
-  "deleted": "ลบแล้ว",
-  "delete_data_message": "การดำเนินการนี้ไม่กู้คืนได้",
-  "description": "คำอธิบาย",
-  "description_tips": "คุณสามารถใช้ภาษา Markdown เพื่อเขียนคำอธิบายหรือเพิ่มรูปภาพได้",
-  "dev_mode": "โหมดนักพัฒนา",
-  "discard": "ทิ้ง",
-  "edit": "แก้ไข",
-  "event": "กิจกรรม",
-  "event_countdown_prefix": "",
-  "event_countdown_suffix": " : เหลืออีก",
-  "exclamation_mark": "!",
-  "follow": "ติดตาม",
-  "general": "ทั่วไป",
-  "input": "ป้อนข้อมูล",
-  "local_notification": "local notification",
-  "name": "ชื่อ",
-  "need_to_save": "จำเป็นต้องบันทึก",
-  "no_data": "ไม่พบข้อมูล",
-  "question_mark": "?",
-  "refresh": "รีเฟรช",
-  "reorder": "จัดลำดับใหม่",
-  "review_tour": "วิธีการใช้งาน",
-  "select": "เลือก",
-  "settings": "การตั้งค่า",
-  "system": "ระบบ",
-  "test": "ทดสอบ",
-  "theme": "ธีม",
-  "toggle": "สลับ",
-  "weeks": "สัปดาห์",
-  "weeks_view": "สัปดาห์",
-  "months": "เดือน",
-  "months_view": "เดือน",
-  "tour": {
-    "title": "วิธีการใช้งาน Countdate",
-    "step_1": "เพิ่มกิจกรรม",
-    "step_2": "ระบุชื่อกิจกรรม",
-    "step_3": "เลือกวันที่เพื่อเพิ่มกิจกรรม",
-    "step_4": "แตะปุ่มเพิ่ม",
-    "step_5": "แก้ไขกิจกรรมด้วยปุ่มแก้ไข",
-    "step_6": "แตะที่ชื่อกิจกรรมหรือวันเดือนปีเพื่อแก้ไข",
-    "step_7": "แตะที่ไอคอนถังขยะเพื่อลบกิจกรรม",
-    "step_8": "แตะปุ่มนี้แล้วเลื่อนนิ้วเพื่อเรียงลำดับกิจกรรม",
-    "can_review": "ไปที่การตั้งค่าเพื่อดูวิธีการใช้งานได้ตลอด",
-    "learn_more": " เรียนรู้เพิ่มเติมเกี่ยววิธีการใช้งาน"
+  "g": {
+    "back": "กลับ",
+    "close": "ปิด",
+    "cancel": "ยกเลิก",
+    "confirm": "ยืนยัน",
+    "discard": "ทิ้ง"
   },
-  "quickEdit": {
-    "title": "",
-    "confirm": "ยืนยันที่จะแก้ไข?",
-    "addOneMonth": "+1 เดือน",
-    "minusOneDay": "-1 วัน",
-    "addOneDay": "+1 วัน"
+  "p": {
+    "about": {
+      "title": "เกี่ยวกับ Countdate",
+      "version": "App version: {{versionName}}",
+      "platform": "Platform:",
+      "slogan": "Date Countdown: Know How Many Days Left To a Specific Date.",
+      "link": {
+        "landing": "Landing page",
+        "github": "Project Github",
+        "bug": "Report Bug",
+        "feature": "Request feature"
+      },
+      "more": {
+        "title": "แอปอื่น ๆ จาก sk5s: ",
+        "weread": "Weread",
+        "onea4paperyourlife": "OneA4PaperYourLife"
+      }
+    },
+    "add": {
+      "title": "เพิ่ม Countdate",
+      "add": "เพิ่ม",
+      "eventName": {
+        "label": "Event name",
+        "placeholder": "Input event name"
+      },
+      "tips": "1. เลือกวันที่ในอดีตเพื่อนับไปข้างหน้า 2. เลือกวันที่ในอนาคตเพื่อนับถอยหลัง 3. สามารถเขียนคำอธิบายกิจกรรมได้หลังจากเพิ่มกิจกรรมเรียบร้อยแล้ว",
+      "toast": "Added!"
+    },
+    "edit": {
+      "title": "Edit Countdate",
+      "description": "แตะที่ชื่อกิจกรรมหรือวันเดือนปีเพื่อแก้ไข",
+      "noData": "No Countdate Data"
+    },
+    "home": {
+      "title": "Countdate",
+      "countdown": "นับถอยหลัง",
+      "countup": "นับไปข้างหน้า",
+      "daysView": "วัน",
+      "weeksView": "สัปดาห์",
+      "monthsView": "เดือน"
+    },
+    "settings": {
+      "title": "การตั้งค่า",
+      "general": {
+        "title": "ทั่วไป",
+        "toggleDevMode": "Toggle dev mode",
+        "testLocalNotification": "Test local notification",
+        "reviewTour": "Review tour",
+        "about": "เกี่ยวกับ Countdate"
+      },
+      "theme": {
+        "title": "ธีม",
+        "toggleDarkMode": "Toggle dark mode",
+        "followSystem": "Follow system dark mode"
+      }
+    }
   },
-  "aboutPage": {
-    "more": "แอปอื่น ๆ จาก sk5s: ",
-    "weread": "Weread",
-    "onea4paperyourlife": "一張紙的人生 OneA4PaperYourLife"
+  "c": {
+    "card": {
+      "days": "วัน",
+      "weeks": "สัปดาห์",
+      "months": "เดือน",
+      "countdownEvent": "{{eventName}} : เหลืออีก"
+    },
+    "cards": {
+      "noData": "ไม่พบข้อมูล",
+      "toCountup": "To countup",
+      "toCountdown": "To countdown",
+      "addCountdate": "Add Countdate",
+      "addCountdate!": "Add Countdate!",
+      "edit": "แก้ไข",
+      "settings": "การตั้งค่า",
+      "checkData": "Check Data",
+      "delete!": "Delete!",
+      "deleted": "Deleted",
+      "deleteMessage": "This action cannot be undone",
+      "deleteAllData": "Delete all data",
+      "copyData": "Copy event data",
+      "copied!": "Copied!"
+    },
+    "settings": {
+      "changeTextColor": "Change text color",
+      "changeAccent": "Change accent color",
+      "followAccent": "Follow accent",
+      "saveColor": "Save color",
+      "changeLang": "Change language"
+    },
+    "tour": {
+      "title": "วิธีการใช้งาน Countdate",
+      "step_1": "เพิ่มกิจกรรม",
+      "step_2": "ระบุชื่อกิจกรรม",
+      "step_3": "เลือกวันที่เพื่อเพิ่มกิจกรรม",
+      "step_4": "แตะปุ่มเพิ่ม",
+      "step_5": "แก้ไขกิจกรรมด้วยปุ่มแก้ไข",
+      "step_6": "แตะที่ชื่อกิจกรรมหรือวันเดือนปีเพื่อแก้ไข",
+      "step_7": "แตะที่ไอคอนถังขยะเพื่อลบกิจกรรม",
+      "step_8": "แตะปุ่มนี้แล้วเลื่อนนิ้วเพื่อเรียงลำดับกิจกรรม",
+      "can_review": "ไปที่การตั้งค่าเพื่อดูวิธีการใช้งานได้ตลอด",
+      "learn_more": " เรียนรู้เพิ่มเติมเกี่ยววิธีการใช้งาน"
+    },
+    "editor": {
+      "description": "Description",
+      "needToSave": "Need to save",
+      "noDescriptionData": "No description data",
+      "tips": "The description text supports some simple Markdown syntax",
+      "quickEdit": {
+        "title": "Quick edit",
+        "confirm": "ยืนยันที่จะแก้ไข?",
+        "addOneMonth": "+1 เดือน",
+        "minusOneDay": "-1 วัน",
+        "addOneDay": "+1 วัน"
+      },
+      "edit": "Edit",
+      "completeEdit": "Complete edit"
+    }
   }
 }

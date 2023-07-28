@@ -43,7 +43,7 @@ export default function AppTour({
           <IonTitle>{t("tour.title")}</IonTitle>
           <IonButtons slot="end">
             <IonButton color={color} onClick={() => setModal(false)}>
-              {capitalize(t("close"))}
+              {t("g.close")}
             </IonButton>
           </IonButtons>
         </IonToolbar>
@@ -51,7 +51,7 @@ export default function AppTour({
       <IonContent>
         <IonChip style={{ marginLeft: "10px" }}>
           <IonIcon icon={informationCircle} color="dark"></IonIcon>
-          <IonLabel>{t("tour.can_review")}</IonLabel>
+          <IonLabel>{t("c.tour.can_review")}</IonLabel>
         </IonChip>
         <Swiper
           // install Swiper modules
@@ -68,7 +68,7 @@ export default function AppTour({
                 <SwiperSlide key={i}>
                   <IonText color="dark">
                     <h1 style={{ marginLeft: "10px" }}>
-                      {t("tour.step_" + (i + 1).toString())}
+                      {t("c.tour.step_" + (i + 1).toString())}
                     </h1>
                   </IonText>
                   <IonImg src={imgPath(i)}></IonImg>
@@ -85,7 +85,7 @@ export default function AppTour({
           target="_blank"
           rel="noreferrer"
         >
-          <IonIcon icon={link} /> {t("tour.learn_more")}
+          <IonIcon icon={link} /> {t("c.tour.learn_more")}
         </IonButton>
       </IonContent>
     </IonModal>

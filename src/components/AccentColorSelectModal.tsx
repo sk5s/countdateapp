@@ -17,12 +17,11 @@ import {
 import { useTranslation } from "react-i18next";
 import { Preferences } from "@capacitor/preferences";
 import key from "../lib/storageKey.json";
-import { capitalize } from "../lib/Capitalize";
 import { trigger } from "../lib/Events";
 import { colorPalette, ellipse } from "ionicons/icons";
 
 export default function AccentColorSelectModal() {
-  const [t, i18n] = useTranslation();
+  const {t} = useTranslation();
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [radioSelected, setRadioSelected] = useState("primary");
   const changeAccentColorTo = async (colorName: string) => {
@@ -61,21 +60,21 @@ export default function AccentColorSelectModal() {
   return (
     <>
       <IonLabel onClick={openPicker}>
-        <IonIcon icon={colorPalette} /> {t("change_accent_color")}
+        <IonIcon icon={colorPalette} /> {t("c.settings.changeAccent")}
       </IonLabel>
 
       <IonModal isOpen={modalIsOpen} onDidDismiss={() => setModalIsOpen(false)}>
         <IonHeader>
           <IonToolbar>
-            <IonTitle>{t("change_accent_color")}</IonTitle>
+            <IonTitle>{t("c.settings.changeAccent")}</IonTitle>
             <IonButtons slot="start">
               <IonButton onClick={() => setModalIsOpen(false)}>
-                {capitalize(t("close"))}
+                {t("g.close")}
               </IonButton>
             </IonButtons>
             <IonButtons slot="end">
               <IonButton onClick={() => changeAccentColorTo(radioSelected)}>
-                {capitalize(t("confirm"))}
+                {t("g.confirm")}
               </IonButton>
             </IonButtons>
           </IonToolbar>
@@ -90,7 +89,7 @@ export default function AccentColorSelectModal() {
             >
               {(() => {
                 let rows: any = [];
-                allColorName.map((element) => {
+                allColorName.forEach((element) => {
                   rows.push(
                     <IonItem key={element}>
                       <IonLabel>

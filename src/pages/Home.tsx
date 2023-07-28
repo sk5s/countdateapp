@@ -20,7 +20,6 @@ import { add } from "ionicons/icons";
 import CountCards from "../components/CountCards";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
-import { capitalize } from "../lib/Capitalize";
 import { useSwipeable } from "react-swipeable";
 import { trigger } from "../lib/Events";
 import "./Home.css"
@@ -55,7 +54,7 @@ const Home: React.FC<{ accent: string; textColor: string }> = ({
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Countdate</IonTitle>
+          <IonTitle>{t("p.home.title")}</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent>
@@ -73,10 +72,10 @@ const Home: React.FC<{ accent: string; textColor: string }> = ({
               onIonChange={(e) => setCount(`${e.detail.value}`)}
             >
               <IonSegmentButton value="countdown">
-                <IonLabel>{capitalize(t("countdown"))}</IonLabel>
+                <IonLabel>{t("p.home.countdown")}</IonLabel>
               </IonSegmentButton>
               <IonSegmentButton value="countup">
-                <IonLabel>{capitalize(t("countup"))}</IonLabel>
+                <IonLabel>{t("p.home.countup")}</IonLabel>
               </IonSegmentButton>
             </IonSegment>
           </IonToolbar>
@@ -109,13 +108,13 @@ const Home: React.FC<{ accent: string; textColor: string }> = ({
             onIonChange={(e) => setView(`${e.detail.value}`)}
           >
             <IonSegmentButton value="days">
-              <IonLabel>{t("days_view")}</IonLabel>
+              <IonLabel>{t("p.home.daysView")}</IonLabel>
             </IonSegmentButton>
             <IonSegmentButton value="weeks">
-              <IonLabel>{t("weeks_view")}</IonLabel>
+              <IonLabel>{t("p.home.weeksView")}</IonLabel>
             </IonSegmentButton>
             <IonSegmentButton value="months">
-              <IonLabel>{t("months_view")}</IonLabel>
+              <IonLabel>{t("p.home.monthsView")}</IonLabel>
             </IonSegmentButton>
           </IonSegment>
         </IonToolbar>

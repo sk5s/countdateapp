@@ -13,7 +13,6 @@ import {
   IonIcon,
   IonRouterLink,
 } from "@ionic/react";
-// import LanguageSelectAction from "../components/LanguageSelectAction";
 import {
   code,
   contrast,
@@ -28,7 +27,6 @@ import { Preferences as Storage } from "@capacitor/preferences";
 import key from "../lib/storageKey.json";
 import { useState } from "react";
 import { trigger } from "../lib/Events";
-import { capitalize } from "../lib/Capitalize";
 import AccentColorSelectModal from "../components/AccentColorSelectModal";
 import TextColorSelectModal from "../components/TextColorSelectModal";
 import "./Settings.css";
@@ -136,18 +134,18 @@ const Settings: React.FC<{ accent: string }> = ({ accent }) => {
       <IonHeader>
         <IonToolbar>
           <LocalizeBackButton color={accent} />
-          <IonTitle>{capitalize(t("settings"))}</IonTitle>
+          <IonTitle>{t("p.settings.title")}</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle>{capitalize(t("settings"))}</IonTitle>
+            <IonTitle>{t("p.settings.title")}</IonTitle>
           </IonToolbar>
         </IonHeader>
         <IonList>
           <IonListHeader lines="none" color={accent}>
-            <IonLabel>{capitalize(t("general"))}</IonLabel>
+            <IonLabel>{t("p.settings.general.title")}</IonLabel>
           </IonListHeader>
           <IonItem>
             {/* <LanguageSelectAction /> */}
@@ -156,7 +154,7 @@ const Settings: React.FC<{ accent: string }> = ({ accent }) => {
           <IonItem>
             <IonLabel onClick={toggleDevModeHandler}>
               <IonIcon icon={code} />{" "}
-              {capitalize(t("toggle")) + t("between_words") + t("dev_mode")}
+              {t("p.settings.general.toggleDevMode")}
             </IonLabel>
             <IonToggle
               checked={devChecked}
@@ -169,9 +167,7 @@ const Settings: React.FC<{ accent: string }> = ({ accent }) => {
             <IonItem>
               <IonLabel onClick={testLocalNotification}>
                 <IonIcon icon={notifications} />{" "}
-                {capitalize(t("test")) +
-                  t("between_words") +
-                  t("local_notification")}
+                {t("p.settings.general.testLocalNotification")}
               </IonLabel>
             </IonItem>
           ) : (
@@ -179,24 +175,23 @@ const Settings: React.FC<{ accent: string }> = ({ accent }) => {
           )}
           <IonItem>
             <IonLabel onClick={handleReviewTour}>
-              <IonIcon icon={help} /> {t("review_tour")}
+              <IonIcon icon={help} /> {t("p.settings.general.reviewTour")}
             </IonLabel>
           </IonItem>
           <IonRouterLink routerLink="/about">
             <IonItem>
               <IonLabel color="dark">
-                <IonIcon icon={information} /> {capitalize(t("about"))}{" "}
-                Countdate
+                <IonIcon icon={information} /> {t("p.settings.general.about")}
               </IonLabel>
             </IonItem>
           </IonRouterLink>
           <IonListHeader lines="none" color={accent}>
-            <IonLabel>{capitalize(t("theme"))}</IonLabel>
+            <IonLabel>{t("p.settings.theme.title")}</IonLabel>
           </IonListHeader>
           <IonItem>
             <IonLabel onClick={toggleDarkModeHandler}>
               <IonIcon icon={contrast} />{" "}
-              {capitalize(t("toggle")) + t("between_words") + t("dark_mode")}
+              {t("p.settings.theme.toggleDarkMode")}
             </IonLabel>
             <IonToggle
               checked={darkChecked}
@@ -207,11 +202,7 @@ const Settings: React.FC<{ accent: string }> = ({ accent }) => {
           <IonItem>
             <IonLabel onClick={darkmodeToSystem}>
               <IonIcon icon={logoAndroid} />{" "}
-              {capitalize(t("follow")) +
-                t("between_words") +
-                t("system") +
-                t("between_words") +
-                t("dark_mode")}
+              {t("p.settings.theme.followSystem")}
             </IonLabel>
           </IonItem>
           <IonItem>

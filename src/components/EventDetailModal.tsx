@@ -45,17 +45,17 @@ export default function EventDetailModal({
   const closeModal = () => {
     if (needToSave) {
       presentAlert({
-        header: t("need_to_save"),
+        header: t("c.editor.needToSave"),
         buttons: [
           {
-            text: capitalize(t("discard")),
+            text: t("g.discard"),
             handler: () => {
               setIsOpen(false);
               setNeedToSave(false);
               setDescription(myprops.description);
             },
           },
-          capitalize(t("confirm")),
+          t("g.confirm"),
         ],
       });
     } else {
@@ -67,11 +67,11 @@ export default function EventDetailModal({
   // });
   const addOneMonthHandler = () => {
     presentAlert({
-      header: t("quickEdit.confirm"),
+      header: t("c.editor.quickEdit.confirm"),
       buttons: [
-        capitalize(t("cancel")),
+        t("g.cancel"),
         {
-          text: capitalize(t("confirm")),
+          text: t("g.confirm"),
           role: "confirm",
           handler: () => {
             addOneMonth();
@@ -164,7 +164,7 @@ export default function EventDetailModal({
           <IonTitle>{myprops.event}</IonTitle>
           <IonButtons slot="end">
             <IonButton color={myprops.accent} onClick={() => closeModal()}>
-              {capitalize(t("close"))}
+              {t("g.close")}
             </IonButton>
           </IonButtons>
         </IonToolbar>
@@ -173,7 +173,7 @@ export default function EventDetailModal({
         <h1>{detailStr}</h1>
         {contentEditable ? (
           <>
-            <span>{t("click_on_title_or_date_to_edit")}</span>
+            <span>{t("p.edit.description")}</span>
             <CountdateItem
               key={myprops.id}
               id={myprops.id}
@@ -184,14 +184,14 @@ export default function EventDetailModal({
               textColor={myprops.textColor}
             />
             <IonItem>
-              {t("quickEdit.title")}
+              {t("c.editor.quickEdit.title")}
               <IonButton
                 onClick={() => addOneMonthHandler()}
                 size="small"
                 color={myprops.accent}
                 shape="round"
               >
-                {t("quickEdit.addOneMonth")}
+                {t("c.editor.quickEdit.addOneMonth")}
               </IonButton>
               <IonButton
                 onClick={() => minusOneDayHandler()}
@@ -199,7 +199,7 @@ export default function EventDetailModal({
                 color={myprops.accent}
                 shape="round"
               >
-                {t("quickEdit.minusOneDay")}
+                {t("c.editor.quickEdit.minusOneDay")}
               </IonButton>
               <IonButton
                 onClick={() => addOneDayHandler()}
@@ -207,7 +207,7 @@ export default function EventDetailModal({
                 color={myprops.accent}
                 shape="round"
               >
-                {t("quickEdit.addOneDay")}
+                {t("c.editor.quickEdit.addOneDay")}
               </IonButton>
             </IonItem>
           </>
@@ -232,8 +232,8 @@ export default function EventDetailModal({
         >
           <IonIcon icon={create} />{" "}
           {!contentEditable
-            ? capitalize(t("edit"))
-            : capitalize(t("complete")) + t("between_words") + t("edit")}
+            ? t("c.editor.edit")
+            : t("c.editor.completeEdit")}
         </IonButton>
       </IonFooter>
     </IonModal>

@@ -1,87 +1,125 @@
 {
-  "about": "關於",
-  "accent_color": "主題顏色",
-  "add": "新增",
-  "added": "已新增",
-  "add_tips": "選擇今天之前的日期可以添加一個正數計數器，選擇今天之後的日期可以添加一個倒計時計數器。 添加 Countdate 後可以再添加說明。",
-  "all": "所有",
-  "back": "返回",
-  "between_words": "",
-  "cancel": "取消",
-  "change_accent_color": "選擇主題顏色",
-  "change_language": "切換 Language",
-  "change_text_color": "選擇字顏色",
-  "check": "檢查",
-  "click_on_title_or_date_to_edit": "點擊標題或日期來編輯事件",
-  "close": "關閉",
-  "confirm": "確認",
-  "complete": "完成",
-  "copied": "已複製",
-  "copy_data_label": "複製事件資料",
-  "countdown": "倒數",
-  "countup": "正數",
-  "dark_mode": "黑暗模式",
-  "data": "資料",
-  "date": "日期",
-  "days": "天",
-  "day_has_come": "時間已到",
-  "days_view": "剩幾天",
-  "delete": "刪除",
-  "deleted": "已刪除",
-  "delete_data_message": "此操作無法撤銷",
-  "description": "說明",
-  "description_tips": "說明欄文字支援一些簡易的 Markdown 語法",
-  "dev_mode": "開發模式",
-  "discard": "捨棄",
-  "edit": "編輯",
-  "event": "事件",
-  "event_countdown_prefix": "離",
-  "event_countdown_suffix": "剩下",
-  "exclamation_mark": "！",
-  "follow": "跟隨",
-  "general": "一般",
-  "input": "輸入",
-  "local_notification": "本地通知",
-  "name": "名稱",
-  "need_to_save": "尚未儲存變更",
-  "no_data": "沒有資料",
-  "question_mark": "？",
-  "refresh": "重新整理",
-  "reorder": "重新排序",
-  "review_tour": "重看導覽",
-  "select": "選擇",
-  "settings": "設定",
-  "system": "系統",
-  "test": "測試",
-  "theme": "主題",
-  "toggle": "切換",
-  "weeks": "周",
-  "weeks_view": "剩幾周",
-  "months": "月",
-  "months_view": "剩幾月",
-  "tour": {
-    "title": "Countdate 應用導覽",
-    "step_1": "如何新增一個事件：新增一個 Countdate",
-    "step_2": "輸入事件名稱",
-    "step_3": "點選事件日期（在今天之前或之後皆可）",
-    "step_4": "點擊新增",
-    "step_5": "如何編輯事件：點擊編輯按鈕",
-    "step_6": "點擊標題或日期來編輯事件",
-    "step_7": "點擊這個按鈕來刪除事件",
-    "step_8": "按住按鈕來重新排序事件",
-    "can_review": "您可以進入設置頁面重新查看遊覽",
-    "learn_more": "了解更多使用方法"
+  "g": {
+    "back": "返回",
+    "close": "關閉",
+    "cancel": "取消",
+    "confirm": "確認",
+    "discard": "捨棄"
   },
-  "quickEdit": {
-    "title": "快速編輯",
-    "confirm": "確定更改？",
-    "addOneMonth": "+1 個月",
-    "minusOneDay": "-1 天",
-    "addOneDay": "+1 天"
+  "p": {
+    "about": {
+      "title": "關於 Countdate",
+      "version": "應用版本: {{versionName}}",
+      "platform": "平台:",
+      "slogan": "Countdate - 會考、學測、分科、檢定倒數，日期正數",
+      "link": {
+        "landing": "專案網頁",
+        "github": "專案 Github",
+        "bug": "回報問題",
+        "feature": "功能提議"
+      },
+      "more": {
+        "title": "更多 sk5s 應用程式：",
+        "weread": "Weread",
+        "onea4paperyourlife": "一張紙的人生 OneA4PaperYourLife"
+      }
+    },
+    "add": {
+      "title": "新增 Countdate",
+      "add": "新增",
+      "eventName": {
+        "label": "事件名稱",
+        "placeholder": "輸入事件名稱"
+      },
+      "tips": "選擇今天之前的日期可以新增一個正數計數器，選擇今天之後的日期可以新增一個倒計時計數器。新增 Countdate 後可以再增加說明。",
+      "toast": "已新增！"
+    },
+    "edit": {
+      "title": "編輯 Countdate",
+      "description": "點擊標題或日期來編輯事件",
+      "noData": "沒有 Countdate 資料"
+    },
+    "home": {
+      "title": "Countdate",
+      "countdown": "倒數",
+      "countup": "正數",
+      "daysView": "剩幾天",
+      "weeksView": "剩幾周",
+      "monthsView": "剩幾月"
+    },
+    "settings": {
+      "title": "設定",
+      "general": {
+        "title": "一般",
+        "toggleDevMode": "切換開發模式",
+        "testLocalNotification": "測試本地通知",
+        "reviewTour": "重看導覽",
+        "about": "關於 Countdate"
+      },
+      "theme": {
+        "title": "主題",
+        "toggleDarkMode": "切換黑暗模式",
+        "followSystem": "跟隨系統黑暗模式"
+      }
+    }
   },
-  "aboutPage": {
-    "more": "更多 sk5s 應用程式：",
-    "weread": "Weread",
-    "onea4paperyourlife": "一張紙的人生 OneA4PaperYourLife"
+  "c": {
+    "card": {
+      "days": "天",
+      "weeks": "周",
+      "months": "月",
+      "countdownEvent": "離{{eventName}}剩下"
+    },
+    "cards": {
+      "noData": "沒有資料",
+      "toCountup": "到正數",
+      "toCountdown": "到倒數",
+      "addCountdate": "新增 Countdate",
+      "addCountdate!": "新增 Countdate!",
+      "edit": "編輯",
+      "settings": "設定",
+      "checkData": "檢查資料",
+      "delete!": "刪除！",
+      "deleted": "已刪除",
+      "deleteMessage": "此操作無法回復",
+      "deleteAllData": "刪除所有資料",
+      "copyData": "複製事件資料",
+      "copied!": "已複製！"
+    },
+    "settings": {
+      "changeTextColor": "選擇字顏色",
+      "changeAccent": "選擇主題顏色",
+      "followAccent": "跟隨主題顏色",
+      "saveColor": "儲存顏色",
+      "changeLang": "切換語言"
+    },
+    "tour": {
+      "title": "Countdate 應用導覽",
+      "step_1": "如何新增一個事件：新增一個 Countdate",
+      "step_2": "輸入事件名稱",
+      "step_3": "點選事件日期（在今天之前或之後皆可）",
+      "step_4": "點擊新增",
+      "step_5": "如何編輯事件：點擊編輯按鈕",
+      "step_6": "點擊標題或日期來編輯事件",
+      "step_7": "點擊這個按鈕來刪除事件",
+      "step_8": "按住按鈕來重新排序事件",
+      "can_review": "您可以進入設置頁面重新查看遊覽",
+      "learn_more": "了解更多使用方法"
+    },
+    "editor": {
+      "description": "說明",
+      "needToSave": "尚未儲存變更",
+      "noDescriptionData": "沒有說明資料",
+      "tips": "說明欄文字支援一些簡易的 Markdown 語法",
+      "quickEdit": {
+        "title": "快速編輯",
+        "confirm": "確定更改？",
+        "addOneMonth": "+1 個月",
+        "minusOneDay": "-1 天",
+        "addOneDay": "+1 天"
+      },
+      "edit": "編輯",
+      "completeEdit": "完成編輯"
+    }
   }
 }

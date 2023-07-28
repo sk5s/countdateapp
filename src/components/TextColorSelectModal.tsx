@@ -14,13 +14,12 @@ import { refresh, save, text } from "ionicons/icons";
 import { useTranslation } from "react-i18next";
 import { Preferences } from "@capacitor/preferences";
 import key from "../lib/storageKey.json";
-import { capitalize } from "../lib/Capitalize";
 import { trigger } from "../lib/Events";
 import { ChromePicker } from "react-color";
 import "./TextColorSelectModal.css";
 
 export default function TextColorSelectModal({ accent }: { accent: string }) {
-  const [t, i18n] = useTranslation();
+  const {t} = useTranslation();
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [hex, setHex] = useState("");
   const changeTextColor = async (color: string) => {
@@ -53,16 +52,16 @@ export default function TextColorSelectModal({ accent }: { accent: string }) {
   return (
     <>
       <IonLabel onClick={openPicker}>
-        <IonIcon icon={text} /> {t("change_text_color")}
+        <IonIcon icon={text} /> {t("c.settings.changeTextColor")}
       </IonLabel>
 
       <IonModal isOpen={modalIsOpen} onDidDismiss={() => setModalIsOpen(false)}>
         <IonHeader>
           <IonToolbar>
-            <IonTitle>{t("change_text_color")}</IonTitle>
+            <IonTitle>{t("c.settings.changeTextColor")}</IonTitle>
             <IonButtons slot="end">
               <IonButton onClick={() => setModalIsOpen(false)} color={accent}>
-                {capitalize(t("close"))}
+                {t("g.close")}
               </IonButton>
             </IonButtons>
           </IonToolbar>
@@ -75,11 +74,7 @@ export default function TextColorSelectModal({ accent }: { accent: string }) {
             color={accent}
           >
             <IonIcon icon={refresh} />{" "}
-            {capitalize(t("follow")) +
-              t("between_words") +
-              t("system") +
-              t("between_words") +
-              t("accent_color")}
+            {t("c.settings.followAccent")}
           </IonButton>
           <IonButton
             onClick={() => changeTextColor(hex)}
@@ -87,7 +82,7 @@ export default function TextColorSelectModal({ accent }: { accent: string }) {
             shape="round"
             color={accent}
           >
-            <IonIcon icon={save} /> {t("change_text_color")}
+            <IonIcon icon={save} /> {t("c.settings.saveColor")}
           </IonButton>
           <div>
             <p style={{ fontSize: "3rem", color: hex, paddingBottom: "10px" }}>

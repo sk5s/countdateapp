@@ -25,7 +25,6 @@ import { format } from "date-fns";
 import { trigger } from "../lib/Events";
 import { useTranslation } from "react-i18next";
 
-import { capitalize } from "../lib/Capitalize";
 import key from "../lib/storageKey.json";
 import { add, informationCircle } from "ionicons/icons";
 import LocalizeBackButton from "../components/LocalizeBackButton";
@@ -63,7 +62,7 @@ const Add: React.FC<{ accent: string }> = ({ accent }) => {
       value: content,
     });
     presentToast({
-      message: capitalize(t("added")) + t("exclamation_mark"),
+      message: t("p.add.toast"),
       duration: 1500,
       position: "bottom",
       icon: add,
@@ -83,13 +82,13 @@ const Add: React.FC<{ accent: string }> = ({ accent }) => {
       <IonHeader>
         <IonToolbar>
           <LocalizeBackButton color={accent} />
-          <IonTitle>{capitalize(t("add"))} Countdate</IonTitle>
+          <IonTitle>{t("p.add.title")}</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle>{capitalize(t("add"))} Countdate</IonTitle>
+            <IonTitle>{t("p.add.title")}</IonTitle>
           </IonToolbar>
         </IonHeader>
         <IonGrid>
@@ -97,9 +96,7 @@ const Add: React.FC<{ accent: string }> = ({ accent }) => {
             <IonCol>
               <IonItem className="ion-no-padding">
                 <IonLabel position="stacked">
-                  {capitalize(t("event"))}
-                  {t("between_words")}
-                  {t("name")}
+                  {t("p.add.eventName.label")}
                 </IonLabel>
                 <IonInput
                   aria-label="name"
@@ -108,11 +105,7 @@ const Add: React.FC<{ accent: string }> = ({ accent }) => {
                   clearInput={true}
                   value={titleText}
                   placeholder={
-                    capitalize(t("input")) +
-                    t("between_words") +
-                    t("event") +
-                    t("between_words") +
-                    t("name")
+                    t("p.add.eventName.placeholder")
                   }
                   onIonChange={(e) => setTitleText(e.detail.value!)}
                 ></IonInput>
@@ -131,7 +124,7 @@ const Add: React.FC<{ accent: string }> = ({ accent }) => {
                 <IonIcon icon={informationCircle}></IonIcon>{" "}
               </IonButton>
               <IonPopover trigger="click-trigger" triggerAction="click">
-                <IonContent class="ion-padding">{t("add_tips")}</IonContent>
+                <IonContent class="ion-padding">{t("p.add.tips")}</IonContent>
               </IonPopover>
             </IonCol>
           </IonRow>
@@ -169,7 +162,7 @@ const Add: React.FC<{ accent: string }> = ({ accent }) => {
                   });
                 }}
               >
-                {capitalize(t("add"))}
+                {t("p.add.add")}
               </IonButton>
             </IonCol>
           </IonRow>

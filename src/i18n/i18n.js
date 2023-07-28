@@ -7,8 +7,8 @@ import { Device } from "@capacitor/device";
 
 import en from "./data/en.json";
 import tw from "./data/zh-TW.json";
-import cn from "./data/zh-CN.json";
 import th from "./data/th.json";
+// import cn from "./data/zh-CN.json";
 
 let device_language_code = "";
 const getDeviceLanguageCode = async () => {
@@ -18,16 +18,16 @@ const getDeviceLanguageCode = async () => {
 getDeviceLanguageCode();
 
 const resources = {
-  "en-US": {
+  "en": {
     translation: en,
   },
   "zh-TW": {
     translation: tw,
   },
-  "zh-CN": {
-    translation: cn,
-  },
-  "th-TH": {
+  // "zh-CN": {
+  //   translation: cn,
+  // },
+  "th": {
     translation: th,
   },
 };
@@ -38,7 +38,7 @@ i18n
   .init({
     resources,
     lng: device_language_code, // Default lan
-    fallbackLng: "en-US", // Fall back
+    fallbackLng: "en", // Fall back
     interpolation: {
       escapeValue: false,
     },

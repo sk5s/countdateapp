@@ -13,7 +13,6 @@ import {
   IonFabButton,
 } from "@ionic/react";
 import { add } from "ionicons/icons";
-import { capitalize } from "../lib/Capitalize";
 import { useTranslation } from "react-i18next";
 import { useState, useEffect } from "react";
 import { Preferences } from "@capacitor/preferences";
@@ -81,18 +80,18 @@ const Edit: React.FC<{ accent: string; textColor: string }> = ({
       <IonHeader>
         <IonToolbar>
           <LocalizeBackButton color={accent} />
-          <IonTitle>{capitalize(t("edit"))}</IonTitle>
+          <IonTitle>{t("p.edit.title")}</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle>{capitalize(t("edit"))}</IonTitle>
+            <IonTitle>{t("p.edit.title")}</IonTitle>
           </IonToolbar>
         </IonHeader>
 
         <span style={{ marginLeft: 36, marginTop: 10 }}>
-          {t("click_on_title_or_date_to_edit")}
+          {t("p.edit.description")}
         </span>
 
         {/* Countdate lists */}
@@ -102,7 +101,7 @@ const Edit: React.FC<{ accent: string; textColor: string }> = ({
             {(() => {
               let row = [];
               if (countdate_events_data_list.length) {
-                countdate_events_data_list.map((event) => {
+                countdate_events_data_list.forEach((event) => {
                   row.push(
                     <CountdateItem
                       key={event.id}
@@ -116,7 +115,7 @@ const Edit: React.FC<{ accent: string; textColor: string }> = ({
                   );
                 });
               } else {
-                row.push(<IonItem key="nodata">{t("no_data")}</IonItem>);
+                row.push(<IonItem key="nodata">{t("p.edit.noData")}</IonItem>);
               }
               return row;
             })()}

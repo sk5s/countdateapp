@@ -2,7 +2,6 @@ import { IonButton, IonButtons, IonContent, IonHeader, IonIcon, IonItem, IonLabe
 import { language } from "ionicons/icons";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { capitalize } from "../lib/Capitalize";
 import { trigger } from "../lib/Events";
 
 export default function LanguageSelectModal({accent}:{accent: string;}) {
@@ -11,21 +10,17 @@ export default function LanguageSelectModal({accent}:{accent: string;}) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [radioSelected, setRadioSelected] = useState("zh-TW");
 
-  const allLangName = ["zh-TW", "en-US", "zh-CN", "th-TH"];
+  const allLangName = ["zh-TW", "en", "th"];
   const langAndDetail:any = {
     "zh-TW": {
       name: "繁體中文",
       by: "sk5s"
     },
-    "zh-CN": {
-      name: "簡體中文",
-      by: "sk5s, Nqtural"
-    },
-    "en-US": {
+    "en": {
       name: "English (US)",
       by: "sk5s, Nqtural"
     },
-    "th-TH": {
+    "th": {
       name: "Thai ไทย",
       by: "nutsupra"
     }
@@ -33,16 +28,16 @@ export default function LanguageSelectModal({accent}:{accent: string;}) {
   return (
     <>
       <IonLabel onClick={() => setModalIsOpen(true)}>
-        <IonIcon icon={language} /> {t("change_language")}
+        <IonIcon icon={language} /> {t("c.settings.changeLang")}
       </IonLabel>
 
       <IonModal isOpen={modalIsOpen} onDidDismiss={() => setModalIsOpen(false)}>
         <IonHeader>
           <IonToolbar>
-            <IonTitle>{t("change_language")}</IonTitle>
+            <IonTitle>{t("c.settings.changeLang")}</IonTitle>
             <IonButtons slot="start">
               <IonButton color={accent} onClick={() => setModalIsOpen(false)}>
-                {capitalize(t("close"))}
+                {t("g.close")}
               </IonButton>
             </IonButtons>
             <IonButtons slot="end">
@@ -51,7 +46,7 @@ export default function LanguageSelectModal({accent}:{accent: string;}) {
                 i18n.changeLanguage(radioSelected);
                 trigger("countdate_data:change")
               }}>
-                {capitalize(t("confirm"))}
+                {t("g.confirm")}
               </IonButton>
             </IonButtons>
           </IonToolbar>

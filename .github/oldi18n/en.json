@@ -1,0 +1,53 @@
+{
+  "accent_color": "accent color",
+  "add_tips": "Select date before today add a countup counter, select date after today add a countdown counter. Description can be added after added the countdate.",
+  "between_words": " ",
+  "change_accent_color": "Change accent color",
+  "change_language": "Change Language",
+  "change_text_color": "Change text color",
+  "click_on_title_or_date_to_edit": "Click on title or date to edit",
+  "copied": "Copied",
+  "copy_data_label": "Copy event data",
+  "dark_mode": "dark mode",
+  "days": "days",
+  "day_has_come": "The day has come!",
+  "days_view": "Days",
+  "delete_data_message": "This action cannot be undone",
+  "description_tips": "The description text supports some simple Markdown syntax",
+  "dev_mode": "dev mode",
+  "event_countdown_prefix": "Days until",
+  "event_countdown_suffix": ":",
+  "exclamation_mark": "!",
+  "local_notification": "local notification",
+  "need_to_save": "Need to save",
+  "no_data": "No data",
+  "question_mark": "?",
+  "review_tour": "Review tour",
+  "weeks_view": "Weeks",
+  "months_view": "Months",
+  "tour": {
+    "title": "Countdate app tour",
+    "step_1": "How to add new event: Add a new Countdate",
+    "step_2": "Input event name",
+    "step_3": "Choose event date (either before or after today)",
+    "step_4": "Click Add",
+    "step_5": "How to edit events: Click on edit button",
+    "step_6": "Click on title or date to edit",
+    "step_7": "Click on this button to delete event",
+    "step_8": "Press this button and drag the event to reorder",
+    "can_review": "You can go to the settings page to review tour",
+    "learn_more": "Learn more about how to use"
+  },
+  "quickEdit": {
+    "title": "Quick edit",
+    "confirm": "Confirm change?",
+    "addOneMonth": "+1 month",
+    "minusOneDay": "-1 day",
+    "addOneDay": "+1 day"
+  },
+  "aboutPage": {
+    "more": "More sk5s apps: ",
+    "weread": "Weread",
+    "onea4paperyourlife": "OneA4PaperYourLife"
+  }
+}

@@ -15,7 +15,6 @@ import key from "../lib/storageKey.json";
 import { trigger } from "../lib/Events";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { capitalize } from "../lib/Capitalize";
 import { informationCircle, save } from "ionicons/icons";
 
 import "./DescriptionEditor.css";
@@ -37,17 +36,17 @@ export default function DescriptionEditor({
   needToSave: boolean;
   setNeedToSave: any;
 }) {
-  const [t] = useTranslation();
+  const {t} = useTranslation();
   let countdate_events_data = [];
   const edit_this_countdate_item_description = async (
     newDescription: string | undefined | null
   ) => {
-    if (newDescription == undefined || newDescription == null) return;
+    if (newDescription === undefined || newDescription === null) return;
     const { value } = await Preferences.get({ key: key.data });
     if (value) {
       countdate_events_data = JSON.parse(value);
       for (const i of countdate_events_data) {
-        if (String(i.id) == String(id)) {
+        if (String(i.id) === String(id)) {
           i.description = newDescription;
         }
       }
@@ -66,7 +65,7 @@ export default function DescriptionEditor({
           <IonItem>
             <IonTextarea
               aria-label="Description editor"
-              placeholder={capitalize(t("description"))}
+              placeholder={t("c.editor.description")}
               autoGrow={true}
               fill="solid"
               value={description}
@@ -97,7 +96,7 @@ export default function DescriptionEditor({
             <IonIcon icon={informationCircle}></IonIcon>{" "}
           </IonButton>
           <IonPopover trigger="click-trigger" triggerAction="click">
-            <IonContent class="ion-padding">{t("description_tips")}</IonContent>
+            <IonContent class="ion-padding">{t("c.editor.tips")}</IonContent>
           </IonPopover>
         </>
       ) : (
@@ -105,7 +104,7 @@ export default function DescriptionEditor({
           {needToSave ? (
             <IonChip style={{ marginLeft: "10px" }} color={accent}>
               <IonIcon icon={informationCircle}></IonIcon>
-              <IonLabel>{t("need_to_save")}</IonLabel>
+              <IonLabel>{t("c.editor.needToSave")}</IonLabel>
             </IonChip>
           ) : (
             <></>
@@ -121,7 +120,7 @@ export default function DescriptionEditor({
             </>
           ) : (
             <h5>
-              {capitalize(t("description"))} {t("no_data")}
+              {t("c.editor.noDescriptionData")}
             </h5>
           )}
         </>
