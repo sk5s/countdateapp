@@ -151,6 +151,7 @@ click add button to add a countdate
 - [x] Custom accent color (color picker)
 - [ ] Qrcode share event
 - [x] Native desktop widget
+- [ ] Count Month
 
 See the [open issues](https://github.com/sk5s/countdateapp/issues) for a full list of proposed features (and known issues).
 
