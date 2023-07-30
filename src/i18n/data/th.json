@@ -28,14 +28,14 @@
       "title": "เพิ่ม Countdate",
       "add": "เพิ่ม",
       "eventName": {
-        "label": "Event name",
-        "placeholder": "Input event name"
+        "label": "กิจกรรมชื่อ",
+        "placeholder": "ป้อนข้อมูลกิจกรรมชื่อ"
       },
       "tips": "1. เลือกวันที่ในอดีตเพื่อนับไปข้างหน้า 2. เลือกวันที่ในอนาคตเพื่อนับถอยหลัง 3. สามารถเขียนคำอธิบายกิจกรรมได้หลังจากเพิ่มกิจกรรมเรียบร้อยแล้ว",
       "toast": "Added!"
     },
     "edit": {
-      "title": "Edit Countdate",
+      "title": "แก้ไข Countdate",
       "description": "แตะที่ชื่อกิจกรรมหรือวันเดือนปีเพื่อแก้ไข",
       "noData": "No Countdate Data"
     },
@@ -51,15 +51,15 @@
       "title": "การตั้งค่า",
       "general": {
         "title": "ทั่วไป",
-        "toggleDevMode": "Toggle dev mode",
+        "toggleDevMode": "สลับโหมดนักพัฒนา",
         "testLocalNotification": "Test local notification",
-        "reviewTour": "Review tour",
+        "reviewTour": "วิธีการใช้งาน",
         "about": "เกี่ยวกับ Countdate"
       },
       "theme": {
         "title": "ธีม",
-        "toggleDarkMode": "Toggle dark mode",
-        "followSystem": "Follow system dark mode"
+        "toggleDarkMode": "สลับเป็นโหมดมืด",
+        "followSystem": "ติดตามระบบเป็นโหมดมืด"
       }
     }
   },
@@ -74,8 +74,8 @@
       "noData": "ไม่พบข้อมูล",
       "toCountup": "To countup",
       "toCountdown": "To countdown",
-      "addCountdate": "Add Countdate",
-      "addCountdate!": "Add Countdate!",
+      "addCountdate": "เพิ่ม Countdate",
+      "addCountdate!": "เพิ่ม Countdate!",
       "edit": "แก้ไข",
       "settings": "การตั้งค่า",
       "checkData": "Check Data",
@@ -87,11 +87,11 @@
       "copied!": "Copied!"
     },
     "settings": {
-      "changeTextColor": "Change text color",
-      "changeAccent": "Change accent color",
+      "changeTextColor": "เปลี่ยนสีตัวอักษร",
+      "changeAccent": "เปลี่ยนโทนสี",
       "followAccent": "Follow accent",
       "saveColor": "Save color",
-      "changeLang": "Change language"
+      "changeLang": "เลือกภาษาที่ใช้"
     },
     "tour": {
       "title": "วิธีการใช้งาน Countdate",
@@ -107,8 +107,8 @@
       "learn_more": " เรียนรู้เพิ่มเติมเกี่ยววิธีการใช้งาน"
     },
     "editor": {
-      "description": "Description",
-      "needToSave": "Need to save",
+      "description": "คำอธิบาย",
+      "needToSave": "จำเป็นต้องบันทึก",
       "noDescriptionData": "No description data",
       "tips": "The description text supports some simple Markdown syntax",
       "quickEdit": {
@@ -118,8 +118,8 @@
         "minusOneDay": "-1 วัน",
         "addOneDay": "+1 วัน"
       },
-      "edit": "Edit",
-      "completeEdit": "Complete edit"
+      "edit": "แก้ไข",
+      "completeEdit": "เสร็จสมบูรณ์แก้ไข"
     }
   }
 }

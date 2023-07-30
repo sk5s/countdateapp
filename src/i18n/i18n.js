@@ -8,7 +8,7 @@ import { Device } from "@capacitor/device";
 import en from "./data/en.json";
 import tw from "./data/zh-TW.json";
 import th from "./data/th.json";
-// import cn from "./data/zh-CN.json";
+import cn from "./data/zh-CN.json";
 
 let device_language_code = "";
 const getDeviceLanguageCode = async () => {
@@ -24,9 +24,9 @@ const resources = {
   "zh-TW": {
     translation: tw,
   },
-  // "zh-CN": {
-  //   translation: cn,
-  // },
+  "zh-CN": {
+    translation: cn,
+  },
   "th": {
     translation: th,
   },

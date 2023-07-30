@@ -10,7 +10,7 @@
     "about": {
       "title": "關於 Countdate",
       "version": "應用版本: {{versionName}}",
-      "platform": "平台:",
+      "platform": "平台：",
       "slogan": "Countdate - 會考、學測、分科、檢定倒數，日期正數",
       "link": {
         "landing": "專案網頁",
@@ -114,7 +114,7 @@
       "quickEdit": {
         "title": "快速編輯",
         "confirm": "確定更改？",
-        "addOneMonth": "+1 個月",
+        "addOneMonth": "+1 月",
         "minusOneDay": "-1 天",
         "addOneDay": "+1 天"
       },

@@ -10,7 +10,7 @@ export default function LanguageSelectModal({accent}:{accent: string;}) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [radioSelected, setRadioSelected] = useState("zh-TW");
 
-  const allLangName = ["zh-TW", "en", "th"];
+  const allLangName = ["zh-TW", "en", "th", "zh-CN" ];
   const langAndDetail:any = {
     "zh-TW": {
       name: "繁體中文",
@@ -23,6 +23,10 @@ export default function LanguageSelectModal({accent}:{accent: string;}) {
     "th": {
       name: "Thai ไทย",
       by: "nutsupra"
+    },
+    "zh-CN": {
+      name: "简体中文",
+      by: "sk5s"
     }
   }
   return (
@@ -44,6 +48,7 @@ export default function LanguageSelectModal({accent}:{accent: string;}) {
               <IonButton color={accent} onClick={() => {
                 console.log(`You selected: ${radioSelected}`);
                 i18n.changeLanguage(radioSelected);
+                setModalIsOpen(false)
                 trigger("countdate_data:change")
               }}>
                 {t("g.confirm")}
