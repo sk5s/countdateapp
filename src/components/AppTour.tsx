@@ -40,7 +40,7 @@ export default function AppTour({
     <IonModal isOpen={modal}>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>{t("tour.title")}</IonTitle>
+          <IonTitle>{t("c.tour.title")}</IonTitle>
           <IonButtons slot="end">
             <IonButton color={color} onClick={() => setModal(false)}>
               {t("g.close")}
