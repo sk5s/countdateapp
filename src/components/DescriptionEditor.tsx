@@ -88,14 +88,14 @@ export default function DescriptionEditor({
           </IonItem>
           <IonButton
             size="small"
-            id="click-trigger"
+            id="click-trigger-description"
             color={accent}
             shape="round"
           >
             {" "}
             <IonIcon icon={informationCircle}></IonIcon>{" "}
           </IonButton>
-          <IonPopover trigger="click-trigger" triggerAction="click">
+          <IonPopover trigger="click-trigger-description" triggerAction="click">
             <IonContent class="ion-padding">{t("c.editor.tips")}</IonContent>
           </IonPopover>
         </>
