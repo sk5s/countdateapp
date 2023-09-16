@@ -4,5 +4,6 @@
   "dev": "countdate_dev_mode",
   "accent": "countdate_accent_color",
   "textColor": "countdate_text_color",
-  "firstTime": "countdate_first"
+  "firstTime": "countdate_first",
+  "extend": "countdate_extend_mode"
 }

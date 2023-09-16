@@ -14,6 +14,7 @@ import {
   IonRouterLink,
 } from "@ionic/react";
 import {
+  calendarNumber,
   code,
   contrast,
   help,
@@ -38,6 +39,7 @@ const Settings: React.FC<{ accent: string }> = ({ accent }) => {
   const { t } = useTranslation();
   const [darkChecked, setDarkChecked] = useState<boolean>();
   const [devChecked, setDevChecked] = useState<boolean>(false);
+  const [extendChecked, setExtendChecked] = useState<boolean>(false);
   const history = useHistory();
 
   const getDevMode = async () => {
@@ -56,6 +58,23 @@ const Settings: React.FC<{ accent: string }> = ({ accent }) => {
     // console.log(tovalue);
     trigger("countdate_dev:change");
   };
+  const getExtendMode = async () => {
+    const { value } = await Storage.get({ key: key.extend });
+    if (value === "true") setExtendChecked(true);
+  };
+  getExtendMode();
+  const toggleExtendModeHandler = async () => {
+    console.log("toggle extend mode");
+    let tovalue = !extendChecked;
+    await Storage.set({
+      key: key.extend,
+      value: tovalue.toString(),
+    });
+    setExtendChecked(tovalue);
+    // console.log(tovalue);
+    trigger("countdate_extend:change");
+  };
+
   const testLocalNotification = async () => {
     // console.log("clicked");
     await Schedule({
@@ -150,6 +169,17 @@ const Settings: React.FC<{ accent: string }> = ({ accent }) => {
           <IonItem>
             {/* <LanguageSelectAction /> */}
             <LanguageSelectModal accent={accent} />
+          </IonItem>
+          <IonItem>
+            <IonLabel className="ion-text-wrap" onClick={toggleExtendModeHandler}>
+              <IonIcon icon={calendarNumber} />{" "}
+              {t("p.settings.general.toggleExtendMode")}
+            </IonLabel>
+            <IonToggle
+              checked={extendChecked}
+              onClick={toggleExtendModeHandler}
+              color={accent}
+            />
           </IonItem>
           <IonItem>
             <IonLabel onClick={toggleDevModeHandler}>

@@ -22,7 +22,7 @@ import { useHistory } from "react-router";
 import { v4 as uuid } from "uuid";
 import { format } from "date-fns";
 
-import { trigger } from "../lib/Events";
+import { on, trigger } from "../lib/Events";
 import { useTranslation } from "react-i18next";
 
 import key from "../lib/storageKey.json";
@@ -35,6 +35,7 @@ const Add: React.FC<{ accent: string }> = ({ accent }) => {
     format(new Date(), "yyyy-MM-dd") + "T23:59:00+08:00"
   );
   const [titleText, setTitleText] = useState<string | number>("");
+  const [years,setYears] = useState(2);
   const [presentToast] = useIonToast();
   const history = useHistory();
   let countdate_events_data = [];
@@ -77,6 +78,18 @@ const Add: React.FC<{ accent: string }> = ({ accent }) => {
       add_new_countdate_item({ event_name: titleText, date: selectedDate });
     }
   };
+  const getExtendMode = async () => {
+    const { value } = await Preferences.get({ key: key.extend });
+    if (value === "true") {
+      setYears(50);
+    } else {
+      setYears(2);
+    }
+  };
+  on("countdate_extend:change", () => {
+    getExtendMode();
+  });
+  getExtendMode();
   return (
     <IonPage>
       <IonHeader>
@@ -124,7 +137,11 @@ const Add: React.FC<{ accent: string }> = ({ accent }) => {
                 <IonIcon icon={informationCircle}></IonIcon>{" "}
               </IonButton>
               <IonPopover trigger="click-trigger" triggerAction="click">
-                <IonContent class="ion-padding">{t("p.add.tips")}</IonContent>
+                <IonContent class="ion-padding">
+                  {t("p.add.tips")}
+                  <br/>
+                  {t("p.add.extend")}
+                </IonContent>
               </IonPopover>
             </IonCol>
           </IonRow>
@@ -136,8 +153,8 @@ const Add: React.FC<{ accent: string }> = ({ accent }) => {
                 size="cover"
                 presentation="date"
                 value={selectedDate}
-                min={(parseInt(format(new Date(), "yyyy")) - 2).toString()}
-                max={(parseInt(format(new Date(), "yyyy")) + 2).toString()}
+                min={(parseInt(format(new Date(), "yyyy")) - years).toString()}
+                max={(parseInt(format(new Date(), "yyyy")) + years).toString()}
                 onIonChange={(e) =>
                   setSelectedDate(
                     format(new Date(`${e.detail.value}`), "yyyy-MM-dd") +

@@ -32,7 +32,8 @@
         "placeholder": "輸入事件名稱"
       },
       "tips": "選擇今天之前的日期可以新增一個正數計數器，選擇今天之後的日期可以新增一個倒計時計數器。新增 Countdate 後可以再增加說明。",
-      "toast": "已新增！"
+      "toast": "已新增！",
+      "extend": "如果要新增較久以前或很久以後的日期，請於設定中打開日期擴充模式。"
     },
     "edit": {
       "title": "編輯 Countdate",
@@ -43,9 +44,9 @@
       "title": "Countdate",
       "countdown": "倒數",
       "countup": "正數",
-      "daysView": "剩幾天",
-      "weeksView": "剩幾周",
-      "monthsView": "剩幾月"
+      "daysView": "幾天",
+      "weeksView": "幾周",
+      "monthsView": "幾月"
     },
     "settings": {
       "title": "設定",
@@ -54,7 +55,8 @@
         "toggleDevMode": "切換開發模式",
         "testLocalNotification": "測試本地通知",
         "reviewTour": "重看導覽",
-        "about": "關於 Countdate"
+        "about": "關於 Countdate",
+        "toggleExtendMode": "切換日期擴充模式（可選更久遠的日期）"
       },
       "theme": {
         "title": "主題",

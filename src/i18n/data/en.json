@@ -32,7 +32,8 @@
         "placeholder": "Input event name"
       },
       "tips": "Select date before today add a countup counter, select date after today add a countdown counter. Description can be added after adding the countdate.",
-      "toast": "Added!"
+      "toast": "Added!",
+      "extend": "If you want to add a date that's a long time ago or a long time in the future, please turn on the date extension mode in the settings."
     },
     "edit": {
       "title": "Edit Countdate",
@@ -54,7 +55,8 @@
         "toggleDevMode": "Toggle dev mode",
         "testLocalNotification": "Test local notification",
         "reviewTour": "Review tour",
-        "about": "About Countdate"
+        "about": "About Countdate",
+        "toggleExtendMode": "Toggle date extension mode (extend the range of the date selection)"
       },
       "theme": {
         "title": "Theme",
