@@ -20,10 +20,13 @@ import key from "../lib/storageKey.json";
 import CountdateItem from "../components/CountdownItem";
 import { on, trigger } from "../lib/Events";
 import LocalizeBackButton from "../components/LocalizeBackButton";
+import CountDownUpSwitcher from "../components/CountDownUpSwitcher";
 
-const Edit: React.FC<{ accent: string; textColor: string }> = ({
+const Edit: React.FC<{ accent: string; textColor: string; count:any; setCount:any; }> = ({
   accent,
   textColor,
+  count,
+  setCount
 }) => {
   let countdate_events_data: {
     id: string;
@@ -32,8 +35,13 @@ const Edit: React.FC<{ accent: string; textColor: string }> = ({
   }[] = [];
   const { t } = useTranslation();
 
-  function swapElement(from: any, to: any) {
-    let copyarr = [...countdate_events_data_list];
+  function swapCountdownElement(from: any, to: any) {
+    let copyarr = [...countdownList];
+    copyarr.splice(to, 0, copyarr.splice(from, 1)[0]);
+    return copyarr;
+  }
+  function swapCountupElement(from: any, to: any) {
+    let copyarr = [...countupList];
     copyarr.splice(to, 0, copyarr.splice(from, 1)[0]);
     return copyarr;
   }
@@ -41,10 +49,21 @@ const Edit: React.FC<{ accent: string; textColor: string }> = ({
     // The `from` and `to` properties contain the index of the item
     // when the drag started and ended, respectively
     console.log("Dragged from index", event.detail.from, "to", event.detail.to);
-    console.log(swapElement(event.detail.from, event.detail.to));
-    let content = JSON.stringify(
-      swapElement(event.detail.from, event.detail.to)
-    );
+    let content = ""
+    if (count === "countdown") {
+      console.log(swapCountdownElement(event.detail.from, event.detail.to));
+      content = JSON.stringify(
+        [...swapCountdownElement(event.detail.from, event.detail.to),...countupList]
+      )
+    } else if (count === "countup"){
+      console.log(swapCountupElement(event.detail.from, event.detail.to));
+      content = JSON.stringify(
+        [...countdownList,...swapCountupElement(event.detail.from, event.detail.to)]
+      )
+    } else {
+      console.error("Wrong count assigned")
+    }
+    console.log(content)
     await Preferences.set({
       key: key.data,
       value: content,
@@ -56,9 +75,8 @@ const Edit: React.FC<{ accent: string; textColor: string }> = ({
     // by the reorder group
     event.detail.complete();
   }
-  const [countdate_events_data_list, set_countdate_events_data_list] = useState(
-    countdate_events_data
-  );
+  const [countupList,setCountupList] = useState([])
+  const [countdownList,setCountdownList] = useState([])
   const check_countdate_events_storage_data = async () => {
     const { value } = await Preferences.get({ key: key.data });
     if (value) {
@@ -66,7 +84,20 @@ const Edit: React.FC<{ accent: string; textColor: string }> = ({
     } else {
       countdate_events_data = [];
     }
-    set_countdate_events_data_list(countdate_events_data);
+    let downlist = []
+    let uplist = []
+    countdate_events_data.forEach(event => {
+      let now = new Date();
+      let countFrom = new Date(event.date.split("+")[0]);
+      let timeDifference = now.getTime() - countFrom.getTime();
+      if (timeDifference < 0) {
+        downlist.push({...event})
+      } else if (timeDifference >= 0) {
+        uplist.push({...event})
+      }
+    })
+    setCountdownList(downlist)
+    setCountupList(uplist)
   };
   useEffect(() => {
     check_countdate_events_storage_data();
@@ -90,6 +121,10 @@ const Edit: React.FC<{ accent: string; textColor: string }> = ({
           </IonToolbar>
         </IonHeader>
 
+        <IonHeader collapse="condense">
+          <CountDownUpSwitcher accent={accent} count={count} setCount={setCount} />
+        </IonHeader>
+
         <span style={{ marginLeft: 36, marginTop: 10 }}>
           {t("p.edit.description")}
         </span>
@@ -100,8 +135,24 @@ const Edit: React.FC<{ accent: string; textColor: string }> = ({
           <IonReorderGroup disabled={false} onIonItemReorder={handleReorder}>
             {(() => {
               let row = [];
-              if (countdate_events_data_list.length) {
-                countdate_events_data_list.forEach((event) => {
+              if (count === "countdown") {
+                countdownList.forEach((event) => {
+                    //countdown
+                    row.push(
+                      <CountdateItem
+                        key={event.id}
+                        id={event.id}
+                        event={event.event_name}
+                        date={event.date}
+                        editable={true}
+                        accent={accent}
+                        textColor={textColor}
+                      />
+                    )
+                })
+              } else if (count === "countup") {
+                countupList.forEach((event) => {
+                  //countdown
                   row.push(
                     <CountdateItem
                       key={event.id}
@@ -112,8 +163,8 @@ const Edit: React.FC<{ accent: string; textColor: string }> = ({
                       accent={accent}
                       textColor={textColor}
                     />
-                  );
-                });
+                  )
+                })
               } else {
                 row.push(<IonItem key="nodata">{t("p.edit.noData")}</IonItem>);
               }

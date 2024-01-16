@@ -23,14 +23,17 @@ import { useState } from "react";
 import { useSwipeable } from "react-swipeable";
 import { trigger } from "../lib/Events";
 import "./Home.css"
+import CountDownUpSwitcher from "../components/CountDownUpSwitcher";
 
-const Home: React.FC<{ accent: string; textColor: string }> = ({
+const Home: React.FC<{ accent: string; textColor: string;count:any;setCount:any }> = ({
   accent,
   textColor,
+  count,
+  setCount
 }) => {
   const { t } = useTranslation();
   const [view, setView] = useState("days");
-  const [count, setCount] = useState("countdown");
+  
 
   const handlers = useSwipeable({
     onSwipedLeft: () => left(),
@@ -64,21 +67,7 @@ const Home: React.FC<{ accent: string; textColor: string }> = ({
         </IonRefresher>
 
         <IonHeader>
-          {/* Countdown countup switcher */}
-          <IonToolbar>
-            <IonSegment
-              color={accent}
-              value={count}
-              onIonChange={(e) => setCount(`${e.detail.value}`)}
-            >
-              <IonSegmentButton value="countdown">
-                <IonLabel>{t("p.home.countdown")}</IonLabel>
-              </IonSegmentButton>
-              <IonSegmentButton value="countup">
-                <IonLabel>{t("p.home.countup")}</IonLabel>
-              </IonSegmentButton>
-            </IonSegment>
-          </IonToolbar>
+          <CountDownUpSwitcher accent={accent} count={count} setCount={setCount} />
         </IonHeader>
 
         <div {...handlers} style={{minHeight: "80%"}}>

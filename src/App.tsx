@@ -44,6 +44,7 @@ setupIonicReact({
 const App: React.FC = () => {
   const history = useHistory();
   const { t, i18n } = useTranslation();
+  const [countdownOrUp, setCountdownOrUp] = useState("countdown");
   const [accentColor, setAccentColor] = useState<string>("primary");
   const [textColor, setTextColor] = useState<string>("");
   const [firstTime, setFirstTime] = useState<boolean>(false);
@@ -103,7 +104,7 @@ const App: React.FC = () => {
       <IonReactRouter>
         <IonRouterOutlet>
           <Route exact path="/home">
-            <Home accent={accentColor} textColor={textColor} />
+            <Home accent={accentColor} textColor={textColor} count={countdownOrUp} setCount={setCountdownOrUp} />
             <AppTour
               modal={firstTime}
               setModal={setFirstTime}
@@ -117,7 +118,7 @@ const App: React.FC = () => {
             <Settings accent={accentColor} />
           </Route>
           <Route exact path="/edit">
-            <Edit accent={accentColor} textColor={textColor} />
+            <Edit accent={accentColor} textColor={textColor} count={countdownOrUp} setCount={setCountdownOrUp} />
           </Route>
           <Route exact path="/about">
             <About accent={accentColor} />
