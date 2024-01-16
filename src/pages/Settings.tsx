@@ -35,7 +35,7 @@ import { useHistory } from "react-router";
 import LocalizeBackButton from "../components/LocalizeBackButton";
 import LanguageSelectModal from "../components/LanguageSelectModal";
 
-const Settings: React.FC<{ accent: string }> = ({ accent }) => {
+const Settings: React.FC<{ accent: string;setView:any; }> = ({ accent,setView }) => {
   const { t } = useTranslation();
   const [darkChecked, setDarkChecked] = useState<boolean>();
   const [devChecked, setDevChecked] = useState<boolean>(false);
@@ -89,6 +89,7 @@ const Settings: React.FC<{ accent: string }> = ({ accent }) => {
       value: tovalue.toString(),
     });
     setRelativeChecked(tovalue);
+    setView("days")
     // console.log(tovalue);
     trigger("countdate_relative:change");
   }

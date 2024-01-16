@@ -25,16 +25,16 @@ import { trigger } from "../lib/Events";
 import "./Home.css"
 import CountDownUpSwitcher from "../components/CountDownUpSwitcher";
 
-const Home: React.FC<{ accent: string; textColor: string;count:any;setCount:any;relative:boolean; }> = ({
+const Home: React.FC<{ accent: string; textColor: string;count:any;setCount:any;view:string;setView:any;relative:boolean; }> = ({
   accent,
   textColor,
   count,
   setCount,
+  view,
+  setView,
   relative
 }) => {
   const { t } = useTranslation();
-  const [view, setView] = useState("days");
-  
 
   const handlers = useSwipeable({
     onSwipedLeft: () => left(),

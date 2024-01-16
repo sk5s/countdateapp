@@ -45,6 +45,7 @@ const App: React.FC = () => {
   const history = useHistory();
   const { t, i18n } = useTranslation();
   const [countdownOrUp, setCountdownOrUp] = useState("countdown");
+  const [view, setView] = useState("days");
   const [accentColor, setAccentColor] = useState<string>("primary");
   const [textColor, setTextColor] = useState<string>("");
   const [firstTime, setFirstTime] = useState<boolean>(false);
@@ -119,7 +120,7 @@ const App: React.FC = () => {
       <IonReactRouter>
         <IonRouterOutlet>
           <Route exact path="/home">
-            <Home accent={accentColor} textColor={textColor} count={countdownOrUp} setCount={setCountdownOrUp} relative={relative} />
+            <Home accent={accentColor} textColor={textColor} count={countdownOrUp} setCount={setCountdownOrUp} view={view} setView={setView} relative={relative} />
             <AppTour
               modal={firstTime}
               setModal={setFirstTime}
@@ -130,7 +131,7 @@ const App: React.FC = () => {
             <Add accent={accentColor} />
           </Route>
           <Route exact path="/settings">
-            <Settings accent={accentColor} />
+            <Settings accent={accentColor} setView={setView} />
           </Route>
           <Route exact path="/edit">
             <Edit accent={accentColor} textColor={textColor} count={countdownOrUp} setCount={setCountdownOrUp} />

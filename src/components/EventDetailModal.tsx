@@ -7,6 +7,7 @@ import {
   IonIcon,
   IonItem,
   IonModal,
+  IonPopover,
   IonTitle,
   IonToolbar,
   useIonAlert,
@@ -14,13 +15,15 @@ import {
 // import { App as NativeApp } from "@capacitor/app";
 import { useTranslation } from "react-i18next";
 import DescriptionEditor from "./DescriptionEditor";
-import { create } from "ionicons/icons";
+import { create, shareSocial } from "ionicons/icons";
 import { capitalize } from "../lib/Capitalize";
 import CountdateItem from "./CountdownItem";
 import { Preferences } from "@capacitor/preferences";
 import key from "../lib/storageKey.json";
 import { trigger } from "../lib/Events";
 import { useState } from "react";
+import QRCode from "react-qr-code"
+import { isPlatform } from "@ionic/core";
 
 export default function EventDetailModal({
   detailStr,
@@ -42,6 +45,9 @@ export default function EventDetailModal({
   const { t } = useTranslation();
   const [presentAlert] = useIonAlert();
   let countdate_events_data = [];
+  const showShareQr = () => {
+    console.log("show share qrcode")
+  }
   const closeModal = () => {
     if (needToSave) {
       presentAlert({
@@ -161,6 +167,25 @@ export default function EventDetailModal({
     <IonModal isOpen={isOpen} onDidDismiss={() => setIsOpen(false)}>
       <IonHeader>
         <IonToolbar>
+        {((isPlatform("android") && isPlatform("hybrid")) ||
+        (isPlatform("ios") && isPlatform("hybrid"))) && false ? 
+          <IonButtons>
+            <IonButton id="share-trigger" color={myprops.accent} onClick={() => showShareQr()}>
+              <IonIcon icon={shareSocial} />
+            </IonButton>
+            <IonPopover trigger="share-trigger" triggerAction="click">
+              <IonContent class="ion-padding">
+                <div style={{ height: "auto", margin: "0 auto", maxWidth: 240, width: "100%", padding: '16px', background: "white" }}>
+                  <QRCode
+                  size={512}
+                  style={{ height: "auto", maxWidth: "100%", width: "100%" }}
+                  value={`cyou.sk5s.app.countdate://add?title=${myprops.event}&date=${myprops.date}`}
+                  viewBox={`0 0 512 512`}
+                  />
+                </div>
+              </IonContent>
+            </IonPopover>
+          </IonButtons> : <></>}
           <IonTitle>{myprops.event}</IonTitle>
           <IonButtons slot="end">
             <IonButton color={myprops.accent} onClick={() => closeModal()}>

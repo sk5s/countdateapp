@@ -29,7 +29,7 @@ export default function CountCard(props: {
   const [contentEditable, setContentEditable] = useState(false);
   const [days, setDays] = useState(countFromTime(props.date))
   const getTimeStr = (ndays:number) => {
-    console.log(props.relative)
+    // console.log(props.relative)
     if (props.view === "days"){
       return ndays.toString() + " " + t("c.card.days")
     } else if (props.view === "months") {

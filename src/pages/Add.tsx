@@ -17,8 +17,8 @@ import {
   IonPopover,
 } from "@ionic/react";
 import { Preferences } from "@capacitor/preferences";
-import { useState } from "react";
-import { useHistory } from "react-router";
+import { useEffect, useState } from "react";
+import { useHistory, useLocation } from "react-router";
 import { v4 as uuid } from "uuid";
 import { format } from "date-fns";
 
@@ -38,6 +38,7 @@ const Add: React.FC<{ accent: string }> = ({ accent }) => {
   const [years,setYears] = useState(2);
   const [presentToast] = useIonToast();
   const history = useHistory();
+  const location = useLocation()
   let countdate_events_data = [];
   const add_new_countdate_item = async (newItem: {
     event_name: any;
@@ -90,6 +91,18 @@ const Add: React.FC<{ accent: string }> = ({ accent }) => {
     getExtendMode();
   });
   getExtendMode();
+  useEffect(() => {
+    console.log(location.search)
+    const urlParams = new URLSearchParams(location.search)
+    if (urlParams.get("title")){
+      setTitleText(urlParams.get("title"))
+    }
+    if (urlParams.get("date")){
+      if (urlParams.get("date").length === 10){
+        setSelectedDate(urlParams.get("date") + "T23:59:00+08:00")
+      }
+    }
+  },[])
   return (
     <IonPage>
       <IonHeader>
