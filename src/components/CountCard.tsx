@@ -22,17 +22,25 @@ export default function CountCard(props: {
   accent: string;
   textColor: string;
   description?: string;
+  relative: boolean;
 }): JSX.Element {
   const [t] = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [contentEditable, setContentEditable] = useState(false);
   const [days, setDays] = useState(countFromTime(props.date))
   const getTimeStr = (ndays:number) => {
+    console.log(props.relative)
     if (props.view === "days"){
       return ndays.toString() + " " + t("c.card.days")
     } else if (props.view === "months") {
+      if (props.relative){
+        return Math.floor(ndays / 30).toString() + " " + t("c.card.months")  + " " + (ndays % 30).toString() + " " + t("c.card.days")
+      }
       return (Math.round((ndays / 30 + Number.EPSILON) * 100 ) / 100).toString() + " " + t("c.card.months")
     } else {
+      if (props.relative){
+        return Math.floor(ndays / 7).toString() + " " + t("c.card.weeks")  + " " + (ndays % 7).toString() + " " + t("c.card.days")
+      }
       return (Math.round((ndays / 7 + Number.EPSILON) * 10 ) / 10).toString() + " " + t("c.card.weeks")
     }
   }

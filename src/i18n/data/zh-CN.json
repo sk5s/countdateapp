@@ -56,7 +56,8 @@
         "testLocalNotification": "测试本地通知",
         "reviewTour": "重看导览",
         "about": "关于 Countdate",
-        "toggleExtendMode": "切换日期扩充模式（可选更久远的日期）"
+        "toggleExtendMode": "切换日期扩充模式（可选更久远的日期）",
+        "toggleRelativeMode": "切换相對時間模式"
       },
       "theme": {
         "title": "主题",

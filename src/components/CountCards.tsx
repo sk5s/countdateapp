@@ -42,12 +42,14 @@ export default function CountCards({
   textColor,
   count,
   changeCount,
+  relative
 }: {
   view: string;
   accent: string;
   textColor: string;
   count: string;
   changeCount: any;
+  relative: boolean;
 }): JSX.Element {
   const { t } = useTranslation();
   const [languageCode, setLanguageCode] = useState("");
@@ -142,6 +144,7 @@ export default function CountCards({
                   accent={accent}
                   textColor={textColor}
                   description={event.description}
+                  relative={relative}
                 />
               );
             } else if (timeDifference >= 0 && count === "countup") {
@@ -157,6 +160,7 @@ export default function CountCards({
                   accent={accent}
                   textColor={textColor}
                   description={event.description}
+                  relative={relative}
                 />
               );
             }

@@ -25,11 +25,12 @@ import { trigger } from "../lib/Events";
 import "./Home.css"
 import CountDownUpSwitcher from "../components/CountDownUpSwitcher";
 
-const Home: React.FC<{ accent: string; textColor: string;count:any;setCount:any }> = ({
+const Home: React.FC<{ accent: string; textColor: string;count:any;setCount:any;relative:boolean; }> = ({
   accent,
   textColor,
   count,
-  setCount
+  setCount,
+  relative
 }) => {
   const { t } = useTranslation();
   const [view, setView] = useState("days");
@@ -78,6 +79,7 @@ const Home: React.FC<{ accent: string; textColor: string;count:any;setCount:any 
             accent={accent}
             textColor={textColor}
             changeCount={setCount}
+            relative={relative}
           />
         </div>
 

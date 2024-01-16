@@ -40,6 +40,7 @@ const Settings: React.FC<{ accent: string }> = ({ accent }) => {
   const [darkChecked, setDarkChecked] = useState<boolean>();
   const [devChecked, setDevChecked] = useState<boolean>(false);
   const [extendChecked, setExtendChecked] = useState<boolean>(false);
+  const [relativeChecked, setRelativeChecked] = useState<boolean>(false)
   const history = useHistory();
 
   const getDevMode = async () => {
@@ -63,6 +64,11 @@ const Settings: React.FC<{ accent: string }> = ({ accent }) => {
     if (value === "true") setExtendChecked(true);
   };
   getExtendMode();
+  const getRelativeMode = async () => {
+    const { value } = await Storage.get({ key: key.relative });
+    if (value === "true") setRelativeChecked(true);
+  };
+  getRelativeMode();
   const toggleExtendModeHandler = async () => {
     console.log("toggle extend mode");
     let tovalue = !extendChecked;
@@ -74,6 +80,18 @@ const Settings: React.FC<{ accent: string }> = ({ accent }) => {
     // console.log(tovalue);
     trigger("countdate_extend:change");
   };
+
+  const toggleRelativeModeHandler = async () => {
+    console.log("toggle relative mode");
+    let tovalue = !relativeChecked;
+    await Storage.set({
+      key: key.relative,
+      value: tovalue.toString(),
+    });
+    setRelativeChecked(tovalue);
+    // console.log(tovalue);
+    trigger("countdate_relative:change");
+  }
 
   const testLocalNotification = async () => {
     // console.log("clicked");
@@ -178,6 +196,17 @@ const Settings: React.FC<{ accent: string }> = ({ accent }) => {
             <IonToggle
               checked={extendChecked}
               onClick={toggleExtendModeHandler}
+              color={accent}
+            />
+          </IonItem>
+          <IonItem>
+            <IonLabel className="ion-text-wrap" onClick={toggleRelativeModeHandler}>
+              <IonIcon icon={calendarNumber} />{" "}
+              {t("p.settings.general.toggleRelativeMode")}
+            </IonLabel>
+            <IonToggle
+              checked={relativeChecked}
+              onClick={toggleRelativeModeHandler}
               color={accent}
             />
           </IonItem>

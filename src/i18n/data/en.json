@@ -56,7 +56,8 @@
         "testLocalNotification": "Test local notification",
         "reviewTour": "Review tour",
         "about": "About Countdate",
-        "toggleExtendMode": "Toggle date extension mode (extend the range of the date selection)"
+        "toggleExtendMode": "Toggle date extension mode (extend the range of the date selection)",
+        "toggleRelativeMode": "Toggle relative time mode"
       },
       "theme": {
         "title": "Theme",

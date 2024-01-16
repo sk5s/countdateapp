@@ -48,12 +48,23 @@ const App: React.FC = () => {
   const [accentColor, setAccentColor] = useState<string>("primary");
   const [textColor, setTextColor] = useState<string>("");
   const [firstTime, setFirstTime] = useState<boolean>(false);
+  const [relative, setRelative] = useState<boolean>(false)
   // Hardware back button
   NativeApp.addListener("backButton", ({ canGoBack }) => {
     if (canGoBack) {
       history.goBack();
     }
   });
+
+  const getRelativeMode = async () => {
+    const { value } = await Preferences.get({ key: key.relative });
+    if (value === "true") {
+      setRelative(true);
+    } else {
+      setRelative(false);
+    }
+  }
+
   // Restore accent color
   const getAccentColor = async () => {
     const { value } = await Preferences.get({ key: key.accent });
@@ -89,6 +100,7 @@ const App: React.FC = () => {
   getAccentColor();
   getTextColor();
   getFirstTime();
+  getRelativeMode()
   on("countdate_accent:change", () => {
     getAccentColor();
   });
@@ -98,13 +110,16 @@ const App: React.FC = () => {
   on("countdate_first:change", () => {
     getFirstTime();
   });
+  on("countdate_relative:change", () => {
+    getRelativeMode();
+  })
 
   return (
     <IonApp>
       <IonReactRouter>
         <IonRouterOutlet>
           <Route exact path="/home">
-            <Home accent={accentColor} textColor={textColor} count={countdownOrUp} setCount={setCountdownOrUp} />
+            <Home accent={accentColor} textColor={textColor} count={countdownOrUp} setCount={setCountdownOrUp} relative={relative} />
             <AppTour
               modal={firstTime}
               setModal={setFirstTime}
