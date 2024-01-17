@@ -35,6 +35,7 @@ import key from "./lib/storageKey.json";
 import { useState } from "react";
 import { on } from "./lib/Events";
 import { useTranslation } from "react-i18next";
+import Share from "./pages/Share";
 
 // Ionic setup
 setupIonicReact({
@@ -138,6 +139,9 @@ const App: React.FC = () => {
           </Route>
           <Route exact path="/about">
             <About accent={accentColor} />
+          </Route>
+          <Route exact path="/share">
+            <Share accent={accentColor} />
           </Route>
           <Route exact path="/">
             <Redirect to="/home" />

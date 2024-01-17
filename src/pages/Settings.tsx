@@ -14,6 +14,7 @@ import {
   IonRouterLink,
 } from "@ionic/react";
 import {
+  calendar,
   calendarNumber,
   code,
   contrast,
@@ -21,6 +22,7 @@ import {
   information,
   logoAndroid,
   notifications,
+  text,
 } from "ionicons/icons";
 import { useTranslation } from "react-i18next";
 import { Schedule } from "../lib/LocalNotification";
@@ -190,37 +192,34 @@ const Settings: React.FC<{ accent: string;setView:any; }> = ({ accent,setView })
             <LanguageSelectModal accent={accent} />
           </IonItem>
           <IonItem>
-            <IonLabel className="ion-text-wrap" onClick={toggleExtendModeHandler}>
-              <IonIcon icon={calendarNumber} />{" "}
-              {t("p.settings.general.toggleExtendMode")}
-            </IonLabel>
             <IonToggle
               checked={extendChecked}
               onClick={toggleExtendModeHandler}
               color={accent}
-            />
+            >
+              <IonIcon icon={calendar} />{" "}
+              {t("p.settings.general.toggleExtendMode")}
+            </IonToggle>
           </IonItem>
           <IonItem>
-            <IonLabel className="ion-text-wrap" onClick={toggleRelativeModeHandler}>
-              <IonIcon icon={calendarNumber} />{" "}
-              {t("p.settings.general.toggleRelativeMode")}
-            </IonLabel>
             <IonToggle
               checked={relativeChecked}
               onClick={toggleRelativeModeHandler}
               color={accent}
-            />
+            >
+              <IonIcon icon={text} />{" "}
+              {t("p.settings.general.toggleRelativeMode")}
+            </IonToggle>
           </IonItem>
           <IonItem>
-            <IonLabel onClick={toggleDevModeHandler}>
-              <IonIcon icon={code} />{" "}
-              {t("p.settings.general.toggleDevMode")}
-            </IonLabel>
             <IonToggle
               checked={devChecked}
               onClick={toggleDevModeHandler}
               color={accent}
-            />
+            >
+              <IonIcon icon={code} />{" "}
+              {t("p.settings.general.toggleDevMode")}
+            </IonToggle>
           </IonItem>
           {(isPlatform("android") && isPlatform("hybrid") && devChecked) ||
           (isPlatform("ios") && isPlatform("hybrid") && devChecked) ? (
@@ -249,15 +248,14 @@ const Settings: React.FC<{ accent: string;setView:any; }> = ({ accent,setView })
             <IonLabel>{t("p.settings.theme.title")}</IonLabel>
           </IonListHeader>
           <IonItem>
-            <IonLabel onClick={toggleDarkModeHandler}>
-              <IonIcon icon={contrast} />{" "}
-              {t("p.settings.theme.toggleDarkMode")}
-            </IonLabel>
             <IonToggle
               checked={darkChecked}
               onClick={toggleDarkModeHandler}
               color={accent}
-            />
+            >
+              <IonIcon icon={contrast} />{" "}
+              {t("p.settings.theme.toggleDarkMode")}
+            </IonToggle>
           </IonItem>
           <IonItem>
             <IonLabel onClick={darkmodeToSystem}>

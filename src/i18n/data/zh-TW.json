@@ -64,6 +64,11 @@
         "toggleDarkMode": "切換黑暗模式",
         "followSystem": "跟隨系統黑暗模式"
       }
+    },
+    "share": {
+      "title": "分享",
+      "date": "日期",
+      "openApp": "用 Countdate app 開啟"
     }
   },
   "c": {

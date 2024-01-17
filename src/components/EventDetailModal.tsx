@@ -168,7 +168,7 @@ export default function EventDetailModal({
       <IonHeader>
         <IonToolbar>
         {((isPlatform("android") && isPlatform("hybrid")) ||
-        (isPlatform("ios") && isPlatform("hybrid"))) && false ? 
+        (isPlatform("ios") && isPlatform("hybrid"))) || true ? 
           <IonButtons>
             <IonButton id="share-trigger" color={myprops.accent} onClick={() => showShareQr()}>
               <IonIcon icon={shareSocial} />
@@ -179,7 +179,7 @@ export default function EventDetailModal({
                   <QRCode
                   size={512}
                   style={{ height: "auto", maxWidth: "100%", width: "100%" }}
-                  value={`cyou.sk5s.app.countdate://add?title=${myprops.event}&date=${myprops.date}`}
+                  value={`https://countdate.surge.sh/share?title=${myprops.event}&date=${myprops.date.split("T")[0]}`}
                   viewBox={`0 0 512 512`}
                   />
                 </div>

@@ -64,6 +64,11 @@
         "toggleDarkMode": "Toggle dark mode",
         "followSystem": "Follow system dark mode"
       }
+    },
+    "share": {
+      "title": "Share",
+      "date": "Date",
+      "openApp": "Open with Countdate app"
     }
   },
   "c": {
