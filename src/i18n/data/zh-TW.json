@@ -57,7 +57,7 @@
         "reviewTour": "重看導覽",
         "about": "關於 Countdate",
         "toggleExtendMode": "切換日期擴充模式（可選更久遠的日期）",
-        "toggleRelativeMode": "切換相對時間模式"
+        "toggleRelativeMode": "切換相對時間模式（30天一個月）"
       },
       "theme": {
         "title": "主題",
