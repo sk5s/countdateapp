@@ -174,6 +174,7 @@ export default function EventDetailModal({
             </IonButton>
             <IonPopover trigger="share-trigger" triggerAction="click">
               <IonContent class="ion-padding">
+                {t("c.editor.shareDescription")}
                 <div style={{ height: "auto", margin: "0 auto", maxWidth: 240, width: "100%", padding: '16px', background: "white" }}>
                   <QRCode
                   size={512}

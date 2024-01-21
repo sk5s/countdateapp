@@ -127,7 +127,8 @@
         "addOneDay": "+1 day"
       },
       "edit": "Edit",
-      "completeEdit": "Complete edit"
+      "completeEdit": "Complete edit",
+      "shareDescription": "Share event name and event date"
     }
   }
 }

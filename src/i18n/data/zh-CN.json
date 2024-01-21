@@ -127,7 +127,8 @@
         "addOneDay": "+1 天"
       },
       "edit": "编辑",
-      "completeEdit": "完成编辑"
+      "completeEdit": "完成编辑",
+      "shareDescription": "分享事件名称和事件日期"
     }
   }
 }
