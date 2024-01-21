@@ -56,13 +56,19 @@
         "testLocalNotification": "Test local notification",
         "reviewTour": "วิธีการใช้งาน",
         "about": "เกี่ยวกับ Countdate",
-        "toggleExtendMode": "Toggle date extension mode (extend the range of the date selection)"
+        "toggleExtendMode": "Toggle date extension mode (extend the range of the date selection)",
+        "toggleRelativeMode": "Toggle relative time mode (30 days a month)"
       },
       "theme": {
         "title": "ธีม",
         "toggleDarkMode": "สลับเป็นโหมดมืด",
         "followSystem": "ติดตามระบบเป็นโหมดมืด"
       }
+    },
+    "share": {
+      "date": "Date",
+      "openApp": "Open with Countdate app",
+      "title": "Share"
     }
   },
   "c": {
@@ -121,7 +127,8 @@
         "addOneDay": "+1 วัน"
       },
       "edit": "แก้ไข",
-      "completeEdit": "เสร็จสมบูรณ์แก้ไข"
+      "completeEdit": "เสร็จสมบูรณ์แก้ไข",
+      "shareDescription": "Share event name and event date",
     }
   }
 }
