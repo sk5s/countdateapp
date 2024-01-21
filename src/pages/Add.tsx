@@ -102,7 +102,7 @@ const Add: React.FC<{ accent: string }> = ({ accent }) => {
         setSelectedDate(urlParams.get("date") + "T23:59:00+08:00")
       }
     }
-  },[])
+  },[location])
   return (
     <IonPage>
       <IonHeader>

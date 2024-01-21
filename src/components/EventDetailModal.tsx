@@ -16,7 +16,6 @@ import {
 import { useTranslation } from "react-i18next";
 import DescriptionEditor from "./DescriptionEditor";
 import { create, shareSocial } from "ionicons/icons";
-import { capitalize } from "../lib/Capitalize";
 import CountdateItem from "./CountdownItem";
 import { Preferences } from "@capacitor/preferences";
 import key from "../lib/storageKey.json";
@@ -168,7 +167,7 @@ export default function EventDetailModal({
       <IonHeader>
         <IonToolbar>
         {((isPlatform("android") && isPlatform("hybrid")) ||
-        (isPlatform("ios") && isPlatform("hybrid"))) || true ? 
+        (isPlatform("ios") && isPlatform("hybrid"))) ? 
           <IonButtons>
             <IonButton id="share-trigger" color={myprops.accent} onClick={() => showShareQr()}>
               <IonIcon icon={shareSocial} />

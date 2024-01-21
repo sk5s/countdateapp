@@ -36,6 +36,7 @@ import { useState } from "react";
 import { on } from "./lib/Events";
 import { useTranslation } from "react-i18next";
 import Share from "./pages/Share";
+import AppUrlListener from './pages/AppUrlListener';
 
 // Ionic setup
 setupIonicReact({
@@ -119,6 +120,7 @@ const App: React.FC = () => {
   return (
     <IonApp>
       <IonReactRouter>
+        <AppUrlListener></AppUrlListener>
         <IonRouterOutlet>
           <Route exact path="/home">
             <Home accent={accentColor} textColor={textColor} count={countdownOrUp} setCount={setCountdownOrUp} view={view} setView={setView} relative={relative} />

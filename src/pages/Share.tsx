@@ -48,7 +48,7 @@ export default function Share({
         <h5>{t("p.share.date")}: {formatDate(new Date(event.date))}</h5>
         {isPlatform("mobileweb") ? <>
         <IonButton onClick={() => {
-          window.open(`cyou.sk5s.app.countdate://add?title=${event.title}&date=${event.dateRaw}`)
+          window.open(`countdate://app/add?title=${event.title}&date=${event.dateRaw}`)
         }}>
           {t("p.share.openApp")}
         </IonButton>
