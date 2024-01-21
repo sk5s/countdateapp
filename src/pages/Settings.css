@@ -4,3 +4,6 @@ ion-item {
 a {
   text-decoration: none !important;
 }
+.ion-text-wrap {
+  text-wrap: wrap;
+}

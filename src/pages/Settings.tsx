@@ -197,8 +197,10 @@ const Settings: React.FC<{ accent: string;setView:any; }> = ({ accent,setView })
               onClick={toggleExtendModeHandler}
               color={accent}
             >
-              <IonIcon icon={calendar} />{" "}
-              {t("p.settings.general.toggleExtendMode")}
+              <div className="ion-text-wrap">
+                <IonIcon icon={calendar} />{" "}
+                {t("p.settings.general.toggleExtendMode")}
+              </div>
             </IonToggle>
           </IonItem>
           <IonItem>
@@ -207,8 +209,10 @@ const Settings: React.FC<{ accent: string;setView:any; }> = ({ accent,setView })
               onClick={toggleRelativeModeHandler}
               color={accent}
             >
-              <IonIcon icon={text} />{" "}
-              {t("p.settings.general.toggleRelativeMode")}
+              <div className="ion-text-wrap">
+                <IonIcon icon={text} />{" "}
+                {t("p.settings.general.toggleRelativeMode")}
+              </div>
             </IonToggle>
           </IonItem>
           <IonItem>
