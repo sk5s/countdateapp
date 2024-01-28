@@ -172,14 +172,12 @@ export default function EventDetailModal({
             <IonPopover trigger="share-trigger" triggerAction="click">
               <IonContent class="ion-padding">
                 {t("c.editor.shareDescription")}
-                <div style={{ height: "auto", margin: "0 auto", maxWidth: 240, width: "100%", padding: '16px', background: "white" }}>
-                  <QRCodeSVG size={160} value={`https://countdate.surge.sh/share?title=${myprops.event}&date=${myprops.date.split("T")[0]}`} imageSettings={{
-                    src: "/assets/icon/icon.png",
-                    height: 24,
-                    width: 24,
-                    excavate: true
-                  }} />
-                </div>
+                <QRCodeSVG size={172} includeMargin={true} value={`https://countdate.surge.sh/share?title=${myprops.event.replace(/ /g,"%20")}&date=${myprops.date.split("T")[0]}`} imageSettings={{
+                  src: "/assets/icon/icon.png",
+                  height: 24,
+                  width: 24,
+                  excavate: true
+                }} />
               </IonContent>
             </IonPopover>
           </IonButtons> : <></>}
