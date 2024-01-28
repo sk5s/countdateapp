@@ -21,8 +21,8 @@ import { Preferences } from "@capacitor/preferences";
 import key from "../lib/storageKey.json";
 import { trigger } from "../lib/Events";
 import { useState } from "react";
-import QRCode from "react-qr-code"
 import { isPlatform } from "@ionic/core";
+import { QRCodeSVG } from 'qrcode.react';
 
 export default function EventDetailModal({
   detailStr,
@@ -44,9 +44,6 @@ export default function EventDetailModal({
   const { t } = useTranslation();
   const [presentAlert] = useIonAlert();
   let countdate_events_data = [];
-  const showShareQr = () => {
-    console.log("show share qrcode")
-  }
   const closeModal = () => {
     if (needToSave) {
       presentAlert({
@@ -169,19 +166,19 @@ export default function EventDetailModal({
         {((isPlatform("android") && isPlatform("hybrid")) ||
         (isPlatform("ios") && isPlatform("hybrid"))) ? 
           <IonButtons>
-            <IonButton id="share-trigger" color={myprops.accent} onClick={() => showShareQr()}>
+            <IonButton id="share-trigger" color={myprops.accent}>
               <IonIcon icon={shareSocial} />
             </IonButton>
             <IonPopover trigger="share-trigger" triggerAction="click">
               <IonContent class="ion-padding">
                 {t("c.editor.shareDescription")}
                 <div style={{ height: "auto", margin: "0 auto", maxWidth: 240, width: "100%", padding: '16px', background: "white" }}>
-                  <QRCode
-                  size={512}
-                  style={{ height: "auto", maxWidth: "100%", width: "100%" }}
-                  value={`https://countdate.surge.sh/share?title=${myprops.event}&date=${myprops.date.split("T")[0]}`}
-                  viewBox={`0 0 512 512`}
-                  />
+                  <QRCodeSVG size={160} value={`https://countdate.surge.sh/share?title=${myprops.event}&date=${myprops.date.split("T")[0]}`} imageSettings={{
+                    src: "/assets/icon/icon.png",
+                    height: 24,
+                    width: 24,
+                    excavate: true
+                  }} />
                 </div>
               </IonContent>
             </IonPopover>
