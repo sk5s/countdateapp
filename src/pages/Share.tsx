@@ -1,5 +1,4 @@
 import { IonButton, IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from "@ionic/react";
-import LocalizeBackButton from "../components/LocalizeBackButton";
 import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router";
@@ -48,7 +47,10 @@ export default function Share({
         <h5>{t("p.share.date")}: {formatDate(new Date(event.date))}</h5>
         {isPlatform("mobileweb") ? <>
         <IonButton onClick={() => {
-          window.open(`countdate://app/add?title=${event.title}&date=${event.dateRaw}`)
+          window.location.replace(`countdate://app/add?title=${event.title}&date=${event.dateRaw}`)
+          setTimeout(() => {
+            window.location.replace("https://play.google.com/store/apps/details?id=cyou.sk5s.app.countdate")
+          }, 700);
         }}>
           {t("p.share.openApp")}
         </IonButton>
