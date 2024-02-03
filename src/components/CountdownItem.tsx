@@ -13,7 +13,7 @@ import {
 import { Preferences } from "@capacitor/preferences";
 
 import { reorderThree, trash } from "ionicons/icons";
-import { trigger } from "../lib/Events";
+import { on, trigger } from "../lib/Events";
 import { useTranslation } from "react-i18next";
 import key from "../lib/storageKey.json";
 import format from "date-fns/format";
@@ -32,6 +32,7 @@ export default function CountdateItem(props: {
   const [presentAlert] = useIonAlert();
   const [presentToast] = useIonToast();
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [years,setYears] = useState(2);
   let countdate_events_data = [];
   const handleDelete = () => {
     presentAlert({
@@ -128,6 +129,18 @@ export default function CountdateItem(props: {
       trigger("countdate_data:change");
     }
   };
+  const getExtendMode = async () => {
+    const { value } = await Preferences.get({ key: key.extend });
+    if (value === "true") {
+      setYears(50);
+    } else {
+      setYears(2);
+    }
+  };
+  on("countdate_extend:change", () => {
+    getExtendMode();
+  });
+  getExtendMode();
   return (
     <IonItem>
       <IonLabel>
@@ -161,8 +174,8 @@ export default function CountdateItem(props: {
           color={props.accent}
           presentation="date"
           showDefaultButtons={true}
-          min={(parseInt(format(new Date(), "yyyy")) - 2).toString()}
-          max={(parseInt(format(new Date(), "yyyy")) + 2).toString()}
+          min={(parseInt(format(new Date(), "yyyy")) - years).toString()}
+          max={(parseInt(format(new Date(), "yyyy")) + years).toString()}
           onIonChange={(e) =>
             edit_this_countdate_item_date(
               format(new Date(`${e.detail.value}`), "yyyy-MM-dd")
