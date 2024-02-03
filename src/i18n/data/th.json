@@ -11,6 +11,7 @@
       "title": "เกี่ยวกับ Countdate",
       "version": "App version: {{versionName}}",
       "platform": "Platform:",
+      "reload": "Reload",
       "slogan": "Date Countdown: Know How Many Days Left To a Specific Date.",
       "link": {
         "landing": "Landing page",

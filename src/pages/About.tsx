@@ -9,6 +9,7 @@ import {
   IonItem,
   IonThumbnail,
   IonLabel,
+  IonButton,
 } from "@ionic/react";
 
 import packageJson from "../../package.json";
@@ -16,6 +17,7 @@ import { useTranslation } from "react-i18next";
 import logo from "../assets/countdateapp-logo-foreground.png";
 import banner from "../assets/sk5s-project-bar.png";
 import LocalizeBackButton from "../components/LocalizeBackButton";
+import { isPlatform } from "@ionic/core";
 
 const About: React.FC<{ accent: string }> = ({ accent }) => {
   const { t } = useTranslation();
@@ -37,7 +39,17 @@ const About: React.FC<{ accent: string }> = ({ accent }) => {
           <a href="https://github.com/sk5s/countdateapp" target="_blank" rel="noreferrer">
             <img src={logo} alt="Logo" width="80" height="80" />
           </a>
-          <p>{t("p.about.version",{versionName: packageJson.version})}</p>
+          <p>
+            {t("p.about.version",{versionName: packageJson.version})}
+            {" "}
+            {isPlatform("mobileweb") ? <>
+            <IonButton color={accent} size="small" onClick={() => {
+              window.location.reload()
+            }}>
+              {t("p.about.reload")}
+            </IonButton>
+            </> : <></>}
+          </p>
           <p>
             {t("p.about.platform")}{" "}
             {(() => {

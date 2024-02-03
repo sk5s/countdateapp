@@ -11,6 +11,7 @@
       "title": "關於 Countdate",
       "version": "應用版本: {{versionName}}",
       "platform": "平台：",
+      "reload": "重新整理",
       "slogan": "Countdate - 會考、學測、分科、檢定倒數，日期正數",
       "link": {
         "landing": "專案網頁",
