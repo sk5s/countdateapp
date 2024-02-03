@@ -31,3 +31,7 @@ yarn-error.log*
 CountdateApp.jks
 
 resources/android/**/*
+
+.firebaserc
+firebase.json
+.firebase

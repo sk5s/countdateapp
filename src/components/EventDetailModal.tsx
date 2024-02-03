@@ -172,7 +172,7 @@ export default function EventDetailModal({
             <IonPopover trigger="share-trigger" triggerAction="click">
               <IonContent class="ion-padding">
                 {t("c.editor.shareDescription")}
-                <QRCodeSVG size={172} includeMargin={true} value={`https://countdate.surge.sh/share?title=${myprops.event.replace(/ /g,"%20")}&date=${myprops.date.split("T")[0]}`} imageSettings={{
+                <QRCodeSVG size={172} includeMargin={true} value={`https://app.countdate.sk5s.com/share?title=${myprops.event.replace(/ /g,"%20")}&date=${myprops.date.split("T")[0]}`} imageSettings={{
                   src: "/assets/icon/icon.png",
                   height: 24,
                   width: 24,
