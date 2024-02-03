@@ -156,7 +156,7 @@ const About: React.FC<{ accent: string }> = ({ accent }) => {
           </div>
         </a>
 
-        <a href="https://sk5s.cyou" target="_blank" rel="noopener noreferrer">
+        <a href="https://sk5s.com" target="_blank" rel="noopener noreferrer">
           <img src={banner} alt="" />
         </a>
       </IonContent>

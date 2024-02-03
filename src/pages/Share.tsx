@@ -1,14 +1,17 @@
-import { IonButton, IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from "@ionic/react";
+import { IonButton, IonButtons, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonContent, IonHeader, IonIcon, IonPage, IonTitle, IonToolbar } from "@ionic/react";
 import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router";
+import { useHistory, useLocation } from "react-router";
 import { isPlatform } from "@ionic/core";
+import { informationCircleSharp, settingsSharp, shareSocialSharp } from "ionicons/icons";
+import logo from "../assets/countdateapp-logo-foreground.png";
 
 export default function Share({
   accent
 }) {
   const {t} = useTranslation()
   const location = useLocation()
+  const history = useHistory()
   const [event,setEvent] = useState({title:"",date:"",dateRaw:""})
   const formatDate = (date) => {
     let formatted_date = `${date.getFullYear()}/${date.getMonth()+1}/${date.getDate()}`
@@ -37,24 +40,55 @@ export default function Share({
   },[])
   return (
     <IonPage>
+      <IonHeader collapse="condense">
+        <IonToolbar>
+          <IonButtons slot="end">
+            <IonButton color={accent} onClick={() => {
+              history.push("/settings")
+            }}>
+              <IonIcon icon={settingsSharp} />
+            </IonButton>
+            <IonButton color={accent} onClick={() => {
+              history.push("/about")
+            }}>
+              <IonIcon icon={informationCircleSharp} />
+            </IonButton>
+          </IonButtons>
+          <IonTitle><IonIcon icon={shareSocialSharp} /> {t("p.share.title")}</IonTitle>
+        </IonToolbar>
+      </IonHeader>
       <IonContent className="ion-padding">
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle>{t("p.share.title")}</IonTitle>
-          </IonToolbar>
-        </IonHeader>
-        <h5>{t("p.add.eventName.label")}: {event.title}</h5>
-        <h5>{t("p.share.date")}: {formatDate(new Date(event.date))}</h5>
-        {isPlatform("mobileweb") ? <>
-        <IonButton onClick={() => {
-          window.location.replace(`countdate://app/add?title=${event.title}&date=${event.dateRaw}`)
-          setTimeout(() => {
-            window.location.replace("https://play.google.com/store/apps/details?id=cyou.sk5s.app.countdate")
-          }, 700);
-        }}>
-          {t("p.share.openApp")}
-        </IonButton>
-        </> : <></>}
+        <IonCard>
+          <IonCardHeader>
+            <IonCardTitle>{t("p.add.eventName.label")} : {event.title}</IonCardTitle>
+            <IonCardSubtitle>{t("p.share.date")} : {formatDate(new Date(event.date))}</IonCardSubtitle>
+          </IonCardHeader>
+
+          <IonCardContent>
+          {isPlatform("mobileweb") ? <>
+          <IonButton color={accent} onClick={() => {
+            window.location.replace(`countdate://app/add?title=${event.title}&date=${event.dateRaw}`)
+          }}>
+            {t("p.share.openApp")}
+          </IonButton>
+          </> : <></>}
+          </IonCardContent>
+        </IonCard>
+        <br/>
+        <p>
+          <img src={logo} alt="Logo" width="60" height="60" />
+          <a
+            rel="noreferrer"
+            target="_blank"
+            href="https://play.google.com/store/apps/details?id=cyou.sk5s.app.countdate"
+          >
+            <img
+              alt="Get it on Google Play"
+              src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+              width="150px"
+            />
+          </a>
+        </p>
       </IonContent>
     </IonPage>
   )
