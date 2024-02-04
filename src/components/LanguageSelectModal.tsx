@@ -69,11 +69,10 @@ export default function LanguageSelectModal({accent}:{accent: string;}) {
                 allLangName.forEach((element,i) => {
                   rows.push(
                     <IonItem key={element}>
-                      <IonRadio color={accent} labelPlacement="end" value={element} justify="space-between"></IonRadio>
-                      <IonLabel>
-                        {langAndDetail[element].name}
-                      </IonLabel>
-                      <small>{langAndDetail[element].by}</small>
+                      <IonRadio color={accent} value={element}>
+                        <h6>{langAndDetail[element].name}</h6>
+                        <small>{langAndDetail[element].by}</small>
+                      </IonRadio>
                     </IonItem>
                   );
                 });
