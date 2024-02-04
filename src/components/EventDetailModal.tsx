@@ -1,6 +1,11 @@
 import {
   IonButton,
   IonButtons,
+  IonCard,
+  IonCardContent,
+  IonCardHeader,
+  IonCardSubtitle,
+  IonCardTitle,
   IonContent,
   IonFooter,
   IonHeader,
@@ -189,60 +194,73 @@ export default function EventDetailModal({
           </IonButtons>
         </IonToolbar>
       </IonHeader>
-      <IonContent className="ion-padding">
-        <h1>{detailStr}</h1>
-        {contentEditable ? (
+      <IonContent>
+        <IonCard>
           <>
-            <span>{t("p.edit.description")}</span>
-            <CountdateItem
-              key={myprops.id}
-              id={myprops.id}
-              event={myprops.event}
-              date={myprops.date}
-              editable={true}
-              accent={myprops.accent}
-              textColor={myprops.textColor}
-            />
-            <IonItem>
-              {t("c.editor.quickEdit.title")}
-              <IonButton
-                onClick={() => addOneMonthHandler()}
-                size="small"
-                color={myprops.accent}
-                shape="round"
-              >
-                {t("c.editor.quickEdit.addOneMonth")}
-              </IonButton>
-              <IonButton
-                onClick={() => minusOneDayHandler()}
-                size="small"
-                color={myprops.accent}
-                shape="round"
-              >
-                {t("c.editor.quickEdit.minusOneDay")}
-              </IonButton>
-              <IonButton
-                onClick={() => addOneDayHandler()}
-                size="small"
-                color={myprops.accent}
-                shape="round"
-              >
-                {t("c.editor.quickEdit.addOneDay")}
-              </IonButton>
-            </IonItem>
+          {contentEditable ? (
+            <IonCardContent>
+              <span>{t("p.edit.description")}</span>
+              <CountdateItem
+                key={myprops.id}
+                id={myprops.id}
+                event={myprops.event}
+                date={myprops.date}
+                editable={true}
+                accent={myprops.accent}
+                textColor={myprops.textColor}
+              />
+              <IonItem>
+                {t("c.editor.quickEdit.title")}
+                <IonButton
+                  onClick={() => addOneMonthHandler()}
+                  size="small"
+                  color={myprops.accent}
+                  shape="round"
+                >
+                  {t("c.editor.quickEdit.addOneMonth")}
+                </IonButton>
+                <IonButton
+                  onClick={() => minusOneDayHandler()}
+                  size="small"
+                  color={myprops.accent}
+                  shape="round"
+                >
+                  {t("c.editor.quickEdit.minusOneDay")}
+                </IonButton>
+                <IonButton
+                  onClick={() => addOneDayHandler()}
+                  size="small"
+                  color={myprops.accent}
+                  shape="round"
+                >
+                  {t("c.editor.quickEdit.addOneDay")}
+                </IonButton>
+              </IonItem>
+            </IonCardContent>
+          ) : (
+            <>
+            <IonCardHeader>
+              <IonCardSubtitle>{myprops.event}</IonCardSubtitle>
+              <IonCardTitle>{detailStr}</IonCardTitle>
+            </IonCardHeader>
+            </>
+          )}
           </>
-        ) : (
-          <></>
-        )}
-        <DescriptionEditor
-          needToSave={needToSave}
-          setNeedToSave={setNeedToSave}
-          id={myprops.id}
-          setDescription={setDescription}
-          description={description}
-          editable={contentEditable}
-          accent={myprops.accent}
-        />
+        </IonCard>
+
+        <IonCard>
+          <IonCardContent>
+            <DescriptionEditor
+              needToSave={needToSave}
+              setNeedToSave={setNeedToSave}
+              id={myprops.id}
+              setDescription={setDescription}
+              description={description}
+              editable={contentEditable}
+              accent={myprops.accent}
+            />
+          </IonCardContent>
+        </IonCard>
       </IonContent>
       <IonFooter>
         <IonButton

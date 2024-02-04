@@ -74,23 +74,25 @@ export default function DescriptionEditor({
                 setNeedToSave(true);
               }}
             ></IonTextarea>
+            
             <IonButton
               color={accent}
               onClick={() => {
                 edit_this_countdate_item_description(description);
                 setNeedToSave(false);
               }}
+              slot="end"
               size="default"
-              shape="round"
+              fill="clear"
             >
               <IonIcon icon={save} />
             </IonButton>
           </IonItem>
           <IonButton
-            size="small"
             id="click-trigger-description"
             color={accent}
-            shape="round"
+            fill="clear"
+            size="small"
           >
             {" "}
             <IonIcon icon={informationCircle}></IonIcon>{" "}
