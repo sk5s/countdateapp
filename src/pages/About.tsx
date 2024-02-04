@@ -30,11 +30,11 @@ const About: React.FC<{ accent: string }> = ({ accent }) => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <IonHeader collapse="condense">
+        {/* <IonHeader collapse="condense">
           <IonToolbar>
             <IonTitle>{t("p.about.title")}</IonTitle>
           </IonToolbar>
-        </IonHeader>
+        </IonHeader> */}
         <div style={{ width: "100%", textAlign: "center" }}>
           <a href="https://github.com/sk5s/countdateapp" target="_blank" rel="noreferrer">
             <img src={logo} alt="Logo" width="80" height="80" />

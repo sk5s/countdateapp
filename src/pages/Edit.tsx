@@ -115,13 +115,13 @@ const Edit: React.FC<{ accent: string; textColor: string; count:any; setCount:an
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <IonHeader collapse="condense">
+        {/* <IonHeader collapse="condense">
           <IonToolbar>
             <IonTitle>{t("p.edit.title")}</IonTitle>
           </IonToolbar>
-        </IonHeader>
+        </IonHeader> */}
 
-        <IonHeader collapse="condense">
+        <IonHeader>
           <CountDownUpSwitcher accent={accent} count={count} setCount={setCount} />
         </IonHeader>
 

@@ -112,11 +112,11 @@ const Add: React.FC<{ accent: string }> = ({ accent }) => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <IonHeader collapse="condense">
+        {/* <IonHeader collapse="condense">
           <IonToolbar>
             <IonTitle>{t("p.add.title")}</IonTitle>
           </IonToolbar>
-        </IonHeader>
+        </IonHeader> */}
         <IonGrid>
           <IonRow>
             <IonCol>

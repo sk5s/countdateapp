@@ -178,11 +178,11 @@ const Settings: React.FC<{ accent: string;setView:any; }> = ({ accent,setView })
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <IonHeader collapse="condense">
+        {/* <IonHeader collapse="condense">
           <IonToolbar>
             <IonTitle>{t("p.settings.title")}</IonTitle>
           </IonToolbar>
-        </IonHeader>
+        </IonHeader> */}
         <IonList>
           <IonListHeader lines="none" color={accent}>
             <IonLabel>{t("p.settings.general.title")}</IonLabel>
