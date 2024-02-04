@@ -28,13 +28,32 @@ export default function CountCard(props: {
   const [isOpen, setIsOpen] = useState(false);
   const [contentEditable, setContentEditable] = useState(false);
   const [days, setDays] = useState(countFromTime(props.date))
+  const convertDays = (days) => {
+    // Convert days into total years, months, and days
+    const years = Math.floor(days / 365);
+    days -= years * 365;
+    const months = Math.floor(days / 30);
+    days -= months * 30;
+    return [years, months, days];
+  }
   const getTimeStr = (ndays:number) => {
     // console.log(props.relative)
     if (props.view === "days"){
       return ndays.toString() + " " + t("c.card.days")
     } else if (props.view === "months") {
+      let relative = convertDays(ndays)
       if (props.relative){
-        return Math.floor(ndays / 30).toString() + " " + t("c.card.months")  + " " + (ndays % 30).toString() + " " + t("c.card.days")
+        let mystr = ""
+        if (relative[0]){
+          mystr += (relative[0]).toString() + " " + t("c.card.years") + " "
+        }
+        if (relative[1]){
+          mystr += (relative[1]).toString() + " " + t("c.card.months") + " "
+        }
+        if (relative[2]){
+          mystr += (relative[2]).toString() + " " + t("c.card.days")
+        }
+        return mystr
       }
       return (Math.round((ndays / 30 + Number.EPSILON) * 100 ) / 100).toString() + " " + t("c.card.months")
     } else {

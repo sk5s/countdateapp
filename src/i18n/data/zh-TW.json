@@ -77,6 +77,7 @@
       "days": "天",
       "weeks": "周",
       "months": "月",
+      "years": "年",
       "countdownEvent": "離{{eventName}}剩下"
     },
     "cards": {
