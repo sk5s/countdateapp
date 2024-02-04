@@ -111,7 +111,7 @@ const Add: React.FC<{ accent: string }> = ({ accent }) => {
           <IonTitle>{t("p.add.title")}</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen>
+      <IonContent fullscreen className="ion-padding">
         {/* <IonHeader collapse="condense">
           <IonToolbar>
             <IonTitle>{t("p.add.title")}</IonTitle>

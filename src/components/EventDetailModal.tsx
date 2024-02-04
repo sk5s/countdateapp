@@ -209,7 +209,7 @@ export default function EventDetailModal({
                 accent={myprops.accent}
                 textColor={myprops.textColor}
               />
-              <IonItem>
+              <IonItem className="ion-no-padding">
                 {t("c.editor.quickEdit.title")}
                 <IonButton
                   onClick={() => addOneMonthHandler()}

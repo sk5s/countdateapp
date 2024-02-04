@@ -62,7 +62,7 @@ export default function DescriptionEditor({
     <>
       {editable ? (
         <>
-          <IonItem>
+          <IonItem className="ion-no-padding">
             <IonTextarea
               aria-label="Description editor"
               placeholder={t("c.editor.description")}
