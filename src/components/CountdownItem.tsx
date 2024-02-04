@@ -168,7 +168,7 @@ export default function CountdateItem(props: {
       <IonReorder slot="end">
         <IonIcon icon={reorderThree}></IonIcon>
       </IonReorder>
-      <IonPopover className="dateselect" isOpen={modalIsOpen} size="cover" keepContentsMounted={false}>
+      <IonPopover className="dateselect" isOpen={modalIsOpen} onDidDismiss={() => setModalIsOpen(!modalIsOpen)} size="cover" keepContentsMounted={false}>
         <IonDatetime
           mode="md"
           color={props.accent}
