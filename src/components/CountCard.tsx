@@ -67,8 +67,8 @@ export default function CountCard(props: {
   useEffect(() => {
     on("countdate_data:change", (data: any) => {
       if (data.detail === "delete") setIsOpen(false);
-      setDays(countFromTime(props.date))
-      setTimeStr(() => getTimeStr(countFromTime(props.date)))
+      // setDays(countFromTime(props.date))
+      // setTimeStr(() => getTimeStr(countFromTime(props.date)))
     });
   }, []);
   useEffect(() => {
