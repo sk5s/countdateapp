@@ -46,7 +46,16 @@ setupIonicReact({
 const App: React.FC = () => {
   const history = useHistory();
   const { t, i18n } = useTranslation();
-  const [countdownOrUp, setCountdownOrUp] = useState("countdown");
+  const getCountdownOrUp = () => {
+    let local = localStorage.getItem("countdownOrUp")
+    console.log()
+    if (local !== null){
+      return "countup"
+    } else {
+      return "countdown"
+    }
+  }
+  const [countdownOrUp, setCountdownOrUp] = useState(() => getCountdownOrUp());
   const [view, setView] = useState("days");
   const [accentColor, setAccentColor] = useState<string>("primary");
   const [textColor, setTextColor] = useState<string>("");
@@ -84,6 +93,7 @@ const App: React.FC = () => {
       setTextColor("");
     }
   };
+
   // Show welcome modal if it's first time
   let count = 0;
   const getFirstTime = async () => {

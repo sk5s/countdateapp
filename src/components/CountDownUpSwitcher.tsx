@@ -14,7 +14,14 @@ export default function CountDownUpSwitcher({
         <IonSegment
           color={accent}
           value={count}
-          onIonChange={(e) => setCount(`${e.detail.value}`)}
+          onIonChange={(e) => {
+            setCount(`${e.detail.value}`)
+            if (e.detail.value === "countup"){
+              localStorage.setItem("countdownOrUp", "up")
+            } else {
+              localStorage.removeItem("countdownOrUp")
+            }
+          }}
         >
           <IonSegmentButton value="countdown">
             <IonLabel>{t("p.home.countdown")}</IonLabel>
