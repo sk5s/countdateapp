@@ -209,7 +209,7 @@ export default function EventDetailModal({
                 accent={myprops.accent}
                 textColor={myprops.textColor}
               />
-              <IonItem className="ion-no-padding">
+              <IonItem>
                 {t("c.editor.quickEdit.title")}
                 <IonButton
                   onClick={() => addOneMonthHandler()}
@@ -263,16 +263,19 @@ export default function EventDetailModal({
         </IonCard>
       </IonContent>
       <IonFooter>
-        <IonButton
-          color={myprops.accent}
-          shape="round"
-          onClick={(e) => setContentEditable(!contentEditable)}
-        >
-          <IonIcon icon={create} />{" "}
-          {!contentEditable
-            ? t("c.editor.edit")
-            : t("c.editor.completeEdit")}
-        </IonButton>
+        <IonToolbar>
+          <IonButtons slot="end">
+            <IonButton
+              color={myprops.accent}
+              onClick={(e) => setContentEditable(!contentEditable)}
+            >
+              <IonIcon icon={create} />{" "}
+              {!contentEditable
+                ? t("c.editor.edit")
+                : t("c.editor.completeEdit")}
+            </IonButton>
+          </IonButtons>
+        </IonToolbar>
       </IonFooter>
     </IonModal>
   );

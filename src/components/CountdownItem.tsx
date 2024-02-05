@@ -142,7 +142,7 @@ export default function CountdateItem(props: {
   });
   getExtendMode();
   return (
-    <IonItem className="ion-no-padding">
+    <IonItem>
       <IonLabel>
         <IonText color={props.accent} style={{ color: props.textColor }}>
           <h1

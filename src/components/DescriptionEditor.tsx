@@ -8,7 +8,7 @@ import {
   IonPopover,
   IonTextarea,
 } from "@ionic/react";
-import { useState } from "react";
+
 import { useTranslation } from "react-i18next";
 import { Preferences } from "@capacitor/preferences";
 import key from "../lib/storageKey.json";
@@ -62,7 +62,21 @@ export default function DescriptionEditor({
     <>
       {editable ? (
         <>
-          <IonItem className="ion-no-padding">
+          <IonItem>
+            <IonButton
+              slot="end"
+              color={accent}
+              onClick={() => {
+                edit_this_countdate_item_description(description);
+                setNeedToSave(false);
+              }}
+              size="small"
+              fill="clear"
+            >
+              <IonIcon icon={save} />
+            </IonButton>
+          </IonItem>
+          <IonItem>
             <IonTextarea
               aria-label="Description editor"
               placeholder={t("c.editor.description")}
@@ -74,19 +88,6 @@ export default function DescriptionEditor({
                 setNeedToSave(true);
               }}
             ></IonTextarea>
-            
-            <IonButton
-              color={accent}
-              onClick={() => {
-                edit_this_countdate_item_description(description);
-                setNeedToSave(false);
-              }}
-              slot="end"
-              size="default"
-              fill="clear"
-            >
-              <IonIcon icon={save} />
-            </IonButton>
           </IonItem>
           <IonButton
             id="click-trigger-description"
