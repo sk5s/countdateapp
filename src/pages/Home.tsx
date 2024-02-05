@@ -43,8 +43,10 @@ const Home: React.FC<{ accent: string; textColor: string;count:any;setCount:any;
   const left = () => {
     if (count === "countdown") {
       setCount("countup");
+      localStorage.setItem("countdownOrUp", "up")
     } else {
       setCount("countdown");
+      localStorage.removeItem("countdownOrUp")
     }
   };
   const handleRefresh = (event: any) => {
