@@ -15,6 +15,7 @@ import key from "../lib/storageKey.json";
 import { trigger } from "../lib/Events";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import rehypeExternalLinks from 'rehype-external-links'
 import { informationCircle, save } from "ionicons/icons";
 
 import "./DescriptionEditor.css";
@@ -118,7 +119,7 @@ export default function DescriptionEditor({
               <ReactMarkdown
                 children={description}
                 remarkPlugins={[remarkGfm]}
-                linkTarget="_blank"
+                rehypePlugins={[[rehypeExternalLinks, {target: "_blank"}]]}
               />
             </>
           ) : (
