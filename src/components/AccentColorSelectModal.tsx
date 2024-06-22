@@ -92,11 +92,10 @@ export default function AccentColorSelectModal() {
                 allColorName.forEach((element) => {
                   rows.push(
                     <IonItem key={element}>
-                      <IonLabel>
-                        <IonIcon color={element} icon={ellipse} size="large" />{" "}
+                      <IonRadio justify="space-between" value={element}>
+                        <IonIcon color={element} icon={ellipse} size="medium" />{" "}
                         {realColorName[element as keyof typeof realColorName]}
-                      </IonLabel>
-                      <IonRadio slot="end" value={element}></IonRadio>
+                      </IonRadio>
                     </IonItem>
                   );
                 });
