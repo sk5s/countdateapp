@@ -45,5 +45,16 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
+	<key>CFBundleURLTypes</key>
+	<array>
+	<dict>
+		<key>CFBundleURLName</key>
+		<string>cyou.sk5s.app.countdate</string>
+		<key>CFBundleURLSchemes</key>
+		<array>
+			<string>countdateapp</string>
+		</array>
+	</dict>
+	</array>
 </dict>
 </plist>
