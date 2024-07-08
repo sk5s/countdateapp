@@ -19,11 +19,12 @@ import { add } from "ionicons/icons";
 
 import CountCards from "../components/CountCards";
 import { useTranslation } from "react-i18next";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSwipeable } from "react-swipeable";
 import { trigger } from "../lib/Events";
 import "./Home.css"
 import CountDownUpSwitcher from "../components/CountDownUpSwitcher";
+import { Device } from "@capacitor/device";
 
 const Home: React.FC<{ accent: string; textColor: string;count:any;setCount:any;view:string;setView:any;relative:boolean; }> = ({
   accent,
@@ -35,6 +36,7 @@ const Home: React.FC<{ accent: string; textColor: string;count:any;setCount:any;
   relative
 }) => {
   const { t } = useTranslation();
+  const [platform, setPlatform] = useState<'ios' | 'android' | 'web'>("android")
 
   const handlers = useSwipeable({
     onSwipedLeft: () => left(),
@@ -56,6 +58,14 @@ const Home: React.FC<{ accent: string; textColor: string;count:any;setCount:any;
     }, 500);
   };
 
+  useEffect(() => {
+    const getDevicePlatform = async () => {
+      const info = await Device.getInfo()
+      setPlatform(info.platform)
+    }
+    getDevicePlatform()
+  }, [])
+
   return (
     <IonPage>
       <IonHeader>
@@ -65,9 +75,11 @@ const Home: React.FC<{ accent: string; textColor: string;count:any;setCount:any;
       </IonHeader>
       <IonContent>
         {/* Refresher */}
-        <IonRefresher slot="fixed" onIonRefresh={handleRefresh}>
-          <IonRefresherContent></IonRefresherContent>
-        </IonRefresher>
+        {platform == "ios" ? null : (
+          <IonRefresher slot="fixed" onIonRefresh={handleRefresh}>
+            <IonRefresherContent></IonRefresherContent>
+          </IonRefresher>
+        )}
 
         <IonHeader>
           <CountDownUpSwitcher accent={accent} count={count} setCount={setCount} />

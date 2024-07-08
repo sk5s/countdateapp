@@ -18,9 +18,19 @@ import logo from "../assets/countdateapp-logo-foreground.png";
 import banner from "../assets/sk5s-project-bar.png";
 import LocalizeBackButton from "../components/LocalizeBackButton";
 import { isPlatform } from "@ionic/core";
+import { useEffect, useState } from "react";
+import { Device } from "@capacitor/device";
 
 const About: React.FC<{ accent: string }> = ({ accent }) => {
   const { t } = useTranslation();
+  const [platform, setPlatform] = useState<'ios' | 'android' | 'web'>("android")
+  useEffect(() => {
+    const getDevicePlatform = async () => {
+      const info = await Device.getInfo()
+      setPlatform(info.platform)
+    }
+    getDevicePlatform()
+  }, [])
   return (
     <IonPage>
       <IonHeader>
@@ -68,7 +78,7 @@ const About: React.FC<{ accent: string }> = ({ accent }) => {
         <p style={{ fontSize: "25px", marginLeft: "20px" }}>
           {t("p.about.slogan")}
         </p>
-        <div>
+        <div style={{display: platform === "ios" ? "none" : null}}>
           <a
             rel="noreferrer"
             target="_blank"
@@ -131,6 +141,8 @@ const About: React.FC<{ accent: string }> = ({ accent }) => {
           </li>
         </ul>
 
+        {platform === "ios" ? null : (
+        <>
         <p style={{ fontSize: "25px", marginLeft: "20px" }}>
           {t("p.about.more.title")}
         </p>
@@ -155,6 +167,8 @@ const About: React.FC<{ accent: string }> = ({ accent }) => {
             </IonItem>
           </div>
         </a>
+        </>
+        )}
 
         <a href="https://sk5s.com" target="_blank" rel="noopener noreferrer">
           <img src={banner} alt="" />
