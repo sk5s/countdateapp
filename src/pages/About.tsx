@@ -68,7 +68,7 @@ const About: React.FC<{ accent: string }> = ({ accent }) => {
         <p style={{ fontSize: "25px", marginLeft: "20px" }}>
           {t("p.about.slogan")}
         </p>
-        <div>
+        <div style={{display: "flex", flexDirection: "row"}}>
           <a
             rel="noreferrer"
             target="_blank"
@@ -91,6 +91,20 @@ const About: React.FC<{ accent: string }> = ({ accent }) => {
               width="150px"
             />
           </a>
+          <div style={{height: "60px", width: "150px", display: "flex",justifyContent:"center", alignItems: "center"}}>
+            <a
+              rel="noreferrer"
+              target="_blank"
+              href="https://apps.apple.com/tw/app/Countdate/id6553989325"
+              
+            >
+              <img
+                alt="Download on the App Store"
+                src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+                height="40px"
+              />
+            </a>
+          </div>
         </div>
         <ul style={{ fontSize: "25px" }}>
           <li>

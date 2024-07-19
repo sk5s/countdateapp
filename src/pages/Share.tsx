@@ -75,20 +75,38 @@ export default function Share({
           </IonCardContent>
         </IonCard>
         <br/>
-        <p>
+        <div style={{display: "flex", flexDirection: "row"}}>
           <img src={logo} alt="Logo" width="60" height="60" />
-          <a
-            rel="noreferrer"
-            target="_blank"
-            href="https://play.google.com/store/apps/details?id=cyou.sk5s.app.countdate"
-          >
-            <img
-              alt="Get it on Google Play"
-              src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
-              width="150px"
-            />
-          </a>
-        </p>
+          {!isPlatform("ios") && (
+          <div style={{height: "60px", width: "150px"}}>
+            <a
+              rel="noreferrer"
+              target="_blank"
+              href="https://play.google.com/store/apps/details?id=cyou.sk5s.app.countdate"
+            >
+              <img
+                alt="Get it on Google Play"
+                src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+                width="150px"
+              />
+            </a>
+          </div>
+          )}
+          <div style={{height: "60px", width: "150px", display: "flex",justifyContent:"center", alignItems: "center"}}>
+            <a
+              rel="noreferrer"
+              target="_blank"
+              href="https://apps.apple.com/tw/app/Countdate/id6553989325"
+              
+            >
+              <img
+                alt="Download on the App Store"
+                src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+                height="40px"
+              />
+            </a>
+          </div>
+        </div>
       </IonContent>
     </IonPage>
   )
