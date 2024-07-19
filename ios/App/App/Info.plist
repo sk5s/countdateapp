@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -47,14 +49,14 @@
 	<true/>
 	<key>CFBundleURLTypes</key>
 	<array>
-	<dict>
-		<key>CFBundleURLName</key>
-		<string>cyou.sk5s.app.countdate</string>
-		<key>CFBundleURLSchemes</key>
-		<array>
-			<string>countdateapp</string>
-		</array>
-	</dict>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>cyou.sk5s.app.countdate</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>countdateapp</string>
+			</array>
+		</dict>
 	</array>
 </dict>
 </plist>

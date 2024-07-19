@@ -1,11 +1,11 @@
 PODS:
-  - Capacitor (6.1.0):
+  - Capacitor (6.1.1):
     - CapacitorCordova
   - CapacitorApp (6.0.0):
     - Capacitor
   - CapacitorClipboard (6.0.0):
     - Capacitor
-  - CapacitorCordova (6.1.0)
+  - CapacitorCordova (6.1.1)
   - CapacitorDevice (6.0.0):
     - Capacitor
   - CapacitorKeyboard (6.0.1):
@@ -49,10 +49,10 @@ EXTERNAL SOURCES:
     :path: "../../node_modules/@capacitor/toast"
 
 SPEC CHECKSUMS:
-  Capacitor: 187bd7847b6f71467015a20200a1a071be3e5f14
+  Capacitor: 8941aba4364ba9d1b22188569001f2ce45cc2b00
   CapacitorApp: 9d53aec7101f7b030a950c5bdc4df8612576b279
   CapacitorClipboard: 80282f684154124b9019ebf401235b70b0cf4994
-  CapacitorCordova: be703980ca797f847c3356f78fa175d21c8330c2
+  CapacitorCordova: 8f2cc8d8d3619c566e9418fe8772064a94266106
   CapacitorDevice: f8fd88f9edd1261c55a109f32015b09bbbfdc4a0
   CapacitorKeyboard: 5f32a712adf41e07a61caafb82cf29fb6d8ba123
   CapacitorLocalNotifications: 4ab68f0be5f697a579558fadd307d823a9ec1c26
