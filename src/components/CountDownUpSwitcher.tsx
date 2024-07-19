@@ -10,7 +10,7 @@ export default function CountDownUpSwitcher({
   return (
     <>
       {/* Countdown countup switcher */}
-      <IonToolbar>
+      <IonToolbar style={{paddingTop: "0px"}}>
         <IonSegment
           color={accent}
           value={count}

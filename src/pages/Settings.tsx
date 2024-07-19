@@ -28,7 +28,7 @@ import { useTranslation } from "react-i18next";
 import { Schedule } from "../lib/LocalNotification";
 import { Preferences as Storage } from "@capacitor/preferences";
 import key from "../lib/storageKey.json";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { trigger } from "../lib/Events";
 import AccentColorSelectModal from "../components/AccentColorSelectModal";
 import TextColorSelectModal from "../components/TextColorSelectModal";
@@ -36,9 +36,11 @@ import "./Settings.css";
 import { useHistory } from "react-router";
 import LocalizeBackButton from "../components/LocalizeBackButton";
 import LanguageSelectModal from "../components/LanguageSelectModal";
+import { Device } from "@capacitor/device";
 
 const Settings: React.FC<{ accent: string;setView:any; }> = ({ accent,setView }) => {
   const { t } = useTranslation();
+  const [platform, setPlatform] = useState<'ios' | 'android' | 'web'>("android")
   const [darkChecked, setDarkChecked] = useState<boolean>();
   const [devChecked, setDevChecked] = useState<boolean>(false);
   const [extendChecked, setExtendChecked] = useState<boolean>(false);
@@ -169,6 +171,14 @@ const Settings: React.FC<{ accent: string;setView:any; }> = ({ accent,setView })
     }, 500);
   };
 
+  useEffect(() => {
+    const getDevicePlatform = async () => {
+      const info = await Device.getInfo()
+      setPlatform(info.platform)
+    }
+    getDevicePlatform()
+  }, [])
+
   return (
     <IonPage>
       <IonHeader>
@@ -215,6 +225,8 @@ const Settings: React.FC<{ accent: string;setView:any; }> = ({ accent,setView })
               </div>
             </IonToggle>
           </IonItem>
+          {platform === "android" && (
+          <>
           <IonItem>
             <IonToggle
               checked={devChecked}
@@ -233,8 +245,8 @@ const Settings: React.FC<{ accent: string;setView:any; }> = ({ accent,setView })
                 {t("p.settings.general.testLocalNotification")}
               </IonLabel>
             </IonItem>
-          ) : (
-            ""
+          ) : null}
+          </>
           )}
           <IonItem>
             <IonLabel onClick={handleReviewTour}>
@@ -270,9 +282,11 @@ const Settings: React.FC<{ accent: string;setView:any; }> = ({ accent,setView })
           <IonItem>
             <AccentColorSelectModal />
           </IonItem>
+          {platform === "android" && (
           <IonItem>
             <TextColorSelectModal accent={accent} />
           </IonItem>
+          )}
         </IonList>
       </IonContent>
     </IonPage>
