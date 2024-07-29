@@ -86,7 +86,7 @@ export default function Share({
             >
               <img
                 alt="Get it on Google Play"
-                src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+                src="https://sk5s.cyou/sk5s/img/play_store_badge_en.png"
                 width="150px"
               />
             </a>
@@ -101,8 +101,7 @@ export default function Share({
             >
               <img
                 alt="Download on the App Store"
-                src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
-                height="40px"
+                src="https://sk5s.cyou/sk5s/img/app_store_badge_en.png"
               />
             </a>
           </div>
