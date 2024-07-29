@@ -101,19 +101,18 @@ const About: React.FC<{ accent: string }> = ({ accent }) => {
               width="150px"
             />
           </a>
-          <div style={{height: "60px", width: "150px", display: "flex",justifyContent:"center", alignItems: "center"}}>
-            <a
-              rel="noreferrer"
-              target="_blank"
-              href="https://apps.apple.com/tw/app/Countdate/id6553989325"
-              
-            >
-              <img
-                alt="Download on the App Store"
-                src="https://sk5s.cyou/sk5s/img/app_store_badge_en.png"
-              />
-            </a>
-          </div>
+          <a
+            rel="noreferrer"
+            target="_blank"
+            href="https://apps.apple.com/tw/app/Countdate/id6553989325"
+            
+          >
+            <img
+              alt="Download on the App Store"
+              src="https://sk5s.cyou/sk5s/img/app_store_badge_en.png"
+              width="150px"
+            />
+          </a>
         </div>
         <ul style={{ fontSize: "25px" }}>
           <li>

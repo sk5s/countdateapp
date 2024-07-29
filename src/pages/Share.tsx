@@ -92,7 +92,7 @@ export default function Share({
             </a>
           </div>
           )}
-          <div style={{height: "60px", width: "150px", display: "flex",justifyContent:"center", alignItems: "center"}}>
+          <div style={{height: "60px", width: "150px"}}>
             <a
               rel="noreferrer"
               target="_blank"
