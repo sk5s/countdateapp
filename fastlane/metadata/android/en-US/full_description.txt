@@ -1,8 +1,8 @@
-<i>Countdate</i> lets you know how many days are left to a specific date. Next to the Android app, there's also a web version available.
+<i>Countdate</i> lets you know how many days are left to a specific date. Next to the native app, there's also a web version available.
 
 <i>Countdate</i> is and will be free to download and use. As it's open source and under a free license, you can even take the code and modify it!
 
-* <b>Android:</b> Ready to use android app.
+* <b>Android、iOS:</b> Ready to use native app.
 * <b>Web:</b> Web version of countdate app is also available.
 * <b>Free to Use:</b> As always, this app is free to download and use!
 * <b>Open Source:</b> Since this app is MIT licensed, you can modified it!

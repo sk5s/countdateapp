@@ -30,7 +30,7 @@
     <img src="https://sk5s.cyou/countdate-landing/assets/img/icon-foreground.png" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">countdate app</h3>
+<h3 align="center">Countdate</h3>
 
   <p align="center">
     Date Countdown: Know How Many Days Left To a Specific Date.
@@ -83,12 +83,13 @@
 <!--[![Product Name Screen Shot]](https://sk5s.cyou/)-->
 
 <a target="_blank" href='https://play.google.com/store/apps/details?id=cyou.sk5s.app.countdate&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png' width="150px"/></a>
-<a target="_blank" href='https://apt.izzysoft.de/fdroid/index/apk/cyou.sk5s.app.countdate'><img alt='Get it on Google Play' src='https://sk5s.cyou/countdate-landing/assets/img/IzzyOnDroid.png' width="150px"/></a>
+<a target="_blank" href='https://apt.izzysoft.de/fdroid/index/apk/cyou.sk5s.app.countdate'><img alt='Get it on IzzyOnDroid' src='https://sk5s.cyou/countdate-landing/assets/img/IzzyOnDroid.png' width="150px"/></a>
+<a target="_blank" href='https://apps.apple.com/US/app/id6553989325'><img alt='Download on the App Store' src='https://sk5s.cyou/sk5s/img/app_store_badge_en.png' width="150px"/></a>
 
 Date Countdown: Know How Many Days Left To a Specific Date.
 
-**Android**
-Ready to use android app.
+**Android、iOS**
+Ready to use native app.
 
 **Web**
 Web version of countdate app is also available.
@@ -99,7 +100,7 @@ As always, this app is free to download and use!
 **Open Source**
 Since this app is MIT licensed, you can modified it!
 
-> Countdate is an open source Android app that helps you keep track of important dates. With Countdate, you can enter a date and the app will tell you exactly how many days are left until that date. It's a great tool for counting down to special occasions, deadlines, or anything else you need to remember. Countdate is easy to use and can be customized to meet your needs, making it a great choice for anyone who wants to keep track of upcoming events.
+> Countdate is an open source app that helps you keep track of important dates. With Countdate, you can enter a date and the app will tell you exactly how many days are left until that date. It's a great tool for counting down to special occasions, deadlines, or anything else you need to remember. Countdate is easy to use and can be customized to meet your needs, making it a great choice for anyone who wants to keep track of upcoming events.
 
 |![](https://raw.githubusercontent.com/sk5s/countdateapp/main/fastlane/metadata/android/en-US/images/phoneScreenshots/1.jpg)|![](https://raw.githubusercontent.com/sk5s/countdateapp/main/fastlane/metadata/android/en-US/images/phoneScreenshots/2.jpg)|
 | ----------- | ----------- |
@@ -152,6 +153,7 @@ click add button to add a countdate
 - [x] Qrcode share event
 - [x] Native desktop widget
 - [x] Count Month
+- [ ] Extend day selection
 
 See the [open issues](https://github.com/sk5s/countdateapp/issues) for a full list of proposed features (and known issues).
 
