@@ -210,7 +210,9 @@ export default function EventDetailModal({
                 textColor={myprops.textColor}
               />
               <IonItem>
-                {t("c.editor.quickEdit.title")}
+                <span style={{marginRight: "10px"}}>
+                  {t("c.editor.quickEdit.title")}
+                </span>
                 <IonButton
                   onClick={() => addOneMonthHandler()}
                   size="small"
@@ -240,8 +242,8 @@ export default function EventDetailModal({
           ) : (
             <>
             <IonCardHeader>
-              <IonCardSubtitle>{myprops.event}</IonCardSubtitle>
-              <IonCardTitle>{detailStr}</IonCardTitle>
+              <IonCardSubtitle style={{fontSize: "1.2rem"}}>{myprops.event}</IonCardSubtitle>
+              <IonCardTitle style={{fontSize: "2.8rem"}}>{detailStr}</IonCardTitle>
             </IonCardHeader>
             </>
           )}

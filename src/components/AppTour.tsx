@@ -23,6 +23,8 @@ import { useTranslation } from "react-i18next";
 import { informationCircle, link } from "ionicons/icons";
 import { capitalize } from "../lib/Capitalize";
 
+// TODO: Update screenshots
+
 export default function AppTour({
   modal,
   setModal,

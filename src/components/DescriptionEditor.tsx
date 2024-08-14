@@ -19,6 +19,7 @@ import rehypeExternalLinks from 'rehype-external-links'
 import { informationCircle, save } from "ionicons/icons";
 
 import "./DescriptionEditor.css";
+import style from "./markdown-styles.module.css"
 
 export default function DescriptionEditor({
   id,
@@ -64,6 +65,9 @@ export default function DescriptionEditor({
       {editable ? (
         <>
           <IonItem>
+            <span>
+              {t("c.editor.description")}
+            </span>
             <IonButton
               slot="end"
               color={accent}
@@ -79,6 +83,7 @@ export default function DescriptionEditor({
           </IonItem>
           <IonItem>
             <IonTextarea
+              style={{fontSize: "1.2rem"}}
               aria-label="Description editor"
               placeholder={t("c.editor.description")}
               autoGrow={true}
@@ -120,10 +125,11 @@ export default function DescriptionEditor({
                 children={description}
                 remarkPlugins={[remarkGfm]}
                 rehypePlugins={[[rehypeExternalLinks, {target: "_blank"}]]}
+                className={style.reactMarkDown}
               />
             </>
           ) : (
-            <h5>
+            <h5 style={{fontSize: "1.2rem"}}>
               {t("c.editor.noDescriptionData")}
             </h5>
           )}
