@@ -28,6 +28,7 @@ import { useTranslation } from "react-i18next";
 import key from "../lib/storageKey.json";
 import { add, informationCircle } from "ionicons/icons";
 import LocalizeBackButton from "../components/LocalizeBackButton";
+import { EXTEND_YEARS } from '../constants/Constants'
 
 const Add: React.FC<{ accent: string }> = ({ accent }) => {
   const { t } = useTranslation();
@@ -82,7 +83,7 @@ const Add: React.FC<{ accent: string }> = ({ accent }) => {
   const getExtendMode = async () => {
     const { value } = await Preferences.get({ key: key.extend });
     if (value === "true") {
-      setYears(50);
+      setYears(EXTEND_YEARS);
     } else {
       setYears(2);
     }

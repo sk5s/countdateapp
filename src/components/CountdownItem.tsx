@@ -19,6 +19,7 @@ import key from "../lib/storageKey.json";
 import format from "date-fns/format";
 import { useState } from "react";
 import "./CountdownItem.css";
+import { EXTEND_YEARS } from "../constants/Constants";
 
 export default function CountdateItem(props: {
   date: string;
@@ -132,7 +133,7 @@ export default function CountdateItem(props: {
   const getExtendMode = async () => {
     const { value } = await Preferences.get({ key: key.extend });
     if (value === "true") {
-      setYears(50);
+      setYears(EXTEND_YEARS);
     } else {
       setYears(2);
     }
@@ -166,7 +167,7 @@ export default function CountdateItem(props: {
         style={{ cursor: "pointer" }}
       />
       <IonReorder slot="end">
-        <IonIcon icon={reorderThree}></IonIcon>
+        <IonIcon icon={reorderThree} size="large"></IonIcon>
       </IonReorder>
       <IonPopover className="dateselect" isOpen={modalIsOpen} onDidDismiss={() => setModalIsOpen(!modalIsOpen)} size="cover" keepContentsMounted={false}>
         <IonDatetime
@@ -183,6 +184,8 @@ export default function CountdateItem(props: {
           }
           value={props.date}
           id="datetime"
+          cancelText={t("g.cancel")}
+          doneText={t("g.confirm")}
         ></IonDatetime>
       </IonPopover>
     </IonItem>
