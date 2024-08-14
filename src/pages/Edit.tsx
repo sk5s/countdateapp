@@ -22,6 +22,17 @@ import { on, trigger } from "../lib/Events";
 import LocalizeBackButton from "../components/LocalizeBackButton";
 import CountDownUpSwitcher from "../components/CountDownUpSwitcher";
 
+const NoCountdate = () => {
+  const { t } = useTranslation();
+  return (
+    <IonItem key="nodata">
+      <h2>
+        {t("p.edit.noData")}
+      </h2>
+    </IonItem>
+  )
+}
+
 const Edit: React.FC<{ accent: string; textColor: string; count:any; setCount:any; }> = ({
   accent,
   textColor,
@@ -136,6 +147,7 @@ const Edit: React.FC<{ accent: string; textColor: string; count:any; setCount:an
             {(() => {
               let row = [];
               if (count === "countdown") {
+                if (!countdownList.length) return <NoCountdate />
                 countdownList.forEach((event) => {
                     //countdown
                     row.push(
@@ -151,6 +163,7 @@ const Edit: React.FC<{ accent: string; textColor: string; count:any; setCount:an
                     )
                 })
               } else if (count === "countup") {
+                if (!countupList.length) return <NoCountdate />
                 countupList.forEach((event) => {
                   //countdown
                   row.push(
@@ -165,8 +178,6 @@ const Edit: React.FC<{ accent: string; textColor: string; count:any; setCount:an
                     />
                   )
                 })
-              } else {
-                row.push(<IonItem key="nodata">{t("p.edit.noData")}</IonItem>);
               }
               return row;
             })()}
