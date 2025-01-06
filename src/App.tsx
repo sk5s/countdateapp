@@ -37,6 +37,7 @@ import { on } from "./lib/Events";
 import { useTranslation } from "react-i18next";
 import Share from "./pages/Share";
 import AppUrlListener from './pages/AppUrlListener';
+import Backup from "./pages/Backup";
 
 // Ionic setup
 setupIonicReact({
@@ -151,6 +152,9 @@ const App: React.FC = () => {
           </Route>
           <Route exact path="/about">
             <About accent={accentColor} />
+          </Route>
+          <Route exact path="/backup">
+            <Backup accent={accentColor} />
           </Route>
           <Route exact path="/share">
             <Share accent={accentColor} />

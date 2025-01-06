@@ -58,7 +58,8 @@
         "reviewTour": "重看導覽",
         "about": "關於 Countdate",
         "toggleExtendMode": "切換日期擴充模式（可選更久遠的日期）",
-        "toggleRelativeMode": "切換相對時間模式（30天一個月）"
+        "toggleRelativeMode": "切換相對時間模式（30天一個月）",
+        "backup": "備份"
       },
       "theme": {
         "title": "主題",
@@ -70,6 +71,22 @@
       "title": "分享",
       "date": "日期",
       "openApp": "用 Countdate app 開啟"
+    },
+    "backup": {
+      "title": "備份資料",
+      "confirm": {
+        "title": "覆蓋所有現有資料？"
+      },
+      "message": {
+        "successful": "資料匯入成功",
+        "failed": "失敗"
+      },
+      "export": "匯出",
+      "import": "匯入",
+      "share": {
+        "title": "Countdate 備份",
+        "text": "分享您的 Countdate 備份文件"
+      }
     }
   },
   "c": {

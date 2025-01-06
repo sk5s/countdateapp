@@ -58,7 +58,8 @@
         "reviewTour": "Review tour",
         "about": "About Countdate",
         "toggleExtendMode": "Toggle date extension mode (extend the range of the date selection)",
-        "toggleRelativeMode": "Toggle relative time mode (30 days a month)"
+        "toggleRelativeMode": "Toggle relative time mode (30 days a month)",
+        "backup": "Backup"
       },
       "theme": {
         "title": "Theme",
@@ -70,6 +71,22 @@
       "title": "Share",
       "date": "Date",
       "openApp": "Open with Countdate app"
+    },
+    "backup": {
+      "title": "Backup data",
+      "confirm": {
+        "title": "Overwrite all existing data?"
+      },
+      "message": {
+        "successful": "Data imported successfully",
+        "failed": "Failed"
+      },
+      "export": "Export",
+      "import": "Import",
+      "share": {
+        "title": "Countdate Backup",
+        "text": "Share your Countdate backup file"
+      }
     }
   },
   "c": {

@@ -75,7 +75,7 @@ const Home: React.FC<{ accent: string; textColor: string;count:any;setCount:any;
       </IonHeader>
       <IonContent>
         {/* Refresher */}
-        {platform == "ios" ? null : (
+        {platform === "ios" ? null : (
           <IonRefresher slot="fixed" onIonRefresh={handleRefresh}>
             <IonRefresherContent></IonRefresherContent>
           </IonRefresher>

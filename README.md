@@ -154,6 +154,7 @@ click add button to add a countdate
 - [x] Native desktop widget
 - [x] Count Month
 - [ ] Extend day selection
+- [x] Export/Import countdate
 
 See the [open issues](https://github.com/sk5s/countdateapp/issues) for a full list of proposed features (and known issues).
 

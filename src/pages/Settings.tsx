@@ -15,9 +15,9 @@ import {
 } from "@ionic/react";
 import {
   calendar,
-  calendarNumber,
   code,
   contrast,
+  documentText,
   help,
   information,
   logoAndroid,
@@ -253,6 +253,13 @@ const Settings: React.FC<{ accent: string;setView:any; }> = ({ accent,setView })
               <IonIcon icon={help} /> {t("p.settings.general.reviewTour")}
             </IonLabel>
           </IonItem>
+          <IonRouterLink routerLink="/backup">
+            <IonItem>
+              <IonLabel color="dark">
+                <IonIcon icon={documentText} /> {t("p.settings.general.backup")}
+              </IonLabel>
+            </IonItem>
+          </IonRouterLink>
           <IonRouterLink routerLink="/about">
             <IonItem>
               <IonLabel color="dark">
