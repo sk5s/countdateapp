@@ -5,4 +5,4 @@
 * <b>Android、iOS:</b> Ready to use native app.
 * <b>Web:</b> Web version of countdate app is also available.
 * <b>Free to Use:</b> As always, this app is free to download and use!
-* <b>Open Source:</b> Since this app is MIT licensed, you can modified it!
+* <b>Open Source:</b> Since this app is MIT licensed, you can modify it!
