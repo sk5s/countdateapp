@@ -15,6 +15,8 @@
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
 
+> **[Free app publishing by 🚀 Launch Hive](https://launch-hive.sk5s.com/)**
+
 [![Releases Version][releases-version-shield]][releases-version-url]
 [![Last Commit][last-commit-shield]][last-commit-url]
 
@@ -111,7 +113,7 @@ Since this app is MIT licensed, you can modify it!
 
 ### Built With
 
-- [ionic (ionic react)](https://ionicframework.com/)
+- [Ionic (Ionic React)](https://ionicframework.com/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
