@@ -5,9 +5,9 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>zh-Hant-TW</string>
 	<key>CFBundleLocalizations</key>
-		<string>zh-Hant-TW</string>
-		<string>en</string>
 	<array>
+    <string>zh-Hant-TW</string>
+    <string>en</string>
 	</array>
 	<key>CFBundleDisplayName</key>
 	<string>Countdate</string>
