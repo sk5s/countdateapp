@@ -78,8 +78,13 @@
         "title": "Overwrite all existing data?"
       },
       "message": {
-        "successful": "Data imported successfully",
-        "failed": "Failed"
+        "failed": "Failed",
+        "import": {
+          "successful": "Data imported successfully"
+        },
+        "export": {
+          "successful": "Data exported successfully"
+        }
       },
       "export": "Export",
       "import": "Import",

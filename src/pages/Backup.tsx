@@ -60,7 +60,7 @@ const Backup: React.FC<{ accent: string }> = ({ accent }) => {
           }
           console.log("Data imported successfully");
           presentToast({
-            message: t("p.backup.message.successful"),
+            message: t("p.backup.message.import.successful"),
             duration: 1500,
             position: "bottom",
           });
@@ -72,14 +72,32 @@ const Backup: React.FC<{ accent: string }> = ({ accent }) => {
           trigger("countdate_accent:change")
         } else {
           console.error("Invalid file content");
+          presentToast({
+            message: t("p.backup.message.failed") + `: Invalid file content`,
+            duration: 1500,
+            position: "bottom",
+            color: "danger",
+          });
         }
       };
       reader.onerror = (error) => {
         console.error("Error reading file:", error);
+        presentToast({
+          message: t("p.backup.message.failed") + `: ${error}`,
+          duration: 1500,
+          position: "bottom",
+          color: "danger",
+        });
       };
       reader.readAsText(file);
     } catch (error) {
       console.error("Error importing data:", error);
+      presentToast({
+        message: t("p.backup.message.failed") + `: ${error.message}`,
+        duration: 1500,
+        position: "bottom",
+        color: "danger",
+      });
     }
   };
   
@@ -100,13 +118,13 @@ const Backup: React.FC<{ accent: string }> = ({ accent }) => {
         await Filesystem.writeFile({
           path: fileName,
           data: jsonString,
-          directory: Directory.Documents,
+          directory: Directory.Cache,
           encoding: Encoding.UTF8,
         });
 
         const fileUrl = await Filesystem.getUri({
           path: fileName,
-          directory: Directory.Documents
+          directory: Directory.Cache
         })
         await Share.share({
           title: t('p.backup.share.title'),
@@ -125,7 +143,7 @@ const Backup: React.FC<{ accent: string }> = ({ accent }) => {
         URL.revokeObjectURL(url);
       }
       presentToast({
-        message: t("p.backup.message.successful"),
+        message: t("p.backup.message.export.successful"),
         duration: 1500,
         position: "bottom",
       });

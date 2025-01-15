@@ -78,8 +78,13 @@
         "title": "覆蓋所有現有資料？"
       },
       "message": {
-        "successful": "資料匯入成功",
-        "failed": "失敗"
+        "failed": "失敗",
+        "import": {
+          "successful": "資料匯入成功"
+        },
+        "export": {
+          "successful": "資料匯出成功"
+        }
       },
       "export": "匯出",
       "import": "匯入",

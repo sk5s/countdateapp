@@ -3,7 +3,12 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>en</string>
+	<string>zh-Hant-TW</string>
+	<key>CFBundleLocalizations</key>
+		<string>zh-Hant-TW</string>
+		<string>en</string>
+	<array>
+	</array>
 	<key>CFBundleDisplayName</key>
 	<string>Countdate</string>
 	<key>CFBundleExecutable</key>

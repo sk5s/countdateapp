@@ -78,8 +78,13 @@
         "title": "覆盖所有现有资料？"
       },
       "message": {
-        "successful": "数据导入成功",
-        "failed": "失败"
+        "failed": "失败",
+        "import": {
+          "successful": "数据导入成功"
+        },
+        "export": {
+          "successful": "数据导出成功"
+        }
       },
       "export": "导出",
       "import": "导入",
