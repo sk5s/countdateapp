@@ -1,0 +1,50 @@
+workflows:
+  ionic-capacitor-ios-workflow:
+    name: Ionic Capacitor iOS Workflow
+    max_build_duration: 120
+    instance_type: mac_mini_m2
+    integrations:
+      app_store_connect: sk5s_appstoreconnect
+    environment:
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: cyou.sk5s.app.countdate
+      vars:
+        # Ionic Xcode worskspace and scheme
+        XCODE_WORKSPACE: "App.xcworkspace"
+        XCODE_SCHEME: "App"
+        APP_STORE_APP_ID: 6553989325
+      node: v20.11.1
+      xcode: latest # <-- set to specific version e.g. 14.3, 15.0 to avoid unexpected updates.
+      cocoapods: default
+    scripts:
+      - name: Install npm dependencies for Ionic project
+        script: |
+          npm install
+      - name: Build Ionic project
+        script: |
+          npm run build
+      - name: Cocoapods installation
+        script: |
+          cd ios/App && rm ./Podfile.lock && pod install --repo-update
+      - name: Update dependencies and copy web assets to native project
+        script: |
+          npx cap sync
+      - name: Set up code signing settings on Xcode project
+        script: |
+          xcode-project use-profiles
+      - name: Build ipa for distribution
+        script: |
+          cd $CM_BUILD_DIR/ios/App
+          xcode-project build-ipa \
+            --workspace "$XCODE_WORKSPACE" \
+            --scheme "$XCODE_SCHEME"
+    artifacts:
+      - $CM_BUILD_DIR/ios/App/build/ios/ipa/*.ipa
+    publishing:
+      app_store_connect:
+        auth: integration
+        submit_to_testflight: true
+        beta_groups:
+          - me
+        submit_to_app_store: false
