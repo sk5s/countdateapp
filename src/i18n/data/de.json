@@ -34,7 +34,7 @@
       },
       "tips": "Wählen Sie ein Datum vor dem heutigen Tag, um einen Vorwärtszähler hinzuzufügen. Wählen Sie ein Datum nach dem heutigen Tag, um einen Rückwärtszähler hinzuzufügen. Eine Beschreibung kann nach dem Hinzufügen des Datums hinzugefügt werden.",
       "toast": "Hinzugefügt!",
-      "extend": "Wenn Sie ein Datum hinzufügen möchten, das lange zurückliegt oder lange in der Zukunft liegt, aktivieren Sie bitte in den Einstellungen den Modus „Datumsverlängerung“."
+      "extend": "Wenn Sie ein Datum hinzufügen möchten, das lange zurückliegt oder lange in der Zukunft liegt, aktivieren Sie bitte in den Einstellungen den Modus 'Datumsverlängerung'."
     },
     "edit": {
       "title": "Zähldatum bearbeiten",
