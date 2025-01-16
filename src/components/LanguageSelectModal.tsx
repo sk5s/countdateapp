@@ -16,6 +16,10 @@ export default function LanguageSelectModal({accent}:{accent: string;}) {
       name: "繁體中文",
       by: "sk5s"
     },
+    "de": {
+      name: "Deutsch",
+      by: "natowi"
+    },
     "en": {
       name: "English (US)",
       by: "sk5s, Nqtural"
