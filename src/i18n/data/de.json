@@ -1,0 +1,158 @@
+{
+  "g": {
+    "back": "Zurück",
+    "close": "Schließen",
+    "cancel": "Abbrechen",
+    "confirm": "Übernehmen",
+    "discard": "Verwerfen"
+  },
+  "p": {
+    "about": {
+      "title": "Über Countdate",
+      "version": "App Version: {{versionName}}",
+      "platform": "Plattform:",
+      "reload": "Neu laden",
+      "slogan": "Datums-Countdown: Wissen, wie viele Tage noch bis zu einem bestimmten Datum verbleiben.",
+      "link": {
+        "landing": "Projekt Webseite",
+        "github": "Projekt auf Github",
+        "bug": "Fehler melden",
+        "feature": "Neue Funktion vorschlagen"
+      },
+      "more": {
+        "title": "Weitere sk5s Apps: ",
+        "weread": "Weread",
+        "onea4paperyourlife": "OneA4PaperYourLife"
+      }
+    },
+    "add": {
+      "title": "Zähldatum hinzufügen",
+      "add": "Hinzufügen",
+      "eventName": {
+        "label": "Ereignisname",
+        "placeholder": "Ereignisname hier eingeben"
+      },
+      "tips": "Wählen Sie ein Datum vor dem heutigen Tag, um einen Vorwärtszähler hinzuzufügen. Wählen Sie ein Datum nach dem heutigen Tag, um einen Rückwärtszähler hinzuzufügen. Eine Beschreibung kann nach dem Hinzufügen des Datums hinzugefügt werden.",
+      "toast": "Hinzugefügt!",
+      "extend": "Wenn Sie ein Datum hinzufügen möchten, das lange zurückliegt oder lange in der Zukunft liegt, aktivieren Sie bitte in den Einstellungen den Modus „Datumsverlängerung“."
+    },
+    "edit": {
+      "title": "Zähldatum bearbeiten",
+      "description": "Klicken Sie zum Bearbeiten auf den Titel oder das Datum",
+      "noData": "Kein Zähldatum vorhanden"
+    },
+    "home": {
+      "title": "Zähldatum",
+      "countdown": "Herunterzählen",
+      "countup": "Hochzählen",
+      "daysView": "Tage",
+      "weeksView": "Wochen",
+      "monthsView": "Monate"
+    },
+    "settings": {
+      "title": "Einstellungen",
+      "general": {
+        "title": "Allgemein",
+        "toggleDevMode": "Entwicklermodus",
+        "testLocalNotification": "Lokale Benachrictigungen testen",
+        "reviewTour": "Einführung wiederholen",
+        "about": "Über Countdate",
+        "toggleExtendMode": "Datumserweiterungsmodus umschalten (den Bereich der Datumsauswahl erweitern)",
+        "toggleRelativeMode": "Umschalten des relativen Zeitmodus (30 Tage pro Monat)",
+        "backup": "Sicherung"
+      },
+      "theme": {
+        "title": "Thema",
+        "toggleDarkMode": "Dunkelmodus umschalten",
+        "followSystem": "Dunkelmodus des Systems übernehmen"
+      }
+    },
+    "share": {
+      "title": "Teilen",
+      "date": "Datum",
+      "openApp": "Mit Countdate App öffnen"
+    },
+    "backup": {
+      "title": "Daten sichern",
+      "confirm": {
+        "title": "Alle vorhandenen Daten überschreiben?"
+      },
+      "message": {
+        "failed": "Fehlgeschlagen",
+        "import": {
+          "successful": "Daten erfolgreich importiert"
+        },
+        "export": {
+          "successful": "Daten erfolgreich exportiert"
+        }
+      },
+      "export": "Export",
+      "import": "Import",
+      "share": {
+        "title": "Countdate Sicherung",
+        "text": "Countdate Sicherungsdatei teilen"
+      }
+    }
+  },
+  "c": {
+    "card": {
+      "days": "Tage",
+      "weeks": "Wochen",
+      "months": "Monate",
+      "years": "Jahre",
+      "countdownEvent": "Tage bis {{eventName}}:"
+    },
+    "cards": {
+      "noData": "Keine Daten",
+      "toCountup": "Zum Hochzählen",
+      "toCountdown": "Zum Herunterzählen",
+      "addCountdate": "Zähldatum hinzufügen",
+      "addCountdate!": "Zähldatum hinzufügen!",
+      "edit": "Bearbeiten",
+      "settings": "Einstellungen",
+      "checkData": "Daten prüfen",
+      "delete!": "Löschen!",
+      "deleted": "Gelöscht",
+      "deleteMessage": "Dieser Vorgang kann nicht rückgängig gemacht werden!",
+      "deleteAllData": "Alle Daten löschen",
+      "copyData": "Ereignisdaten kopieren",
+      "copied!": "Kopiert!"
+    },
+    "settings": {
+      "changeTextColor": "Textfarbe ändern",
+      "changeAccent": "Akzentfarbe ändern",
+      "followAccent": "Akzentfarbe übernehmen",
+      "saveColor": "Farbe speichern",
+      "changeLang": "Sprache ändern"
+    },
+    "tour": {
+      "title": "Countdate Einführung",
+      "step_1": "Wie man ein neues Ereignis hinzufügt: Ein neues Zähldatum hinzufügen",
+      "step_2": "Name des Ereignisses eingeben",
+      "step_3": "Wählen Sie das Datum der Veranstaltung (entweder vor oder nach dem heutigen Tag)",
+      "step_4": "Hinzufügen klicken",
+      "step_5": "Wie man Ereignisse bearbeitet: Klicken Sie auf die Schaltfläche Bearbeiten",
+      "step_6": "Klicken Sie zum Bearbeiten auf den Titel oder das Datum",
+      "step_7": "Klicken Sie auf diese Schaltfläche, um das Ereignis zu löschen",
+      "step_8": "Drücken Sie diese Taste und ziehen Sie das Ereignis, um es neu zu ordnen",
+      "can_review": "Sie können die Seite 'Einstellungen' aufrufen, um die Einführung zu wiederholen",
+      "learn_more": "Mehr über die Verwendung erfahren"
+    },
+    "editor": {
+      "description": "BEschreibung",
+      "needToSave": "Speichern erforderlich",
+      "noDescriptionData": "Keine Beschreibungsdaten",
+      "tips": "Der Beschreibungstext unterstützt eine einfache Markdown-Syntax",
+      "quickEdit": {
+        "title": "Schnellbearbeitung",
+        "confirm": "Änderung speichern?",
+        "addOneMonth": "+1 Monat",
+        "minusOneDay": "-1 Tag",
+        "addOneDay": "+1 Tag"
+      },
+      "edit": "Bearbeiten",
+      "completeEdit": "Bearbeitung abschließen",
+      "shareDescription": "Ereignisname und Datum teilen"
+    }
+  }
+}
