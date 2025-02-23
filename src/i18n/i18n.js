@@ -5,6 +5,7 @@ import { Device } from "@capacitor/device";
 
 // Languages codes: https://developers.google.com/admin-sdk/directory/v1/languages
 
+import de from "./data/de.json";
 import en from "./data/en.json";
 import tw from "./data/zh-TW.json";
 import th from "./data/th.json";
@@ -30,6 +31,9 @@ const resources = {
   "th": {
     translation: th,
   },
+  "de": {
+    translation: de,
+  }
 };
 
 i18n

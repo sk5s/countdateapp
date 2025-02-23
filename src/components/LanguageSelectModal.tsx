@@ -10,7 +10,7 @@ export default function LanguageSelectModal({accent}:{accent: string;}) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [radioSelected, setRadioSelected] = useState("zh-TW");
 
-  const allLangName = ["zh-TW", "en", "th", "zh-CN" ];
+  const allLangName = ["zh-TW", "de", "en", "th", "zh-CN" ];
   const langAndDetail:any = {
     "zh-TW": {
       name: "繁體中文",
