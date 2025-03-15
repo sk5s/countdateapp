@@ -21,7 +21,7 @@ import CountCards from "../components/CountCards";
 import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
 import { useSwipeable } from "react-swipeable";
-import { trigger } from "../lib/Events";
+import { trigger, on } from "../lib/Events";
 import "./Home.css"
 import CountDownUpSwitcher from "../components/CountDownUpSwitcher";
 import { Device } from "@capacitor/device";
@@ -59,6 +59,13 @@ const Home: React.FC<{ accent: string; textColor: string;count:any;setCount:any;
   };
 
   useEffect(() => {
+    // Translation not updating workaround
+    on("countdate_data:change", () => {
+      setView("weeks")
+      setTimeout(() => {
+        setView("days")
+      }, 100);
+    })
     const getDevicePlatform = async () => {
       const info = await Device.getInfo()
       setPlatform(info.platform)
