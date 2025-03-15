@@ -172,6 +172,7 @@ const Settings: React.FC<{ accent: string;setView:any; }> = ({ accent,setView })
   };
 
   useEffect(() => {
+    console.log("Get device platform")
     const getDevicePlatform = async () => {
       const info = await Device.getInfo()
       setPlatform(info.platform)

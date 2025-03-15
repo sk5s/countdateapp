@@ -1,6 +1,6 @@
-import { Redirect, Route } from "react-router-dom";
+import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet, setupIonicReact } from "@ionic/react";
-import { IonReactRouter } from "@ionic/react-router";
+import { IonReactRouter } from '@ionic/react-router';
 import { App as NativeApp } from "@capacitor/app";
 import { useHistory } from "react-router";
 import Home from "./pages/Home";
@@ -44,7 +44,7 @@ setupIonicReact({
   mode: "ios",
 });
 
-const App: React.FC = () => {
+function App() {
   const history = useHistory();
   const { t, i18n } = useTranslation();
   const getCountdownOrUp = () => {
