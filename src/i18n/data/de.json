@@ -100,7 +100,7 @@
       "weeks": "Wochen",
       "months": "Monate",
       "years": "Jahre",
-      "countdownEvent": "Tage bis {{eventName}}:"
+      "countdownEvent": "{{eventName}}"
     },
     "cards": {
       "noData": "Keine Daten",
