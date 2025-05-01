@@ -126,19 +126,15 @@ const Edit: React.FC<{ accent: string; textColor: string; count:any; setCount:an
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        {/* <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle>{t("p.edit.title")}</IonTitle>
-          </IonToolbar>
-        </IonHeader> */}
-
         <IonHeader>
           <CountDownUpSwitcher accent={accent} count={count} setCount={setCount} />
         </IonHeader>
 
-        <span style={{ marginLeft: 36, marginTop: 10 }}>
-          {t("p.edit.description")}
-        </span>
+        <div style={{ marginLeft: 36, marginTop: 16 }}>
+          <span>
+            {t("p.edit.description")}
+          </span>
+        </div>
 
         {/* Countdate lists */}
         <IonList inset={true}>

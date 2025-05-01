@@ -68,18 +68,6 @@ export default function DescriptionEditor({
             <span>
               {t("c.editor.description")}
             </span>
-            <IonButton
-              slot="end"
-              color={accent}
-              onClick={() => {
-                edit_this_countdate_item_description(description);
-                setNeedToSave(false);
-              }}
-              size="small"
-              fill="clear"
-            >
-              <IonIcon icon={save} />
-            </IonButton>
           </IonItem>
           <IonItem>
             <IonTextarea
@@ -95,23 +83,38 @@ export default function DescriptionEditor({
               }}
             ></IonTextarea>
           </IonItem>
-          <IonButton
-            id="click-trigger-description"
-            color={accent}
-            fill="clear"
-            size="small"
-          >
-            {" "}
-            <IonIcon icon={informationCircle}></IonIcon>{" "}
-          </IonButton>
-          <IonPopover trigger="click-trigger-description" triggerAction="click">
-            <IonContent class="ion-padding">{t("c.editor.tips")}</IonContent>
-          </IonPopover>
+          <div style={{ marginTop: 16, display: "flex", justifyContent: "space-between" }}>
+            <IonButton
+              id="click-trigger-description"
+              color={accent}
+              fill="clear"
+              size="small"
+            >
+              {" "}
+              <IonIcon icon={informationCircle}></IonIcon>{" "}
+            </IonButton>
+            <IonPopover trigger="click-trigger-description" triggerAction="click">
+              <IonContent class="ion-padding">{t("c.editor.tips")}</IonContent>
+            </IonPopover>
+
+            <IonButton
+              slot="end"
+              color={accent}
+              onClick={() => {
+                edit_this_countdate_item_description(description);
+                setNeedToSave(false);
+              }}
+              size="small"
+              fill="clear"
+            >
+              <IonIcon icon={save} />
+            </IonButton>
+          </div>
         </>
       ) : (
         <>
           {needToSave ? (
-            <IonChip style={{ marginLeft: "10px" }} color={accent}>
+            <IonChip style={{ marginLeft: 4, marginBottom: 16 }} color={accent}>
               <IonIcon icon={informationCircle}></IonIcon>
               <IonLabel>{t("c.editor.needToSave")}</IonLabel>
             </IonChip>

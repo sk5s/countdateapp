@@ -199,7 +199,7 @@ export default function EventDetailModal({
           <>
           {contentEditable ? (
             <IonCardContent>
-              <span>{t("p.edit.description")}</span>
+              <div style={{ marginBottom: 16 }}>{t("p.edit.description")}</div>
               <CountdateItem
                 key={myprops.id}
                 id={myprops.id}
@@ -210,10 +210,11 @@ export default function EventDetailModal({
                 textColor={myprops.textColor}
               />
               <IonItem>
-                <span style={{marginRight: "10px"}}>
+                <span style={{marginRight: 10}}>
                   {t("c.editor.quickEdit.title")}
                 </span>
                 <IonButton
+                  style={{ marginRight: 8 }}
                   onClick={() => addOneMonthHandler()}
                   size="small"
                   color={myprops.accent}
@@ -222,6 +223,7 @@ export default function EventDetailModal({
                   {t("c.editor.quickEdit.addOneMonth")}
                 </IonButton>
                 <IonButton
+                  style={{ marginRight: 8 }}
                   onClick={() => minusOneDayHandler()}
                   size="small"
                   color={myprops.accent}
@@ -230,6 +232,7 @@ export default function EventDetailModal({
                   {t("c.editor.quickEdit.minusOneDay")}
                 </IonButton>
                 <IonButton
+                  style={{ marginRight: 8 }}
                   onClick={() => addOneDayHandler()}
                   size="small"
                   color={myprops.accent}

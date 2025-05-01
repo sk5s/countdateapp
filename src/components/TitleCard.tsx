@@ -13,7 +13,7 @@ export default function TitleCard(props: {
     <div>
       <IonCard>
         <IonCardHeader>
-          <IonCardSubtitle>{props.subtitle}</IonCardSubtitle>
+          <IonCardSubtitle style={{marginTop: 12}}>{props.subtitle}</IonCardSubtitle>
           <IonCardTitle>{props.title}</IonCardTitle>
         </IonCardHeader>
       </IonCard>

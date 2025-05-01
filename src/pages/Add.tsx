@@ -29,6 +29,7 @@ import key from "../lib/storageKey.json";
 import { add, informationCircle } from "ionicons/icons";
 import LocalizeBackButton from "../components/LocalizeBackButton";
 import { EXTEND_YEARS } from '../constants/Constants'
+import './Add.css'
 
 const Add: React.FC<{ accent: string }> = ({ accent }) => {
   const { t } = useTranslation();
@@ -113,11 +114,6 @@ const Add: React.FC<{ accent: string }> = ({ accent }) => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen className="ion-padding">
-        {/* <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle>{t("p.add.title")}</IonTitle>
-          </IonToolbar>
-        </IonHeader> */}
         <IonGrid>
           <IonRow>
             <IonCol>
@@ -140,17 +136,18 @@ const Add: React.FC<{ accent: string }> = ({ accent }) => {
             </IonCol>
           </IonRow>
           <IonRow>
-            <IonCol>
+            <IonCol style={{ textAlign: "end" }}>
               <IonButton
                 size="small"
                 id="click-trigger"
                 color={accent}
                 shape="round"
+                fill="clear"
               >
                 {" "}
                 <IonIcon icon={informationCircle}></IonIcon>{" "}
               </IonButton>
-              <IonPopover trigger="click-trigger" triggerAction="click">
+              <IonPopover trigger="click-trigger" triggerAction="click" className="wide-popover-300">
                 <IonContent class="ion-padding">
                   {t("p.add.tips")}
                   <br/>
