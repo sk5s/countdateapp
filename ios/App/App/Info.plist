@@ -6,8 +6,8 @@
 	<string>zh-Hant-TW</string>
 	<key>CFBundleLocalizations</key>
 	<array>
-    <string>zh-Hant-TW</string>
-    <string>en</string>
+		<string>zh-Hant-TW</string>
+		<string>en</string>
 	</array>
 	<key>CFBundleDisplayName</key>
 	<string>Countdate</string>
