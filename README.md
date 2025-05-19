@@ -179,6 +179,15 @@ Don't forget to give the project a star! Thanks again!
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
+### Languages 
+**Countdate** uses [Weblate](https://weblate.org) to manage translations. If you would like to help translate the app, please visit [the Countdate project on Weblate](https://hosted.weblate.org/projects/countdateapp/), thank you!
+
+<div align="center">
+<a href="https://hosted.weblate.org/engage/countdateapp/">
+<img src="https://hosted.weblate.org/widget/countdateapp/multi-auto.svg" alt="Translation status" />
+</a>
+</div>
+
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- LICENSE -->
