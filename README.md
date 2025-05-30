@@ -15,8 +15,6 @@
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
 
-> **[Free app publishing by 🚀 Launch Hive](https://launch-hive.sk5s.com/)**
-
 [![Releases Version][releases-version-shield]][releases-version-url]
 [![Last Commit][last-commit-shield]][last-commit-url]
 
