@@ -151,7 +151,7 @@ const About: React.FC<{ accent: string }> = ({ accent }) => {
           <div style={{marginBottom:"10px"}}>
             <IonItem>
               <IonThumbnail slot="start">
-                <img alt="Silhouette of mountains" src="https://weread.sk5s.cyou/weread-logo.png" />
+                <img alt="Silhouette of mountains" src="https://weread.sk5s.com/weread-logo.png" />
               </IonThumbnail>
               <IonLabel>{t("p.about.more.weread")}</IonLabel>
             </IonItem>

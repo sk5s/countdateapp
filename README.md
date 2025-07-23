@@ -27,7 +27,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/sk5s/countdateapp">
-    <img src="https://sk5s.cyou/countdate-landing/assets/img/icon-foreground.png" alt="Logo" width="80" height="80">
+    <img src="https://countdate.sk5s.com/assets/img/icon-foreground.png" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">Countdate</h3>
@@ -82,8 +82,8 @@
 
 <!--[![Product Name Screen Shot]](https://sk5s.cyou/)-->
 
-<a target="_blank" href='https://play.google.com/store/apps/details?id=cyou.sk5s.app.countdate&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png' width="150px"/></a>
-<a target="_blank" href='https://apt.izzysoft.de/fdroid/index/apk/cyou.sk5s.app.countdate'><img alt='Get it on IzzyOnDroid' src='https://sk5s.cyou/countdate-landing/assets/img/IzzyOnDroid.png' width="150px"/></a>
+<a target="_blank" href='https://play.google.com/store/apps/details?id=cyou.sk5s.app.countdate'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png' width="150px"/></a>
+<a target="_blank" href='https://apt.izzysoft.de/fdroid/index/apk/cyou.sk5s.app.countdate'><img alt='Get it on IzzyOnDroid' src='https://countdate.sk5s.com/assets/img/IzzyOnDroid.png' width="150px"/></a>
 <a target="_blank" href='https://apps.apple.com/US/app/id6553989325'><img alt='Download on the App Store' src='https://sk5s.cyou/sk5s/img/app_store_badge_en.png' width="150px"/></a>
 
 Date Countdown: Know How Many Days Left To a Specific Date.
@@ -119,15 +119,16 @@ Since this app is MIT licensed, you can modify it!
 
 ## Getting Started
 
-Download apk file on releases page and install to use the app. [https://sk5s.cyou/countdate-landing/](https://sk5s.cyou/countdate-landing/)
+Download apk file on releases page and install to use the app. [https://countdate.sk5s.com](https://countdate.sk5s.com)
 
 ### Prerequisites
 
-Have an android phone or web browser.
+Have an Android/iOS phone or web browser.
 
 ### Installation
 
-Open apk file and install.
+Android: Open apk file and install.
+iOS: Install the app from the App Store.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -135,7 +136,7 @@ Open apk file and install.
 
 ## Usage
 
-click add button to add a countdate
+Click the "+" button to add a Countdate.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
