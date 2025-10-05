@@ -18,7 +18,11 @@ import {
   IonCard,
   IonCardHeader,
   IonCardTitle,
-  IonCardSubtitle
+  IonCardSubtitle,
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonButtons
 } from "@ionic/react";
 import {
   settings,
@@ -303,52 +307,61 @@ export default function CountCards({
         isOpen={popover_oepn}
         onDidDismiss={() => set_popover_oepn(false)}
       >
-        <IonButton onClick={() => set_popover_oepn(false)}>
-          {t("g.close")}
-        </IonButton>
-        <IonButton
-          onClick={() => {
-            presentAlert({
-              header: t("c.cards.delete!"),
-              message: t("c.cards.deleteMessage"),
-              buttons: [
-                t("g.cancel"),
-                {
-                  text: t("g.confirm"),
-                  handler: (d) => {
-                    delete_countdate_events_storage_data();
-                    presentLoading({
-                      duration: 100,
-                      showBackdrop: false,
-                    });
-                    check_countdate_events_storage_data();
-                  },
-                },
-              ],
-            });
-          }}
-          color="danger"
-        >
-          {t("c.cards.deleteAllData")}
-        </IonButton>
-        {(isPlatform("android") && isPlatform("hybrid")) ||
-        (isPlatform("ios") && isPlatform("hybrid")) ? (
-          <IonButton
-            onClick={() => {
-              copy(popover_content);
-              presentToast({
-                message: t("c.cards.copied!"),
-                duration: 1500,
-                position: "bottom",
-              });
-            }}
-          >
-            {t("c.cards.copyData")}
-          </IonButton>
-        ) : (
-          ""
-        )}
+        <IonHeader>
+          <IonToolbar>
+            <IonTitle>{t("c.cards.checkData")}</IonTitle>
+            <IonButtons slot="end">
+              <IonButton onClick={() => set_popover_oepn(false)}>
+                {t("g.close")}
+              </IonButton>
+            </IonButtons>
+          </IonToolbar>
+        </IonHeader>
         <IonContent>
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <IonButton
+              onClick={() => {
+                presentAlert({
+                  header: t("c.cards.delete!"),
+                  message: t("c.cards.deleteMessage"),
+                  buttons: [
+                    t("g.cancel"),
+                    {
+                      text: t("g.confirm"),
+                      handler: (d) => {
+                        delete_countdate_events_storage_data();
+                        presentLoading({
+                          duration: 100,
+                          showBackdrop: false,
+                        });
+                        check_countdate_events_storage_data();
+                      },
+                    },
+                  ],
+                });
+              }}
+              color="danger"
+            >
+              {t("c.cards.deleteAllData")}
+            </IonButton>
+            {(isPlatform("android") && isPlatform("hybrid")) ||
+            (isPlatform("ios") && isPlatform("hybrid")) ? (
+              <IonButton
+                onClick={() => {
+                  copy(popover_content);
+                  presentToast({
+                    message: t("c.cards.copied!"),
+                    duration: 1500,
+                    position: "bottom",
+                  });
+                }}
+              >
+                {t("c.cards.copyData")}
+              </IonButton>
+            ) : (
+              ""
+            )}
+          </div>
           <div style={{ padding: "20px" }}>
             LanguageCode: <IonLabel>{languageCode}</IonLabel>
             <br />

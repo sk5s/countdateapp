@@ -86,7 +86,7 @@ const Add: React.FC<{ accent: string }> = ({ accent }) => {
     if (value === "true") {
       setYears(EXTEND_YEARS);
     } else {
-      setYears(2);
+      setYears(10);
     }
   };
   on("countdate_extend:change", () => {

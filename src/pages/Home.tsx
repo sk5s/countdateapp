@@ -113,7 +113,7 @@ const Home: React.FC<{ accent: string; textColor: string;count:any;setCount:any;
       </IonContent>
       <IonFooter translucent={false}>
         {/* Days and weeks switcher */}
-        <IonToolbar>
+        <IonToolbar style={{paddingBottom: "16px"}}>
           <IonSegment
             color={accent}
             value={view}

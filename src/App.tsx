@@ -131,7 +131,7 @@ function App() {
   return (
     <IonApp>
       <IonReactRouter>
-        <AppUrlListener></AppUrlListener>
+        <AppUrlListener />
         <IonRouterOutlet>
           <Route exact path="/home">
             <Home accent={accentColor} textColor={textColor} count={countdownOrUp} setCount={setCountdownOrUp} view={view} setView={setView} relative={relative} />
