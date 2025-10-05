@@ -59,7 +59,8 @@
         "about": "About Countdate",
         "toggleExtendMode": "Toggle date extension mode (extend the range of the date selection)",
         "toggleRelativeMode": "Toggle relative time mode (30 days a month)",
-        "backup": "Backup"
+        "backup": "Backup",
+        "webFrontendReload": "Reload web frontend"
       },
       "theme": {
         "title": "Theme",

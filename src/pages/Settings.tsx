@@ -22,6 +22,7 @@ import {
   information,
   logoAndroid,
   notifications,
+  reload,
   text,
 } from "ionicons/icons";
 import { useTranslation } from "react-i18next";
@@ -38,13 +39,18 @@ import LocalizeBackButton from "../components/LocalizeBackButton";
 import LanguageSelectModal from "../components/LanguageSelectModal";
 import { Device } from "@capacitor/device";
 
-const Settings: React.FC<{ accent: string;setView:any; }> = ({ accent,setView }) => {
+const Settings: React.FC<{ accent: string; setView: any }> = ({
+  accent,
+  setView,
+}) => {
   const { t } = useTranslation();
-  const [platform, setPlatform] = useState<'ios' | 'android' | 'web'>("android")
+  const [platform, setPlatform] = useState<"ios" | "android" | "web">(
+    "android"
+  );
   const [darkChecked, setDarkChecked] = useState<boolean>();
   const [devChecked, setDevChecked] = useState<boolean>(false);
   const [extendChecked, setExtendChecked] = useState<boolean>(false);
-  const [relativeChecked, setRelativeChecked] = useState<boolean>(false)
+  const [relativeChecked, setRelativeChecked] = useState<boolean>(false);
   const history = useHistory();
 
   const getDevMode = async () => {
@@ -93,10 +99,10 @@ const Settings: React.FC<{ accent: string;setView:any; }> = ({ accent,setView })
       value: tovalue.toString(),
     });
     setRelativeChecked(tovalue);
-    setView("days")
+    setView("days");
     // console.log(tovalue);
     trigger("countdate_relative:change");
-  }
+  };
 
   const testLocalNotification = async () => {
     // console.log("clicked");
@@ -115,13 +121,13 @@ const Settings: React.FC<{ accent: string;setView:any; }> = ({ accent,setView })
       document.body.classList.add("dark");
     } else if (value === "light") {
       darkmodeEnable = false;
-      document.body.classList.remove("dark")
+      document.body.classList.remove("dark");
     } else if (matchMedia.matches) {
       darkmodeEnable = matchMedia.matches;
       document.body.classList.add("dark");
     } else {
       darkmodeEnable = matchMedia.matches;
-      document.body.classList.remove("dark")
+      document.body.classList.remove("dark");
     }
     return darkmodeEnable;
   };
@@ -172,13 +178,13 @@ const Settings: React.FC<{ accent: string;setView:any; }> = ({ accent,setView })
   };
 
   useEffect(() => {
-    console.log("Get device platform")
+    console.log("Get device platform");
     const getDevicePlatform = async () => {
-      const info = await Device.getInfo()
-      setPlatform(info.platform)
-    }
-    getDevicePlatform()
-  }, [])
+      const info = await Device.getInfo();
+      setPlatform(info.platform);
+    };
+    getDevicePlatform();
+  }, []);
 
   return (
     <IonPage>
@@ -189,17 +195,11 @@ const Settings: React.FC<{ accent: string;setView:any; }> = ({ accent,setView })
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        {/* <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle>{t("p.settings.title")}</IonTitle>
-          </IonToolbar>
-        </IonHeader> */}
         <IonList>
           <IonListHeader lines="none" color={accent}>
             <IonLabel>{t("p.settings.general.title")}</IonLabel>
           </IonListHeader>
           <IonItem>
-            {/* <LanguageSelectAction /> */}
             <LanguageSelectModal accent={accent} />
           </IonItem>
           <IonItem>
@@ -227,27 +227,39 @@ const Settings: React.FC<{ accent: string;setView:any; }> = ({ accent,setView })
             </IonToggle>
           </IonItem>
           {platform === "android" && (
-          <>
-          <IonItem>
-            <IonToggle
-              checked={devChecked}
-              onClick={toggleDevModeHandler}
-              color={accent}
-            >
-              <IonIcon icon={code} />{" "}
-              {t("p.settings.general.toggleDevMode")}
-            </IonToggle>
-          </IonItem>
-          {(isPlatform("android") && isPlatform("hybrid") && devChecked) ||
-          (isPlatform("ios") && isPlatform("hybrid") && devChecked) ? (
-            <IonItem>
-              <IonLabel onClick={testLocalNotification}>
-                <IonIcon icon={notifications} />{" "}
-                {t("p.settings.general.testLocalNotification")}
-              </IonLabel>
-            </IonItem>
-          ) : null}
-          </>
+            <>
+              <IonItem>
+                <IonToggle
+                  checked={devChecked}
+                  onClick={toggleDevModeHandler}
+                  color={accent}
+                >
+                  <IonIcon icon={code} />{" "}
+                  {t("p.settings.general.toggleDevMode")}
+                </IonToggle>
+              </IonItem>
+              {(isPlatform("android") && isPlatform("hybrid") && devChecked) ||
+              (isPlatform("ios") && isPlatform("hybrid") && devChecked) ? (
+                <>
+                  <IonItem>
+                    <IonLabel onClick={testLocalNotification}>
+                      <IonIcon icon={notifications} />{" "}
+                      {t("p.settings.general.testLocalNotification")}
+                    </IonLabel>
+                  </IonItem>
+                  <IonItem>
+                    <IonLabel
+                      onClick={() => {
+                        location.pathname = "/";
+                      }}
+                    >
+                      <IonIcon icon={reload} />{" "}
+                      {t("p.settings.general.webFrontendReload")}
+                    </IonLabel>
+                  </IonItem>
+                </>
+              ) : null}
+            </>
           )}
           <IonItem>
             <IonLabel onClick={handleReviewTour}>
@@ -277,8 +289,7 @@ const Settings: React.FC<{ accent: string;setView:any; }> = ({ accent,setView })
               onClick={toggleDarkModeHandler}
               color={accent}
             >
-              <IonIcon icon={contrast} />{" "}
-              {t("p.settings.theme.toggleDarkMode")}
+              <IonIcon icon={contrast} /> {t("p.settings.theme.toggleDarkMode")}
             </IonToggle>
           </IonItem>
           <IonItem>
@@ -291,9 +302,9 @@ const Settings: React.FC<{ accent: string;setView:any; }> = ({ accent,setView })
             <AccentColorSelectModal />
           </IonItem>
           {platform === "android" && (
-          <IonItem>
-            <TextColorSelectModal accent={accent} />
-          </IonItem>
+            <IonItem>
+              <TextColorSelectModal accent={accent} />
+            </IonItem>
           )}
         </IonList>
       </IonContent>

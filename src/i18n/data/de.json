@@ -59,7 +59,8 @@
         "about": "Über Countdate",
         "toggleExtendMode": "Datumserweiterungsmodus umschalten (den Bereich der Datumsauswahl erweitern)",
         "toggleRelativeMode": "Umschalten des relativen Zeitmodus (30 Tage pro Monat)",
-        "backup": "Sicherung"
+        "backup": "Sicherung",
+        "webFrontendReload": "Web-Frontend neu laden"
       },
       "theme": {
         "title": "Thema",

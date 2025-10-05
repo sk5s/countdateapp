@@ -59,7 +59,8 @@
         "about": "關於 Countdate",
         "toggleExtendMode": "切換日期擴充模式（可選更久遠的日期）",
         "toggleRelativeMode": "切換相對時間模式（30天一個月）",
-        "backup": "備份"
+        "backup": "備份",
+        "webFrontendReload": "重新整理網頁前端"
       },
       "theme": {
         "title": "主題",
