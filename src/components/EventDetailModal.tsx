@@ -27,7 +27,8 @@ import key from "../lib/storageKey.json";
 import { trigger } from "../lib/Events";
 import { useState } from "react";
 import { isPlatform } from "@ionic/core";
-import { QRCodeSVG } from 'qrcode.react';
+import { QRCodeSVG } from "qrcode.react";
+import { formatDate } from "../lib/DateFormat";
 
 export default function EventDetailModal({
   detailStr,
@@ -45,7 +46,9 @@ export default function EventDetailModal({
   myprops: any;
 }) {
   const [needToSave, setNeedToSave] = useState(false);
-  const [description, setDescription] = useState(myprops.description ? myprops.description : "");
+  const [description, setDescription] = useState(
+    myprops.description ? myprops.description : ""
+  );
   const { t } = useTranslation();
   const [presentAlert] = useIonAlert();
   let countdate_events_data = [];
@@ -168,24 +171,35 @@ export default function EventDetailModal({
     <IonModal isOpen={isOpen} onDidDismiss={() => setIsOpen(false)}>
       <IonHeader>
         <IonToolbar>
-        {((isPlatform("android") && isPlatform("hybrid")) ||
-        (isPlatform("ios") && isPlatform("hybrid"))) ? 
-          <IonButtons>
-            <IonButton id="share-trigger" color={myprops.accent}>
-              <IonIcon icon={shareSocial} />
-            </IonButton>
-            <IonPopover trigger="share-trigger" triggerAction="click">
-              <IonContent class="ion-padding">
-                {t("c.editor.shareDescription")}
-                <QRCodeSVG size={172} includeMargin={true} value={`https://app.countdate.sk5s.cyou/share?title=${myprops.event.replace(/ /g,"%20")}&date=${myprops.date.split("T")[0]}`} imageSettings={{
-                  src: "/assets/icon/icon.png",
-                  height: 24,
-                  width: 24,
-                  excavate: true
-                }} />
-              </IonContent>
-            </IonPopover>
-          </IonButtons> : <></>}
+          {(isPlatform("android") && isPlatform("hybrid")) ||
+          (isPlatform("ios") && isPlatform("hybrid")) ? (
+            <IonButtons>
+              <IonButton id="share-trigger" color={myprops.accent}>
+                <IonIcon icon={shareSocial} />
+              </IonButton>
+              <IonPopover trigger="share-trigger" triggerAction="click">
+                <IonContent class="ion-padding">
+                  {t("c.editor.shareDescription")}
+                  <QRCodeSVG
+                    size={172}
+                    includeMargin={true}
+                    value={`https://app.countdate.sk5s.cyou/share?title=${myprops.event.replace(
+                      / /g,
+                      "%20"
+                    )}&date=${myprops.date.split("T")[0]}`}
+                    imageSettings={{
+                      src: "/assets/icon/icon.png",
+                      height: 24,
+                      width: 24,
+                      excavate: true,
+                    }}
+                  />
+                </IonContent>
+              </IonPopover>
+            </IonButtons>
+          ) : (
+            <></>
+          )}
           <IonTitle>{myprops.event}</IonTitle>
           <IonButtons slot="end">
             <IonButton color={myprops.accent} onClick={() => closeModal()}>
@@ -197,59 +211,65 @@ export default function EventDetailModal({
       <IonContent>
         <IonCard>
           <>
-          {contentEditable ? (
-            <IonCardContent>
-              <div style={{ marginBottom: 16 }}>{t("p.edit.description")}</div>
-              <CountdateItem
-                key={myprops.id}
-                id={myprops.id}
-                event={myprops.event}
-                date={myprops.date}
-                editable={true}
-                accent={myprops.accent}
-                textColor={myprops.textColor}
-              />
-              <IonItem>
-                <span style={{marginRight: 10}}>
-                  {t("c.editor.quickEdit.title")}
-                </span>
-                <IonButton
-                  style={{ marginRight: 8 }}
-                  onClick={() => addOneMonthHandler()}
-                  size="small"
-                  color={myprops.accent}
-                  shape="round"
-                >
-                  {t("c.editor.quickEdit.addOneMonth")}
-                </IonButton>
-                <IonButton
-                  style={{ marginRight: 8 }}
-                  onClick={() => minusOneDayHandler()}
-                  size="small"
-                  color={myprops.accent}
-                  shape="round"
-                >
-                  {t("c.editor.quickEdit.minusOneDay")}
-                </IonButton>
-                <IonButton
-                  style={{ marginRight: 8 }}
-                  onClick={() => addOneDayHandler()}
-                  size="small"
-                  color={myprops.accent}
-                  shape="round"
-                >
-                  {t("c.editor.quickEdit.addOneDay")}
-                </IonButton>
-              </IonItem>
-            </IonCardContent>
-          ) : (
-            <>
-            <IonCardHeader>
-              <IonCardSubtitle style={{fontSize: "1.2rem"}}>{myprops.event}</IonCardSubtitle>
-              <IonCardTitle style={{fontSize: "2.8rem"}}>{detailStr}</IonCardTitle>
-            </IonCardHeader>
-            </>
-          )}
+            {contentEditable ? (
+              <IonCardContent>
+                <div style={{ marginBottom: 16 }}>
+                  {t("p.edit.description")}
+                </div>
+                <CountdateItem
+                  key={myprops.id}
+                  id={myprops.id}
+                  event={myprops.event}
+                  date={myprops.date}
+                  editable={true}
+                  accent={myprops.accent}
+                  textColor={myprops.textColor}
+                />
+                <IonItem>
+                  <span style={{ marginRight: 10 }}>
+                    {t("c.editor.quickEdit.title")}
+                  </span>
+                  <IonButton
+                    style={{ marginRight: 8 }}
+                    onClick={() => addOneMonthHandler()}
+                    size="small"
+                    color={myprops.accent}
+                    shape="round"
+                  >
+                    {t("c.editor.quickEdit.addOneMonth")}
+                  </IonButton>
+                  <IonButton
+                    style={{ marginRight: 8 }}
+                    onClick={() => minusOneDayHandler()}
+                    size="small"
+                    color={myprops.accent}
+                    shape="round"
+                  >
+                    {t("c.editor.quickEdit.minusOneDay")}
+                  </IonButton>
+                  <IonButton
+                    style={{ marginRight: 8 }}
+                    onClick={() => addOneDayHandler()}
+                    size="small"
+                    color={myprops.accent}
+                    shape="round"
+                  >
+                    {t("c.editor.quickEdit.addOneDay")}
+                  </IonButton>
+                </IonItem>
+              </IonCardContent>
+            ) : (
+              <>
+                <IonCardHeader>
+                  <IonCardSubtitle style={{ fontSize: "1.2rem" }}>
+                    {formatDate(new Date(myprops.date))} • {myprops.event}
+                  </IonCardSubtitle>
+                  <IonCardTitle style={{ fontSize: "2.8rem" }}>
+                    {detailStr}
+                  </IonCardTitle>
+                </IonCardHeader>
+              </>
+            )}
           </>
         </IonCard>
 
@@ -268,7 +288,7 @@ export default function EventDetailModal({
         </IonCard>
       </IonContent>
       <IonFooter>
-        <IonToolbar style={{paddingBottom: "16px"}}>
+        <IonToolbar style={{ paddingBottom: "16px" }}>
           <IonButtons slot="end">
             <IonButton
               color={myprops.accent}
