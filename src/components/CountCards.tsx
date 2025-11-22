@@ -46,7 +46,8 @@ export default function CountCards({
   textColor,
   count,
   changeCount,
-  relative
+  relative,
+  searchQuery
 }: {
   view: string;
   accent: string;
@@ -54,6 +55,7 @@ export default function CountCards({
   count: string;
   changeCount: any;
   relative: boolean;
+  searchQuery: string;
 }): JSX.Element {
   const { t } = useTranslation();
   const [languageCode, setLanguageCode] = useState("");
@@ -131,7 +133,14 @@ export default function CountCards({
         {(() => {
           let row = [];
           if (countdate_events_data_list.length) {
-            countdate_events_data_list.forEach((event) => {
+            // Filter events based on search query
+            const filteredEvents = searchQuery
+              ? countdate_events_data_list.filter((event) =>
+                  event.event_name.toLowerCase().includes(searchQuery.toLowerCase())
+                )
+              : countdate_events_data_list;
+
+            filteredEvents.forEach((event) => {
               let now = new Date();
               let countFrom = new Date(event.date.split("+")[0]);
               let timeDifference = now.getTime() - countFrom.getTime();

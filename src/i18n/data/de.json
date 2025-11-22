@@ -47,7 +47,9 @@
       "countup": "Hochzählen",
       "daysView": "Tage",
       "weeksView": "Wochen",
-      "monthsView": "Monate"
+      "monthsView": "Monate",
+      "search": "Suchen",
+      "searchPlaceholder": "Ereignisse suchen..."
     },
     "settings": {
       "title": "Einstellungen",

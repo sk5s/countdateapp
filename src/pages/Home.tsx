@@ -13,9 +13,12 @@ import {
   IonFooter,
   IonRefresher,
   IonRefresherContent,
+  IonSearchbar,
+  IonButtons,
+  IonButton,
 } from "@ionic/react";
 
-import { add } from "ionicons/icons";
+import { add, search } from "ionicons/icons";
 
 import CountCards from "../components/CountCards";
 import { useTranslation } from "react-i18next";
@@ -37,6 +40,8 @@ const Home: React.FC<{ accent: string; textColor: string;count:any;setCount:any;
 }) => {
   const { t } = useTranslation();
   const [platform, setPlatform] = useState<'ios' | 'android' | 'web'>("android")
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [showSearch, setShowSearch] = useState<boolean>(false);
 
   const handlers = useSwipeable({
     onSwipedLeft: () => left(),
@@ -78,7 +83,27 @@ const Home: React.FC<{ accent: string; textColor: string;count:any;setCount:any;
       <IonHeader>
         <IonToolbar>
           <IonTitle>{t("p.home.title")}</IonTitle>
+          <IonButtons slot="end">
+            <IonButton onClick={() => {
+              setShowSearch(!showSearch);
+              if (showSearch) {
+                setSearchQuery("");
+              }
+            }}>
+              <IonIcon icon={search} />
+            </IonButton>
+          </IonButtons>
         </IonToolbar>
+        {showSearch && (
+          <IonToolbar>
+            <IonSearchbar
+              value={searchQuery}
+              onIonInput={(e) => setSearchQuery(e.detail.value!)}
+              placeholder={t("p.home.searchPlaceholder")}
+              debounce={300}
+            />
+          </IonToolbar>
+        )}
       </IonHeader>
       <IonContent>
         {/* Refresher */}
@@ -101,6 +126,7 @@ const Home: React.FC<{ accent: string; textColor: string;count:any;setCount:any;
             textColor={textColor}
             changeCount={setCount}
             relative={relative}
+            searchQuery={searchQuery}
           />
         </div>
 

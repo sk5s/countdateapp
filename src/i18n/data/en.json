@@ -47,7 +47,9 @@
       "countup": "Countup",
       "daysView": "Days",
       "weeksView": "Weeks",
-      "monthsView": "Months"
+      "monthsView": "Months",
+      "search": "Search",
+      "searchPlaceholder": "Search events..."
     },
     "settings": {
       "title": "Settings",

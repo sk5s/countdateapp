@@ -47,7 +47,9 @@
       "countup": "正数",
       "daysView": "几天",
       "weeksView": "几周",
-      "monthsView": "几月"
+      "monthsView": "几月",
+      "search": "搜索",
+      "searchPlaceholder": "搜索活动..."
     },
     "settings": {
       "title": "设置",

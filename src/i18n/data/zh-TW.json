@@ -47,7 +47,9 @@
       "countup": "正數",
       "daysView": "幾天",
       "weeksView": "幾周",
-      "monthsView": "幾月"
+      "monthsView": "幾月",
+      "search": "搜尋",
+      "searchPlaceholder": "搜尋活動..."
     },
     "settings": {
       "title": "設定",

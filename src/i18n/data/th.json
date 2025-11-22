@@ -47,7 +47,9 @@
       "countup": "นับไปข้างหน้า",
       "daysView": "วัน",
       "weeksView": "สัปดาห์",
-      "monthsView": "เดือน"
+      "monthsView": "เดือน",
+      "search": "ค้นหา",
+      "searchPlaceholder": "ค้นหากิจกรรม..."
     },
     "settings": {
       "title": "การตั้งค่า",
