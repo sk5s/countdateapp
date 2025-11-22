@@ -66,7 +66,6 @@ const Settings: React.FC<{ accent: string; setView: any }> = ({
       value: tovalue.toString(),
     });
     setDevChecked(tovalue);
-    // console.log(tovalue);
     trigger("countdate_dev:change");
   };
   const getExtendMode = async () => {
@@ -87,7 +86,6 @@ const Settings: React.FC<{ accent: string; setView: any }> = ({
       value: tovalue.toString(),
     });
     setExtendChecked(tovalue);
-    // console.log(tovalue);
     trigger("countdate_extend:change");
   };
 
@@ -100,12 +98,10 @@ const Settings: React.FC<{ accent: string; setView: any }> = ({
     });
     setRelativeChecked(tovalue);
     setView("days");
-    // console.log(tovalue);
     trigger("countdate_relative:change");
   };
 
   const testLocalNotification = async () => {
-    // console.log("clicked");
     await Schedule({
       title: "Countdate",
       body: "Local Notification Test",
@@ -133,12 +129,10 @@ const Settings: React.FC<{ accent: string; setView: any }> = ({
   };
   const getDarkMode = async () => {
     const { value } = await Storage.get({ key: key.theme });
-    // console.log(darkEnable(value));
     setDarkChecked(darkEnable(value));
   };
   getDarkMode();
   const toggleDarkModeHandler = async () => {
-    // console.log(!darkChecked);
     if (darkChecked) {
       await Storage.set({
         key: key.theme,
