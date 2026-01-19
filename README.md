@@ -38,7 +38,7 @@
     <a href="https://github.com/sk5s/countdateapp#readme"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://sk5s.cyou/countdate-landing/">Download</a>
+    <a href="https://countdate.sk5s.com/">Download</a>
     ·
     <a href="https://github.com/sk5s/countdateapp/issues">Report Bug</a>
     ·
@@ -48,7 +48,7 @@
 
 <div id="top"></div>
 
-[![sk5s site](https://sk5s.cyou/sk5s/img/sk5s-project-bar.png)](https://sk5s.cyou/)
+[![sk5s site](https://sk5s.cyou/sk5s/img/sk5s-project-bar.png)](https://sk5s.com/)
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -84,7 +84,7 @@
 
 <a target="_blank" href='https://play.google.com/store/apps/details?id=cyou.sk5s.app.countdate'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png' width="150px"/></a>
 <a target="_blank" href='https://apt.izzysoft.de/fdroid/index/apk/cyou.sk5s.app.countdate'><img alt='Get it on IzzyOnDroid' src='https://countdate.sk5s.com/assets/img/IzzyOnDroid.png' width="150px"/></a>
-<a target="_blank" href='https://apps.apple.com/US/app/id6553989325'><img alt='Download on the App Store' src='https://sk5s.cyou/sk5s/img/app_store_badge_en.png' width="150px"/></a>
+<a target="_blank" href='https://apps.apple.com/US/app/id6553989325'><img alt='Download on the App Store' src='https://sk5s.com/images/app-store.png' width="150px"/></a>
 
 Date Countdown: Know How Many Days Left To a Specific Date.
 
@@ -146,16 +146,16 @@ Click the "+" button to add a Countdate.
 
 - [x] Instruction
 - [x] New splash screen api
-- [ ] Sync
-- [ ] Local notification
 - [x] Count week
 - [ ] Count weekday
 - [x] Custom accent color (color picker)
 - [x] Qrcode share event
 - [x] Native desktop widget
 - [x] Count Month
-- [ ] Extend day selection
 - [x] Export/Import countdate
+- [ ] Sync
+- [ ] Local notification
+- [ ] Extend day selection
 
 See the [open issues](https://github.com/sk5s/countdateapp/issues) for a full list of proposed features (and known issues).
 
@@ -211,7 +211,7 @@ Project Link: [https://github.com/sk5s/countdateapp](https://github.com/sk5s/cou
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[![opensource](https://forthebadge.com/images/badges/open-source.svg)](https://sk5s.cyou/)
+[![opensource](https://forthebadge.com/images/badges/open-source.svg)](https://sk5s.com/)
 
 <!-- <a href="https://www.producthunt.com/posts/countdate?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-countdate" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=379865&theme=light" alt="Countdate - Date&#0032;Countdown&#0032;with&#0032;simple&#0032;ui&#0046; | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a> -->
 
