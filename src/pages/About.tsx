@@ -50,14 +50,14 @@ const About: React.FC<{ accent: string }> = ({ accent }) => {
             <img src={logo} alt="Logo" width="80" height="80" />
           </a>
           <p>
-            {t("p.about.version",{versionName: packageJson.version})}
+            {t("p.about.version", { versionName: packageJson.version })}
             {" "}
             {isPlatform("mobileweb") ? <>
-            <IonButton color={accent} size="small" onClick={() => {
-              window.location.reload()
-            }}>
-              {t("p.about.reload")}
-            </IonButton>
+              <IonButton color={accent} size="small" onClick={() => {
+                window.location.reload()
+              }}>
+                {t("p.about.reload")}
+              </IonButton>
             </> : <></>}
           </p>
           <p>
@@ -78,7 +78,7 @@ const About: React.FC<{ accent: string }> = ({ accent }) => {
         <p style={{ fontSize: "25px", marginLeft: "20px" }}>
           {t("p.about.slogan")}
         </p>
-        <div style={{display: platform === "ios" ? "none" : "flex", flexDirection: "row"}}>
+        <div style={{ display: platform === "ios" ? "none" : "flex", flexDirection: "row" }}>
           <a
             rel="noreferrer"
             target="_blank"
@@ -86,7 +86,7 @@ const About: React.FC<{ accent: string }> = ({ accent }) => {
           >
             <img
               alt="Get it on Google Play"
-              src="https://sk5s.cyou/sk5s/img/play_store_badge_en.png"
+              src="https://sk5s.com/images/google-play.png"
               width="150px"
             />
           </a>
@@ -97,7 +97,7 @@ const About: React.FC<{ accent: string }> = ({ accent }) => {
           >
             <img
               alt="Get it on Google Play"
-              src="https://sk5s.cyou/countdate-landing/assets/img/IzzyOnDroid.png"
+              src="https://countdate.sk5s.com/assets/img/IzzyOnDroid.png"
               width="150px"
             />
           </a>
@@ -105,7 +105,7 @@ const About: React.FC<{ accent: string }> = ({ accent }) => {
         <ul style={{ fontSize: "25px" }}>
           <li>
             <a
-              href="https://sk5s.cyou/countdate-landing/"
+              href="https://countdate.sk5s.com/"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -142,32 +142,32 @@ const About: React.FC<{ accent: string }> = ({ accent }) => {
         </ul>
 
         {platform === "ios" ? null : (
-        <>
-        <p style={{ fontSize: "25px", marginLeft: "20px" }}>
-          {t("p.about.more.title")}
-        </p>
+          <>
+            <p style={{ fontSize: "25px", marginLeft: "20px" }}>
+              {t("p.about.more.title")}
+            </p>
 
-        <a href="https://play.google.com/store/apps/details?id=cyou.sk5s.app.weread" target="blank" rel="noopener noreferer">
-          <div style={{marginBottom:"10px"}}>
-            <IonItem>
-              <IonThumbnail slot="start">
-                <img alt="Silhouette of mountains" src="https://weread.sk5s.com/weread-logo.png" />
-              </IonThumbnail>
-              <IonLabel>{t("p.about.more.weread")}</IonLabel>
-            </IonItem>
-          </div>
-        </a>
-        <a href="https://play.google.com/store/apps/details?id=cyou.sk5s.app.onea4paperyourlife" target="blank" rel="noopener noreferer">
-          <div style={{marginBottom:"10px"}}>
-            <IonItem>
-              <IonThumbnail slot="start">
-                <img alt="Silhouette of mountains" src="https://play-lh.googleusercontent.com/ffMW4eI9K3Z5vT2tDYdat6N7nJ4TvN3k7B9SPRePKQ7G-I2RSI1slK_uPQZpSMISI4E=w480-h960-rw" />
-              </IonThumbnail>
-              <IonLabel>{t("p.about.more.onea4paperyourlife")}</IonLabel>
-            </IonItem>
-          </div>
-        </a>
-        </>
+            <a href="https://play.google.com/store/apps/details?id=cyou.sk5s.app.weread" target="blank" rel="noopener noreferer">
+              <div style={{ marginBottom: "10px" }}>
+                <IonItem>
+                  <IonThumbnail slot="start">
+                    <img alt="Silhouette of mountains" src="https://weread.sk5s.com/weread-logo.png" />
+                  </IonThumbnail>
+                  <IonLabel>{t("p.about.more.weread")}</IonLabel>
+                </IonItem>
+              </div>
+            </a>
+            <a href="https://play.google.com/store/apps/details?id=cyou.sk5s.app.onea4paperyourlife" target="blank" rel="noopener noreferer">
+              <div style={{ marginBottom: "10px" }}>
+                <IonItem>
+                  <IonThumbnail slot="start">
+                    <img alt="Silhouette of mountains" src="https://play-lh.googleusercontent.com/ffMW4eI9K3Z5vT2tDYdat6N7nJ4TvN3k7B9SPRePKQ7G-I2RSI1slK_uPQZpSMISI4E=w480-h960-rw" />
+                  </IonThumbnail>
+                  <IonLabel>{t("p.about.more.onea4paperyourlife")}</IonLabel>
+                </IonItem>
+              </div>
+            </a>
+          </>
         )}
 
         <a href="https://sk5s.com" target="_blank" rel="noopener noreferrer">

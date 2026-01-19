@@ -125,9 +125,8 @@ export default function EventDetailModal({
     } else {
       dayStr = "27";
     }
-    let newDate = `${oldDate.split("-")[0]}-${
-      oldDate.split("-")[1]
-    }-${dayStr}T${oldDate.split("-")[2].split("T")[1]}`;
+    let newDate = `${oldDate.split("-")[0]}-${oldDate.split("-")[1]
+      }-${dayStr}T${oldDate.split("-")[2].split("T")[1]}`;
     console.log(newDate);
     editDateData(newDate);
   };
@@ -143,9 +142,8 @@ export default function EventDetailModal({
     } else {
       dayStr = "01";
     }
-    let newDate = `${oldDate.split("-")[0]}-${
-      oldDate.split("-")[1]
-    }-${dayStr}T${oldDate.split("-")[2].split("T")[1]}`;
+    let newDate = `${oldDate.split("-")[0]}-${oldDate.split("-")[1]
+      }-${dayStr}T${oldDate.split("-")[2].split("T")[1]}`;
     console.log(newDate);
     editDateData(newDate);
   };
@@ -172,7 +170,7 @@ export default function EventDetailModal({
       <IonHeader>
         <IonToolbar>
           {(isPlatform("android") && isPlatform("hybrid")) ||
-          (isPlatform("ios") && isPlatform("hybrid")) ? (
+            (isPlatform("ios") && isPlatform("hybrid")) ? (
             <IonButtons>
               <IonButton id="share-trigger" color={myprops.accent}>
                 <IonIcon icon={shareSocial} />
@@ -183,7 +181,7 @@ export default function EventDetailModal({
                   <QRCodeSVG
                     size={172}
                     includeMargin={true}
-                    value={`https://app.countdate.sk5s.cyou/share?title=${myprops.event.replace(
+                    value={`https://app.countdate.sk5s.com/share?title=${myprops.event.replace(
                       / /g,
                       "%20"
                     )}&date=${myprops.date.split("T")[0]}`}
