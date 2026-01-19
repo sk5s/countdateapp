@@ -14,7 +14,7 @@ workflows:
         XCODE_WORKSPACE: "App.xcworkspace"
         XCODE_SCHEME: "App"
         APP_STORE_APP_ID: 6553989325
-      node: v22.16.0
+      node: v24.11.1
       xcode: latest # <-- set to specific version e.g. 14.3, 15.0 to avoid unexpected updates.
       cocoapods: default
     scripts:
