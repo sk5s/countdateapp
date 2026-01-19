@@ -121,7 +121,7 @@ export default function Share({ accent }) {
               >
                 <img
                   alt="Get it on Google Play"
-                  src="https://sk5s.cyou/sk5s/img/play_store_badge_en.png"
+                  src="https://sk5s.com/images/google-play.png"
                   width="150px"
                 />
               </a>
@@ -135,7 +135,7 @@ export default function Share({ accent }) {
             >
               <img
                 alt="Download on the App Store"
-                src="https://sk5s.cyou/sk5s/img/app_store_badge_en.png"
+                src="https://sk5s.com/images/app-store.png"
               />
             </a>
           </div>
