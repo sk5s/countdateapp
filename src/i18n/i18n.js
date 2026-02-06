@@ -7,6 +7,7 @@ import { Device } from "@capacitor/device";
 
 import de from "./data/de.json";
 import en from "./data/en.json";
+import es from "./data/es.json";
 import tw from "./data/zh-TW.json";
 import th from "./data/th.json";
 import cn from "./data/zh-CN.json";
@@ -21,6 +22,9 @@ getDeviceLanguageCode();
 const resources = {
   "en": {
     translation: en,
+  },
+  "es": {
+    translation: es,
   },
   "zh-TW": {
     translation: tw,
