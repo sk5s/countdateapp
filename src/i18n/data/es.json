@@ -1,0 +1,161 @@
+{
+  "g": {
+    "back": "Atrás",
+    "close": "Cerrar",
+    "cancel": "Cancelar",
+    "confirm": "Confirmar",
+    "discard": "Descartar"
+  },
+  "p": {
+    "about": {
+      "title": "Acerca de Countdate",
+      "version": "Versión de la app: {{versionName}}",
+      "platform": "Plataforma:",
+      "reload": "Recargar",
+      "slogan": "Cuenta atrás de fechas: conoce cuántos días quedan hasta una fecha específica.",
+      "link": {
+        "landing": "Página de inicio",
+        "github": "Proyecto en Github",
+        "bug": "Reportar error",
+        "feature": "Solicitar función"
+      },
+      "more": {
+        "title": "Más apps de sk5s: ",
+        "weread": "Weread",
+        "onea4paperyourlife": "OneA4PaperYourLife"
+      }
+    },
+    "add": {
+      "title": "Agregar Countdate",
+      "add": "Agregar",
+      "eventName": {
+        "label": "Nombre del evento",
+        "placeholder": "Ingresa el nombre del evento"
+      },
+      "tips": "Selecciona una fecha anterior a hoy para agregar un contador de días transcurridos, selecciona una fecha posterior para un contador de días restantes. La descripción se puede agregar después de crear el countdate.",
+      "toast": "¡Agregado!",
+      "extend": "Si deseas agregar una fecha muy lejana en el pasado o futuro, activa el modo de extensión de fecha en configuraciones."
+    },
+    "edit": {
+      "title": "Editar Countdate",
+      "description": "Haz clic en el título o fecha para editar",
+      "noData": "No hay datos de Countdate"
+    },
+    "home": {
+      "title": "Countdate",
+      "countdown": "Cuenta atrás",
+      "countup": "Cuenta arriba",
+      "daysView": "Días",
+      "weeksView": "Semanas",
+      "monthsView": "Meses",
+      "search": "Buscar",
+      "searchPlaceholder": "Buscar eventos..."
+    },
+    "settings": {
+      "title": "Configuraciones",
+      "general": {
+        "title": "General",
+        "toggleDevMode": "Alternar modo desarrollador",
+        "testLocalNotification": "Probar notificación local",
+        "reviewTour": "Revisar tour",
+        "about": "Acerca de Countdate",
+        "toggleExtendMode": "Alternar modo de extensión de fecha (extiende el rango de selección de fecha)",
+        "toggleRelativeMode": "Alternar modo de tiempo relativo (30 días al mes)",
+        "backup": "Copia de seguridad",
+        "webFrontendReload": "Recargar frontend web"
+      },
+      "theme": {
+        "title": "Tema",
+        "toggleDarkMode": "Alternar modo oscuro",
+        "followSystem": "Seguir modo oscuro del sistema"
+      }
+    },
+    "share": {
+      "title": "Compartir",
+      "date": "Fecha",
+      "openApp": "Abrir con la app Countdate"
+    },
+    "backup": {
+      "title": "Copia de seguridad de datos",
+      "confirm": {
+        "title": "¿Sobrescribir todos los datos existentes?"
+      },
+      "message": {
+        "failed": "Falló",
+        "import": {
+          "successful": "Datos importados exitosamente"
+        },
+        "export": {
+          "successful": "Datos exportados exitosamente"
+        }
+      },
+      "export": "Exportar",
+      "import": "Importar",
+      "share": {
+        "title": "Copia de seguridad de Countdate",
+        "text": "Comparte tu archivo de copia de seguridad de Countdate"
+      }
+    }
+  },
+  "c": {
+    "card": {
+      "days": "Días",
+      "weeks": "Semanas",
+      "months": "Meses",
+      "years": "Años",
+      "countdownEvent": "{{eventName}}"
+    },
+    "cards": {
+      "noData": "Sin datos",
+      "toCountup": "A cuenta arriba",
+      "toCountdown": "A cuenta atrás",
+      "addCountdate": "Agregar",
+      "addCountdate!": "¡Agregar Countdate!",
+      "edit": "Editar",
+      "settings": "Configuraciones",
+      "checkData": "Verificar datos",
+      "delete!": "¡Eliminar!",
+      "deleted": "Eliminado",
+      "deleteMessage": "Esta acción no se puede deshacer",
+      "deleteAllData": "Eliminar todos los datos",
+      "copyData": "Copiar datos del evento",
+      "copied!": "¡Copiado!"
+    },
+    "settings": {
+      "changeTextColor": "Cambiar color del texto",
+      "changeAccent": "Cambiar color de acento",
+      "followAccent": "Seguir acento",
+      "saveColor": "Guardar color",
+      "changeLang": "Cambiar idioma"
+    },
+    "tour": {
+      "title": "Tour de la app Countdate",
+      "step_1": "Cómo agregar un nuevo evento: Agrega un nuevo Countdate",
+      "step_2": "Ingresa el nombre del evento",
+      "step_3": "Elige la fecha del evento (antes o después de hoy)",
+      "step_4": "Haz clic en Agregar",
+      "step_5": "Cómo editar eventos: Haz clic en el botón de editar",
+      "step_6": "Haz clic en el título o fecha para editar",
+      "step_7": "Haz clic en este botón para eliminar el evento",
+      "step_8": "Presiona este botón y arrastra el evento para reordenar",
+      "can_review": "Puedes ir a la página de configuraciones para revisar el tour",
+      "learn_more": "Aprende más sobre cómo usar"
+    },
+    "editor": {
+      "description": "Descripción",
+      "needToSave": "Necesita guardar",
+      "noDescriptionData": "Sin datos de descripción",
+      "tips": "El texto de descripción soporta sintaxis Markdown simple",
+      "quickEdit": {
+        "title": "Edición rápida",
+        "confirm": "¿Confirmar cambio?",
+        "addOneMonth": "+1 mes",
+        "minusOneDay": "-1 día",
+        "addOneDay": "+1 día"
+      },
+      "edit": "Editar",
+      "completeEdit": "Completar edición",
+      "shareDescription": "Compartir nombre del evento y fecha"
+    }
+  }
+}
