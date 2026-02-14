@@ -1,21 +1,27 @@
 PODS:
-  - Capacitor (6.1.1):
+  - Capacitor (8.0.1):
     - CapacitorCordova
-  - CapacitorApp (6.0.0):
+  - CapacitorApp (8.0.0):
     - Capacitor
-  - CapacitorClipboard (6.0.0):
+  - CapacitorClipboard (8.0.0):
     - Capacitor
-  - CapacitorCordova (6.1.1)
-  - CapacitorDevice (6.0.0):
+  - CapacitorCordova (8.0.1)
+  - CapacitorDevice (8.0.0):
     - Capacitor
-  - CapacitorKeyboard (6.0.1):
+  - CapacitorFilesystem (8.0.0):
     - Capacitor
-  - CapacitorLocalNotifications (6.0.0):
+    - IONFilesystemLib (~> 1.0.1)
+  - CapacitorKeyboard (8.0.0):
     - Capacitor
-  - CapacitorPreferences (6.0.1):
+  - CapacitorLocalNotifications (8.0.0):
     - Capacitor
-  - CapacitorToast (6.0.1):
+  - CapacitorPreferences (8.0.0):
     - Capacitor
+  - CapacitorShare (8.0.0):
+    - Capacitor
+  - CapacitorToast (8.0.0):
+    - Capacitor
+  - IONFilesystemLib (1.0.1)
 
 DEPENDENCIES:
   - "Capacitor (from `../../node_modules/@capacitor/ios`)"
@@ -23,10 +29,16 @@ DEPENDENCIES:
   - "CapacitorClipboard (from `../../node_modules/@capacitor/clipboard`)"
   - "CapacitorCordova (from `../../node_modules/@capacitor/ios`)"
   - "CapacitorDevice (from `../../node_modules/@capacitor/device`)"
+  - "CapacitorFilesystem (from `../../node_modules/@capacitor/filesystem`)"
   - "CapacitorKeyboard (from `../../node_modules/@capacitor/keyboard`)"
   - "CapacitorLocalNotifications (from `../../node_modules/@capacitor/local-notifications`)"
   - "CapacitorPreferences (from `../../node_modules/@capacitor/preferences`)"
+  - "CapacitorShare (from `../../node_modules/@capacitor/share`)"
   - "CapacitorToast (from `../../node_modules/@capacitor/toast`)"
+
+SPEC REPOS:
+  trunk:
+    - IONFilesystemLib
 
 EXTERNAL SOURCES:
   Capacitor:
@@ -39,26 +51,33 @@ EXTERNAL SOURCES:
     :path: "../../node_modules/@capacitor/ios"
   CapacitorDevice:
     :path: "../../node_modules/@capacitor/device"
+  CapacitorFilesystem:
+    :path: "../../node_modules/@capacitor/filesystem"
   CapacitorKeyboard:
     :path: "../../node_modules/@capacitor/keyboard"
   CapacitorLocalNotifications:
     :path: "../../node_modules/@capacitor/local-notifications"
   CapacitorPreferences:
     :path: "../../node_modules/@capacitor/preferences"
+  CapacitorShare:
+    :path: "../../node_modules/@capacitor/share"
   CapacitorToast:
     :path: "../../node_modules/@capacitor/toast"
 
 SPEC CHECKSUMS:
-  Capacitor: 8941aba4364ba9d1b22188569001f2ce45cc2b00
-  CapacitorApp: 9d53aec7101f7b030a950c5bdc4df8612576b279
-  CapacitorClipboard: 80282f684154124b9019ebf401235b70b0cf4994
-  CapacitorCordova: 8f2cc8d8d3619c566e9418fe8772064a94266106
-  CapacitorDevice: f8fd88f9edd1261c55a109f32015b09bbbfdc4a0
-  CapacitorKeyboard: 5f32a712adf41e07a61caafb82cf29fb6d8ba123
-  CapacitorLocalNotifications: 4ab68f0be5f697a579558fadd307d823a9ec1c26
-  CapacitorPreferences: 72909b165bc7807103778ddbb86d5d8ce06abf71
-  CapacitorToast: d4c42ea810e223bdd66b95a7c661f5467666896d
+  Capacitor: ff35b0f66370b84aa238251b35b91886a3207c16
+  CapacitorApp: 3963a84197280757b84f126afd1520a85ae3b092
+  CapacitorClipboard: 61832a3722adc61afed6e0191c8a0e11ba11674d
+  CapacitorCordova: 0d65b9bb74e995dcecb9463f34f1af2aba6f955c
+  CapacitorDevice: 9a16fb36a19ff391bf75afbe3cf16f883b3b3aa0
+  CapacitorFilesystem: 2cb7c29536024668f333266a2177f8c10bbd9c98
+  CapacitorKeyboard: d7868c079a4d5277a3deca27a10a488fcbbb8b69
+  CapacitorLocalNotifications: 177cfbf8228d9bd82a147e094cb7984d7afb9e29
+  CapacitorPreferences: 443fabe9670226200e595658a87ef0b1566716d4
+  CapacitorShare: 12f1d192170cbcf9f108fd675ac8e343761a4638
+  CapacitorToast: aefebcd4cead9f44a04ace80c66a7eb4031751e7
+  IONFilesystemLib: 89258b8e3e85465da93127d25d7ce37f977e8a6f
 
-PODFILE CHECKSUM: bbe882cbfe18182d0299a9a35c711989e0f681e6
+PODFILE CHECKSUM: 6294d4442c13fc7a6e0d66fd1cc4de0ff7b89947
 
-COCOAPODS: 1.15.2
+COCOAPODS: 1.16.2

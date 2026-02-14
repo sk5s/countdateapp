@@ -1,0 +1,11 @@
+# Add Countdate flow
+appId: cyou.sk5s.app.countdate
+---
+- launchApp
+- tapOn: "Add"
+- tapOn:
+    id: "event-title"
+- inputText: "Test Event"
+- tapOn: "Add"
+- tapOn: "Add"
+- assertVisible: "Test Event"
