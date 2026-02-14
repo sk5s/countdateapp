@@ -17,6 +17,7 @@ import { on, trigger } from "../lib/Events";
 import { useTranslation } from "react-i18next";
 import key from "../lib/storageKey.json";
 import format from "date-fns/format";
+import parseISO from "date-fns/parseISO";
 import { useState } from "react";
 import "./CountdownItem.css";
 import { EXTEND_YEARS } from "../constants/Constants";
@@ -33,7 +34,7 @@ export default function CountdateItem(props: {
   const [presentAlert] = useIonAlert();
   const [presentToast] = useIonToast();
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [years,setYears] = useState(2);
+  const [years, setYears] = useState(2);
   let countdate_events_data = [];
   const handleDelete = () => {
     presentAlert({
@@ -89,8 +90,7 @@ export default function CountdateItem(props: {
         {
           name: "name",
           value: props.event,
-          placeholder:
-            t("p.add.eventName.placeholder"),
+          placeholder: t("p.add.eventName.placeholder"),
         },
       ],
     });
@@ -169,7 +169,13 @@ export default function CountdateItem(props: {
       <IonReorder slot="end">
         <IonIcon icon={reorderThree} size="large"></IonIcon>
       </IonReorder>
-      <IonPopover className="dateselect" isOpen={modalIsOpen} onDidDismiss={() => setModalIsOpen(!modalIsOpen)} size="cover" keepContentsMounted={false}>
+      <IonPopover
+        className="dateselect"
+        isOpen={modalIsOpen}
+        onDidDismiss={() => setModalIsOpen(!modalIsOpen)}
+        size="cover"
+        keepContentsMounted={false}
+      >
         <IonDatetime
           mode="md"
           color={props.accent}
@@ -177,11 +183,13 @@ export default function CountdateItem(props: {
           showDefaultButtons={true}
           min={(parseInt(format(new Date(), "yyyy")) - years).toString()}
           max={(parseInt(format(new Date(), "yyyy")) + years).toString()}
-          onIonChange={(e) =>
-            edit_this_countdate_item_date(
-              format(new Date(`${e.detail.value}`), "yyyy-MM-dd")
-            )
-          }
+          onIonChange={(e) => {
+            const dateValue = e.detail.value;
+            if (dateValue && typeof dateValue === "string") {
+              const parsedDate = parseISO(dateValue);
+              edit_this_countdate_item_date(format(parsedDate, "yyyy-MM-dd"));
+            }
+          }}
           value={props.date}
           id="datetime"
           cancelText={t("g.cancel")}

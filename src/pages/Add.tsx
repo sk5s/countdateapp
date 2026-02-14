@@ -20,7 +20,7 @@ import { Preferences } from "@capacitor/preferences";
 import { useEffect, useState } from "react";
 import { useHistory, useLocation } from "react-router";
 import { v4 as uuid } from "uuid";
-import { format } from "date-fns";
+import { format, parseISO } from "date-fns";
 
 import { on, trigger } from "../lib/Events";
 import { useTranslation } from "react-i18next";
@@ -28,8 +28,8 @@ import { useTranslation } from "react-i18next";
 import key from "../lib/storageKey.json";
 import { add, informationCircle } from "ionicons/icons";
 import LocalizeBackButton from "../components/LocalizeBackButton";
-import { EXTEND_YEARS } from '../constants/Constants'
-import './Add.css'
+import { EXTEND_YEARS } from "../constants/Constants";
+import "./Add.css";
 
 const Add: React.FC<{ accent: string }> = ({ accent }) => {
   const { t } = useTranslation();
@@ -37,10 +37,10 @@ const Add: React.FC<{ accent: string }> = ({ accent }) => {
     format(new Date(), "yyyy-MM-dd") + "T23:59:00+08:00"
   );
   const [titleText, setTitleText] = useState<string | number>("");
-  const [years,setYears] = useState(2);
+  const [years, setYears] = useState(2);
   const [presentToast] = useIonToast();
   const history = useHistory();
-  const location = useLocation()
+  const location = useLocation();
   let countdate_events_data = [];
   const add_new_countdate_item = async (newItem: {
     event_name: any;
@@ -94,17 +94,17 @@ const Add: React.FC<{ accent: string }> = ({ accent }) => {
   });
   getExtendMode();
   useEffect(() => {
-    console.log(location.search)
-    const urlParams = new URLSearchParams(location.search)
-    if (urlParams.get("title")){
-      setTitleText(urlParams.get("title"))
+    console.log(location.search);
+    const urlParams = new URLSearchParams(location.search);
+    if (urlParams.get("title")) {
+      setTitleText(urlParams.get("title"));
     }
-    if (urlParams.get("date")){
-      if (urlParams.get("date").length === 10){
-        setSelectedDate(urlParams.get("date") + "T23:59:00+08:00")
+    if (urlParams.get("date")) {
+      if (urlParams.get("date").length === 10) {
+        setSelectedDate(urlParams.get("date") + "T23:59:00+08:00");
       }
     }
-  },[location])
+  }, [location]);
   return (
     <IonPage>
       <IonHeader>
@@ -127,9 +127,7 @@ const Add: React.FC<{ accent: string }> = ({ accent }) => {
                   onKeyDown={(e) => SearchF(e.key)}
                   clearInput={true}
                   value={titleText}
-                  placeholder={
-                    t("p.add.eventName.placeholder")
-                  }
+                  placeholder={t("p.add.eventName.placeholder")}
                   onIonChange={(e) => setTitleText(e.detail.value!)}
                 ></IonInput>
               </IonItem>
@@ -147,10 +145,14 @@ const Add: React.FC<{ accent: string }> = ({ accent }) => {
                 {" "}
                 <IonIcon icon={informationCircle}></IonIcon>{" "}
               </IonButton>
-              <IonPopover trigger="click-trigger" triggerAction="click" className="wide-popover-300">
+              <IonPopover
+                trigger="click-trigger"
+                triggerAction="click"
+                className="wide-popover-300"
+              >
                 <IonContent class="ion-padding">
                   {t("p.add.tips")}
-                  <br/>
+                  <br />
                   {t("p.add.extend")}
                 </IonContent>
               </IonPopover>
@@ -166,12 +168,15 @@ const Add: React.FC<{ accent: string }> = ({ accent }) => {
                 value={selectedDate}
                 min={(parseInt(format(new Date(), "yyyy")) - years).toString()}
                 max={(parseInt(format(new Date(), "yyyy")) + years).toString()}
-                onIonChange={(e) =>
-                  setSelectedDate(
-                    format(new Date(`${e.detail.value}`), "yyyy-MM-dd") +
-                      "T23:59:00+08:00"
-                  )
-                }
+                onIonChange={(e) => {
+                  const dateValue = e.detail.value;
+                  if (dateValue && typeof dateValue === "string") {
+                    const parsedDate = parseISO(dateValue);
+                    setSelectedDate(
+                      format(parsedDate, "yyyy-MM-dd") + "T23:59:00+08:00"
+                    );
+                  }
+                }}
                 showDefaultTitle={false}
               ></IonDatetime>
             </IonCol>
