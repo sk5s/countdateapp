@@ -29,7 +29,7 @@ import "./Home.css"
 import CountDownUpSwitcher from "../components/CountDownUpSwitcher";
 import { Device } from "@capacitor/device";
 
-const Home: React.FC<{ accent: string; textColor: string;count:any;setCount:any;view:string;setView:any;relative:boolean; }> = ({
+const Home: React.FC<{ accent: string; textColor: string; count: any; setCount: any; view: string; setView: any; relative: boolean; }> = ({
   accent,
   textColor,
   count,
@@ -117,7 +117,7 @@ const Home: React.FC<{ accent: string; textColor: string;count:any;setCount:any;
           <CountDownUpSwitcher accent={accent} count={count} setCount={setCount} />
         </IonHeader>
 
-        <div {...handlers} style={{minHeight: "80%"}}>
+        <div {...handlers} style={{ minHeight: "80%" }}>
           {/* Countcards */}
           <CountCards
             count={count}
@@ -139,7 +139,7 @@ const Home: React.FC<{ accent: string; textColor: string;count:any;setCount:any;
       </IonContent>
       <IonFooter translucent={false}>
         {/* Days and weeks switcher */}
-        <IonToolbar style={{paddingBottom: "16px"}}>
+        <IonToolbar>
           <IonSegment
             color={accent}
             value={view}

@@ -286,7 +286,7 @@ export default function EventDetailModal({
         </IonCard>
       </IonContent>
       <IonFooter>
-        <IonToolbar style={{ paddingBottom: "16px" }}>
+        <IonToolbar>
           <IonButtons slot="end">
             <IonButton
               color={myprops.accent}
