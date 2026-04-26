@@ -24,6 +24,7 @@ import {
 } from "ionicons/icons";
 import logo from "../assets/countdateapp-logo-foreground.png";
 import { formatDate } from "../lib/DateFormat";
+import { appendCorrectTimezone } from "../lib/Countdate";
 
 export default function Share({ accent }) {
   const { t } = useTranslation();
@@ -86,7 +87,7 @@ export default function Share({ accent }) {
               {t("p.add.eventName.label")} : {event.title}
             </IonCardTitle>
             <IonCardSubtitle>
-              {t("p.share.date")} : {formatDate(new Date(event.date))}
+              {t("p.share.date")} : {formatDate(new Date(appendCorrectTimezone(event.date)))}
             </IonCardSubtitle>
           </IonCardHeader>
 
