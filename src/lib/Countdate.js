@@ -34,8 +34,10 @@ function appendCorrectTimezone(date) {
       return (num < 10 ? "0" : "") + num;
     };
 
+  const dateWithoutTimezone = date.split("T")[0] + "T" + date.split("T")[1].split(/[+-]/)[0]
+
   return (
-    date.split("+")[0] +
+    dateWithoutTimezone +
     dif +
     pad(Math.floor(Math.abs(tzo) / 60)) +
     ":" +
