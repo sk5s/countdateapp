@@ -26,7 +26,7 @@ function toIsoString(date) {
   );
 }
 
-export function appendCorrectTimezone(date) {
+function appendCorrectTimezone(date) {
   let now = new Date();
   let tzo = -now.getTimezoneOffset(),
     dif = tzo >= 0 ? "+" : "-",
@@ -35,16 +35,12 @@ export function appendCorrectTimezone(date) {
     };
 
   return (
-    date.split(/[+-]/)[0] +
+    date.split("+")[0] +
     dif +
     pad(Math.floor(Math.abs(tzo) / 60)) +
     ":" +
     pad(Math.abs(tzo) % 60)
   );
-}
-
-export function parseToLocal(dateStr) {
-  return new Date(appendCorrectTimezone(dateStr));
 }
 
 export function countUpFromTime(date) {

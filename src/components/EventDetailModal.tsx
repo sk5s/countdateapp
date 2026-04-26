@@ -29,7 +29,6 @@ import { useState } from "react";
 import { isPlatform } from "@ionic/core";
 import { QRCodeSVG } from "qrcode.react";
 import { formatDate } from "../lib/DateFormat";
-import { appendCorrectTimezone } from "../lib/Countdate";
 
 export default function EventDetailModal({
   detailStr,
@@ -261,8 +260,7 @@ export default function EventDetailModal({
               <>
                 <IonCardHeader>
                   <IonCardSubtitle style={{ fontSize: "1.2rem" }}>
-                    {formatDate(new Date(appendCorrectTimezone(myprops.date)))} •{" "}
-                    {myprops.event}
+                    {formatDate(new Date(myprops.date))} • {myprops.event}
                   </IonCardSubtitle>
                   <IonCardTitle style={{ fontSize: "2.8rem" }}>
                     {detailStr}

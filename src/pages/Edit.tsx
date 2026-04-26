@@ -21,7 +21,6 @@ import CountdateItem from "../components/CountdownItem";
 import { on, trigger } from "../lib/Events";
 import LocalizeBackButton from "../components/LocalizeBackButton";
 import CountDownUpSwitcher from "../components/CountDownUpSwitcher";
-import { parseToLocal } from "../lib/Countdate";
 
 const NoCountdate = () => {
   const { t } = useTranslation();
@@ -100,7 +99,7 @@ const Edit: React.FC<{ accent: string; textColor: string; count:any; setCount:an
     let uplist = []
     countdate_events_data.forEach(event => {
       let now = new Date();
-      let countFrom = parseToLocal(event.date);
+      let countFrom = new Date(event.date.split("+")[0]);
       let timeDifference = now.getTime() - countFrom.getTime();
       if (timeDifference < 0) {
         downlist.push({...event})
