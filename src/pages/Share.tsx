@@ -24,6 +24,7 @@ import {
 } from "ionicons/icons";
 import logo from "../assets/countdateapp-logo-foreground.png";
 import { formatDate } from "../lib/DateFormat";
+import { appendLocalTimezone } from "../lib/Countdate";
 
 export default function Share({ accent }) {
   const { t } = useTranslation();
@@ -43,7 +44,7 @@ export default function Share({ accent }) {
     if (urlParams.get("date")) {
       dateRaw = urlParams.get("date");
       if (urlParams.get("date").length === 10) {
-        date = urlParams.get("date") + "T23:59:00+08:00";
+        date = appendLocalTimezone(urlParams.get("date"));
       }
     }
     setEvent({

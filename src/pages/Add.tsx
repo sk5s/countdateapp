@@ -30,11 +30,12 @@ import { add, informationCircle } from "ionicons/icons";
 import LocalizeBackButton from "../components/LocalizeBackButton";
 import { EXTEND_YEARS } from '../constants/Constants'
 import './Add.css'
+import { appendLocalTimezone } from "../lib/Countdate";
 
 const Add: React.FC<{ accent: string }> = ({ accent }) => {
   const { t } = useTranslation();
   const [selectedDate, setSelectedDate] = useState(
-    format(new Date(), "yyyy-MM-dd") + "T23:59:00+08:00"
+    appendLocalTimezone(format(new Date(), "yyyy-MM-dd"))
   );
   const [titleText, setTitleText] = useState<string | number>("");
   const [years,setYears] = useState(2);
@@ -101,7 +102,7 @@ const Add: React.FC<{ accent: string }> = ({ accent }) => {
     }
     if (urlParams.get("date")){
       if (urlParams.get("date").length === 10){
-        setSelectedDate(urlParams.get("date") + "T23:59:00+08:00")
+        setSelectedDate(appendLocalTimezone(urlParams.get("date")))
       }
     }
   },[location])
@@ -168,8 +169,9 @@ const Add: React.FC<{ accent: string }> = ({ accent }) => {
                 max={(parseInt(format(new Date(), "yyyy")) + years).toString()}
                 onIonChange={(e) =>
                   setSelectedDate(
-                    format(new Date(`${e.detail.value}`), "yyyy-MM-dd") +
-                      "T23:59:00+08:00"
+                    appendLocalTimezone(
+                      format(new Date(`${e.detail.value}`), "yyyy-MM-dd")
+                    )
                   )
                 }
                 showDefaultTitle={false}
