@@ -26,7 +26,7 @@ function toIsoString(date) {
   );
 }
 
-function appendCorrectTimezone(date) {
+export function appendCorrectTimezone(date) {
   let now = new Date();
   let tzo = -now.getTimezoneOffset(),
     dif = tzo >= 0 ? "+" : "-",

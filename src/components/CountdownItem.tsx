@@ -20,6 +20,7 @@ import format from "date-fns/format";
 import { useState } from "react";
 import "./CountdownItem.css";
 import { EXTEND_YEARS } from "../constants/Constants";
+import { appendCorrectTimezone } from "../lib/Countdate";
 
 export default function CountdateItem(props: {
   date: string;
@@ -157,7 +158,7 @@ export default function CountdateItem(props: {
           color={props.accent}
           onClick={() => setModalIsOpen(!modalIsOpen)}
         >
-          {format(new Date(props.date), "yyyy / MM / dd")}
+          {format(new Date(appendCorrectTimezone(props.date)), "yyyy / MM / dd")}
         </IonChip>
       </IonLabel>
       <IonIcon

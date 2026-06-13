@@ -39,6 +39,7 @@ import { copy } from "../lib/Clipboard";
 import key from "../lib/storageKey.json";
 import changeViewImg from "../assets/countdate-count-tour.jpg";
 import CountCard from "./CountCard";
+import { appendCorrectTimezone } from "../lib/Countdate";
 
 export default function CountCards({
   view,
@@ -142,7 +143,7 @@ export default function CountCards({
 
             filteredEvents.forEach((event) => {
               let now = new Date();
-              let countFrom = new Date(event.date.split("+")[0]);
+              let countFrom = new Date(appendCorrectTimezone(event.date));
               let timeDifference = now.getTime() - countFrom.getTime();
               if (timeDifference < 0 && count === "countdown") {
                 //countdown
