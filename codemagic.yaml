@@ -18,18 +18,18 @@ workflows:
       xcode: latest # <-- set to specific version e.g. 14.3, 15.0 to avoid unexpected updates.
       cocoapods: default
     scripts:
-      - name: Install Bun dependencies for Ionic project
+      - name: Install npm dependencies for Ionic project
         script: |
-          bun install
+          npm install
       - name: Build Ionic project
         script: |
-          bun run build
+          npm run build
       - name: Cocoapods installation
         script: |
           cd ios/App && rm ./Podfile.lock && pod install --repo-update
       - name: Update dependencies and copy web assets to native project
         script: |
-          bun x cap sync
+          npx cap sync
       - name: Set up code signing settings on Xcode project
         script: |
           xcode-project use-profiles
