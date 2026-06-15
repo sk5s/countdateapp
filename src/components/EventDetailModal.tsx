@@ -29,6 +29,7 @@ import { useState } from "react";
 import { isPlatform } from "@ionic/core";
 import { QRCodeSVG } from "qrcode.react";
 import { formatDate } from "../lib/DateFormat";
+import { appendCorrectTimezone, toIsoString } from "../lib/Countdate";
 
 export default function EventDetailModal({
   detailStr,
@@ -92,60 +93,19 @@ export default function EventDetailModal({
     });
   };
   const addOneMonth = () => {
-    let oldDate = myprops.date;
-    console.log(oldDate.split("-"));
-    console.log(parseInt(oldDate.split("-")[1]));
-    let year = parseInt(oldDate.split("-")[0]);
-    let yearStr = oldDate.split("-")[0];
-    let month = parseInt(oldDate.split("-")[1]);
-    let monthStr = "";
-    month += 1;
-    if (month <= 9) {
-      monthStr = "0" + month.toString();
-    } else if (month <= 12) {
-      monthStr = month.toString();
-    } else {
-      monthStr = "01";
-      year += 1;
-      yearStr = year.toString();
-    }
-    let newDate = `${yearStr}-${monthStr}-${oldDate.split("-")[2]}`;
-    console.log(newDate);
-    editDateData(newDate);
+    let date = new Date(appendCorrectTimezone(myprops.date));
+    date.setMonth(date.getMonth() + 1);
+    editDateData(toIsoString(date));
   };
   const minusOneDayHandler = () => {
-    let oldDate = myprops.date;
-    let day = parseInt(oldDate.split("-")[2].split("T")[0]);
-    let dayStr = "";
-    day -= 1;
-    if (day <= 9 && day > 0) {
-      dayStr = "0" + day.toString();
-    } else if (day <= 31 && day > 0) {
-      dayStr = day.toString();
-    } else {
-      dayStr = "27";
-    }
-    let newDate = `${oldDate.split("-")[0]}-${oldDate.split("-")[1]
-      }-${dayStr}T${oldDate.split("-")[2].split("T")[1]}`;
-    console.log(newDate);
-    editDateData(newDate);
+    let date = new Date(appendCorrectTimezone(myprops.date));
+    date.setDate(date.getDate() - 1);
+    editDateData(toIsoString(date));
   };
   const addOneDayHandler = () => {
-    let oldDate = myprops.date;
-    let day = parseInt(oldDate.split("-")[2].split("T")[0]);
-    let dayStr = "";
-    day += 1;
-    if (day <= 9 && day > 0) {
-      dayStr = "0" + day.toString();
-    } else if (day <= 31 && day > 0) {
-      dayStr = day.toString();
-    } else {
-      dayStr = "01";
-    }
-    let newDate = `${oldDate.split("-")[0]}-${oldDate.split("-")[1]
-      }-${dayStr}T${oldDate.split("-")[2].split("T")[1]}`;
-    console.log(newDate);
-    editDateData(newDate);
+    let date = new Date(appendCorrectTimezone(myprops.date));
+    date.setDate(date.getDate() + 1);
+    editDateData(toIsoString(date));
   };
   const editDateData = async (newDate: string | undefined | null) => {
     if (newDate === undefined || newDate === null) return;

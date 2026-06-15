@@ -244,7 +244,7 @@ const Settings: React.FC<{ accent: string; setView: any }> = ({
                   <IonItem>
                     <IonLabel
                       onClick={() => {
-                        location.pathname = "/";
+                        window.location.reload();
                       }}
                     >
                       <IonIcon icon={reload} />{" "}

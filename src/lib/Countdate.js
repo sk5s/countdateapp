@@ -1,6 +1,6 @@
 let secondsInADay = 60 * 60 * 1000 * 24;
 
-function toIsoString(date) {
+export function toIsoString(date) {
   var tzo = -date.getTimezoneOffset(),
     dif = tzo >= 0 ? "+" : "-",
     pad = function (num) {

@@ -45,10 +45,10 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "npx ionic build && npx cap copy",
+    "build": "bun x ionic build && bun x cap copy",
     "preview": "vite preview",
     "surgeold": "surge build --domain https://countdate.surge.sh",
-    "prettier": "npx prettier --write ./src",
+    "prettier": "bun x prettier --write ./src",
     "android": "ionic cap run android -l --external",
     "ios": "ionic cap run ios -l --external",
     "deploy": "firebase deploy"

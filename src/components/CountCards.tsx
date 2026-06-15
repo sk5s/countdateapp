@@ -151,7 +151,6 @@ export default function CountCards({
                   <IonCol size="12" size-md="6" size-lg="4" key={event.id}>
                     <CountCard
                       type="countdown"
-                      key={event.id}
                       id={event.id}
                       event={event.event_name}
                       date={event.date}
@@ -169,7 +168,6 @@ export default function CountCards({
                   <IonCol size="12" size-md="6" size-lg="4" key={event.id}>
                     <CountCard
                       type="countup"
-                      key={event.id}
                       id={event.id}
                       event={event.event_name}
                       date={event.date}
