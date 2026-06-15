@@ -126,25 +126,42 @@ const Edit: React.FC<{ accent: string; textColor: string; count:any; setCount:an
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <IonHeader>
-          <CountDownUpSwitcher accent={accent} count={count} setCount={setCount} />
-        </IonHeader>
+        <div style={{ paddingBottom: "calc(var(--ion-safe-area-bottom) + 12px)" }}>
+          <IonHeader>
+            <CountDownUpSwitcher accent={accent} count={count} setCount={setCount} />
+          </IonHeader>
 
-        <div style={{ marginLeft: 36, marginTop: 16 }}>
-          <span>
-            {t("p.edit.description")}
-          </span>
-        </div>
+          <div style={{ marginLeft: 36, marginTop: 16 }}>
+            <span>
+              {t("p.edit.description")}
+            </span>
+          </div>
 
-        {/* Countdate lists */}
-        <IonList inset={true}>
-          {/* The reorder gesture is disabled by default, enable it to drag and drop items */}
-          <IonReorderGroup disabled={false} onIonItemReorder={handleReorder}>
-            {(() => {
-              let row = [];
-              if (count === "countdown") {
-                if (!countdownList.length) return <NoCountdate />
-                countdownList.forEach((event) => {
+          {/* Countdate lists */}
+          <IonList inset={true}>
+            {/* The reorder gesture is disabled by default, enable it to drag and drop items */}
+            <IonReorderGroup disabled={false} onIonItemReorder={handleReorder}>
+              {(() => {
+                let row = [];
+                if (count === "countdown") {
+                  if (!countdownList.length) return <NoCountdate />
+                  countdownList.forEach((event) => {
+                      //countdown
+                      row.push(
+                        <CountdateItem
+                          key={event.id}
+                          id={event.id}
+                          event={event.event_name}
+                          date={event.date}
+                          editable={true}
+                          accent={accent}
+                          textColor={textColor}
+                        />
+                      )
+                  })
+                } else if (count === "countup") {
+                  if (!countupList.length) return <NoCountdate />
+                  countupList.forEach((event) => {
                     //countdown
                     row.push(
                       <CountdateItem
@@ -157,35 +174,20 @@ const Edit: React.FC<{ accent: string; textColor: string; count:any; setCount:an
                         textColor={textColor}
                       />
                     )
-                })
-              } else if (count === "countup") {
-                if (!countupList.length) return <NoCountdate />
-                countupList.forEach((event) => {
-                  //countdown
-                  row.push(
-                    <CountdateItem
-                      key={event.id}
-                      id={event.id}
-                      event={event.event_name}
-                      date={event.date}
-                      editable={true}
-                      accent={accent}
-                      textColor={textColor}
-                    />
-                  )
-                })
-              }
-              return row;
-            })()}
-          </IonReorderGroup>
-        </IonList>
+                  })
+                }
+                return row;
+              })()}
+            </IonReorderGroup>
+          </IonList>
 
-        {/* New countdate action button */}
-        <IonFab vertical="bottom" horizontal="end" slot="fixed">
-          <IonFabButton routerLink="/add" color={accent}>
-            <IonIcon icon={add} />
-          </IonFabButton>
-        </IonFab>
+          {/* New countdate action button */}
+          <IonFab vertical="bottom" horizontal="end" slot="fixed" style={{ marginBottom: "var(--ion-safe-area-bottom)" }}>
+            <IonFabButton routerLink="/add" color={accent}>
+              <IonIcon icon={add} />
+            </IonFabButton>
+          </IonFab>
+        </div>
       </IonContent>
     </IonPage>
   );

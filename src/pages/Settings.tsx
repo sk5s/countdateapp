@@ -189,118 +189,120 @@ const Settings: React.FC<{ accent: string; setView: any }> = ({
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <IonList>
-          <IonListHeader lines="none" color={accent}>
-            <IonLabel>{t("p.settings.general.title")}</IonLabel>
-          </IonListHeader>
-          <IonItem>
-            <LanguageSelectModal accent={accent} />
-          </IonItem>
-          <IonItem>
-            <IonToggle
-              checked={extendChecked}
-              onClick={toggleExtendModeHandler}
-              color={accent}
-            >
-              <div className="ion-text-wrap">
-                <IonIcon icon={calendar} />{" "}
-                {t("p.settings.general.toggleExtendMode")}
-              </div>
-            </IonToggle>
-          </IonItem>
-          <IonItem>
-            <IonToggle
-              checked={relativeChecked}
-              onClick={toggleRelativeModeHandler}
-              color={accent}
-            >
-              <div className="ion-text-wrap">
-                <IonIcon icon={text} />{" "}
-                {t("p.settings.general.toggleRelativeMode")}
-              </div>
-            </IonToggle>
-          </IonItem>
-          {platform === "android" && (
-            <>
+        <div style={{ paddingBottom: "calc(var(--ion-safe-area-bottom) + 12px)" }}>
+          <IonList>
+            <IonListHeader lines="none" color={accent}>
+              <IonLabel>{t("p.settings.general.title")}</IonLabel>
+            </IonListHeader>
+            <IonItem>
+              <LanguageSelectModal accent={accent} />
+            </IonItem>
+            <IonItem>
+              <IonToggle
+                checked={extendChecked}
+                onClick={toggleExtendModeHandler}
+                color={accent}
+              >
+                <div className="ion-text-wrap">
+                  <IonIcon icon={calendar} />{" "}
+                  {t("p.settings.general.toggleExtendMode")}
+                </div>
+              </IonToggle>
+            </IonItem>
+            <IonItem>
+              <IonToggle
+                checked={relativeChecked}
+                onClick={toggleRelativeModeHandler}
+                color={accent}
+              >
+                <div className="ion-text-wrap">
+                  <IonIcon icon={text} />{" "}
+                  {t("p.settings.general.toggleRelativeMode")}
+                </div>
+              </IonToggle>
+            </IonItem>
+            {platform === "android" && (
+              <>
+                <IonItem>
+                  <IonToggle
+                    checked={devChecked}
+                    onClick={toggleDevModeHandler}
+                    color={accent}
+                  >
+                    <IonIcon icon={code} />{" "}
+                    {t("p.settings.general.toggleDevMode")}
+                  </IonToggle>
+                </IonItem>
+                {(isPlatform("android") && isPlatform("hybrid") && devChecked) ||
+                (isPlatform("ios") && isPlatform("hybrid") && devChecked) ? (
+                  <>
+                    <IonItem>
+                      <IonLabel onClick={testLocalNotification}>
+                        <IonIcon icon={notifications} />{" "}
+                        {t("p.settings.general.testLocalNotification")}
+                      </IonLabel>
+                    </IonItem>
+                    <IonItem>
+                      <IonLabel
+                        onClick={() => {
+                          window.location.reload();
+                        }}
+                      >
+                        <IonIcon icon={reload} />{" "}
+                        {t("p.settings.general.webFrontendReload")}
+                      </IonLabel>
+                    </IonItem>
+                  </>
+                ) : null}
+              </>
+            )}
+            <IonItem>
+              <IonLabel onClick={handleReviewTour}>
+                <IonIcon icon={help} /> {t("p.settings.general.reviewTour")}
+              </IonLabel>
+            </IonItem>
+            <IonRouterLink routerLink="/backup">
               <IonItem>
-                <IonToggle
-                  checked={devChecked}
-                  onClick={toggleDevModeHandler}
-                  color={accent}
-                >
-                  <IonIcon icon={code} />{" "}
-                  {t("p.settings.general.toggleDevMode")}
-                </IonToggle>
+                <IonLabel color="dark">
+                  <IonIcon icon={documentText} /> {t("p.settings.general.backup")}
+                </IonLabel>
               </IonItem>
-              {(isPlatform("android") && isPlatform("hybrid") && devChecked) ||
-              (isPlatform("ios") && isPlatform("hybrid") && devChecked) ? (
-                <>
-                  <IonItem>
-                    <IonLabel onClick={testLocalNotification}>
-                      <IonIcon icon={notifications} />{" "}
-                      {t("p.settings.general.testLocalNotification")}
-                    </IonLabel>
-                  </IonItem>
-                  <IonItem>
-                    <IonLabel
-                      onClick={() => {
-                        window.location.reload();
-                      }}
-                    >
-                      <IonIcon icon={reload} />{" "}
-                      {t("p.settings.general.webFrontendReload")}
-                    </IonLabel>
-                  </IonItem>
-                </>
-              ) : null}
-            </>
-          )}
-          <IonItem>
-            <IonLabel onClick={handleReviewTour}>
-              <IonIcon icon={help} /> {t("p.settings.general.reviewTour")}
-            </IonLabel>
-          </IonItem>
-          <IonRouterLink routerLink="/backup">
+            </IonRouterLink>
+            <IonRouterLink routerLink="/about">
+              <IonItem>
+                <IonLabel color="dark">
+                  <IonIcon icon={information} /> {t("p.settings.general.about")}
+                </IonLabel>
+              </IonItem>
+            </IonRouterLink>
+            <IonListHeader lines="none" color={accent}>
+              <IonLabel>{t("p.settings.theme.title")}</IonLabel>
+            </IonListHeader>
             <IonItem>
-              <IonLabel color="dark">
-                <IonIcon icon={documentText} /> {t("p.settings.general.backup")}
+              <IonToggle
+                checked={darkChecked}
+                onClick={toggleDarkModeHandler}
+                color={accent}
+              >
+                <IonIcon icon={contrast} /> {t("p.settings.theme.toggleDarkMode")}
+              </IonToggle>
+            </IonItem>
+            <IonItem>
+              <IonLabel onClick={darkmodeToSystem}>
+                <IonIcon icon={logoAndroid} />{" "}
+                {t("p.settings.theme.followSystem")}
               </IonLabel>
             </IonItem>
-          </IonRouterLink>
-          <IonRouterLink routerLink="/about">
             <IonItem>
-              <IonLabel color="dark">
-                <IonIcon icon={information} /> {t("p.settings.general.about")}
-              </IonLabel>
+              <AccentColorSelectModal />
             </IonItem>
-          </IonRouterLink>
-          <IonListHeader lines="none" color={accent}>
-            <IonLabel>{t("p.settings.theme.title")}</IonLabel>
-          </IonListHeader>
-          <IonItem>
-            <IonToggle
-              checked={darkChecked}
-              onClick={toggleDarkModeHandler}
-              color={accent}
-            >
-              <IonIcon icon={contrast} /> {t("p.settings.theme.toggleDarkMode")}
-            </IonToggle>
-          </IonItem>
-          <IonItem>
-            <IonLabel onClick={darkmodeToSystem}>
-              <IonIcon icon={logoAndroid} />{" "}
-              {t("p.settings.theme.followSystem")}
-            </IonLabel>
-          </IonItem>
-          <IonItem>
-            <AccentColorSelectModal />
-          </IonItem>
-          {platform === "android" && (
-            <IonItem>
-              <TextColorSelectModal accent={accent} />
-            </IonItem>
-          )}
-        </IonList>
+            {platform === "android" && (
+              <IonItem>
+                <TextColorSelectModal accent={accent} />
+              </IonItem>
+            )}
+          </IonList>
+        </div>
       </IonContent>
     </IonPage>
   );

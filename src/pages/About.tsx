@@ -40,139 +40,141 @@ const About: React.FC<{ accent: string }> = ({ accent }) => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        {/* <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle>{t("p.about.title")}</IonTitle>
-          </IonToolbar>
-        </IonHeader> */}
-        <div style={{ width: "100%", textAlign: "center" }}>
-          <a href="https://github.com/sk5s/countdateapp" target="_blank" rel="noreferrer">
-            <img src={logo} alt="Logo" width="80" height="80" />
-          </a>
-          <p>
-            {t("p.about.version", { versionName: packageJson.version })}
-            {" "}
-            {isPlatform("mobileweb") ? <>
-              <IonButton color={accent} size="small" onClick={() => {
-                window.location.reload()
-              }}>
-                {t("p.about.reload")}
-              </IonButton>
-            </> : <></>}
-          </p>
-          <p>
-            {t("p.about.platform")}{" "}
-            {(() => {
-              let platforms: any = [];
-              getPlatforms().forEach((p, i) => {
-                platforms.push(
-                  <IonChip key={i} color={accent}>
-                    {p}
-                  </IonChip>
-                );
-              });
-              return platforms;
-            })()}
-          </p>
-        </div>
-        <p style={{ fontSize: "25px", marginLeft: "20px" }}>
-          {t("p.about.slogan")}
-        </p>
-        <div style={{ display: platform === "ios" ? "none" : "flex", flexDirection: "row" }}>
-          <a
-            rel="noreferrer"
-            target="_blank"
-            href="https://play.google.com/store/apps/details?id=cyou.sk5s.app.countdate"
-          >
-            <img
-              alt="Get it on Google Play"
-              src="https://sk5s.com/images/google-play.png"
-              width="150px"
-            />
-          </a>
-          <a
-            rel="noreferrer"
-            target="_blank"
-            href="https://apt.izzysoft.de/fdroid/index/apk/cyou.sk5s.app.countdate"
-          >
-            <img
-              alt="Get it on Google Play"
-              src="https://countdate.sk5s.com/assets/img/IzzyOnDroid.png"
-              width="150px"
-            />
-          </a>
-        </div>
-        <ul style={{ fontSize: "25px" }}>
-          <li>
-            <a
-              href="https://countdate.sk5s.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {t("p.about.link.landing")}
+        <div style={{ paddingBottom: "calc(var(--ion-safe-area-bottom) + 12px)" }}>
+          {/* <IonHeader collapse="condense">
+            <IonToolbar>
+              <IonTitle>{t("p.about.title")}</IonTitle>
+            </IonToolbar>
+          </IonHeader> */}
+          <div style={{ width: "100%", textAlign: "center" }}>
+            <a href="https://github.com/sk5s/countdateapp" target="_blank" rel="noreferrer">
+              <img src={logo} alt="Logo" width="80" height="80" />
             </a>
-          </li>
-          <li>
-            <a
-              href="https://github.com/sk5s/countdateapp"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {t("p.about.link.github")}
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://github.com/sk5s/countdateapp/issues"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {t("p.about.link.bug")}
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://github.com/sk5s/countdateapp/issues"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {t("p.about.link.feature")}
-            </a>
-          </li>
-        </ul>
-
-        {platform === "ios" ? null : (
-          <>
-            <p style={{ fontSize: "25px", marginLeft: "20px" }}>
-              {t("p.about.more.title")}
+            <p>
+              {t("p.about.version", { versionName: packageJson.version })}
+              {" "}
+              {isPlatform("mobileweb") ? <>
+                <IonButton color={accent} size="small" onClick={() => {
+                  window.location.reload()
+                }}>
+                  {t("p.about.reload")}
+                </IonButton>
+              </> : <></>}
             </p>
-
-            <a href="https://play.google.com/store/apps/details?id=cyou.sk5s.app.weread" target="blank" rel="noopener noreferer">
-              <div style={{ marginBottom: "10px" }}>
-                <IonItem>
-                  <IonThumbnail slot="start">
-                    <img alt="Silhouette of mountains" src="https://weread.sk5s.com/weread-logo.png" />
-                  </IonThumbnail>
-                  <IonLabel>{t("p.about.more.weread")}</IonLabel>
-                </IonItem>
-              </div>
+            <p>
+              {t("p.about.platform")}{" "}
+              {(() => {
+                let platforms: any = [];
+                getPlatforms().forEach((p, i) => {
+                  platforms.push(
+                    <IonChip key={i} color={accent}>
+                      {p}
+                    </IonChip>
+                  );
+                });
+                return platforms;
+              })()}
+            </p>
+          </div>
+          <p style={{ fontSize: "25px", marginLeft: "20px" }}>
+            {t("p.about.slogan")}
+          </p>
+          <div style={{ display: platform === "ios" ? "none" : "flex", flexDirection: "row" }}>
+            <a
+              rel="noreferrer"
+              target="_blank"
+              href="https://play.google.com/store/apps/details?id=cyou.sk5s.app.countdate"
+            >
+              <img
+                alt="Get it on Google Play"
+                src="https://sk5s.com/images/google-play.png"
+                width="150px"
+              />
             </a>
-            <a href="https://play.google.com/store/apps/details?id=cyou.sk5s.app.onea4paperyourlife" target="blank" rel="noopener noreferer">
-              <div style={{ marginBottom: "10px" }}>
-                <IonItem>
-                  <IonThumbnail slot="start">
-                    <img alt="Silhouette of mountains" src="https://play-lh.googleusercontent.com/ffMW4eI9K3Z5vT2tDYdat6N7nJ4TvN3k7B9SPRePKQ7G-I2RSI1slK_uPQZpSMISI4E=w480-h960-rw" />
-                  </IonThumbnail>
-                  <IonLabel>{t("p.about.more.onea4paperyourlife")}</IonLabel>
-                </IonItem>
-              </div>
+            <a
+              rel="noreferrer"
+              target="_blank"
+              href="https://apt.izzysoft.de/fdroid/index/apk/cyou.sk5s.app.countdate"
+            >
+              <img
+                alt="Get it on Google Play"
+                src="https://countdate.sk5s.com/assets/img/IzzyOnDroid.png"
+                width="150px"
+              />
             </a>
-          </>
-        )}
+          </div>
+          <ul style={{ fontSize: "25px" }}>
+            <li>
+              <a
+                href="https://countdate.sk5s.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {t("p.about.link.landing")}
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://github.com/sk5s/countdateapp"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {t("p.about.link.github")}
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://github.com/sk5s/countdateapp/issues"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {t("p.about.link.bug")}
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://github.com/sk5s/countdateapp/issues"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {t("p.about.link.feature")}
+              </a>
+            </li>
+          </ul>
 
-        <a href="https://sk5s.com" target="_blank" rel="noopener noreferrer">
-          <img src={banner} alt="" />
-        </a>
+          {platform === "ios" ? null : (
+            <>
+              <p style={{ fontSize: "25px", marginLeft: "20px" }}>
+                {t("p.about.more.title")}
+              </p>
+
+              <a href="https://play.google.com/store/apps/details?id=cyou.sk5s.app.weread" target="blank" rel="noopener noreferer">
+                <div style={{ marginBottom: "10px" }}>
+                  <IonItem>
+                    <IonThumbnail slot="start">
+                      <img alt="Silhouette of mountains" src="https://weread.sk5s.com/weread-logo.png" />
+                    </IonThumbnail>
+                    <IonLabel>{t("p.about.more.weread")}</IonLabel>
+                  </IonItem>
+                </div>
+              </a>
+              <a href="https://play.google.com/store/apps/details?id=cyou.sk5s.app.onea4paperyourlife" target="blank" rel="noopener noreferer">
+                <div style={{ marginBottom: "10px" }}>
+                  <IonItem>
+                    <IonThumbnail slot="start">
+                      <img alt="Silhouette of mountains" src="https://play-lh.googleusercontent.com/ffMW4eI9K3Z5vT2tDYdat6N7nJ4TvN3k7B9SPRePKQ7G-I2RSI1slK_uPQZpSMISI4E=w480-h960-rw" />
+                    </IonThumbnail>
+                    <IonLabel>{t("p.about.more.onea4paperyourlife")}</IonLabel>
+                  </IonItem>
+                </div>
+              </a>
+            </>
+          )}
+
+          <a href="https://sk5s.com" target="_blank" rel="noopener noreferrer">
+            <img src={banner} alt="" />
+          </a>
+        </div>
       </IonContent>
     </IonPage>
   );

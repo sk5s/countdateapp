@@ -175,21 +175,23 @@ const Backup: React.FC<{ accent: string }> = ({ accent }) => {
         </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding">
-        <div style={{height: "100%", width: "100%", display: "flex", alignItems: "center", justifyContent: "center", columnGap: "12px"}}>
-          <div style={{flex: 1, maxWidth: "300px"}}>
-            <IonButton color={accent} expand="full" shape="round" onClick={() => handleExport()}>{t('p.backup.export')}</IonButton>
+        <div style={{ paddingBottom: "calc(var(--ion-safe-area-bottom) + 12px)" }}>
+          <div style={{height: "100%", width: "100%", display: "flex", alignItems: "center", justifyContent: "center", columnGap: "12px"}}>
+            <div style={{flex: 1, maxWidth: "300px"}}>
+              <IonButton color={accent} expand="full" shape="round" onClick={() => handleExport()}>{t('p.backup.export')}</IonButton>
+            </div>
+            <div style={{flex: 1, maxWidth: "300px"}}>
+              <IonButton color={accent} expand="full" shape="round" onClick={() => handleImport()}>{t('p.backup.import')}</IonButton>
+            </div>
           </div>
-          <div style={{flex: 1, maxWidth: "300px"}}>
-            <IonButton color={accent} expand="full" shape="round" onClick={() => handleImport()}>{t('p.backup.import')}</IonButton>
-          </div>
+          <input
+            type="file"
+            id="fileInput"
+            style={{ display: "none" }}
+            accept=".cdd"
+            onChange={handleFileChange}
+          />
         </div>
-        <input
-          type="file"
-          id="fileInput"
-          style={{ display: "none" }}
-          accept=".cdd"
-          onChange={handleFileChange}
-        />
       </IonContent>
     </IonPage>
   );

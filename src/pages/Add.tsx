@@ -115,88 +115,90 @@ const Add: React.FC<{ accent: string }> = ({ accent }) => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen className="ion-padding">
-        <IonGrid>
-          <IonRow>
-            <IonCol>
-              <IonItem className="ion-no-padding">
-                <IonLabel position="stacked">
-                  {t("p.add.eventName.label")}
-                </IonLabel>
-                <IonInput
-                  aria-label="name"
-                  id="event-title"
-                  onKeyDown={(e) => SearchF(e.key)}
-                  clearInput={true}
-                  value={titleText}
-                  placeholder={
-                    t("p.add.eventName.placeholder")
-                  }
-                  onIonChange={(e) => setTitleText(e.detail.value!)}
-                ></IonInput>
-              </IonItem>
-            </IonCol>
-          </IonRow>
-          <IonRow>
-            <IonCol style={{ textAlign: "end" }}>
-              <IonButton
-                size="small"
-                id="click-trigger"
-                color={accent}
-                shape="round"
-                fill="clear"
-              >
-                {" "}
-                <IonIcon icon={informationCircle}></IonIcon>{" "}
-              </IonButton>
-              <IonPopover trigger="click-trigger" triggerAction="click" className="wide-popover-300">
-                <IonContent class="ion-padding">
-                  {t("p.add.tips")}
-                  <br/>
-                  {t("p.add.extend")}
-                </IonContent>
-              </IonPopover>
-            </IonCol>
-          </IonRow>
-          <IonRow>
-            <IonCol>
-              <IonDatetime
-                mode="md"
-                color={accent}
-                size="cover"
-                presentation="date"
-                value={selectedDate}
-                min={(parseInt(format(new Date(), "yyyy")) - years).toString()}
-                max={(parseInt(format(new Date(), "yyyy")) + years).toString()}
-                onIonChange={(e) =>
-                  setSelectedDate(
-                    appendLocalTimezone(
-                      format(new Date(`${e.detail.value}`), "yyyy-MM-dd")
+        <div style={{ paddingBottom: "calc(var(--ion-safe-area-bottom) + 12px)" }}>
+          <IonGrid>
+            <IonRow>
+              <IonCol>
+                <IonItem className="ion-no-padding">
+                  <IonLabel position="stacked">
+                    {t("p.add.eventName.label")}
+                  </IonLabel>
+                  <IonInput
+                    aria-label="name"
+                    id="event-title"
+                    onKeyDown={(e) => SearchF(e.key)}
+                    clearInput={true}
+                    value={titleText}
+                    placeholder={
+                      t("p.add.eventName.placeholder")
+                    }
+                    onIonChange={(e) => setTitleText(e.detail.value!)}
+                  ></IonInput>
+                </IonItem>
+              </IonCol>
+            </IonRow>
+            <IonRow>
+              <IonCol style={{ textAlign: "end" }}>
+                <IonButton
+                  size="small"
+                  id="click-trigger"
+                  color={accent}
+                  shape="round"
+                  fill="clear"
+                >
+                  {" "}
+                  <IonIcon icon={informationCircle}></IonIcon>{" "}
+                </IonButton>
+                <IonPopover trigger="click-trigger" triggerAction="click" className="wide-popover-300">
+                  <IonContent class="ion-padding">
+                    {t("p.add.tips")}
+                    <br/>
+                    {t("p.add.extend")}
+                  </IonContent>
+                </IonPopover>
+              </IonCol>
+            </IonRow>
+            <IonRow>
+              <IonCol>
+                <IonDatetime
+                  mode="md"
+                  color={accent}
+                  size="cover"
+                  presentation="date"
+                  value={selectedDate}
+                  min={(parseInt(format(new Date(), "yyyy")) - years).toString()}
+                  max={(parseInt(format(new Date(), "yyyy")) + years).toString()}
+                  onIonChange={(e) =>
+                    setSelectedDate(
+                      appendLocalTimezone(
+                        format(new Date(`${e.detail.value}`), "yyyy-MM-dd")
+                      )
                     )
-                  )
-                }
-                showDefaultTitle={false}
-              ></IonDatetime>
-            </IonCol>
-          </IonRow>
-          <IonRow>
-            <IonCol>
-              <IonButton
-                shape="round"
-                color={accent}
-                disabled={titleText === ""}
-                expand="full"
-                onClick={() => {
-                  add_new_countdate_item({
-                    event_name: titleText,
-                    date: selectedDate,
-                  });
-                }}
-              >
-                {t("p.add.add")}
-              </IonButton>
-            </IonCol>
-          </IonRow>
-        </IonGrid>
+                  }
+                  showDefaultTitle={false}
+                ></IonDatetime>
+              </IonCol>
+            </IonRow>
+            <IonRow>
+              <IonCol>
+                <IonButton
+                  shape="round"
+                  color={accent}
+                  disabled={titleText === ""}
+                  expand="full"
+                  onClick={() => {
+                    add_new_countdate_item({
+                      event_name: titleText,
+                      date: selectedDate,
+                    });
+                  }}
+                >
+                  {t("p.add.add")}
+                </IonButton>
+              </IonCol>
+            </IonRow>
+          </IonGrid>
+        </div>
       </IonContent>
     </IonPage>
   );

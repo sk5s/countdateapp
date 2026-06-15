@@ -81,64 +81,66 @@ export default function Share({ accent }) {
         </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding">
-        <IonCard>
-          <IonCardHeader>
-            <IonCardTitle>
-              {t("p.add.eventName.label")} : {event.title}
-            </IonCardTitle>
-            <IonCardSubtitle>
-              {t("p.share.date")} : {formatDate(new Date(event.date))}
-            </IonCardSubtitle>
-          </IonCardHeader>
+        <div style={{ paddingBottom: "calc(var(--ion-safe-area-bottom) + 12px)" }}>
+          <IonCard>
+            <IonCardHeader>
+              <IonCardTitle>
+                {t("p.add.eventName.label")} : {event.title}
+              </IonCardTitle>
+              <IonCardSubtitle>
+                {t("p.share.date")} : {formatDate(new Date(event.date))}
+              </IonCardSubtitle>
+            </IonCardHeader>
 
-          <IonCardContent>
-            {isPlatform("mobileweb") ? (
-              <>
-                <IonButton
-                  color={accent}
-                  onClick={() => {
-                    window.location.replace(
-                      `countdate://app/add?title=${event.title}&date=${event.dateRaw}`
-                    );
-                  }}
+            <IonCardContent>
+              {isPlatform("mobileweb") ? (
+                <>
+                  <IonButton
+                    color={accent}
+                    onClick={() => {
+                      window.location.replace(
+                        `countdate://app/add?title=${event.title}&date=${event.dateRaw}`
+                      );
+                    }}
+                  >
+                    {t("p.share.openApp")}
+                  </IonButton>
+                </>
+              ) : (
+                <></>
+              )}
+            </IonCardContent>
+          </IonCard>
+          <br />
+          <div style={{ display: "flex", flexDirection: "row" }}>
+            <img src={logo} alt="Logo" width="60" height="60" />
+            {!isPlatform("ios") && (
+              <div style={{ height: "60px", width: "150px" }}>
+                <a
+                  rel="noreferrer"
+                  target="_blank"
+                  href="https://play.google.com/store/apps/details?id=cyou.sk5s.app.countdate"
                 >
-                  {t("p.share.openApp")}
-                </IonButton>
-              </>
-            ) : (
-              <></>
+                  <img
+                    alt="Get it on Google Play"
+                    src="https://sk5s.com/images/google-play.png"
+                    width="150px"
+                  />
+                </a>
+              </div>
             )}
-          </IonCardContent>
-        </IonCard>
-        <br />
-        <div style={{ display: "flex", flexDirection: "row" }}>
-          <img src={logo} alt="Logo" width="60" height="60" />
-          {!isPlatform("ios") && (
             <div style={{ height: "60px", width: "150px" }}>
               <a
                 rel="noreferrer"
                 target="_blank"
-                href="https://play.google.com/store/apps/details?id=cyou.sk5s.app.countdate"
+                href="https://apps.apple.com/tw/app/Countdate/id6553989325"
               >
                 <img
-                  alt="Get it on Google Play"
-                  src="https://sk5s.com/images/google-play.png"
-                  width="150px"
+                  alt="Download on the App Store"
+                  src="https://sk5s.com/images/app-store.png"
                 />
               </a>
             </div>
-          )}
-          <div style={{ height: "60px", width: "150px" }}>
-            <a
-              rel="noreferrer"
-              target="_blank"
-              href="https://apps.apple.com/tw/app/Countdate/id6553989325"
-            >
-              <img
-                alt="Download on the App Store"
-                src="https://sk5s.com/images/app-store.png"
-              />
-            </a>
           </div>
         </div>
       </IonContent>
