@@ -124,12 +124,13 @@ export default function DescriptionEditor({
 
           {description ? (
             <>
-              <ReactMarkdown
-                children={description}
-                remarkPlugins={[remarkGfm]}
-                rehypePlugins={[[rehypeExternalLinks, {target: "_blank"}]]}
-                className={style.reactMarkDown}
-              />
+              <div className={style.reactMarkDown}>
+                <ReactMarkdown
+                  children={description}
+                  remarkPlugins={[remarkGfm]}
+                  rehypePlugins={[[rehypeExternalLinks, {target: "_blank"}]]}
+                />
+              </div>
             </>
           ) : (
             <h5 style={{fontSize: "1.2rem"}}>

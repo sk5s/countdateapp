@@ -16,7 +16,7 @@ import { reorderThree, trash } from "ionicons/icons";
 import { on, trigger } from "../lib/Events";
 import { useTranslation } from "react-i18next";
 import key from "../lib/storageKey.json";
-import format from "date-fns/format";
+import { formatDateISO, formatDateReadable } from "../lib/DateFormat";
 import { useState } from "react";
 import "./CountdownItem.css";
 import { EXTEND_YEARS } from "../constants/Constants";
@@ -158,7 +158,7 @@ export default function CountdateItem(props: {
           color={props.accent}
           onClick={() => setModalIsOpen(!modalIsOpen)}
         >
-          {format(new Date(appendCorrectTimezone(props.date)), "yyyy / MM / dd")}
+          {formatDateReadable(new Date(appendCorrectTimezone(props.date)))}
         </IonChip>
       </IonLabel>
       <IonIcon
@@ -176,11 +176,11 @@ export default function CountdateItem(props: {
           color={props.accent}
           presentation="date"
           showDefaultButtons={true}
-          min={(parseInt(format(new Date(), "yyyy")) - years).toString()}
-          max={(parseInt(format(new Date(), "yyyy")) + years).toString()}
+          min={(new Date().getFullYear() - years).toString()}
+          max={(new Date().getFullYear() + years).toString()}
           onIonChange={(e) =>
             edit_this_countdate_item_date(
-              format(new Date(`${e.detail.value}`), "yyyy-MM-dd")
+              formatDateISO(new Date(`${e.detail.value}`))
             )
           }
           value={props.date}

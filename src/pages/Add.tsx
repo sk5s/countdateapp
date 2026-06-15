@@ -20,7 +20,7 @@ import { Preferences } from "@capacitor/preferences";
 import { useEffect, useState } from "react";
 import { useHistory, useLocation } from "react-router";
 import { v4 as uuid } from "uuid";
-import { format } from "date-fns";
+import { formatDateISO } from "../lib/DateFormat";
 
 import { on, trigger } from "../lib/Events";
 import { useTranslation } from "react-i18next";
@@ -35,7 +35,7 @@ import { appendLocalTimezone } from "../lib/Countdate";
 const Add: React.FC<{ accent: string }> = ({ accent }) => {
   const { t } = useTranslation();
   const [selectedDate, setSelectedDate] = useState(
-    appendLocalTimezone(format(new Date(), "yyyy-MM-dd"))
+    appendLocalTimezone(formatDateISO(new Date()))
   );
   const [titleText, setTitleText] = useState<string | number>("");
   const [years,setYears] = useState(2);
@@ -166,12 +166,12 @@ const Add: React.FC<{ accent: string }> = ({ accent }) => {
                   size="cover"
                   presentation="date"
                   value={selectedDate}
-                  min={(parseInt(format(new Date(), "yyyy")) - years).toString()}
-                  max={(parseInt(format(new Date(), "yyyy")) + years).toString()}
+                  min={(new Date().getFullYear() - years).toString()}
+                  max={(new Date().getFullYear() + years).toString()}
                   onIonChange={(e) =>
                     setSelectedDate(
                       appendLocalTimezone(
-                        format(new Date(`${e.detail.value}`), "yyyy-MM-dd")
+                        formatDateISO(new Date(`${e.detail.value}`))
                       )
                     )
                   }
