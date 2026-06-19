@@ -12,14 +12,14 @@
         "@capacitor/device": "8.0.2",
         "@capacitor/filesystem": "8.1.2",
         "@capacitor/ios": "8.4.0",
-        "@capacitor/keyboard": "8.0.3",
+        "@capacitor/keyboard": "8.0.5",
         "@capacitor/local-notifications": "8.2.0",
         "@capacitor/preferences": "8.0.1",
         "@capacitor/share": "8.0.1",
         "@capacitor/toast": "8.0.1",
-        "@ionic/core": "8.8.10",
-        "@ionic/react": "8.8.10",
-        "@ionic/react-router": "8.8.10",
+        "@ionic/core": "8.8.11",
+        "@ionic/react": "8.8.11",
+        "@ionic/react-router": "8.8.11",
         "@types/react": "18.3.3",
         "@types/react-router": "5.1.20",
         "@types/react-router-dom": "^5.1.7",
@@ -258,7 +258,7 @@
 
     "@capacitor/ios": ["@capacitor/ios@8.4.0", "", { "peerDependencies": { "@capacitor/core": "^8.4.0" } }, "sha512-tnwstEdbTJ2nHAfoAwnurXgYRscWeLY+IIGdz69o24gN2Crfj9Xc0TWo8L5uFLF1LmpbUywH1IT0U1oHV8c+CA=="],
 
-    "@capacitor/keyboard": ["@capacitor/keyboard@8.0.3", "", { "peerDependencies": { "@capacitor/core": ">=8.0.0" } }, "sha512-27Bv5/2w1Ss2njguBgTS98O0Bb8DRJhAARyzXYib0JlT/n6BrJw/EZ0CokM4C8GFUjFDjJnEKF1Ie01buTMEXQ=="],
+    "@capacitor/keyboard": ["@capacitor/keyboard@8.0.5", "", { "peerDependencies": { "@capacitor/core": ">=8.0.0" } }, "sha512-oFXygC4eKYA5l2MdpTR06L2M/4x6e2SLD5yS1T9+UBDKTkzyvhWKEhbYLUaTIBPpLKqlfGudJw1X73S1H9eUzQ=="],
 
     "@capacitor/local-notifications": ["@capacitor/local-notifications@8.2.0", "", { "peerDependencies": { "@capacitor/core": ">=8.0.0" } }, "sha512-fvLY0w2w4MiX+DD4+Wv4DOwOLdzKZsMDwAcRv/Juudd+QbKbn69s6cM3xVqPwAiDqfnqsY4/S8xtQD6M73wY2A=="],
 
@@ -326,11 +326,11 @@
 
     "@ionic/cli-framework-prompts": ["@ionic/cli-framework-prompts@2.1.13", "", { "dependencies": { "@ionic/utils-terminal": "2.3.5", "debug": "^4.0.0", "inquirer": "^7.0.0", "tslib": "^2.0.1" } }, "sha512-Yj1fz6p7OehreQ8C70bd9+M6tYP/rvzLw5JVj8pT/N9s0kQSjqEFRbs96LKr3lfd3TADZaS8OlZrQIqenFIUpg=="],
 
-    "@ionic/core": ["@ionic/core@8.8.10", "", { "dependencies": { "@stencil/core": "4.43.5", "ionicons": "^8.0.13", "tslib": "^2.1.0" } }, "sha512-pNujZuU/vydXKtE3yOqmeOIySbXodspxuK4QcbRitWoikNZhGalqW2JvtEJqeRRvE4KJ4dJ3gXF8i6+rtVSG3Q=="],
+    "@ionic/core": ["@ionic/core@8.8.11", "", { "dependencies": { "@stencil/core": "4.43.5", "ionicons": "^8.0.13", "tslib": "^2.1.0" } }, "sha512-+/uKZu3+ihAHBXl+EGrln+EW6v57VWqLICOHK4zahGy7SM9soq1PYLtG03DGsxqPt9ET7YwpX1B0ToU8/Ved3w=="],
 
-    "@ionic/react": ["@ionic/react@8.8.10", "", { "dependencies": { "@ionic/core": "8.8.10", "ionicons": "^8.0.13", "tslib": "*" }, "peerDependencies": { "react": ">=16.8.6", "react-dom": ">=16.8.6" } }, "sha512-jPxh1yIhUjzY8PEErmTAl/yjbnJzLfQ7B/DZy0qhQtmTU33w8frNz9bGFMBpQqaK7XAAkUiAOUrkR33H9h+hqg=="],
+    "@ionic/react": ["@ionic/react@8.8.11", "", { "dependencies": { "@ionic/core": "8.8.11", "ionicons": "^8.0.13", "tslib": "*" }, "peerDependencies": { "react": ">=16.8.6", "react-dom": ">=16.8.6" } }, "sha512-ZDuF8ZQNWsZqw2hxlpNqlOWmTf/vvlTiT5c8oSqX4+A7Jw6YHj+E81MM34Z80RecJYNff7BC/Jjb2THVJwbY+g=="],
 
-    "@ionic/react-router": ["@ionic/react-router@8.8.10", "", { "dependencies": { "@ionic/react": "8.8.10", "tslib": "*" }, "peerDependencies": { "react": ">=16.8.6", "react-dom": ">=16.8.6", "react-router": "^5.0.1", "react-router-dom": "^5.0.1" } }, "sha512-aHLZkNqO5h/GGY7iVQ7wP5hlP3s7+JKmB929WdsX+ez0swQRsPJfJNkimI87SU5V55EPdHFiJvAVbnyThMvIFg=="],
+    "@ionic/react-router": ["@ionic/react-router@8.8.11", "", { "dependencies": { "@ionic/react": "8.8.11", "tslib": "*" }, "peerDependencies": { "react": ">=16.8.6", "react-dom": ">=16.8.6", "react-router": "^5.0.1", "react-router-dom": "^5.0.1" } }, "sha512-4/mYkgCbbmdpAKjZc1rpBD2ZN3rzF8KSbHm1ykr39m0zfJy9ZDCDVicoxtcY+3Znc3T0s2+V2qfDlE5qSuRWlg=="],
 
     "@ionic/utils-array": ["@ionic/utils-array@2.1.6", "", { "dependencies": { "debug": "^4.0.0", "tslib": "^2.0.1" } }, "sha512-0JZ1Zkp3wURnv8oq6Qt7fMPo5MpjbLoUoa9Bu2Q4PJuSDWM8H8gwF3dQO7VTeUj3/0o1IB1wGkFWZZYgUXZMUg=="],
 
