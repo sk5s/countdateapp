@@ -48,7 +48,7 @@
 
 <div id="top"></div>
 
-[![sk5s site](https://sk5s.cyou/sk5s/img/sk5s-project-bar.png)](https://sk5s.com/)
+[![sk5s site](https://me.sk5s.org/img/sk5s-project-bar.png)](https://sk5s.com/)
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -80,7 +80,7 @@
 
 ## About The Project
 
-<!--[![Product Name Screen Shot]](https://sk5s.cyou/)-->
+<!--[![Product Name Screen Shot]](https://sk5s.com/)-->
 
 <a target="_blank" href='https://play.google.com/store/apps/details?id=cyou.sk5s.app.countdate'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png' width="150px"/></a>
 <a target="_blank" href='https://apt.izzysoft.de/fdroid/index/apk/cyou.sk5s.app.countdate'><img alt='Get it on IzzyOnDroid' src='https://countdate.sk5s.com/assets/img/IzzyOnDroid.png' width="150px"/></a>
